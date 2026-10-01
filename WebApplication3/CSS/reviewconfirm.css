@@ -1,0 +1,554 @@
+﻿/* =========================================================
+   REVIEW & CONFIRM PAGE
+   Page-specific CSS
+========================================================= */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+}
+.dashboard-container {
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    margin: 0;
+    background: #f7f9fb;
+    display: flex;
+    overflow: hidden;
+    border: none;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    width: 153px;
+    flex-shrink: 0;
+    background: #1d2a3d;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.logo {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 32px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+.logo-icon {
+    width: 11px;
+    height: 11px;
+    background: white;
+    margin-right: 10px;
+}
+
+
+.navigation {
+    padding: 3px 8px;
+}
+
+
+.nav-item {
+    height: 29px;
+    margin-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: #aeb9c9;
+    text-decoration: none;
+    font-size: 9px;
+}
+
+
+.nav-icon {
+    width: 17px;
+    font-size: 10px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+
+.nav-item:hover {
+    background: #263a56;
+    color: white;
+}
+
+
+.nav-item.active {
+    background: #2868ed;
+    color: white;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.logout {
+    margin-top: auto;
+    padding: 0 20px 22px;
+}
+
+
+    .logout a {
+        color: #ff4d55;
+        font-size: 9px;
+        text-decoration: none;
+    }
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main-content {
+    flex: 1;
+    background: #f7f9fb;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+    height: 42px;
+    background: white;
+    border-bottom: 1px solid #e1e6ec;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+}
+
+
+.page-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #172033;
+}
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+
+.profile-image {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #dce3e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+
+.user-name {
+    font-size: 8px;
+    font-weight: 700;
+    color: #1c2738;
+}
+
+
+.user-role {
+    font-size: 7px;
+    color: #7d899a;
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content {
+    padding: 18px;
+}
+
+
+/* =========================================================
+   STEPPER
+========================================================= */
+
+.stepper {
+    display: flex;
+    align-items: center;
+    height: 28px;
+    margin-bottom: 12px;
+    color: #66758a;
+    font-size: 8px;
+}
+
+
+.step {
+    display: flex;
+    align-items: center;
+}
+
+
+.step-number {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    background: #e5eaf0;
+    color: #6e7b8e;
+    font-size: 7px;
+}
+
+
+.step.completed .step-number {
+    background: #dff7e7;
+    color: #168047;
+}
+
+
+.step.active {
+    color: #2868ed;
+}
+
+
+    .step.active .step-number {
+        background: #2868ed;
+        color: white;
+    }
+
+
+.arrow {
+    margin: 0 13px;
+    color: #738197;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   REVIEW CARD
+========================================================= */
+
+.review-card {
+    background: white;
+    border: 1px solid #e1e6ec;
+    border-radius: 7px;
+    padding: 18px 15px;
+    min-height: 450px;
+}
+
+
+.review-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #172033;
+    margin: 0 0 13px 0;
+}
+
+
+/* =========================================================
+   DETAILS ROW
+========================================================= */
+
+.details-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+
+.details-card {
+    background: #f8fafc;
+    border: 1px solid #e0e6ed;
+    border-radius: 5px;
+    padding: 11px;
+    min-height: 172px;
+}
+
+
+.details-heading {
+    color: #1760dc;
+    font-size: 8px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+
+.detail-item {
+    margin-bottom: 7px;
+}
+
+
+.detail-label {
+    display: block;
+    color: #78869a;
+    font-size: 6px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+
+.detail-value {
+    display: block;
+    color: #202c3e;
+    font-size: 7px;
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   COST
+========================================================= */
+
+.cost-box {
+    margin-top: 18px;
+    height: 45px;
+    background: #edf5ff;
+    border: 1px solid #cce0ff;
+    border-radius: 5px;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.cost-title {
+    color: #2165dc;
+    font-size: 7px;
+    font-weight: 600;
+}
+
+
+.cost-description {
+    color: #8290a2;
+    font-size: 5.5px;
+    margin-top: 2px;
+}
+
+
+.cost-value {
+    color: #175bd0;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+.payment-card {
+    margin-top: 12px;
+    border: 1px solid #e1e6ec;
+    border-radius: 5px;
+    padding: 11px;
+    background: white;
+}
+
+
+.payment-title {
+    color: #2165dc;
+    font-size: 8px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+
+.payment-option {
+    height: 24px;
+    border: 1px solid #cfe1ff;
+    border-radius: 4px;
+    background: #edf5ff;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-size: 7px;
+    color: #202c3e;
+}
+
+
+.radio {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #2868ed;
+    border-radius: 50%;
+    margin-right: 6px;
+    position: relative;
+}
+
+
+    .radio:after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #2868ed;
+        border-radius: 50%;
+        top: 1px;
+        left: 1px;
+    }
+
+
+/* =========================================================
+   BUTTONS
+   Equal width - 50% each
+========================================================= */
+
+.button-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+
+.back-button,
+.confirm-button {
+    flex: 1;
+    width: auto;
+    height: 26px;
+    border-radius: 5px;
+    font-size: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.back-button {
+    background: white;
+    border: 1px solid #dfe5ec;
+    color: #65758b;
+}
+
+
+.confirm-button {
+    background: #2868ed;
+    border: none;
+    color: white;
+}
+
+
+.back-button:hover {
+    background: #f5f7fa;
+}
+
+
+.confirm-button:hover {
+    background: #1e59d0;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message {
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+    font-size: 8px;
+    color: #e04444;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .dashboard-container {
+        width: 100%;
+        min-height: 100vh;
+        height: auto;
+        margin: 0;
+        border: none;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .details-row {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        height: 55px;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .button-row {
+        flex-direction: column;
+    }
+
+    .back-button,
+    .confirm-button {
+        width: 100%;
+    }
+}
+/* =========================================================
+   FULL SCREEN OVERRIDE
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f7f9fb;
+}
+
+.dashboard-container {
+    width: 100% !important;
+    max-width: none !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    border: none !important;
+    display: flex;
+    overflow: hidden;
+}
+
+.sidebar {
+    height: 100vh;
+}
+
+.main-content {
+    height: 100vh;
+    flex: 1;
+    min-width: 0;
+}

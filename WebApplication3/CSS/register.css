@@ -1,0 +1,377 @@
+﻿/* =========================================================
+   REGISTER PAGE
+   FULL SCREEN
+   100% BROWSER ZOOM
+   LARGE / EASY TO READ TEXT
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f8fc;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FULL PAGE
+========================================================= */
+
+.register-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background: #f5f8fc;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.register-left {
+    width: 48%;
+    height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+    background-image: linear-gradient( rgba(0, 40, 95, 0.72), rgba(0, 28, 68, 0.88) ), url("../Images/register-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    border-right: 2px solid #1683ff;
+}
+
+
+/* =========================================================
+   GLOBAL LOGO
+========================================================= */
+
+.register-global-logo {
+    position: absolute;
+    top: 38px;
+    left: 42px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.register-global-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    color: #164da8;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.register-right {
+    width: 52%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background: #f7f9fc;
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   REGISTER CONTAINER
+========================================================= */
+
+.register-container {
+    width: 100%;
+    max-width: 430px;
+    padding: 25px 30px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TRANSPO LOGO
+========================================================= */
+
+.register-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #172033;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.register-logo-icon {
+    width: 29px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1457c5;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.register-container h1 {
+    margin: 0 0 8px;
+    color: #172033;
+    font-size: 28px !important;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.register-description {
+    width: 100%;
+    margin: 0 0 20px;
+    color: #718096;
+    font-size: 13px !important;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.register-field {
+    width: 100%;
+    margin-bottom: 9px;
+}
+
+    .register-field label {
+        display: block;
+        margin-bottom: 6px;
+        color: #172033;
+        font-size: 13px !important;
+        font-weight: 600;
+    }
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.register-input {
+    width: 100% !important;
+    height: 42px !important;
+    padding: 0 13px !important;
+    box-sizing: border-box;
+    border: 1px solid #d5dee8 !important;
+    border-radius: 6px !important;
+    background: #ffffff !important;
+    color: #172033 !important;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    outline: none;
+}
+
+    .register-input::placeholder {
+        color: #98a5b6;
+        opacity: 1;
+    }
+
+    .register-input:focus {
+        border-color: #1762df !important;
+        box-shadow: 0 0 0 3px rgba(23, 98, 223, 0.08);
+    }
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.register-message {
+    display: block;
+    min-height: 18px;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    color: #e04444;
+    font-size: 12px !important;
+}
+
+
+/* =========================================================
+   SIGN UP BUTTON
+========================================================= */
+
+.register-button {
+    width: 100% !important;
+    height: 45px !important;
+    padding: 0 !important;
+    border: 1px solid #1457c5 !important;
+    border-radius: 6px !important;
+    background: #1457c5 !important;
+    color: #ffffff !important;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+}
+
+    .register-button:hover {
+        background: #0f49a8 !important;
+        border-color: #0f49a8 !important;
+    }
+
+
+/* =========================================================
+   LOGIN LINK
+========================================================= */
+
+.register-login {
+    margin-top: 17px;
+    text-align: center;
+    color: #8190a4;
+    font-size: 12px !important;
+}
+
+    .register-login a {
+        color: #1457c5;
+        font-size: 12px !important;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+        .register-login a:hover {
+            text-decoration: underline;
+        }
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .register-left {
+        width: 48%;
+    }
+
+    .register-right {
+        width: 52%;
+    }
+
+    .register-container {
+        max-width: 450px;
+    }
+
+        .register-container h1 {
+            font-size: 29px !important;
+        }
+
+    .register-input {
+        height: 44px !important;
+        font-size: 15px !important;
+    }
+
+    .register-field label {
+        font-size: 14px !important;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .register-left {
+        width: 42%;
+    }
+
+    .register-right {
+        width: 58%;
+    }
+
+    .register-container {
+        max-width: 430px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .register-left {
+        display: none;
+    }
+
+    .register-right {
+        width: 100%;
+        min-height: 100vh;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .register-container {
+        max-width: 450px;
+        padding: 20px;
+    }
+
+        .register-container h1 {
+            font-size: 27px !important;
+        }
+
+    .register-description {
+        font-size: 14px !important;
+    }
+
+    .register-field label {
+        font-size: 14px !important;
+    }
+
+    .register-input {
+        height: 48px !important;
+        font-size: 16px !important;
+    }
+
+    .register-button {
+        height: 49px !important;
+        font-size: 15px !important;
+    }
+
+    .register-login,
+    .register-login a {
+        font-size: 13px !important;
+    }
+}

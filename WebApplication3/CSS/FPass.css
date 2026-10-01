@@ -1,0 +1,354 @@
+﻿/* =========================================================
+   FPass - FORGOT PASSWORD
+   100% BROWSER ZOOM
+   LARGE / CLEAR TEXT
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f5f8fc;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FULL PAGE
+========================================================= */
+
+.fpass-page {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background: #f5f8fc;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.fpass-left {
+    width: 48%;
+    height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+    background-image: linear-gradient( rgba(0, 34, 82, 0.78), rgba(0, 22, 57, 0.88) ), url("../Images/forgot-password-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    border-right: 2px solid #1683ff;
+}
+
+
+/* =========================================================
+   GLOBAL LOGO
+========================================================= */
+
+.fpass-global-logo {
+    position: absolute;
+    top: 38px;
+    left: 42px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.fpass-global-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    color: #164da8;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.fpass-right {
+    width: 52%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background: #f7f9fc;
+}
+
+
+/* =========================================================
+   FORM CONTAINER
+========================================================= */
+
+.fpass-container {
+    width: 100%;
+    max-width: 430px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TRANSPO LOGO
+========================================================= */
+
+.fpass-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    color: #172033;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.fpass-logo-icon {
+    width: 29px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1457c5;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.fpass-container h1 {
+    margin: 0 0 10px;
+    color: #172033;
+    font-size: 28px !important;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.fpass-description {
+    width: 100%;
+    margin: 0 0 29px;
+    color: #718096;
+    font-size: 14px !important;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.fpass-field {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+    .fpass-field label {
+        display: block;
+        margin-bottom: 9px;
+        color: #172033;
+        font-size: 15px !important;
+        font-weight: 600;
+    }
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.fpass-input {
+    width: 100% !important;
+    height: 50px !important;
+    padding: 0 15px !important;
+    box-sizing: border-box;
+    border: 1px solid #d5dee8 !important;
+    border-radius: 7px !important;
+    background: #ffffff !important;
+    color: #172033 !important;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    outline: none;
+}
+
+    .fpass-input::placeholder {
+        color: #98a5b6;
+        opacity: 1;
+    }
+
+    .fpass-input:focus {
+        border-color: #1762df !important;
+        box-shadow: 0 0 0 3px rgba(23, 98, 223, 0.08);
+    }
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.fpass-message {
+    display: block;
+    min-height: 20px;
+    margin-top: 5px;
+    margin-bottom: 6px;
+    color: #e04444;
+    font-size: 13px !important;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.fpass-button {
+    width: 100% !important;
+    height: 50px !important;
+    padding: 0 !important;
+    border: 1px solid #1457c5 !important;
+    border-radius: 7px !important;
+    background: #1457c5 !important;
+    color: #ffffff !important;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+}
+
+    .fpass-button:hover {
+        background: #0f49a8 !important;
+        border-color: #0f49a8 !important;
+    }
+
+
+/* =========================================================
+   LOGIN LINK
+========================================================= */
+
+.fpass-login {
+    margin-top: 24px;
+    text-align: center;
+    color: #8190a4;
+    font-size: 13px !important;
+}
+
+    .fpass-login a {
+        color: #1457c5;
+        font-size: 13px !important;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+        .fpass-login a:hover {
+            text-decoration: underline;
+        }
+
+
+/* =========================================================
+   LARGE SCREEN
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .fpass-left {
+        width: 48%;
+    }
+
+    .fpass-right {
+        width: 52%;
+    }
+
+    .fpass-container {
+        max-width: 450px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .fpass-left {
+        width: 42%;
+    }
+
+    .fpass-right {
+        width: 58%;
+    }
+
+    .fpass-container {
+        max-width: 430px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .fpass-left {
+        display: none;
+    }
+
+    .fpass-right {
+        width: 100%;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .fpass-container {
+        max-width: 450px;
+        padding: 20px;
+    }
+
+        .fpass-container h1 {
+            font-size: 27px !important;
+        }
+
+    .fpass-description {
+        font-size: 14px !important;
+    }
+
+    .fpass-field label {
+        font-size: 15px !important;
+    }
+
+    .fpass-input {
+        font-size: 16px !important;
+    }
+
+    .fpass-button {
+        font-size: 15px !important;
+    }
+}

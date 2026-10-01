@@ -1,0 +1,4273 @@
+﻿/* =========================================================
+   TRANSPO - COMMON CSS
+   Bootstrap + Custom CSS
+========================================================= */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #202020;
+    color: #263347;
+}
+
+
+/* =========================================================
+   MAIN APPLICATION
+========================================================= */
+
+.dashboard-container {
+    width: calc(100% - 20px);
+    height: calc(100vh - 8px);
+    min-height: 600px;
+    margin: 4px 10px;
+    background: #f7f9fb;
+    display: flex;
+    overflow: hidden;
+    border: 2px solid #0787e8;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    width: 168px;
+    min-width: 168px;
+    background: #1d2a3d;
+    color: #ffffff;
+}
+
+.logo {
+    height: 54px;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.logo-icon {
+    width: 18px;
+    height: 18px;
+    background: #2868ed;
+    border-radius: 4px;
+    margin-right: 7px;
+}
+
+.navigation {
+    padding: 3px 8px;
+}
+
+.nav-item {
+    height: 29px;
+    margin-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    color: #aeb9c9;
+    text-decoration: none;
+    font-size: 9px;
+}
+
+    .nav-item:hover {
+        background: #263a56;
+        color: #ffffff;
+    }
+
+    .nav-item.active {
+        background: #2868ed;
+        color: #ffffff;
+    }
+
+.nav-icon {
+    width: 17px;
+    margin-right: 5px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.logout {
+    margin-top: auto;
+    padding: 0 20px 22px;
+}
+
+    .logout a {
+        color: #ff4d55;
+        font-size: 9px;
+        text-decoration: none;
+    }
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    background: #f7f9fb;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+    height: 44px;
+    background: #ffffff;
+    border-bottom: 1px solid #e1e6ec;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+}
+
+.page-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #172033;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.profile-image {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #dce3e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.user-name {
+    font-size: 8px;
+    font-weight: 700;
+    color: #1c2738;
+}
+
+.user-role {
+    font-size: 7px;
+    color: #7d899a;
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   PAGE CONTENT
+========================================================= */
+
+.content {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 18px;
+}
+
+.breadcrumb {
+    font-size: 7px;
+    color: #7c899b;
+    margin-bottom: 6px;
+}
+
+    .breadcrumb .active {
+        color: #2868ed;
+        font-weight: 600;
+    }
+
+.heading {
+    font-size: 13px;
+    font-weight: 700;
+    color: #172033;
+    margin-bottom: 3px;
+}
+
+.description,
+.page-description {
+    font-size: 7px;
+    color: #8190a4;
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   COMMON CARDS
+========================================================= */
+
+.form-card,
+.info-card,
+.profile-card,
+.address-card,
+.manage-card,
+.bookings-card,
+.review-card,
+.details-card,
+.payment-card,
+.summary-card,
+.success-card,
+.booking-card,
+.trip-card,
+.stat-card {
+    background: #ffffff;
+    border: 1px solid #e1e6ec;
+    border-radius: 7px;
+}
+
+.form-card {
+    padding: 17px;
+}
+
+
+/* =========================================================
+   FORMS
+========================================================= */
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-label {
+    display: block;
+    font-size: 7px;
+    font-weight: 600;
+    color: #263347;
+    margin-bottom: 5px;
+}
+
+.input-field,
+.form-control,
+.form-select,
+select,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    min-height: 26px;
+    border: 1px solid #dfe5ec;
+    border-radius: 5px;
+    background: #ffffff;
+    padding: 5px 9px;
+    font-size: 8px;
+    color: #344257;
+}
+
+textarea,
+textarea.input-field {
+    min-height: 57px;
+    resize: none;
+}
+
+.input-field:focus,
+.form-control:focus,
+.form-select:focus {
+    border-color: #2868ed;
+    box-shadow: 0 0 0 2px rgba(40, 104, 237, 0.10);
+    outline: none;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.button-row {
+    display: flex;
+    gap: 9px;
+}
+
+.button,
+.btn-custom {
+    min-height: 25px;
+    border-radius: 5px;
+    padding: 4px 14px;
+    font-size: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.save-button,
+.btn-primary-custom {
+    background: #2868ed;
+    border: 1px solid #2868ed;
+    color: #ffffff;
+}
+
+    .save-button:hover,
+    .btn-primary-custom:hover {
+        background: #1e59d0;
+    }
+
+.cancel-button,
+.btn-secondary-custom {
+    background: #ffffff;
+    border: 1px solid #dfe5ec;
+    color: #65758b;
+}
+
+    .cancel-button:hover,
+    .btn-secondary-custom:hover {
+        background: #f5f7fa;
+    }
+
+
+/* =========================================================
+   ADDRESS
+========================================================= */
+
+.address-type {
+    margin-top: 3px;
+    margin-bottom: 9px;
+}
+
+.radio-option {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 7px;
+    color: #344257;
+}
+
+    .radio-option input {
+        margin-right: 5px;
+        accent-color: #2868ed;
+    }
+
+.default-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 7px;
+    color: #344257;
+    margin-bottom: 15px;
+}
+
+    .default-option input {
+        accent-color: #2868ed;
+    }
+
+.message {
+    display: block;
+    margin-top: 8px;
+    color: #e04444;
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   BOOKING STEPPER
+========================================================= */
+
+.stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    color: #8a96a8;
+    font-size: 8px;
+}
+
+.step-number {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e5eaf0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    font-size: 8px;
+}
+
+.step.active {
+    color: #2868ed;
+}
+
+    .step.active .step-number,
+    .step.completed .step-number {
+        background: #2868ed;
+        color: #ffffff;
+    }
+
+.arrow {
+    margin: 0 12px;
+    color: #a4afbd;
+}
+
+
+/* =========================================================
+   DASHBOARD CARDS
+========================================================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.stat-card {
+    padding: 10px;
+}
+
+.stat-title {
+    font-size: 7px;
+    color: #7d899a;
+}
+
+.stat-number {
+    font-size: 16px;
+    font-weight: 700;
+    color: #172033;
+    margin-top: 4px;
+}
+
+.lower-section {
+    margin-top: 12px;
+}
+
+.card-heading {
+    font-size: 10px;
+    font-weight: 700;
+    color: #172033;
+}
+
+.status {
+    display: inline-block;
+    padding: 3px 7px;
+    border-radius: 10px;
+    font-size: 7px;
+}
+
+.pending {
+    background: #fff4d6;
+    color: #a56a00;
+}
+
+.completed {
+    background: #dff7e7;
+    color: #168047;
+}
+
+.ongoing {
+    background: #dcecff;
+    color: #2868ed;
+}
+
+.red {
+    color: #e04444;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile-photo {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #dce3e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-image-small {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.photo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.photo-help {
+    font-size: 7px;
+    color: #8a96a8;
+}
+
+
+/* =========================================================
+   BOOKING DETAILS
+========================================================= */
+
+.booking-header {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.booking-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #172033;
+}
+
+.status.ongoing {
+    color: #d78b00;
+    background: #fff1cf;
+}
+
+.info-card {
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.card-title {
+    font-size: 9px;
+    font-weight: 700;
+    color: #172033;
+    margin-bottom: 8px;
+}
+
+.info-row {
+    min-height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info-label {
+    color: #8190a4;
+    font-size: 7px;
+}
+
+.info-value {
+    color: #202c3e;
+    font-size: 7px;
+    font-weight: 600;
+    text-align: right;
+}
+
+
+/* =========================================================
+   ADDRESS BOOK
+========================================================= */
+
+.manage-card {
+    min-height: 47px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.manage-title {
+    font-size: 9px;
+    font-weight: 700;
+    color: #172033;
+    margin-bottom: 3px;
+}
+
+.manage-description {
+    font-size: 6.5px;
+    color: #8190a4;
+}
+
+.add-button {
+    height: 23px;
+    padding: 0 11px;
+    background: #2868ed;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 7px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+    .add-button:hover {
+        background: #1e59d0;
+    }
+
+.address-card {
+    min-height: 69px;
+    padding: 9px 11px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+    .address-card.default {
+        border: 2px solid #2868ed;
+    }
+
+.address-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f1f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #66758a;
+    font-size: 11px;
+    margin-right: 11px;
+    flex-shrink: 0;
+}
+
+.address-card.default .address-icon {
+    background: #edf4ff;
+    color: #2868ed;
+}
+
+.address-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.address-name-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.address-name {
+    font-size: 8px;
+    font-weight: 700;
+    color: #202c3e;
+}
+
+.default-label {
+    background: #d9f8eb;
+    color: #11a66b;
+    padding: 2px 5px;
+    border-radius: 7px;
+    font-size: 5px;
+    font-weight: 600;
+}
+
+.address-text {
+    font-size: 6.5px;
+    color: #718096;
+    margin-bottom: 4px;
+}
+
+.phone {
+    font-size: 6px;
+    color: #8090a4;
+}
+
+.address-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: 8px;
+}
+
+.icon-button {
+    width: 23px;
+    height: 23px;
+    border: 1px solid #dfe5ec;
+    border-radius: 5px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 9px;
+}
+
+.edit-button {
+    color: #66758a;
+}
+
+.delete-button {
+    color: #e04444;
+}
+
+.icon-button:hover {
+    background: #f5f7fa;
+}
+
+
+/* =========================================================
+   MY BOOKINGS
+========================================================= */
+
+.bookings-card {
+    min-height: 513px;
+    padding: 12px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   BOOKINGS TABLE
+========================================================= */
+
+.booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+    .booking-table th {
+        height: 28px;
+        padding: 0 5px;
+        text-align: left;
+        border-bottom: 1px solid #e2e7ed;
+        color: #66758a;
+        font-size: 7px;
+        font-weight: 600;
+    }
+
+    .booking-table td {
+        height: 30px;
+        padding: 0 5px;
+        border-bottom: 1px solid #e8edf2;
+        color: #344257;
+        font-size: 7px;
+        vertical-align: middle;
+    }
+
+    .booking-table tr:last-child td {
+        border-bottom: none;
+    }
+
+
+    /* BOOKING ID */
+
+    .booking-table td:first-child {
+        color: #1762df;
+        font-size: 8px;
+        font-weight: 600;
+    }
+
+
+    /* ROUTE */
+
+    .booking-table td:nth-child(2) {
+        color: #263347;
+        font-size: 7px;
+    }
+
+
+    /* DATE */
+
+    .booking-table td:nth-child(3) {
+        color: #718096;
+        font-size: 7px;
+    }
+
+
+    /* AMOUNT */
+
+    .booking-table td:nth-child(5) {
+        color: #263347;
+        font-size: 7px;
+        font-weight: 600;
+    }
+
+
+    /* STATUS */
+
+    .booking-table .status {
+        display: inline-block;
+        padding: 3px 6px;
+        border-radius: 10px;
+        font-size: 6px;
+        font-weight: 600;
+    }
+
+    .booking-table .ongoing {
+        color: #d78b00;
+        background: #fff4d8;
+    }
+
+    .booking-table .completed {
+        color: #12a56b;
+        background: #d9f8eb;
+    }
+
+    .booking-table .cancelled {
+        color: #e04444;
+        background: #ffe1e1;
+    }
+
+
+/* VIEW DETAILS */
+
+.details-link {
+    color: #1762df;
+    font-size: 7px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+    .details-link:hover {
+        text-decoration: underline;
+    }
+
+
+/* MESSAGE */
+
+.bookings-card .message {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 8px;
+    color: #7d899a;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .dashboard-container {
+        width: 100%;
+        min-height: 100vh;
+        height: auto;
+        margin: 0;
+        border: none;
+    }
+
+    .content {
+        max-width: 100%;
+        padding: 15px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .dashboard-container {
+        width: 100%;
+        min-height: 100vh;
+        height: auto;
+        margin: 0;
+        border: none;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    body {
+        background: #f7f9fb;
+    }
+
+    .dashboard-container {
+        width: 100%;
+        min-height: 100vh;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .content {
+        padding: 12px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .button-row {
+        flex-wrap: wrap;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .content {
+        padding: 12px;
+    }
+
+    .booking-table {
+        min-width: 650px;
+    }
+
+    .bookings-card {
+        overflow-x: auto;
+    }
+
+    .info-row {
+        min-height: 25px;
+    }
+
+    .address-card {
+        align-items: flex-start;
+    }
+
+    .address-actions {
+        margin-left: 5px;
+    }
+
+    .manage-card {
+        gap: 10px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        padding: 0 10px;
+    }
+}
+/* =========================================================
+   BOOKINGS PAGE
+========================================================= */
+
+.bookings-card {
+    width: 100%;
+    height: 525px;
+    background: #ffffff;
+    border: 1px solid #e1e6ec;
+    border-radius: 7px;
+    padding: 12px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   BOOKINGS TABLE
+========================================================= */
+
+.booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+
+    /* TABLE HEADER */
+
+    .booking-table th {
+        height: 28px;
+        padding: 0 5px;
+        text-align: left;
+        vertical-align: middle;
+        border-bottom: 1px solid #e2e7ed;
+        color: #66758a;
+        font-size: 7px;
+        font-weight: 600;
+    }
+
+
+    /* TABLE ROW */
+
+    .booking-table td {
+        height: 30px;
+        padding: 0 5px;
+        vertical-align: middle;
+        border-bottom: 1px solid #e8edf2;
+        color: #344257;
+        font-size: 7px;
+    }
+
+
+        /* COLUMN WIDTHS */
+
+        .booking-table th:nth-child(1),
+        .booking-table td:nth-child(1) {
+            width: 12%;
+        }
+
+        .booking-table th:nth-child(2),
+        .booking-table td:nth-child(2) {
+            width: 36%;
+        }
+
+        .booking-table th:nth-child(3),
+        .booking-table td:nth-child(3) {
+            width: 17%;
+        }
+
+        .booking-table th:nth-child(4),
+        .booking-table td:nth-child(4) {
+            width: 11%;
+        }
+
+        .booking-table th:nth-child(5),
+        .booking-table td:nth-child(5) {
+            width: 11%;
+        }
+
+        .booking-table th:nth-child(6),
+        .booking-table td:nth-child(6) {
+            width: 13%;
+        }
+
+
+        /* BOOKING ID */
+
+        .booking-table td:nth-child(1) {
+            color: #1762df;
+            font-size: 8px;
+            font-weight: 600;
+        }
+
+
+        /* ROUTE */
+
+        .booking-table td:nth-child(2) {
+            color: #263347;
+            font-size: 7px;
+        }
+
+
+        /* DATE */
+
+        .booking-table td:nth-child(3) {
+            color: #718096;
+            font-size: 7px;
+        }
+
+
+        /* AMOUNT */
+
+        .booking-table td:nth-child(5) {
+            color: #263347;
+            font-size: 7px;
+            font-weight: 600;
+        }
+
+
+    /* =========================================================
+   STATUS
+========================================================= */
+
+    .booking-table .status {
+        display: inline-block;
+        padding: 3px 6px;
+        border-radius: 10px;
+        font-size: 6px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+
+    /* ONGOING */
+
+    .booking-table .ongoing {
+        color: #d78b00;
+        background: #fff4d8;
+    }
+
+
+    /* COMPLETED */
+
+    .booking-table .completed {
+        color: #12a56b;
+        background: #d9f8eb;
+    }
+
+
+    /* CANCELLED */
+
+    .booking-table .cancelled {
+        color: #e04444;
+        background: #ffe1e1;
+    }
+
+
+/* =========================================================
+   VIEW DETAILS
+========================================================= */
+
+.details-link {
+    color: #1762df;
+    font-size: 7px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+    .details-link:hover {
+        color: #0d4fb5;
+        text-decoration: underline;
+    }
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 8px;
+    color: #7d899a;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .bookings-card {
+        overflow-x: auto;
+    }
+
+    .booking-table {
+        min-width: 650px;
+    }
+}
+/* =========================================================
+   FULL SCREEN OVERRIDE
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f7f9fb;
+}
+
+.dashboard-container {
+    width: 100% !important;
+    max-width: none !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    border: none !important;
+    display: flex;
+    overflow: hidden;
+}
+
+.sidebar {
+    height: 100vh;
+}
+
+.main-content {
+    height: 100vh;
+    flex: 1;
+    min-width: 0;
+}
+/* =========================================================
+   DRIVER - MY TRIPS
+========================================================= */
+
+.driver-trips-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background: #f3f6fa;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.driver-trips-sidebar {
+    width: 185px;
+    height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: #0c1d3b;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+
+.driver-trips-logo {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+
+.driver-trips-logo-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: #1762df;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.driver-trips-navigation {
+    width: 100%;
+    padding: 4px 10px;
+    box-sizing: border-box;
+}
+
+
+.driver-trips-nav-item {
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 13px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: #8fa1bd;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.15s ease;
+}
+
+
+    .driver-trips-nav-item:hover {
+        background: #162d50;
+        color: #ffffff;
+    }
+
+
+    .driver-trips-nav-item.active {
+        background: #1762df;
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+
+.driver-trips-nav-icon {
+    width: 17px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.driver-trips-logout {
+    margin-top: auto;
+    padding: 0 20px 25px;
+}
+
+
+    .driver-trips-logout a {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: #ff4d57;
+        font-size: 12px;
+        text-decoration: none;
+    }
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.driver-trips-main {
+    width: calc(100% - 185px);
+    height: 100vh;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: #f3f6fa;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.driver-trips-topbar {
+    width: 100%;
+    min-height: 71px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-bottom: 1px solid #dce4ed;
+}
+
+
+    .driver-trips-topbar h1 {
+        margin: 0 0 4px;
+        color: #172033;
+        font-size: 20px !important;
+        font-weight: 700;
+    }
+
+
+    .driver-trips-topbar p {
+        margin: 0;
+        color: #718096;
+        font-size: 11px !important;
+    }
+
+
+/* =========================================================
+   USER
+========================================================= */
+
+.driver-trips-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.driver-trips-avatar {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dce4ed;
+    color: #23395d;
+    font-size: 15px;
+}
+
+
+.driver-trips-user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+}
+
+
+    .driver-trips-user-info strong {
+        color: #172033;
+        font-size: 11px !important;
+        font-weight: 600;
+    }
+
+
+    .driver-trips-user-info span {
+        color: #8190a4;
+        font-size: 9px !important;
+    }
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.driver-trips-content {
+    width: 100%;
+    flex: 1;
+    padding: 24px 22px 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.driver-trips-filter {
+    width: 100%;
+    height: 28px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+
+.driver-trips-filter-active {
+    padding: 0 10px;
+    border: none;
+    background: transparent;
+    color: #1762df;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   TABLE CARD
+========================================================= */
+
+.driver-trips-table-card {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #dce4ed;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.driver-trips-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+.driver-trips-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+
+    .driver-trips-table th {
+        height: 38px;
+        padding: 0 14px;
+        background: #f5f8fb;
+        color: #66758a;
+        border-bottom: 1px solid #dce4ed;
+        text-align: left;
+        vertical-align: middle;
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+
+    .driver-trips-table td {
+        height: 50px;
+        padding: 0 14px;
+        color: #5f7188;
+        border-bottom: 1px solid #e5eaf0;
+        text-align: left;
+        vertical-align: middle;
+        font-size: 10px;
+        line-height: 1.3;
+    }
+
+
+    .driver-trips-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+
+    /* COLUMN WIDTHS */
+
+    .driver-trips-table th:nth-child(1),
+    .driver-trips-table td:nth-child(1) {
+        width: 14%;
+    }
+
+
+    .driver-trips-table th:nth-child(2),
+    .driver-trips-table td:nth-child(2) {
+        width: 20%;
+    }
+
+
+    .driver-trips-table th:nth-child(3),
+    .driver-trips-table td:nth-child(3) {
+        width: 25%;
+    }
+
+
+    .driver-trips-table th:nth-child(4),
+    .driver-trips-table td:nth-child(4) {
+        width: 15%;
+    }
+
+
+    .driver-trips-table th:nth-child(5),
+    .driver-trips-table td:nth-child(5) {
+        width: 13%;
+    }
+
+
+    .driver-trips-table th:nth-child(6),
+    .driver-trips-table td:nth-child(6) {
+        width: 13%;
+    }
+
+
+/* =========================================================
+   TABLE TEXT
+========================================================= */
+
+.trip-id {
+    color: #172033 !important;
+    font-size: 10px !important;
+    font-weight: 600;
+}
+
+
+.trip-route {
+    color: #172033 !important;
+    font-size: 10px !important;
+    font-weight: 600;
+}
+
+
+.trip-earnings {
+    color: #172033 !important;
+    font-size: 10px !important;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.trip-status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+.in-transit {
+    color: #d88a00;
+    background: #fff1c9;
+}
+
+
+.delivered {
+    color: #13834c;
+    background: #c9f6df;
+}
+
+
+.cancelled {
+    color: #e04444;
+    background: #ffdcdc;
+}
+
+
+/* =========================================================
+   LARGE SCREEN
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .driver-trips-sidebar {
+        width: 190px;
+    }
+
+    .driver-trips-main {
+        width: calc(100% - 190px);
+    }
+
+    .driver-trips-content {
+        padding: 25px 25px 30px;
+    }
+
+    .driver-trips-topbar h1 {
+        font-size: 21px !important;
+    }
+
+    .driver-trips-topbar p {
+        font-size: 12px !important;
+    }
+
+    .driver-trips-table th {
+        font-size: 10px;
+    }
+
+    .driver-trips-table td {
+        font-size: 11px;
+    }
+
+    .trip-id,
+    .trip-route,
+    .trip-earnings {
+        font-size: 11px !important;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .driver-trips-sidebar {
+        width: 165px;
+    }
+
+    .driver-trips-main {
+        width: calc(100% - 165px);
+    }
+
+    .driver-trips-content {
+        padding: 20px;
+    }
+
+    .driver-trips-table {
+        min-width: 750px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .driver-trips-page {
+        height: auto;
+        min-height: 100vh;
+        display: block;
+    }
+
+    .driver-trips-sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .driver-trips-navigation {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .driver-trips-nav-item {
+        width: auto;
+        min-width: max-content;
+        margin-right: 5px;
+    }
+
+    .driver-trips-logout {
+        display: none;
+    }
+
+    .driver-trips-main {
+        width: 100%;
+        height: auto;
+        min-height: calc(100vh - 110px);
+    }
+
+    .driver-trips-topbar {
+        min-height: 65px;
+        padding: 0 16px;
+    }
+
+    .driver-trips-content {
+        padding: 18px 15px;
+    }
+
+    .driver-trips-table {
+        min-width: 750px;
+    }
+}
+/* =========================================================
+   DRIVER - ACTIVE TRIP
+========================================================= */
+
+.driver-active-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background: #f3f6fa;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.driver-active-sidebar {
+    width: 185px;
+    min-height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: #0c1d3b;
+    box-sizing: border-box;
+}
+
+
+.driver-active-logo {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+.driver-active-logo-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: #1762df;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.driver-active-navigation {
+    padding: 4px 10px;
+}
+
+
+.driver-active-nav-item {
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 13px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    color: #8fa1bd;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
+    .driver-active-nav-item:hover {
+        color: #ffffff;
+        background: #162d50;
+    }
+
+
+    .driver-active-nav-item.active {
+        color: #ffffff;
+        background: #1762df;
+        font-weight: 600;
+    }
+
+
+.driver-active-nav-icon {
+    width: 17px;
+    display: inline-flex;
+    justify-content: center;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.driver-active-logout {
+    margin-top: auto;
+    padding: 0 20px 25px;
+}
+
+
+    .driver-active-logout a {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: #ff4d57;
+        font-size: 13px;
+        text-decoration: none;
+    }
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.driver-active-main {
+    width: calc(100% - 185px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f3f6fa;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.driver-active-topbar {
+    width: 100%;
+    min-height: 71px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-bottom: 1px solid #dce4ed;
+}
+
+
+    .driver-active-topbar h1 {
+        margin: 0 0 4px;
+        color: #172033;
+        font-size: 24px !important;
+        font-weight: 700;
+    }
+
+
+    .driver-active-topbar p {
+        margin: 0;
+        color: #718096;
+        font-size: 13px !important;
+    }
+
+
+/* =========================================================
+   USER
+========================================================= */
+
+.driver-active-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.driver-active-avatar {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dce4ed;
+    color: #23395d;
+    font-size: 15px;
+}
+
+
+.driver-active-user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+
+    .driver-active-user-info strong {
+        color: #172033;
+        font-size: 12px !important;
+    }
+
+
+    .driver-active-user-info span {
+        color: #8190a4;
+        font-size: 10px !important;
+    }
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.driver-active-content {
+    width: 100%;
+    flex: 1;
+    padding: 24px 22px 35px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.driver-active-card {
+    width: 100%;
+    max-width: 650px;
+    background: #ffffff;
+    border: 1px solid #dce4ed;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TRACKING CARD
+========================================================= */
+
+.tracking-card {
+    padding: 20px 20px 22px;
+    margin-bottom: 16px;
+}
+
+
+.tracking-label {
+    color: #718096;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+
+.tracking-id {
+    color: #172033;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+.tracking-divider {
+    width: 100%;
+    height: 1px;
+    background: #e4e9ef;
+    margin: 12px 0 13px;
+}
+
+
+/* =========================================================
+   ROUTE
+========================================================= */
+
+.tracking-route {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.tracking-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+
+.tracking-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    margin-top: 5px;
+    border-radius: 50%;
+}
+
+
+.blue-dot {
+    background: #1762df;
+}
+
+
+.green-dot {
+    background: #18b77a;
+}
+
+
+.tracking-location {
+    color: #66758a;
+    font-size: 11px;
+    line-height: 1.3;
+}
+
+
+.tracking-time {
+    color: #172033;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 1px;
+}
+
+
+.tracking-line {
+    width: 2px;
+    height: 20px;
+    margin-left: 3px;
+    background: #d8e0e9;
+}
+
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+.statistics-card {
+    padding: 19px 20px 20px;
+}
+
+
+    .statistics-card h2 {
+        margin: 0 0 13px;
+        color: #172033;
+        font-size: 15px !important;
+        font-weight: 700;
+    }
+
+
+.statistics-row {
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eef1f4;
+}
+
+
+    .statistics-row:last-child {
+        border-bottom: none;
+    }
+
+
+    .statistics-row span {
+        color: #718096;
+        font-size: 12px !important;
+    }
+
+
+    .statistics-row strong {
+        color: #172033;
+        font-size: 12px !important;
+        font-weight: 700;
+    }
+
+
+/* =========================================================
+   LARGE SCREEN
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .driver-active-sidebar {
+        width: 190px;
+    }
+
+    .driver-active-main {
+        width: calc(100% - 190px);
+    }
+
+    .driver-active-content {
+        padding: 25px 25px 40px;
+    }
+
+    .driver-active-card {
+        max-width: 650px;
+    }
+
+    .tracking-label {
+        font-size: 12px;
+    }
+
+    .tracking-id {
+        font-size: 18px;
+    }
+
+    .tracking-location {
+        font-size: 12px;
+    }
+
+    .tracking-time {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .driver-active-page {
+        display: block;
+    }
+
+    .driver-active-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .driver-active-navigation {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .driver-active-nav-item {
+        min-width: max-content;
+    }
+
+    .driver-active-logout {
+        display: none;
+    }
+
+    .driver-active-main {
+        width: 100%;
+        min-height: calc(100vh - 110px);
+    }
+
+    .driver-active-topbar {
+        padding: 0 16px;
+    }
+
+    .driver-active-content {
+        padding: 18px 15px 30px;
+    }
+
+    .driver-active-card {
+        max-width: none;
+    }
+}
+/* =========================================================
+   DRIVER - MY EARNINGS
+========================================================= */
+
+.driver-earnings-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background: #f3f6fa;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.driver-earnings-sidebar {
+    width: 185px;
+    min-height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: #0c1d3b;
+}
+
+
+.driver-earnings-logo {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+.driver-earnings-logo-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1762df;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.driver-earnings-navigation {
+    padding: 4px 10px;
+}
+
+
+.driver-earnings-nav-item {
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 13px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    color: #8fa1bd;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
+    .driver-earnings-nav-item:hover {
+        color: #ffffff;
+        background: #162d50;
+    }
+
+
+    .driver-earnings-nav-item.active {
+        color: #ffffff;
+        background: #1762df;
+        font-weight: 600;
+    }
+
+
+.driver-earnings-nav-icon {
+    width: 17px;
+    display: inline-flex;
+    justify-content: center;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.driver-earnings-logout {
+    margin-top: auto;
+    padding: 0 20px 25px;
+}
+
+
+    .driver-earnings-logout a {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: #ff4d57;
+        font-size: 13px;
+        text-decoration: none;
+    }
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.driver-earnings-main {
+    width: calc(100% - 185px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f3f6fa;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.driver-earnings-topbar {
+    width: 100%;
+    min-height: 71px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-bottom: 1px solid #dce4ed;
+}
+
+
+    .driver-earnings-topbar h1 {
+        margin: 0 0 4px;
+        color: #172033;
+        font-size: 24px !important;
+        font-weight: 700;
+    }
+
+
+    .driver-earnings-topbar p {
+        margin: 0;
+        color: #718096;
+        font-size: 13px !important;
+    }
+
+
+/* =========================================================
+   USER
+========================================================= */
+
+.driver-earnings-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.driver-earnings-avatar {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dce4ed;
+    color: #23395d;
+    font-size: 15px;
+}
+
+
+.driver-earnings-user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+
+    .driver-earnings-user-info strong {
+        color: #172033;
+        font-size: 12px !important;
+    }
+
+
+    .driver-earnings-user-info span {
+        color: #8190a4;
+        font-size: 10px !important;
+    }
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.driver-earnings-content {
+    width: 100%;
+    flex: 1;
+    padding: 24px 22px 35px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+.driver-earnings-summary {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+
+.driver-earnings-summary-card {
+    min-height: 92px;
+    padding: 18px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid #dce4ed;
+    border-radius: 9px;
+    box-sizing: border-box;
+}
+
+
+    .driver-earnings-summary-card span {
+        margin-bottom: 7px;
+        color: #718096;
+        font-size: 12px !important;
+    }
+
+
+    .driver-earnings-summary-card strong {
+        color: #172033;
+        font-size: 23px !important;
+        line-height: 1.1;
+        font-weight: 700;
+    }
+
+
+        .driver-earnings-summary-card strong.balance {
+            color: #1762df;
+        }
+
+
+/* =========================================================
+   TABLE CARD
+========================================================= */
+
+.driver-earnings-table-card {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #dce4ed;
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+
+.driver-earnings-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+.driver-earnings-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+
+    /* =========================================================
+   TABLE
+========================================================= */
+
+    .driver-earnings-table th {
+        height: 52px;
+        padding: 0 18px;
+        background: #f5f8fb;
+        color: #53657d;
+        border-bottom: 1px solid #dce4ed;
+        text-align: left;
+        vertical-align: middle;
+        font-size: 13px !important;
+        font-weight: 600;
+    }
+
+
+    .driver-earnings-table td {
+        height: 68px;
+        padding: 0 18px;
+        color: #52647c;
+        border-bottom: 1px solid #e1e7ee;
+        text-align: left;
+        vertical-align: middle;
+        font-size: 13px !important;
+        line-height: 1.4;
+    }
+
+
+    .driver-earnings-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+
+    /* =========================================================
+   COLUMN WIDTHS
+========================================================= */
+
+    .driver-earnings-table th:nth-child(1),
+    .driver-earnings-table td:nth-child(1) {
+        width: 20%;
+    }
+
+
+    .driver-earnings-table th:nth-child(2),
+    .driver-earnings-table td:nth-child(2) {
+        width: 16%;
+    }
+
+
+    .driver-earnings-table th:nth-child(3),
+    .driver-earnings-table td:nth-child(3) {
+        width: 30%;
+    }
+
+
+    .driver-earnings-table th:nth-child(4),
+    .driver-earnings-table td:nth-child(4) {
+        width: 18%;
+    }
+
+
+    .driver-earnings-table th:nth-child(5),
+    .driver-earnings-table td:nth-child(5) {
+        width: 16%;
+    }
+
+
+/* =========================================================
+   TABLE TEXT
+========================================================= */
+
+.transaction-id {
+    color: #172033 !important;
+    font-size: 13px !important;
+    font-weight: 600;
+}
+
+
+.transaction-description {
+    color: #52647c !important;
+    font-size: 13px !important;
+}
+
+
+.amount-negative {
+    color: #172033 !important;
+    font-size: 13px !important;
+    font-weight: 700;
+}
+
+
+.amount-positive {
+    color: #10a874 !important;
+    font-size: 13px !important;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.earnings-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 27px;
+    padding: 4px 11px;
+    border-radius: 6px;
+    font-size: 11px !important;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+    .earnings-status.delivered {
+        color: #13834c;
+        background: #c9f6df;
+    }
+
+
+/* =========================================================
+   LARGE SCREEN
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .driver-earnings-sidebar {
+        width: 190px;
+    }
+
+    .driver-earnings-main {
+        width: calc(100% - 190px);
+    }
+
+    .driver-earnings-content {
+        padding: 25px 25px 40px;
+    }
+
+    .driver-earnings-table th {
+        height: 54px;
+        font-size: 13px !important;
+    }
+
+    .driver-earnings-table td {
+        height: 70px;
+        font-size: 13px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 750px) {
+
+    .driver-earnings-page {
+        display: block;
+    }
+
+    .driver-earnings-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .driver-earnings-navigation {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .driver-earnings-nav-item {
+        min-width: max-content;
+    }
+
+    .driver-earnings-logout {
+        display: none;
+    }
+
+    .driver-earnings-main {
+        width: 100%;
+        min-height: calc(100vh - 110px);
+    }
+
+    .driver-earnings-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .driver-earnings-table {
+        min-width: 850px;
+    }
+
+    .driver-earnings-topbar {
+        padding: 0 16px;
+    }
+
+    .driver-earnings-content {
+        padding: 18px 15px 30px;
+    }
+}
+/* =========================================================
+   DRIVER - MY VEHICLE
+========================================================= */
+
+.driver-vehicle-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background: #f3f6fa;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.driver-vehicle-sidebar {
+    width: 185px;
+    min-height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: #0c1d3b;
+}
+
+
+.driver-vehicle-logo {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+.driver-vehicle-logo-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1762df;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.driver-vehicle-navigation {
+    padding: 4px 10px;
+}
+
+
+.driver-vehicle-nav-item {
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 13px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    color: #8fa1bd;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
+    .driver-vehicle-nav-item:hover {
+        color: #ffffff;
+        background: #162d50;
+    }
+
+
+    .driver-vehicle-nav-item.active {
+        color: #ffffff;
+        background: #1762df;
+        font-weight: 600;
+    }
+
+
+.driver-vehicle-nav-icon {
+    width: 17px;
+    display: inline-flex;
+    justify-content: center;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.driver-vehicle-logout {
+    margin-top: auto;
+    padding: 0 20px 25px;
+}
+
+
+    .driver-vehicle-logout a {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: #ff4d57;
+        font-size: 13px;
+        text-decoration: none;
+    }
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.driver-vehicle-main {
+    width: calc(100% - 185px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f3f6fa;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.driver-vehicle-topbar {
+    width: 100%;
+    min-height: 71px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-bottom: 1px solid #dce4ed;
+}
+
+
+    .driver-vehicle-topbar h1 {
+        margin: 0 0 4px;
+        color: #172033;
+        font-size: 24px !important;
+        font-weight: 700;
+    }
+
+
+    .driver-vehicle-topbar p {
+        margin: 0;
+        color: #718096;
+        font-size: 13px !important;
+    }
+
+
+/* =========================================================
+   USER
+========================================================= */
+
+.driver-vehicle-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.driver-vehicle-avatar {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dce4ed;
+    color: #23395d;
+    font-size: 15px;
+}
+
+
+.driver-vehicle-user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+
+    .driver-vehicle-user-info strong {
+        color: #172033;
+        font-size: 12px !important;
+    }
+
+
+    .driver-vehicle-user-info span {
+        color: #8190a4;
+        font-size: 10px !important;
+    }
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.driver-vehicle-content {
+    width: 100%;
+    flex: 1;
+    padding: 24px 22px 40px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TWO COLUMN LAYOUT
+========================================================= */
+
+.driver-vehicle-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(480px, 1.15fr) minmax(360px, 0.85fr);
+    gap: 18px;
+    align-items: start;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.driver-vehicle-card {
+    background: #ffffff;
+    border: 1px solid #dce4ed;
+    border-radius: 9px;
+    box-sizing: border-box;
+}
+
+
+    .driver-vehicle-card h2 {
+        margin: 0;
+        color: #172033;
+        font-size: 16px !important;
+        font-weight: 700;
+    }
+
+
+/* =========================================================
+   TRUCK CARD
+========================================================= */
+
+.truck-card {
+    padding: 18px 18px 20px;
+}
+
+
+    .truck-card h2 {
+        margin-bottom: 12px;
+    }
+
+
+/* =========================================================
+   TRUCK IMAGE
+========================================================= */
+
+.driver-truck-image-container {
+    width: 100%;
+    height: 165px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    margin-bottom: 12px;
+}
+
+
+.driver-truck-image {
+    width: 90%;
+    max-width: 430px;
+    height: 150px;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+}
+
+
+.truck-fallback {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: 95px;
+    opacity: 0.18;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   VEHICLE DETAILS
+========================================================= */
+
+.driver-vehicle-details {
+    width: 100%;
+}
+
+
+.driver-vehicle-detail-row {
+    min-height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #edf1f5;
+}
+
+
+    .driver-vehicle-detail-row:last-child {
+        border-bottom: none;
+    }
+
+
+    .driver-vehicle-detail-row span {
+        color: #718096;
+        font-size: 12px !important;
+    }
+
+
+    .driver-vehicle-detail-row strong {
+        color: #172033;
+        font-size: 12px !important;
+        font-weight: 600;
+        text-align: right;
+    }
+
+
+/* =========================================================
+   DOCUMENT CARD
+========================================================= */
+
+.documents-card {
+    padding: 18px 18px 20px;
+}
+
+
+    .documents-card h2 {
+        margin-bottom: 14px;
+    }
+
+
+.driver-document-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.driver-document-item {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 0 15px;
+    background: #f0f4f8;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+
+.driver-document-icon {
+    width: 24px;
+    color: #1762df;
+    font-size: 17px;
+    flex-shrink: 0;
+}
+
+
+.driver-document-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+
+    .driver-document-info strong {
+        color: #172033;
+        font-size: 12px !important;
+        font-weight: 600;
+    }
+
+
+    .driver-document-info span {
+        color: #8190a4;
+        font-size: 10px !important;
+    }
+
+
+/* =========================================================
+   LARGE SCREEN
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .driver-vehicle-sidebar {
+        width: 190px;
+    }
+
+    .driver-vehicle-main {
+        width: calc(100% - 190px);
+    }
+
+    .driver-vehicle-content {
+        padding: 25px 25px 45px;
+    }
+
+    .driver-vehicle-card h2 {
+        font-size: 17px !important;
+    }
+
+    .driver-vehicle-detail-row {
+        min-height: 37px;
+    }
+
+        .driver-vehicle-detail-row span,
+        .driver-vehicle-detail-row strong {
+            font-size: 13px !important;
+        }
+
+    .driver-document-info strong {
+        font-size: 13px !important;
+    }
+
+    .driver-document-info span {
+        font-size: 11px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .driver-vehicle-page {
+        display: block;
+    }
+
+    .driver-vehicle-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .driver-vehicle-navigation {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .driver-vehicle-nav-item {
+        min-width: max-content;
+    }
+
+    .driver-vehicle-logout {
+        display: none;
+    }
+
+    .driver-vehicle-main {
+        width: 100%;
+        min-height: calc(100vh - 110px);
+    }
+
+    .driver-vehicle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .driver-vehicle-topbar {
+        padding: 0 16px;
+    }
+
+    .driver-vehicle-content {
+        padding: 18px 15px 30px;
+    }
+}
+/* =========================================================
+   DRIVER PROFILE PAGE
+========================================================= */
+
+.driver-profile-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background: #f2f6fa;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.driver-profile-sidebar {
+    width: 185px;
+    min-height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: #0b1d3a;
+}
+
+
+.driver-profile-logo {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 18px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+.driver-profile-logo-icon {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1762df;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.driver-profile-navigation {
+    padding: 4px 10px;
+}
+
+
+.driver-profile-nav-item {
+    width: 100%;
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 13px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: #8fa1bd;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+    .driver-profile-nav-item:hover {
+        color: #ffffff;
+        background: #172f54;
+    }
+
+
+    .driver-profile-nav-item.active {
+        color: #ffffff;
+        background: #1762df;
+        font-weight: 600;
+    }
+
+
+.driver-profile-nav-icon {
+    width: 17px;
+    display: inline-flex;
+    justify-content: center;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.driver-profile-logout {
+    margin-top: auto;
+    padding: 0 20px 25px;
+}
+
+
+    .driver-profile-logout a {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: #ff4c56;
+        font-size: 13px;
+        text-decoration: none;
+    }
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.driver-profile-main {
+    width: calc(100% - 185px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f2f6fa;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.driver-profile-topbar {
+    width: 100%;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-bottom: 1px solid #dce4ed;
+}
+
+
+    .driver-profile-topbar h1 {
+        margin: 0 0 4px;
+        color: #172033;
+        font-size: 23px !important;
+        line-height: 1.2;
+        font-weight: 700;
+    }
+
+
+    .driver-profile-topbar p {
+        margin: 0;
+        color: #718096;
+        font-size: 12px !important;
+    }
+
+
+/* =========================================================
+   USER
+========================================================= */
+
+.driver-profile-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.driver-profile-avatar-small {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dce4ed;
+    color: #293d61;
+    font-size: 15px;
+}
+
+
+.driver-profile-user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+
+    .driver-profile-user-info strong {
+        color: #172033;
+        font-size: 12px !important;
+    }
+
+
+    .driver-profile-user-info span {
+        color: #8190a4;
+        font-size: 10px !important;
+    }
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.driver-profile-content {
+    width: 100%;
+    flex: 1;
+    padding: 22px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.driver-profile-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 238px minmax(500px, 1fr);
+    gap: 16px;
+    align-items: start;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.driver-profile-card {
+    background: #ffffff;
+    border: 1px solid #dce4ed;
+    border-radius: 9px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LEFT PROFILE SUMMARY
+========================================================= */
+
+.driver-profile-summary {
+    padding: 16px 18px 17px;
+}
+
+
+.driver-profile-photo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* =========================================================
+   PROFILE PHOTO
+========================================================= */
+
+.driver-profile-photo {
+    width: 88px;
+    height: 88px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #1762df;
+    background: #dce3eb;
+}
+
+
+    .driver-profile-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: relative;
+        z-index: 2;
+    }
+
+
+.driver-profile-photo-fallback {
+    position: absolute;
+    font-size: 46px;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+
+.driver-profile-name {
+    margin-top: 8px;
+    color: #172033;
+    font-size: 11px !important;
+    font-weight: 600;
+}
+
+
+.driver-verified {
+    margin-top: 4px;
+    padding: 3px 9px;
+    border-radius: 10px;
+    color: #087a50;
+    background: #d9f8e9;
+    font-size: 9px !important;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.driver-profile-divider {
+    width: 100%;
+    height: 1px;
+    margin: 15px 0;
+    background: #e5eaf0;
+}
+
+
+/* =========================================================
+   RATING
+========================================================= */
+
+.driver-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+
+.driver-rating-star {
+    color: #f59e0b;
+    font-size: 22px;
+    line-height: 1;
+}
+
+
+.driver-rating strong {
+    color: #172033;
+    font-size: 17px !important;
+    font-weight: 700;
+}
+
+
+.driver-rating-count {
+    color: #8190a4;
+    font-size: 10px !important;
+}
+
+
+/* =========================================================
+   SUMMARY DETAILS
+========================================================= */
+
+.driver-summary-details {
+    width: 100%;
+}
+
+
+.driver-summary-row {
+    min-height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+
+    .driver-summary-row span {
+        color: #718096;
+        font-size: 10px !important;
+    }
+
+
+    .driver-summary-row strong {
+        color: #172033;
+        font-size: 10px !important;
+        font-weight: 600;
+        text-align: right;
+    }
+
+
+    .driver-summary-row .vehicle-number {
+        color: #1762df;
+    }
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.driver-profile-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+/* =========================================================
+   PERSONAL INFORMATION
+========================================================= */
+
+.driver-information-card {
+    padding: 17px 18px 18px;
+}
+
+
+    .driver-information-card h2,
+    .driver-performance-card h2 {
+        margin: 0 0 14px;
+        color: #172033;
+        font-size: 14px !important;
+        font-weight: 700;
+    }
+
+
+.driver-information-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 35px;
+    row-gap: 10px;
+}
+
+
+.driver-information-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+    .driver-information-item.full-width {
+        grid-column: 1 / -1;
+    }
+
+
+    .driver-information-item label {
+        margin: 0;
+        color: #718096;
+        font-size: 9px !important;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+    }
+
+
+    .driver-information-item span {
+        color: #172033;
+        font-size: 11px !important;
+        font-weight: 500;
+        line-height: 1.35;
+    }
+
+
+/* =========================================================
+   PERFORMANCE
+========================================================= */
+
+.driver-performance-card {
+    padding: 17px 18px 18px;
+}
+
+
+.driver-performance-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+
+.driver-performance-item {
+    min-height: 47px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    border: 1px solid #dce4ed;
+    border-radius: 7px;
+}
+
+
+.driver-performance-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: #eef5ff;
+    color: #1762df;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.driver-performance-item div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.driver-performance-item strong {
+    color: #172033;
+    font-size: 15px !important;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+
+.driver-performance-item span {
+    margin-top: 3px;
+    color: #8190a4;
+    font-size: 9px !important;
+}
+
+
+/* =========================================================
+   LARGE SCREEN
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .driver-profile-sidebar {
+        width: 190px;
+    }
+
+    .driver-profile-main {
+        width: calc(100% - 190px);
+    }
+
+    .driver-profile-content {
+        padding: 24px;
+    }
+
+    .driver-profile-grid {
+        grid-template-columns: 255px minmax(600px, 1fr);
+        gap: 18px;
+    }
+
+    .driver-profile-topbar h1 {
+        font-size: 25px !important;
+    }
+
+    .driver-profile-topbar p {
+        font-size: 13px !important;
+    }
+
+    .driver-information-card h2,
+    .driver-performance-card h2 {
+        font-size: 15px !important;
+    }
+
+    .driver-information-item label {
+        font-size: 10px !important;
+    }
+
+    .driver-information-item span {
+        font-size: 12px !important;
+    }
+
+    .driver-summary-row span,
+    .driver-summary-row strong {
+        font-size: 11px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .driver-profile-page {
+        display: block;
+    }
+
+    .driver-profile-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .driver-profile-navigation {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .driver-profile-nav-item {
+        min-width: max-content;
+    }
+
+    .driver-profile-logout {
+        display: none;
+    }
+
+    .driver-profile-main {
+        width: 100%;
+    }
+
+    .driver-profile-topbar {
+        padding: 0 15px;
+    }
+
+    .driver-profile-content {
+        padding: 15px;
+    }
+
+    .driver-profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .driver-profile-information-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .driver-information-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .driver-information-item.full-width {
+        grid-column: auto;
+    }
+
+    .driver-performance-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* =========================================================
+   DRIVER SETTINGS PAGE
+========================================================= */
+
+.driver-settings-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background: #f2f6fa;
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.driver-settings-sidebar {
+    width: 185px;
+    min-height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: #0b1d3a;
+}
+
+
+.driver-settings-logo {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 18px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+.driver-settings-logo-icon {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1762df;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+
+/* ================= NAVIGATION ================= */
+
+.driver-settings-navigation {
+    padding: 4px 10px;
+}
+
+
+.driver-settings-nav-item {
+    width: 100%;
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 13px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: #8fa1bd;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+    .driver-settings-nav-item:hover {
+        color: #ffffff;
+        background: #172f54;
+    }
+
+
+    .driver-settings-nav-item.active {
+        color: #ffffff;
+        background: #1762df;
+        font-weight: 600;
+    }
+
+
+.driver-settings-nav-icon {
+    width: 17px;
+    display: inline-flex;
+    justify-content: center;
+    font-size: 14px;
+}
+
+
+/* ================= LOGOUT ================= */
+
+.driver-settings-logout {
+    margin-top: auto;
+    padding: 0 20px 25px;
+}
+
+
+    .driver-settings-logout a {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: #ff4c56;
+        font-size: 13px;
+        text-decoration: none;
+    }
+
+
+/* ================= MAIN ================= */
+
+.driver-settings-main {
+    width: calc(100% - 185px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f2f6fa;
+}
+
+
+/* ================= TOP BAR ================= */
+
+.driver-settings-topbar {
+    width: 100%;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-bottom: 1px solid #dce4ed;
+}
+
+
+    .driver-settings-topbar h1 {
+        margin: 0 0 4px;
+        color: #172033;
+        font-size: 23px !important;
+        line-height: 1.2;
+        font-weight: 700;
+    }
+
+
+    .driver-settings-topbar p {
+        margin: 0;
+        color: #718096;
+        font-size: 12px !important;
+    }
+
+
+/* ================= USER ================= */
+
+.driver-settings-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.driver-settings-avatar {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dce4ed;
+    color: #293d61;
+    font-size: 15px;
+}
+
+
+.driver-settings-user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+
+    .driver-settings-user-info strong {
+        color: #172033;
+        font-size: 12px !important;
+    }
+
+
+    .driver-settings-user-info span {
+        color: #8190a4;
+        font-size: 10px !important;
+    }
+
+
+/* ================= CONTENT ================= */
+
+.driver-settings-content {
+    width: 100%;
+    flex: 1;
+    padding: 22px;
+    box-sizing: border-box;
+}
+
+
+/* ================= GRID ================= */
+
+.driver-settings-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(480px, 1.2fr) minmax(350px, 0.8fr);
+    gap: 16px;
+    align-items: start;
+}
+
+
+.driver-settings-left,
+.driver-settings-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+/* ================= CARDS ================= */
+
+.driver-settings-card {
+    background: #ffffff;
+    border: 1px solid #dce4ed;
+    border-radius: 9px;
+    box-sizing: border-box;
+}
+
+
+    .driver-settings-card h2 {
+        margin: 0 0 14px;
+        color: #172033;
+        font-size: 15px !important;
+        font-weight: 700;
+    }
+
+
+/* ================= PREFERENCES ================= */
+
+.preferences-card {
+    padding: 17px 18px 18px;
+}
+
+
+.driver-settings-field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+
+    .driver-settings-field:last-child {
+        margin-bottom: 0;
+    }
+
+
+    .driver-settings-field label {
+        margin: 0;
+        color: #536784;
+        font-size: 10px !important;
+        font-weight: 500;
+    }
+
+
+.driver-settings-input {
+    width: 100%;
+    min-height: 38px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: 1px solid #d7e0ea;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #172033;
+    font-family: inherit;
+    font-size: 12px !important;
+    outline: none;
+}
+
+
+    .driver-settings-input::placeholder {
+        color: #91a0b5;
+    }
+
+
+    .driver-settings-input:focus {
+        border-color: #1762df;
+        box-shadow: 0 0 0 2px rgba(23, 98, 223, 0.08);
+    }
+
+
+/* ================= SECURITY ================= */
+
+.security-card {
+    padding: 17px 18px 18px;
+}
+
+
+    .security-card .driver-settings-field {
+        margin-bottom: 12px;
+    }
+
+
+.driver-settings-update-btn {
+    min-height: 37px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 6px;
+    background: #1554bd;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 11px !important;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+    .driver-settings-update-btn:hover {
+        background: #10469f;
+    }
+
+
+/* ================= PAYOUT ================= */
+
+.payout-card {
+    padding: 17px 18px 18px;
+}
+
+
+.driver-payout-box {
+    padding: 12px;
+    border-radius: 8px;
+    background: #f0f4f8;
+}
+
+
+.driver-payout-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+
+    .driver-payout-top strong {
+        color: #172033;
+        font-size: 12px !important;
+        font-weight: 700;
+    }
+
+
+.driver-active-badge {
+    padding: 4px 9px;
+    border-radius: 5px;
+    background: #d7f8e8;
+    color: #09a765;
+    font-size: 9px !important;
+    font-weight: 600;
+}
+
+
+.driver-payout-number {
+    margin-top: 7px;
+    color: #718096;
+    font-size: 10px !important;
+}
+
+
+/* ================= LARGE SCREEN ================= */
+
+@media (min-width: 1400px) {
+
+    .driver-settings-sidebar {
+        width: 190px;
+    }
+
+    .driver-settings-main {
+        width: calc(100% - 190px);
+    }
+
+    .driver-settings-content {
+        padding: 24px;
+    }
+
+    .driver-settings-topbar h1 {
+        font-size: 25px !important;
+    }
+
+    .driver-settings-topbar p {
+        font-size: 13px !important;
+    }
+
+    .driver-settings-card h2 {
+        font-size: 16px !important;
+    }
+
+    .driver-settings-field label {
+        font-size: 11px !important;
+    }
+
+    .driver-settings-input {
+        min-height: 40px;
+        font-size: 13px !important;
+    }
+
+    .driver-payout-top strong {
+        font-size: 13px !important;
+    }
+
+    .driver-payout-number {
+        font-size: 11px !important;
+    }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 800px) {
+
+    .driver-settings-page {
+        display: block;
+    }
+
+    .driver-settings-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .driver-settings-navigation {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .driver-settings-nav-item {
+        min-width: max-content;
+    }
+
+    .driver-settings-logout {
+        display: none;
+    }
+
+    .driver-settings-main {
+        width: 100%;
+    }
+
+    .driver-settings-topbar {
+        padding: 0 15px;
+    }
+
+    .driver-settings-content {
+        padding: 15px;
+    }
+
+    .driver-settings-grid {
+        grid-template-columns: 1fr;
+    }
+}

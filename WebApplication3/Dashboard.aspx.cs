@@ -1,0 +1,15 @@
+﻿using System;
+
+namespace WebApplication3
+{
+    public partial class Dashboard : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                // Dashboard loading code can be placed here.
+            }
+        }
+    }
+}

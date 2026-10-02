@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+	<Ad>
+		<ImageUrl>~/img/Screenshot 2025-03-18 184605.png</ImageUrl>
+		<NavigationUrl>https://www.google.com</NavigationUrl>
+		<AlternateText>GOOGLE</AlternateText>
+		<Impression>2</Impression>
+		<Keywords>Google,google</Keywords>
+		
+	</Ad>
+	<Ad>
+		<ImageUrl>~/img/Screenshot 2025-03-08 124540.png</ImageUrl>
+		<NavigationUrl>https://www.google.com</NavigationUrl>
+		<AlternateText>plant</AlternateText>
+		<Impression>1</Impression>
+		<Keywords>Plant</Keywords>
+	</Ad>
+</Advertisements>

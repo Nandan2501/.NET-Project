@@ -69,17 +69,51 @@
   <ItemGroup>
     <Content Include="AddAddress.aspx" />
     <Content Include="AddressBook.aspx" />
+    <Content Include="Admin\AddDriver.aspx" />
+    <Content Include="Admin\AddVehicle.aspx" />
+    <Content Include="Admin\Customers.aspx" />
+    <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\Drivers.aspx" />
+    <Content Include="Admin\Payment.aspx" />
+    <Content Include="Admin\Reports.aspx" />
+    <Content Include="Admin\Settings.aspx" />
+    <Content Include="Admin\TripDetails.aspx" />
+    <Content Include="Admin\Vehicle.aspx" />
     <Content Include="BookDetails.aspx" />
     <Content Include="Bookings.aspx" />
     <Content Include="BookTransportation.aspx" />
     <Content Include="BT2.aspx" />
     <Content Include="BT3.aspx" />
+    <Content Include="ChangePassword.aspx" />
     <Content Include="ConfirmBook.aspx" />
+    <Content Include="CSS\bookingsuccess.css" />
+    <Content Include="CSS\booktransportation.css" />
+    <Content Include="CSS\dashboard.css" />
+    <Content Include="CSS\ddashboard.css" />
+    <Content Include="CSS\editprofile.css" />
+    <Content Include="CSS\FPass.css" />
+    <Content Include="CSS\loaddetails.css" />
+    <Content Include="CSS\Login.css" />
+    <Content Include="CSS\mybookings.css" />
+    <Content Include="CSS\profile.css" />
+    <Content Include="CSS\register.css" />
+    <Content Include="CSS\resetpass.css" />
+    <Content Include="CSS\reviewconfirm.css" />
+    <Content Include="CSS\style.css" />
+    <Content Include="CSS\vcode.css" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="Driver\ActiveTrip.aspx" />
+    <Content Include="Driver\dashboard.aspx" />
+    <Content Include="Driver\MyEarnings.aspx" />
+    <Content Include="Driver\MyVehicle.aspx" />
+    <Content Include="Driver\Profile.aspx" />
+    <Content Include="Driver\Settings.aspx" />
+    <Content Include="Driver\trips.aspx" />
     <Content Include="EditProfile.aspx" />
     <Content Include="FPass.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
+    <Content Include="Payments.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="ResetPass.aspx" />
     <Content Include="VCode.aspx" />
@@ -100,6 +134,76 @@
     </Compile>
     <Compile Include="AddressBook.aspx.designer.cs">
       <DependentUpon>AddressBook.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddDriver.aspx.cs">
+      <DependentUpon>AddDriver.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddDriver.aspx.designer.cs">
+      <DependentUpon>AddDriver.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddVehicle.aspx.cs">
+      <DependentUpon>AddVehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddVehicle.aspx.designer.cs">
+      <DependentUpon>AddVehicle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Customers.aspx.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Customers.aspx.designer.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Drivers.aspx.cs">
+      <DependentUpon>Drivers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Drivers.aspx.designer.cs">
+      <DependentUpon>Drivers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TripDetails.aspx.cs">
+      <DependentUpon>TripDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TripDetails.aspx.designer.cs">
+      <DependentUpon>TripDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Vehicle.aspx.cs">
+      <DependentUpon>Vehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Vehicle.aspx.designer.cs">
+      <DependentUpon>Vehicle.aspx</DependentUpon>
     </Compile>
     <Compile Include="BookDetails.aspx.cs">
       <DependentUpon>BookDetails.aspx</DependentUpon>
@@ -136,6 +240,13 @@
     <Compile Include="BT3.aspx.designer.cs">
       <DependentUpon>BT3.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ConfirmBook.aspx.cs">
       <DependentUpon>ConfirmBook.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,6 +260,55 @@
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Driver\ActiveTrip.aspx.cs">
+      <DependentUpon>ActiveTrip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Driver\ActiveTrip.aspx.designer.cs">
+      <DependentUpon>ActiveTrip.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Driver\dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Driver\dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Driver\MyEarnings.aspx.cs">
+      <DependentUpon>MyEarnings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Driver\MyEarnings.aspx.designer.cs">
+      <DependentUpon>MyEarnings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Driver\MyVehicle.aspx.cs">
+      <DependentUpon>MyVehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Driver\MyVehicle.aspx.designer.cs">
+      <DependentUpon>MyVehicle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Driver\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Driver\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Driver\Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Driver\Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Driver\trips.aspx.cs">
+      <DependentUpon>trips.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Driver\trips.aspx.designer.cs">
+      <DependentUpon>trips.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditProfile.aspx.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
@@ -173,6 +333,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Payments.aspx.cs">
+      <DependentUpon>Payments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Payments.aspx.designer.cs">
+      <DependentUpon>Payments.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>

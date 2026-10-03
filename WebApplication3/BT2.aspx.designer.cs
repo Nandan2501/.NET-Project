@@ -11,7 +11,7 @@ namespace WebApplication3
 {
 
 
-    public partial class LoadDetails
+    public partial class BT2
     {
 
         /// <summary>
@@ -78,13 +78,13 @@ namespace WebApplication3
         protected global::System.Web.UI.WebControls.TextBox txtHeight;
 
         /// <summary>
-        /// txtSpecialHandling control.
+        /// txtHandling control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSpecialHandling;
+        protected global::System.Web.UI.WebControls.TextBox txtHandling;
 
         /// <summary>
         /// btnBack control.
@@ -103,14 +103,5 @@ namespace WebApplication3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNext;
-
-        /// <summary>
-        /// lblMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
     }
 }

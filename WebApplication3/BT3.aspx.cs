@@ -2,7 +2,7 @@
 
 namespace WebApplication3
 {
-    public partial class ReviewConfirm : System.Web.UI.Page
+    public partial class BT3 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -12,13 +12,8 @@ namespace WebApplication3
             }
         }
 
-
         private void LoadBookingDetails()
         {
-            // =========================
-            // ROUTE DETAILS
-            // =========================
-
             lblFrom.InnerText =
                 Session["FromLocation"]?.ToString()
                 ?? "Rajkot, Gujarat";
@@ -33,81 +28,56 @@ namespace WebApplication3
 
             lblDate.InnerText =
                 Session["PreferredDate"]?.ToString()
-                ?? "Not selected";
+                ?? "Monday, 17 Aug 2026";
 
             lblInstructions.InnerText =
                 Session["Instructions"]?.ToString()
-                ?? "None";
-
-
-            // =========================
-            // LOAD DETAILS
-            // =========================
+                ?? "Fragile load. Needs careful stacking.";
 
             lblLoadType.InnerText =
                 Session["LoadType"]?.ToString()
                 ?? "Packaged Goods";
 
             lblWeight.InnerText =
-                (Session["Weight"]?.ToString() ?? "0")
-                + " kg";
+                (Session["Weight"]?.ToString() ?? "850") + " kg";
 
             lblPackages.InnerText =
-                (Session["Packages"]?.ToString() ?? "0")
-                + " Packages";
-
+                (Session["Packages"]?.ToString() ?? "12") + " Packages";
 
             string length =
-                Session["Length"]?.ToString()
-                ?? "0";
+                Session["Length"]?.ToString() ?? "120";
 
             string width =
-                Session["Width"]?.ToString()
-                ?? "0";
+                Session["Width"]?.ToString() ?? "80";
 
             string height =
-                Session["Height"]?.ToString()
-                ?? "0";
-
+                Session["Height"]?.ToString() ?? "60";
 
             lblDimensions.InnerText =
-                length + " x " +
-                width + " x " +
-                height + " cm";
-
+                length + " x " + width + " x " + height + " cm";
 
             lblHandling.InnerText =
                 Session["SpecialHandling"]?.ToString()
-                ?? "None";
+                ?? "Temperature sensitive. Keep below 25°C.";
         }
 
 
-        // =========================
         // BACK BUTTON
-        // =========================
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("LoadDetails.aspx");
+            Response.Redirect("BT2.aspx");
         }
 
 
-        // =========================
         // CONFIRM BUTTON
-        // =========================
-
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            // Temporary booking ID
-            // Database saving can be added later.
-
             string bookingId =
-                "BK-" +
-                new Random().Next(1000, 9999);
+                "BK-" + new Random().Next(1000, 9999);
 
             Session["BookingID"] = bookingId;
 
-            Response.Redirect("BookingSuccess.aspx");
+            Response.Redirect("ConfirmBook.aspx");
         }
     }
 }

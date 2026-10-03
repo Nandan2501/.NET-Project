@@ -13,11 +13,15 @@ namespace WebApplication3
         }
 
 
+        // =========================================================
+        // LOAD BOOKING DETAILS
+        // =========================================================
+
         private void LoadBookingDetails()
         {
             // Booking ID
 
-            lblBookingId.InnerText =
+            lblBookingId.Text =
                 Session["BookingID"]?.ToString()
                 ?? "BK-2026-08174";
 
@@ -32,13 +36,13 @@ namespace WebApplication3
                 Session["ToLocation"]?.ToString()
                 ?? "Baroda, Gujarat";
 
-            lblRoute.InnerText =
+            lblRoute.Text =
                 from + " → " + to;
 
 
             // Vehicle
 
-            lblVehicle.InnerText =
+            lblVehicle.Text =
                 Session["VehicleType"]?.ToString()
                 ?? "Medium Truck (6-Wheeler)";
 
@@ -53,14 +57,14 @@ namespace WebApplication3
                 Session["Weight"]?.ToString()
                 ?? "850";
 
-            lblLoad.InnerText =
+            lblLoad.Text =
                 packages +
                 " Packages (" +
                 weight +
                 " kg Total)";
 
 
-            // Pickup date
+            // Pickup Date
 
             string date =
                 Session["PreferredDate"]?.ToString()
@@ -70,19 +74,19 @@ namespace WebApplication3
 
             if (DateTime.TryParse(date, out pickupDate))
             {
-                lblPickupDate.InnerText =
+                lblPickupDate.Text =
                     pickupDate.ToString("dddd, dd MMMM yyyy");
             }
             else
             {
-                lblPickupDate.InnerText = date;
+                lblPickupDate.Text = date;
             }
         }
 
 
-        // =========================
+        // =========================================================
         // BOOK ANOTHER
-        // =========================
+        // =========================================================
 
         protected void btnBookAnother_Click(
             object sender,
@@ -92,9 +96,9 @@ namespace WebApplication3
         }
 
 
-        // =========================
-        // MY BOOKINGS
-        // =========================
+        // =========================================================
+        // VIEW MY BOOKINGS
+        // =========================================================
 
         protected void btnMyBookings_Click(
             object sender,

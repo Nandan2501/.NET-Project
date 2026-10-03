@@ -26,10 +26,10 @@ namespace WebApplication3
                 "jnandannasit@gmail.com";
 
             txtPhone.Text =
-                "98765-43210";
+                "7757856769";
 
             txtDateOfBirth.Text =
-                "12 Mar 1990";
+                "12 Mar 2006";
 
             txtAddress.Text =
                 "Gandhinagar, Gujarat 360002";

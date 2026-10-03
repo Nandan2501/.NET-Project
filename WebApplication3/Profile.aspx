@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"
-    CodeBehind="Profile.aspx.cs"
-    Inherits="WebApplication3.Profile" %>
+    CodeBehind="EditProfile.aspx.cs"
+    Inherits="WebApplication3.EditProfile" %>
 
 <!DOCTYPE html>
 
@@ -12,781 +12,344 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link href="CSS/style.css"
+          rel="stylesheet" />
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #202020;
-            min-height: 100vh;
-        }
-
-        /* ================= MAIN ================= */
-
-        .dashboard-container {
-            width: 850px;
-            height: 595px;
-            margin: 30px auto;
-
-            background: #f7f9fb;
-
-            display: flex;
-            overflow: hidden;
-
-            border: 2px solid #0787e8;
-        }
-
-        /* ================= SIDEBAR ================= */
-
-        .sidebar {
-            width: 153px;
-            background: #1d2a3d;
-            color: white;
-
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo {
-            height: 50px;
-
-            display: flex;
-            align-items: center;
-
-            padding-left: 18px;
-
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .logo-icon {
-            width: 18px;
-            height: 18px;
-
-            background: #2868ed;
-
-            border-radius: 4px;
-
-            margin-right: 7px;
-        }
-
-        .navigation {
-            padding: 3px 8px;
-        }
-
-        .nav-item {
-            height: 29px;
-
-            margin-bottom: 3px;
-
-            border-radius: 5px;
-
-            display: flex;
-            align-items: center;
-
-            padding-left: 10px;
-
-            color: #aeb9c9;
-
-            text-decoration: none;
-
-            font-size: 9px;
-        }
-
-        .nav-icon {
-            width: 17px;
-
-            font-size: 10px;
-
-            margin-right: 5px;
-
-            text-align: center;
-        }
-
-        .nav-item:hover {
-            background: #263a56;
-            color: white;
-        }
-
-        .nav-item.active {
-            background: #2868ed;
-            color: white;
-        }
-
-        .logout {
-            margin-top: auto;
-            padding: 0 20px 22px;
-        }
-
-        .logout a {
-            color: #ff4d55;
-            font-size: 9px;
-            text-decoration: none;
-        }
-
-        /* ================= MAIN ================= */
-
-        .main-content {
-            flex: 1;
-
-            background: #f7f9fb;
-
-            min-width: 0;
-        }
-
-        /* ================= TOPBAR ================= */
-
-        .topbar {
-            height: 40px;
-
-            background: white;
-
-            border-bottom: 1px solid #e1e6ec;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 0 18px;
-        }
-
-        .page-title {
-            font-size: 13px;
-
-            font-weight: 700;
-
-            color: #172033;
-        }
-
-        .user-info {
-            display: flex;
-
-            align-items: center;
-
-            gap: 7px;
-        }
-
-        .profile-image-small {
-            width: 23px;
-            height: 23px;
-
-            border-radius: 50%;
-
-            background: #dce3e9;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            font-size: 9px;
-        }
-
-        .user-name {
-            font-size: 8px;
-
-            font-weight: 700;
-
-            color: #1c2738;
-        }
-
-        .user-role {
-            font-size: 7px;
-
-            color: #7d899a;
-
-            margin-top: 2px;
-        }
-
-        /* ================= CONTENT ================= */
-
-        .content {
-            padding: 17px;
-        }
-
-        /* ================= TABS ================= */
-
-        .tabs {
-            height: 25px;
-
-            display: flex;
-
-            align-items: flex-start;
-
-            gap: 20px;
-
-            border-bottom: 1px solid #e1e6ec;
-
-            margin-bottom: 12px;
-        }
-
-        .tab {
-            height: 25px;
-
-            color: #63738a;
-
-            font-size: 8px;
-
-            text-decoration: none;
-        }
-
-        .tab.active {
-            color: #2868ed;
-
-            border-bottom: 2px solid #2868ed;
-
-            font-weight: 600;
-        }
-
-        /* ================= PROFILE CARD ================= */
-
-        .profile-card {
-            background: white;
-
-            border: 1px solid #e1e6ec;
-
-            border-radius: 7px;
-
-            min-height: 230px;
-
-            padding: 18px;
-
-            display: flex;
-
-            gap: 25px;
-        }
-
-        /* ================= PHOTO ================= */
-
-        .photo-section {
-            width: 150px;
-
-            text-align: center;
-
-            flex-shrink: 0;
-        }
-
-        .profile-photo {
-            width: 92px;
-            height: 92px;
-
-            border-radius: 50%;
-
-            margin: 0 auto 10px;
-
-            background: #dce3e9;
-
-            border: 2px solid #cbd4dd;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            font-size: 32px;
-
-            color: #6d7b8e;
-
-            overflow: hidden;
-        }
-
-        .change-photo {
-            height: 25px;
-
-            padding: 0 12px;
-
-            background: #edf4ff;
-
-            border: none;
-
-            border-radius: 5px;
-
-            color: #2868ed;
-
-            font-size: 7px;
-
-            cursor: pointer;
-        }
-
-        .photo-help {
-            margin-top: 9px;
-
-            font-size: 6px;
-
-            color: #8996a8;
-
-            line-height: 1.4;
-        }
-
-        /* ================= DETAILS ================= */
-
-        .profile-details {
-            flex: 1;
-
-            padding-top: 1px;
-        }
-
-        .form-row {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 12px;
-
-            margin-bottom: 11px;
-        }
-
-        .form-group.full {
-            margin-bottom: 11px;
-        }
-
-        .form-label {
-            display: block;
-
-            font-size: 7px;
-
-            color: #263347;
-
-            font-weight: 600;
-
-            margin-bottom: 5px;
-        }
-
-        .input-field {
-            width: 100%;
-
-            height: 26px;
-
-            border: 1px solid #dfe5ec;
-
-            border-radius: 5px;
-
-            background: white;
-
-            padding: 0 9px;
-
-            font-size: 7px;
-
-            color: #344257;
-
-            outline: none;
-        }
-
-        .input-field:focus {
-            border-color: #2868ed;
-        }
-
-        /* ================= BUTTON ================= */
-
-        .edit-button {
-            height: 26px;
-
-            padding: 0 15px;
-
-            border: none;
-
-            border-radius: 5px;
-
-            background: #2868ed;
-
-            color: white;
-
-            font-size: 7px;
-
-            font-weight: 600;
-
-            cursor: pointer;
-        }
-
-        .edit-button:hover {
-            background: #1e59d0;
-        }
-
-        .message {
-            display: block;
-
-            margin-top: 8px;
-
-            font-size: 7px;
-
-            color: #e04444;
-        }
-
-        /* ================= RESPONSIVE ================= */
-
-        @media (max-width: 800px) {
-
-            body {
-                background: #f7f9fb;
-            }
-
-            .dashboard-container {
-                width: 100%;
-                min-height: 100vh;
-                height: auto;
-
-                margin: 0;
-
-                border: none;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .sidebar {
-                display: none;
-            }
-
-            .content {
-                padding: 12px;
-            }
-
-            .profile-card {
-                flex-direction: column;
-            }
-
-            .photo-section {
-                width: 100%;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-    </style>
+    <link href="CSS/editprofile.css"
+          rel="stylesheet" />
 
 </head>
-
 
 <body>
 
 <form id="form1" runat="server">
 
-    <div class="dashboard-container">
+<div class="profile-page">
 
 
-        <!-- ================= SIDEBAR ================= -->
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
 
-        <aside class="sidebar">
+    <aside class="profile-sidebar">
 
-            <div class="logo">
+        <div class="profile-logo">
 
-                <span class="logo-icon"></span>
-
-                <span>Transpo</span>
-
+            <div class="profile-logo-icon">
+                ▣
             </div>
 
+            <span>Transpo</span>
 
-            <nav class="navigation">
-
-                <a href="Dashboard.aspx"
-                   class="nav-item">
-
-                    <span class="nav-icon">▦</span>
-                    Dashboard
-
-                </a>
+        </div>
 
 
-                <a href="BookTransportation.aspx"
-                   class="nav-item">
+ <nav class="dash-navigation">
 
-                    <span class="nav-icon">♧</span>
-                    Book Transportation
+     <a href="Dashboard.aspx"
+        class="dash-nav-item ">
+         <span class="dash-nav-icon">▦</span>
+         <span>Dashboard</span>
+     </a>
 
-                </a>
+     <a href="BookTransportation.aspx"
+        class="dash-nav-item">
+         <span class="dash-nav-icon">♧</span>
+         <span>Book Transportation</span>
+     </a>
 
+     <a href="Bookings.aspx"
+        class="dash-nav-item">
+         <span class="dash-nav-icon">☷</span>
+         <span>My Bookings</span>
+     </a>
 
-                <a href="MyBookings.aspx"
-                   class="nav-item">
+     <a href="Payments.aspx"
+        class="dash-nav-item">
+         <span class="dash-nav-icon">▱</span>
+         <span>Payments</span>
+     </a>
 
-                    <span class="nav-icon">☷</span>
-                    My Bookings
+     <a href="AddressBook.aspx"
+        class="dash-nav-item">
+         <span class="dash-nav-icon">▣</span>
+         <span>Address Book</span>
+     </a>
 
-                </a>
+     <a href="Profile.aspx"
+        class="dash-nav-item active">
+         <span class="dash-nav-icon">♙</span>
+         <span>Profile</span>
+     </a>
 
-
-                <a href="Payments.aspx"
-                   class="nav-item">
-
-                    <span class="nav-icon">▭</span>
-                    Payments
-
-                </a>
-
-
-                <a href="AddressBook.aspx"
-                   class="nav-item">
-
-                    <span class="nav-icon">▣</span>
-                    Address Book
-
-                </a>
-
-
-                <a href="Profile.aspx"
-                   class="nav-item active">
-
-                    <span class="nav-icon">♙</span>
-                    Profile
-
-                </a>
-
-            </nav>
+ </nav>
+        <a href="Login.aspx" class="dash-logout">
+    ↪ &nbsp; Logout
+</a>
+    </aside>
 
 
-            <div class="logout">
 
-                <a href="Login.aspx">
-                    ↪ &nbsp; Logout
-                </a>
+    <!-- =====================================================
+         MAIN AREA
+    ====================================================== -->
 
-            </div>
-
-        </aside>
+    <main class="profile-main">
 
 
-        <!-- ================= MAIN ================= -->
+        <!-- TOP BAR -->
 
-        <main class="main-content">
+        <header class="profile-topbar">
 
+            <div>
 
-            <!-- TOPBAR -->
-
-            <header class="topbar">
-
-                <div class="page-title">
+                <h1>
                     My Profile
+                </h1>
+
+                <p>
+                    Manage your personal credentials, fleet stats, and performance verification.
+                </p>
+
+            </div>
+
+
+            <div class="profile-user">
+
+                <div class="user-avatar">
+                    👤
                 </div>
 
+                <div>
 
-                <div class="user-info">
-
-                    <div class="profile-image-small">
-                        👤
+                    <div class="user-name">
+                        Nandan Nasit
                     </div>
 
-                    <div>
-
-                        <div class="user-name">
-                            Nandan Nasit
-                        </div>
-
-                        <div class="user-role">
-                            Standard Customer
-                        </div>
-
+                    <div class="user-role">
+                        Standard Customer
                     </div>
 
                 </div>
 
-            </header>
+            </div>
+
+        </header>
 
 
-            <!-- CONTENT -->
 
-            <section class="content">
+        <!-- =====================================================
+             CONTENT
+        ====================================================== -->
 
-
-                <!-- ================= TABS ================= -->
-
-                <div class="tabs">
-
-                    <a href="Profile.aspx"
-                       class="tab active">
-
-                        Personal Information
-
-                    </a>
+        <section class="profile-content">
 
 
-                    <a href="ChangePassword.aspx"
-                       class="tab">
+            <!-- TABS -->
 
-                        Change Password
+            <div class="profile-tabs">
 
-                    </a>
+                <a href="EditProfile.aspx"
+                   class="profile-tab active">
 
+                    Personal Information
 
-                    <a href="Documents.aspx"
-                       class="tab">
+                </a>
 
-                        Documents
+                <a href="ChangePassword.aspx"
+                   class="profile-tab">
 
-                    </a>
+                    Change Password
 
-                </div>
+                </a>
 
+                
 
-                <!-- ================= PROFILE CARD ================= -->
-
-                <div class="profile-card">
-
-
-                    <!-- PHOTO -->
-
-                    <div class="photo-section">
+            </div>
 
 
-                        <div class="profile-photo">
 
-                            👤
+            <!-- =================================================
+                 PROFILE CARD
+            ================================================== -->
 
-                        </div>
+            <div class="edit-profile-card">
 
 
-                        <asp:FileUpload
-                            ID="fuProfilePhoto"
+                <!-- PHOTO -->
+
+                <div class="photo-section">
+
+                    <div class="profile-photo">
+
+                        <asp:Image
+                            ID="imgProfile"
                             runat="server"
-                            Style="display:none;" />
-
-
-                        <div class="photo-help">
-
-                            Allowed JPG, GIF or PNG.
-                            Max size of 800Kb
-
-                        </div>
+                            ImageUrl="~/Images/profile.jpg"
+                            AlternateText="Profile Photo" />
 
                     </div>
 
 
-                    <!-- DETAILS -->
-
-                    <div class="profile-details">
-
-
-                        <!-- NAME / EMAIL -->
-
-                        <div class="form-row">
+                    <asp:FileUpload
+                        ID="fuProfilePhoto"
+                        runat="server"
+                        CssClass="photo-upload" />
 
 
-                            <div class="form-group">
-
-                                <label class="form-label">
-                                    Full Name
-                                </label>
-
-                                <asp:TextBox
-                                    ID="txtFullName"
-                                    runat="server"
-                                    CssClass="input-field"
-                                    Text="Nandan Nasit">
-                                </asp:TextBox>
-
-                            </div>
+                    <asp:Button
+                        ID="btnChangePhoto"
+                        runat="server"
+                        Text="Change Photo"
+                        CssClass="change-photo-button"
+                        OnClick="btnChangePhoto_Click" />
 
 
-                            <div class="form-group">
+                    <div class="photo-help">
+                        Allowed JPG, GIF or PNG. Max size of 800KB
+                    </div>
 
-                                <label class="form-label">
-                                    Email
-                                </label>
-
-                                <asp:TextBox
-                                    ID="txtEmail"
-                                    runat="server"
-                                    CssClass="input-field"
-                                    Text="jnandannasit@gmail.com">
-                                </asp:TextBox>
-
-                            </div>
-
-                        </div>
+                </div>
 
 
-                        <!-- PHONE / DOB -->
 
-                        <div class="form-row">
+                <!-- FORM -->
 
-
-                            <div class="form-group">
-
-                                <label class="form-label">
-                                    Phone
-                                </label>
-
-                                <asp:TextBox
-                                    ID="txtPhone"
-                                    runat="server"
-                                    CssClass="input-field"
-                                    Text="98765-43210">
-                                </asp:TextBox>
-
-                            </div>
+                <div class="profile-form">
 
 
-                            <div class="form-group">
+                    <!-- ROW 1 -->
 
-                                <label class="form-label">
-                                    Date of Birth
-                                </label>
+                    <div class="form-row">
 
-                                <asp:TextBox
-                                    ID="txtDateOfBirth"
-                                    runat="server"
-                                    CssClass="input-field"
-                                    Text="12 Mar 1990">
-                                </asp:TextBox>
+                        <div class="form-group">
 
-                            </div>
-
-                        </div>
-
-
-                        <!-- ADDRESS -->
-
-                        <div class="form-group full">
-
-                            <label class="form-label">
-                                Address
+                            <label>
+                                Full Name
                             </label>
 
                             <asp:TextBox
-                                ID="txtAddress"
+                                ID="txtFullName"
                                 runat="server"
-                                CssClass="input-field"
-                                Text="Gandhinagar, gujarat 360002">
+                                CssClass="profile-input"
+                                Text="Nandan Nasit">
                             </asp:TextBox>
 
                         </div>
 
 
-                        <!-- EDIT -->
+                        <div class="form-group">
+
+                            <label>
+                                Email
+                            </label>
+
+                            <asp:TextBox
+                                ID="txtEmail"
+                                runat="server"
+                                CssClass="profile-input"
+                                Text="jnandannasit@gmail.com">
+                            </asp:TextBox>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ROW 2 -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label>
+                                Phone
+                            </label>
+
+                            <asp:TextBox
+                                ID="txtPhone"
+                                runat="server"
+                                CssClass="profile-input"
+                                Text="98765-43210">
+                            </asp:TextBox>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Date of Birth
+                            </label>
+
+                            <asp:TextBox
+                                ID="txtDateOfBirth"
+                                runat="server"
+                                CssClass="profile-input"
+                                Text="12 Mar 1990">
+                            </asp:TextBox>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            Address
+                        </label>
+
+                        <asp:TextBox
+                            ID="txtAddress"
+                            runat="server"
+                            CssClass="profile-input"
+                            Text="Gandhinagar, Gujarat 360002">
+                        </asp:TextBox>
+
+                    </div>
+
+
+
+                    <!-- MESSAGE -->
+
+                    <asp:Label
+                        ID="lblMessage"
+                        runat="server"
+                        CssClass="profile-message">
+                    </asp:Label>
+
+
+
+                    <!-- BUTTONS -->
+
+                     <div class="profile-edit-area">
 
                         <asp:Button
                             ID="btnEditProfile"
                             runat="server"
                             Text="Edit Profile"
-                            CssClass="edit-button"
-                            OnClick="btnEditProfile_Click" />
-
-
-                        <asp:Label
-                            ID="lblMessage"
-                            runat="server"
-                            CssClass="message">
-                        </asp:Label>
-
+                            CssClass="profile-edit-btn"
+                            PostBackUrl="EditProfile.aspx" />
 
                     </div>
 
                 </div>
 
-            </section>
+            </div>
 
-        </main>
+        </section>
 
-    </div>
+    </main>
+
+</div>
 
 </form>
 

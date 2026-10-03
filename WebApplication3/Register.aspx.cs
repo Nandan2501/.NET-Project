@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebApplication
+namespace WebApplication3
 {
     public partial class Register : System.Web.UI.Page
     {
@@ -16,27 +16,44 @@ namespace WebApplication
             string password = txtPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;
 
-            // Check empty fields
-            if (string.IsNullOrEmpty(fullName) ||
-                string.IsNullOrEmpty(email) ||
-                string.IsNullOrEmpty(phone) ||
-                string.IsNullOrEmpty(password) ||
-                string.IsNullOrEmpty(confirmPassword))
+            if (string.IsNullOrEmpty(fullName))
             {
-                lblMessage.Text = "Please fill in all fields.";
+                lblMessage.Text = "Please enter your full name.";
                 return;
             }
 
-            // Check password
+            if (string.IsNullOrEmpty(email))
+            {
+                lblMessage.Text = "Please enter your email.";
+                return;
+            }
+
+            if (string.IsNullOrEmpty(phone))
+            {
+                lblMessage.Text = "Please enter your phone number.";
+                return;
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                lblMessage.Text = "Please enter a password.";
+                return;
+            }
+
             if (password != confirmPassword)
             {
                 lblMessage.Text = "Passwords do not match.";
                 return;
             }
 
-            // Example success
-            lblMessage.CssClass = "success-message";
-            lblMessage.Text = "Account created successfully!";
+            // Temporary registration logic.
+            // Add your database registration code here later.
+
+            Session["UserName"] = fullName;
+            Session["UserEmail"] = email;
+            Session["UserPhone"] = phone;
+
+            Response.Redirect("Login.aspx");
         }
     }
 }

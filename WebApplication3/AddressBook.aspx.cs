@@ -6,66 +6,38 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+        }
+
+        protected void btnAddAddress_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AddAddress.aspx");
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            System.Web.UI.WebControls.Button btn =
+                sender as System.Web.UI.WebControls.Button;
+
+            if (btn != null)
             {
-                // Load addresses from database later
+                Session["EditAddressId"] = btn.CommandArgument;
+
+                Response.Redirect("AddAddress.aspx");
             }
         }
 
-
-        // =========================
-        // ADD NEW ADDRESS
-        // =========================
-
-        protected void btnAddAddress_Click(
-            object sender,
-            EventArgs e)
-        {
-            Response.Redirect("AddAddress.aspx");
-        }
-
-
-        // =========================
-        // EDIT ADDRESS
-        // =========================
-
-        protected void btnEditAddress_Click(
-            object sender,
-            EventArgs e)
+        protected void btnDelete_Click(object sender, EventArgs e)
         {
             System.Web.UI.WebControls.Button btn =
-                (System.Web.UI.WebControls.Button)sender;
+                sender as System.Web.UI.WebControls.Button;
 
-            string addressId =
-                btn.CommandArgument;
+            if (btn != null)
+            {
+                string addressId = btn.CommandArgument;
 
-            Session["EditAddressId"] =
-                addressId;
-
-            Response.Redirect("AddAddress.aspx");
-        }
-
-
-        // =========================
-        // DELETE ADDRESS
-        // =========================
-
-        protected void btnDeleteAddress_Click(
-            object sender,
-            EventArgs e)
-        {
-            System.Web.UI.WebControls.Button btn =
-                (System.Web.UI.WebControls.Button)sender;
-
-            string addressId =
-                btn.CommandArgument;
-
-            // Database delete will be added later.
-
-            lblMessage.Text =
-                "Address " +
-                addressId +
-                " deleted successfully.";
+                // Add database delete logic here later.
+                // For now the address remains displayed.
+            }
         }
     }
 }

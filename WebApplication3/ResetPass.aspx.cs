@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace WebApplication
+namespace WebApplication3
 {
-    public partial class ResetPassword : System.Web.UI.Page
+    public partial class ResetPass : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -10,46 +10,36 @@ namespace WebApplication
 
         protected void btnUpdatePassword_Click(object sender, EventArgs e)
         {
-            string newPassword = txtNewPassword.Text;
+            string password = txtPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;
 
-            // Check empty fields
-            if (string.IsNullOrEmpty(newPassword) ||
-                string.IsNullOrEmpty(confirmPassword))
+            if (string.IsNullOrEmpty(password))
             {
-                lblMessage.Text =
-                    "Please fill in both password fields.";
-
+                lblMessage.Text = "Please enter a new password.";
                 return;
             }
 
-            // Check minimum length
-            if (newPassword.Length < 8)
+            if (password.Length < 8)
             {
-                lblMessage.Text =
-                    "Password must be at least 8 characters.";
-
+                lblMessage.Text = "Password must be at least 8 characters.";
                 return;
             }
 
-            // Check passwords
-            if (newPassword != confirmPassword)
+            if (string.IsNullOrEmpty(confirmPassword))
             {
-                lblMessage.Text =
-                    "Passwords do not match.";
-
+                lblMessage.Text = "Please confirm your new password.";
                 return;
             }
 
-            // Temporary success message
-            lblMessage.ForeColor =
-                System.Drawing.Color.Green;
+            if (password != confirmPassword)
+            {
+                lblMessage.Text = "Passwords do not match.";
+                return;
+            }
 
-            lblMessage.Text =
-                "Password updated successfully!";
+            // Add your database password update logic here later.
 
-            // Later you can update the password in MySQL
-            // and redirect to Login.aspx.
+            Response.Redirect("Login.aspx");
         }
     }
 }

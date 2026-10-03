@@ -8,76 +8,30 @@ namespace WebApplication3
         {
             if (!IsPostBack)
             {
-                // Set today's date as the minimum selectable date
-                txtPreferredDate.Attributes["min"] =
-                    DateTime.Today.ToString("yyyy-MM-dd");
-
-                // Default date
-                txtPreferredDate.Text =
-                    DateTime.Today.ToString("yyyy-MM-dd");
+                if (string.IsNullOrEmpty(txtDate.Text))
+                {
+                    txtDate.Text = DateTime.Now
+                        .AddDays(1)
+                        .ToString("yyyy-MM-dd");
+                }
             }
         }
 
-
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            string fromLocation =
-                txtFromLocation.Text.Trim();
+            // Save Step 1 details
+            Session["FromLocation"] = txtFrom.Text.Trim();
 
-            string toLocation =
-                txtToLocation.Text.Trim();
+            Session["ToLocation"] = txtTo.Text.Trim();
 
-            string vehicle =
-                ddlVehicleType.SelectedValue;
+            Session["VehicleType"] = ddlVehicle.SelectedItem.Text;
 
-            string preferredDate =
-                txtPreferredDate.Text.Trim();
+            Session["PreferredDate"] = txtDate.Text;
 
-            string instructions =
-                txtInstructions.Text.Trim();
+            Session["Instructions"] = txtInstructions.Text.Trim();
 
-
-            // Validation
-
-            if (string.IsNullOrEmpty(fromLocation))
-            {
-                lblMessage.Text =
-                    "Please enter the starting location.";
-
-                return;
-            }
-
-
-            if (string.IsNullOrEmpty(toLocation))
-            {
-                lblMessage.Text =
-                    "Please enter the destination.";
-
-                return;
-            }
-
-
-            if (string.IsNullOrEmpty(preferredDate))
-            {
-                lblMessage.Text =
-                    "Please select a preferred date.";
-
-                return;
-            }
-
-
-            // Save data temporarily in Session
-
-            Session["FromLocation"] = fromLocation;
-            Session["ToLocation"] = toLocation;
-            Session["VehicleType"] = vehicle;
-            Session["PreferredDate"] = preferredDate;
-            Session["Instructions"] = instructions;
-
-
-            // Go to next step
-
-            Response.Redirect("LoadDetails.aspx");
+            // Go to Step 2
+            Response.Redirect("BT2.aspx");
         }
     }
 }

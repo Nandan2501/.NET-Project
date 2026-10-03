@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebApplication
+namespace WebApplication3
 {
     public partial class Login : System.Web.UI.Page
     {
@@ -13,11 +13,9 @@ namespace WebApplication
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            // Basic validation
-
             if (string.IsNullOrEmpty(email))
             {
-                lblMessage.Text = "Please enter your email or phone.";
+                lblMessage.Text = "Please enter your email or phone number.";
                 return;
             }
 
@@ -27,17 +25,22 @@ namespace WebApplication
                 return;
             }
 
-            // Temporary login
-            // Replace this with database authentication later.
+            // Temporary login logic.
+            // Replace this with your database authentication later.
 
-            if (email == "driver@transpo.com" &&
-                password == "123456")
+            if (email == "customer@transpo.com" && password == "123456")
             {
-                Session["User"] = email;
+                Session["UserEmail"] = email;
 
                 Response.Redirect("Dashboard.aspx");
             }
-            else
+            if (email == "driver@transpo.com" && password == "123456")
+            {
+                Session["UserEmail"] = email;
+
+                Response.Redirect("Driver/dashboard.aspx");
+            }
+            else 
             {
                 lblMessage.Text = "Invalid email/phone or password.";
             }

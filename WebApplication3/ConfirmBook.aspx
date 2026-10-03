@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"
-    CodeBehind="BookingSuccess.aspx.cs"
+    CodeBehind="ConfirmBook.aspx.cs"
     Inherits="WebApplication3.BookingSuccess" %>
 
 <!DOCTYPE html>
@@ -12,647 +12,17 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #202020;
-            min-height: 100vh;
-        }
-
-        /* =========================
-           MAIN CONTAINER
-        ========================= */
-
-        .dashboard-container {
-            width: 780px;
-            height: 560px;
-
-            margin: 30px auto;
-
-            background: #f7f9fb;
-
-            display: flex;
-
-            overflow: hidden;
-
-            border: 2px solid #0787e8;
-        }
-
-
-        /* =========================
-           SIDEBAR
-        ========================= */
-
-        .sidebar {
-            width: 140px;
-
-            background: #1d2a3d;
-
-            color: white;
-
-            display: flex;
-            flex-direction: column;
-        }
-
-
-        .logo {
-            height: 50px;
-
-            display: flex;
-            align-items: center;
-
-            padding-left: 17px;
-
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-
-        .logo-icon {
-            width: 18px;
-            height: 18px;
-
-            background: #2868ed;
-
-            border-radius: 4px;
-
-            margin-right: 7px;
-        }
-
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        .navigation {
-            padding: 3px 8px;
-        }
-
-
-        .nav-item {
-            height: 29px;
-
-            margin-bottom: 3px;
-
-            border-radius: 5px;
-
-            display: flex;
-            align-items: center;
-
-            padding-left: 10px;
-
-            color: #aeb9c9;
-
-            text-decoration: none;
-
-            font-size: 9px;
-        }
-
-
-        .nav-icon {
-            width: 17px;
-
-            font-size: 10px;
-
-            margin-right: 5px;
-
-            text-align: center;
-        }
-
-
-        .nav-item:hover {
-            background: #263a56;
-            color: white;
-        }
-
-
-        .nav-item.active {
-            background: #2868ed;
-            color: white;
-        }
-
-
-        /* =========================
-           LOGOUT
-        ========================= */
-
-        .logout {
-            margin-top: auto;
-
-            padding: 0 20px 22px;
-        }
-
-
-        .logout a {
-            color: #ff4d55;
-
-            font-size: 9px;
-
-            text-decoration: none;
-        }
-
-
-        /* =========================
-           MAIN
-        ========================= */
-
-        .main-content {
-            flex: 1;
-
-            background: #f7f9fb;
-
-            min-width: 0;
-        }
-
-
-        /* =========================
-           TOP BAR
-        ========================= */
-
-        .topbar {
-            height: 40px;
-
-            background: white;
-
-            border-bottom: 1px solid #e1e6ec;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 0 18px;
-        }
-
-
-        .page-title {
-            font-size: 13px;
-
-            font-weight: 700;
-
-            color: #172033;
-        }
-
-
-        /* USER */
-
-        .user-info {
-            display: flex;
-
-            align-items: center;
-
-            gap: 7px;
-        }
-
-
-        .profile-image {
-            width: 23px;
-            height: 23px;
-
-            border-radius: 50%;
-
-            background: #dce3e9;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            font-size: 10px;
-        }
-
-
-        .user-name {
-            font-size: 8px;
-
-            font-weight: 700;
-
-            color: #1c2738;
-        }
-
-
-        .user-role {
-            font-size: 7px;
-
-            color: #7d899a;
-
-            margin-top: 2px;
-        }
-
-
-        /* =========================
-           CONTENT
-        ========================= */
-
-        .content {
-            padding: 14px 18px;
-        }
-
-
-        /* =========================
-           STEPPER
-        ========================= */
-
-        .stepper {
-            display: flex;
-
-            align-items: center;
-
-            height: 27px;
-
-            margin-bottom: 12px;
-
-            color: #2868ed;
-
-            font-size: 8px;
-
-            border-bottom: 1px solid #e2e7ed;
-        }
-
-
-        .step {
-            display: flex;
-
-            align-items: center;
-        }
-
-
-        .step-number {
-            width: 14px;
-            height: 14px;
-
-            border-radius: 50%;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            margin-right: 5px;
-
-            background: #dfeeff;
-
-            color: #2868ed;
-
-            font-size: 7px;
-        }
-
-
-        .arrow {
-            margin: 0 13px;
-
-            color: #738197;
-
-            font-size: 10px;
-        }
-
-
-        /* =========================
-           SUCCESS CARD
-        ========================= */
-
-        .success-card {
-            background: white;
-
-            border: 1px solid #e1e6ec;
-
-            border-radius: 7px;
-
-            min-height: 450px;
-
-            padding: 17px;
-        }
-
-
-        /* =========================
-           SUCCESS AREA
-        ========================= */
-
-        .success-content {
-            width: 392px;
-
-            margin: 0 auto;
-
-            text-align: center;
-        }
-
-
-        .success-icon {
-            width: 34px;
-            height: 34px;
-
-            border-radius: 50%;
-
-            background: #d9f9ec;
-
-            color: #19b878;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            margin: 0 auto 10px;
-
-            font-size: 18px;
-
-            font-weight: bold;
-        }
-
-
-        .success-title {
-            font-size: 17px;
-
-            color: #172033;
-
-            font-weight: 700;
-
-            margin-bottom: 5px;
-        }
-
-
-        .success-description {
-            font-size: 8px;
-
-            color: #8a96a8;
-
-            margin-bottom: 11px;
-        }
-
-
-        /* =========================
-           BOOKING INFO
-        ========================= */
-
-        .booking-info {
-            height: 40px;
-
-            background: #f8fafc;
-
-            border: 1px solid #e0e6ed;
-
-            border-radius: 5px;
-
-            display: grid;
-
-            grid-template-columns: 1fr 1fr 1.25fr;
-
-            margin-bottom: 13px;
-        }
-
-
-        .booking-item {
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: center;
-
-            align-items: center;
-
-            border-right: 1px solid #e3e7ec;
-        }
-
-
-        .booking-item:last-child {
-            border-right: none;
-        }
-
-
-        .booking-label {
-            font-size: 5px;
-
-            color: #7b899c;
-
-            text-transform: uppercase;
-
-            margin-bottom: 4px;
-        }
-
-
-        .booking-value {
-            font-size: 7px;
-
-            color: #172033;
-
-            font-weight: 700;
-        }
-
-
-        .confirmed {
-            color: #13a96d;
-
-            background: #d9f9eb;
-
-            padding: 3px 8px;
-
-            border-radius: 10px;
-
-            font-size: 6px;
-        }
-
-
-        /* =========================
-           SUMMARY
-        ========================= */
-
-        .summary-card {
-            border: 1px solid #e0e6ed;
-
-            border-radius: 5px;
-
-            padding: 11px;
-
-            text-align: left;
-
-            margin-bottom: 11px;
-        }
-
-
-        .summary-title {
-            font-size: 8px;
-
-            color: #172033;
-
-            font-weight: 700;
-
-            margin-bottom: 7px;
-        }
-
-
-        .summary-row {
-            min-height: 23px;
-
-            border-bottom: 1px solid #edf0f3;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-        }
-
-
-        .summary-row:last-child {
-            border-bottom: none;
-        }
-
-
-        .summary-label {
-            color: #63738a;
-
-            font-size: 7px;
-        }
-
-
-        .summary-value {
-            color: #202c3e;
-
-            font-size: 7px;
-
-            font-weight: 600;
-
-            text-align: right;
-        }
-
-
-        .cost-row .summary-label {
-            color: #2165dc;
-
-            font-weight: 600;
-        }
-
-
-        .cost-row .summary-value {
-            color: #2165dc;
-
-            font-size: 15px;
-
-            font-weight: 700;
-        }
-
-
-        /* =========================
-           BUTTONS
-        ========================= */
-
-        .button-row {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 8px;
-        }
-
-
-        .action-button {
-            height: 26px;
-
-            border-radius: 5px;
-
-            font-size: 7px;
-
-            font-weight: 600;
-
-            cursor: pointer;
-        }
-
-
-        .another-button {
-            background: white;
-
-            border: 1px solid #dfe5ec;
-
-            color: #65758b;
-        }
-
-
-        .bookings-button {
-            background: #2868ed;
-
-            border: none;
-
-            color: white;
-        }
-
-
-        .another-button:hover {
-            background: #f5f7fa;
-        }
-
-
-        .bookings-button:hover {
-            background: #1e59d0;
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 800px) {
-
-            body {
-                background: #f7f9fb;
-            }
-
-            .dashboard-container {
-                width: 100%;
-
-                min-height: 100vh;
-
-                height: auto;
-
-                margin: 0;
-
-                border: none;
-            }
-        }
-
-
-        @media (max-width: 600px) {
-
-            .sidebar {
-                display: none;
-            }
-
-            .success-content {
-                width: 100%;
-            }
-
-            .booking-info {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-
-            .booking-item {
-                padding: 8px;
-                border-right: none;
-                border-bottom: 1px solid #e3e7ec;
-            }
-
-            .button-row {
-                grid-template-columns: 1fr;
-            }
-
-            .content {
-                padding: 12px;
-            }
-
-        }
-
-    </style>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
+
+    <!-- Common CSS -->
+    <link href="CSS/style.css" rel="stylesheet" />
+
+    <!-- Page Specific CSS -->
+    <link href="CSS/bookingsuccess.css" rel="stylesheet" />
 
 </head>
-
 
 <body>
 
@@ -661,12 +31,11 @@
     <div class="dashboard-container">
 
 
-        <!-- =========================
+        <!-- =====================================================
              SIDEBAR
-        ========================= -->
+        ====================================================== -->
 
         <aside class="sidebar">
-
 
             <div class="logo">
 
@@ -679,13 +48,12 @@
 
             <nav class="navigation">
 
-
                 <a href="Dashboard.aspx"
                    class="nav-item">
 
                     <span class="nav-icon">▦</span>
 
-                    Dashboard
+                    <span>Dashboard</span>
 
                 </a>
 
@@ -695,7 +63,7 @@
 
                     <span class="nav-icon">♧</span>
 
-                    Book Transportation
+                    <span>Book Transportation</span>
 
                 </a>
 
@@ -705,7 +73,7 @@
 
                     <span class="nav-icon">▤</span>
 
-                    My Bookings
+                    <span>My Bookings</span>
 
                 </a>
 
@@ -715,17 +83,17 @@
 
                     <span class="nav-icon">▭</span>
 
-                    Payments
+                    <span>Payments</span>
 
                 </a>
 
 
-                <a href="Address.aspx"
+                <a href="AddressBook.aspx"
                    class="nav-item">
 
                     <span class="nav-icon">□</span>
 
-                    Address Book
+                    <span>Address Book</span>
 
                 </a>
 
@@ -735,29 +103,26 @@
 
                     <span class="nav-icon">♙</span>
 
-                    Profile
+                    <span>Profile</span>
 
                 </a>
-
 
             </nav>
 
 
-            <div class="logout">
-
-                <a href="Login.aspx">
-                    ↪ &nbsp; Logout
-                </a>
-
-            </div>
-
+            
+            <a href="Login.aspx" class="dash-logout">
+    ↪ &nbsp; Logout
+</a>
+            
 
         </aside>
 
 
-        <!-- =========================
+
+        <!-- =====================================================
              MAIN CONTENT
-        ========================= -->
+        ====================================================== -->
 
         <main class="main-content">
 
@@ -777,7 +142,8 @@
                         👤
                     </div>
 
-                    <div>
+
+                    <div class="user-details">
 
                         <div class="user-name">
                             Nandan Nasit
@@ -794,19 +160,20 @@
             </header>
 
 
-            <!-- CONTENT -->
+
+            <!-- =================================================
+                 CONTENT
+            ================================================== -->
 
             <section class="content">
 
 
-                <!-- =========================
-                     STEPPER
-                ========================= -->
+                <!-- STEPPER -->
 
                 <div class="stepper">
 
 
-                    <div class="step">
+                    <div class="step completed">
 
                         <span class="step-number">
                             ✓
@@ -819,12 +186,12 @@
                     </div>
 
 
-                    <span class="arrow">
+                    <span class="step-arrow">
                         →
                     </span>
 
 
-                    <div class="step">
+                    <div class="step completed">
 
                         <span class="step-number">
                             ✓
@@ -837,12 +204,12 @@
                     </div>
 
 
-                    <span class="arrow">
+                    <span class="step-arrow">
                         →
                     </span>
 
 
-                    <div class="step">
+                    <div class="step completed">
 
                         <span class="step-number">
                             ✓
@@ -854,209 +221,236 @@
 
                     </div>
 
-
                 </div>
 
 
-                <!-- =========================
-                     SUCCESS CARD
-                ========================= -->
 
-                <div class="success-card">
+                <!-- =================================================
+                     CONFIRMATION AREA
+                ================================================== -->
 
-
-                    <div class="success-content">
+                <div class="confirmation-area">
 
 
-                        <!-- SUCCESS ICON -->
+                    <!-- SUCCESS ICON -->
 
-                        <div class="success-icon">
-                            ✓
-                        </div>
-
-
-                        <!-- TITLE -->
-
-                        <h1 class="success-title">
-                            Booking Confirmed!
-                        </h1>
+                    <div class="success-icon">
+                        ✓
+                    </div>
 
 
-                        <p class="success-description">
-                            Your transportation has been successfully booked.
-                        </p>
+                    <!-- TITLE -->
+
+                    <h1 class="success-title">
+                        Booking Confirmed!
+                    </h1>
 
 
-                        <!-- BOOKING INFORMATION -->
+                    <p class="success-description">
+                        Your transportation has been successfully booked.
+                    </p>
 
-                        <div class="booking-info">
 
 
-                            <div class="booking-item">
+                    <!-- =================================================
+                         BOOKING INFORMATION
+                    ================================================== -->
 
-                                <span class="booking-label">
-                                    Booking ID
-                                </span>
+                    <div class="booking-info">
 
-                                <span
-                                    class="booking-value"
-                                    id="lblBookingId"
-                                    runat="server">
 
-                                    BK-2026-08174
+                        <div class="booking-info-item">
 
-                                </span>
-
+                            <div class="info-heading">
+                                BOOKING ID
                             </div>
 
-
-                            <div class="booking-item">
-
-                                <span class="booking-label">
-                                    Status
-                                </span>
-
-                                <span class="confirmed">
-                                    Confirmed
-                                </span>
-
-                            </div>
-
-
-                            <div class="booking-item">
-
-                                <span class="booking-label">
-                                    Estimated Pickup
-                                </span>
-
-                                <span
-                                    class="booking-value"
-                                    id="lblPickupDate"
-                                    runat="server">
-
-                                    Monday, 17 August 2026
-
-                                </span>
-
-                            </div>
-
-
-                        </div>
-
-
-                        <!-- SUMMARY -->
-
-                        <div class="summary-card">
-
-
-                            <div class="summary-title">
-                                Booking Summary Details
-                            </div>
-
-
-                            <!-- ROUTE -->
-
-                            <div class="summary-row">
-
-                                <span class="summary-label">
-                                    ◉ &nbsp; Route Path
-                                </span>
-
-                                <span
-                                    class="summary-value"
-                                    id="lblRoute"
-                                    runat="server">
-
-                                    Rajkot, Gujarat → Baroda, Gujarat
-
-                                </span>
-
-                            </div>
-
-
-                            <!-- VEHICLE -->
-
-                            <div class="summary-row">
-
-                                <span class="summary-label">
-                                    ♧ &nbsp; Vehicle Type
-                                </span>
-
-                                <span
-                                    class="summary-value"
-                                    id="lblVehicle"
-                                    runat="server">
-
-                                    Medium Truck (6-Wheeler)
-
-                                </span>
-
-                            </div>
-
-
-                            <!-- LOAD -->
-
-                            <div class="summary-row">
-
-                                <span class="summary-label">
-                                    ◉ &nbsp; Load Specifications
-                                </span>
-
-                                <span
-                                    class="summary-value"
-                                    id="lblLoad"
-                                    runat="server">
-
-                                    12 Packages (850 kg Total)
-
-                                </span>
-
-                            </div>
-
-
-                            <!-- COST -->
-
-                            <div class="summary-row cost-row">
-
-                                <span class="summary-label">
-                                    Final Estimated Cost
-                                </span>
-
-                                <span class="summary-value">
-                                    ₹12,500
-                                </span>
-
-                            </div>
-
-
-                        </div>
-
-
-                        <!-- BUTTONS -->
-
-                        <div class="button-row">
-
-
-                            <asp:Button
-                                ID="btnBookAnother"
+                            <asp:Label
+                                ID="lblBookingId"
                                 runat="server"
-                                Text="Book Another"
-                                CssClass="action-button another-button"
-                                OnClick="btnBookAnother_Click" />
+                                CssClass="info-value">
 
+                                BK-2026-08174
 
-                            <asp:Button
-                                ID="btnMyBookings"
-                                runat="server"
-                                Text="View My Bookings"
-                                CssClass="action-button bookings-button"
-                                OnClick="btnMyBookings_Click" />
-
+                            </asp:Label>
 
                         </div>
 
+
+                        <div class="booking-info-item">
+
+                            <div class="info-heading">
+                                STATUS
+                            </div>
+
+                            <span class="confirmed-status">
+                                Confirmed
+                            </span>
+
+                        </div>
+
+
+                        <div class="booking-info-item">
+
+                            <div class="info-heading">
+                                ESTIMATED PICKUP
+                            </div>
+
+                            <asp:Label
+                                ID="lblPickupDate"
+                                runat="server"
+                                CssClass="info-value">
+
+                                Monday, 17 August 2026
+
+                            </asp:Label>
+
+                        </div>
 
                     </div>
+
+
+
+                    <!-- =================================================
+                         BOOKING SUMMARY
+                    ================================================== -->
+
+                    <div class="summary-card">
+
+
+                        <h2 class="summary-title">
+                            Booking Summary Details
+                        </h2>
+
+
+                        <!-- ROUTE -->
+
+                        <div class="summary-row">
+
+                            <div class="summary-left">
+
+                                <span class="summary-icon">
+                                    ●
+                                </span>
+
+                                <span>
+                                    Route Path
+                                </span>
+
+                            </div>
+
+
+                            <asp:Label
+                                ID="lblRoute"
+                                runat="server"
+                                CssClass="summary-value">
+
+                                Rajkot, Gujarat → Baroda, Gujarat
+
+                            </asp:Label>
+
+                        </div>
+
+
+                        <!-- VEHICLE -->
+
+                        <div class="summary-row">
+
+                            <div class="summary-left">
+
+                                <span class="summary-icon">
+                                    ▱
+                                </span>
+
+                                <span>
+                                    Vehicle Type
+                                </span>
+
+                            </div>
+
+
+                            <asp:Label
+                                ID="lblVehicle"
+                                runat="server"
+                                CssClass="summary-value">
+
+                                Medium Truck (6-Wheeler)
+
+                            </asp:Label>
+
+                        </div>
+
+
+                        <!-- LOAD -->
+
+                        <div class="summary-row">
+
+                            <div class="summary-left">
+
+                                <span class="summary-icon">
+                                    ◈
+                                </span>
+
+                                <span>
+                                    Load Specifications
+                                </span>
+
+                            </div>
+
+
+                            <asp:Label
+                                ID="lblLoad"
+                                runat="server"
+                                CssClass="summary-value">
+
+                                12 Packages (850 kg Total)
+
+                            </asp:Label>
+
+                        </div>
+
+
+                        <!-- COST -->
+
+                        <div class="cost-row">
+
+                            <span>
+                                Final Estimated Cost
+                            </span>
+
+                            <strong>
+                                ₹12,500
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         BUTTONS
+                    ================================================== -->
+
+                    <div class="action-buttons">
+
+                        <asp:Button
+                            ID="btnBookAnother"
+                            runat="server"
+                            Text="Book Another"
+                            CssClass="book-another-button"
+                            OnClick="btnBookAnother_Click" />
+
+
+                        <asp:Button
+                            ID="btnViewBookings"
+                            runat="server"
+                            Text="View My Bookings"
+                            CssClass="view-bookings-button"
+                            OnClick="btnMyBookings_Click" />
+
+                    </div>
+
 
                 </div>
 

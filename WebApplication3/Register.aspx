@@ -1,362 +1,69 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="Register.aspx.cs"
-    Inherits="WebApplication.Register" %>
+    Inherits="WebApplication3.Register" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
+
     <title>Transpo - Create Account</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+    <link href="CSS/style.css"
+          rel="stylesheet" />
 
-        body {
-            background: #1f1f1f;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    <link href="CSS/Register.css"
+          rel="stylesheet" />
 
-        .register-container {
-            width: 950px;
-            min-height: 595px;
-            display: flex;
-            background: white;
-            overflow: hidden;
-        }
-
-        /* ================= LEFT SIDE ================= */
-
-        .left-section {
-            width: 48%;
-            position: relative;
-
-            background-image:
-                linear-gradient(
-                    rgba(0, 55, 125, 0.45),
-                    rgba(0, 45, 105, 0.55)
-                ),
-                url('Images/container-port.png');
-
-            background-size: cover;
-            background-position: center;
-
-            padding: 42px;
-        }
-
-        .company-logo {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-
-            color: white;
-            font-size: 13px;
-            font-weight: bold;
-
-            border-bottom: 1px dotted rgba(255,255,255,0.5);
-            padding-bottom: 3px;
-
-            width: fit-content;
-        }
-
-        .logo-icon {
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 3px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: #1554b8;
-            font-size: 11px;
-        }
-
-        /* ================= RIGHT SIDE ================= */
-
-        .right-section {
-            width: 52%;
-            background: #f8f9fb;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 35px;
-        }
-
-        .register-box {
-            width: 290px;
-        }
-
-        /* ================= BRAND ================= */
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-
-            color: #172033;
-            font-size: 13px;
-            font-weight: bold;
-
-            margin-bottom: 20px;
-        }
-
-        .brand-icon {
-            width: 23px;
-            height: 23px;
-
-            background: #1454bb;
-            color: white;
-
-            border-radius: 5px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 12px;
-        }
-
-        /* ================= HEADING ================= */
-
-        .welcome {
-            font-size: 21px;
-            color: #172033;
-            font-weight: 700;
-
-            margin-bottom: 6px;
-        }
-
-        .description {
-            font-size: 10px;
-            line-height: 1.5;
-            color: #77839a;
-
-            margin-bottom: 20px;
-        }
-
-        /* ================= FORM ================= */
-
-        .form-group {
-            margin-bottom: 10px;
-        }
-
-        .form-label {
-            display: block;
-
-            font-size: 9px;
-            color: #202a3b;
-            font-weight: 600;
-
-            margin-bottom: 5px;
-        }
-
-        .input-field {
-            width: 100%;
-            height: 30px;
-
-            border: 1px solid #dfe4eb;
-            border-radius: 6px;
-
-            background: white;
-
-            padding: 0 10px;
-
-            font-size: 10px;
-            color: #333;
-
-            outline: none;
-        }
-
-        .input-field:focus {
-            border-color: #1454bb;
-        }
-
-        .password-wrapper {
-            position: relative;
-        }
-
-        .password-field {
-            padding-right: 35px;
-        }
-
-        .eye-button {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-
-    width: 24px;
-    height: 24px;
-
-    border: none;
-    background: transparent;
-
-    color: #687990;
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0;
-}
-
-.eye-button:hover {
-    color: #1454bb;
-}
-
-.eye-icon {
-    width: 16px;
-    height: 16px;
-}
-
-        /* ================= SIGN UP ================= */
-
-        .signup-button {
-            width: 100%;
-            height: 31px;
-
-            border: none;
-            border-radius: 6px;
-
-            background: #1454bb;
-            color: white;
-
-            font-size: 10px;
-            font-weight: 600;
-
-            cursor: pointer;
-
-            margin-top: 5px;
-        }
-
-        .signup-button:hover {
-            background: #0d46a3;
-        }
-
-        /* ================= MESSAGE ================= */
-
-        .error-message {
-            display: block;
-
-            color: #d93025;
-
-            font-size: 9px;
-
-            margin-top: 8px;
-            text-align: center;
-        }
-
-        .success-message {
-            display: block;
-
-            color: #16803c;
-
-            font-size: 9px;
-
-            margin-top: 8px;
-            text-align: center;
-        }
-
-        /* ================= LOGIN ================= */
-
-        .login-text {
-            text-align: center;
-
-            margin-top: 18px;
-
-            color: #8792a5;
-            font-size: 9px;
-        }
-
-        .login-link {
-            color: #0754bd;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .login-link:hover {
-            text-decoration: underline;
-        }
-
-        /* ================= RESPONSIVE ================= */
-
-        @media (max-width: 750px) {
-
-            body {
-                background: #f8f9fb;
-            }
-
-            .register-container {
-                width: 100%;
-                min-height: 100vh;
-            }
-
-            .left-section {
-                display: none;
-            }
-
-            .right-section {
-                width: 100%;
-            }
-
-            .register-box {
-                width: 300px;
-            }
-        }
-
-    </style>
 </head>
 
 <body>
 
 <form id="form1" runat="server">
 
-    <div class="register-container">
+    <div class="register-page">
 
-        <!-- ================= LEFT ================= -->
 
-        <div class="left-section">
+        <!-- =====================================================
+             LEFT SIDE
+        ====================================================== -->
 
-            <div class="company-logo">
+        <div class="register-left">
 
-                <div class="logo-icon">
-                    🚚
+            <div class="register-global-logo">
+
+                <div class="register-global-icon">
+                    ▣
                 </div>
 
-                Transpo Global
+                <span>Transpo Global</span>
 
             </div>
 
         </div>
 
 
-        <!-- ================= RIGHT ================= -->
+        <!-- =====================================================
+             RIGHT SIDE
+        ====================================================== -->
 
-        <div class="right-section">
+        <div class="register-right">
 
-            <div class="register-box">
+            <div class="register-container">
 
-                <!-- Brand -->
 
-                <div class="brand">
+                <!-- LOGO -->
 
-                    <div class="brand-icon">
-                        🚚
+                <div class="register-logo">
+
+                    <div class="register-logo-icon">
+                        ▣
                     </div>
 
                     <span>Transpo</span>
@@ -364,48 +71,49 @@
                 </div>
 
 
-                <!-- Heading -->
+                <!-- TITLE -->
 
-                <h1 class="welcome">
+                <h1>
                     Create Account
                 </h1>
 
-                <p class="description">
+
+                <p class="register-description">
                     Join Transpo to unlock fast, transparent, and reliable
                     freight solutions.
                 </p>
 
 
-                <!-- Full Name -->
+                <!-- FULL NAME -->
 
-                <div class="form-group">
+                <div class="register-field">
 
-                    <label class="form-label">
+                    <label for="txtFullName">
                         Full Name
                     </label>
 
                     <asp:TextBox
                         ID="txtFullName"
                         runat="server"
-                        CssClass="input-field"
+                        CssClass="register-input"
                         placeholder="Enter your full name">
                     </asp:TextBox>
 
                 </div>
 
 
-                <!-- Email -->
+                <!-- EMAIL -->
 
-                <div class="form-group">
+                <div class="register-field">
 
-                    <label class="form-label">
+                    <label for="txtEmail">
                         Email
                     </label>
 
                     <asp:TextBox
                         ID="txtEmail"
                         runat="server"
-                        CssClass="input-field"
+                        CssClass="register-input"
                         TextMode="Email"
                         placeholder="Enter your email">
                     </asp:TextBox>
@@ -413,83 +121,90 @@
                 </div>
 
 
-                <!-- Phone -->
+                <!-- PHONE -->
 
-                <div class="form-group">
+                <div class="register-field">
 
-                    <label class="form-label">
+                    <label for="txtPhone">
                         Phone Number
                     </label>
 
                     <asp:TextBox
                         ID="txtPhone"
                         runat="server"
-                        CssClass="input-field"
-                        TextMode="Phone"
+                        CssClass="register-input"
                         placeholder="Enter your phone number">
                     </asp:TextBox>
 
                 </div>
 
-<div class="form-group">
 
-    <label class="form-label">
-        Password
-    </label>
+                <!-- PASSWORD -->
 
-    <asp:TextBox
-        ID="txtPassword"
-        runat="server"
-        CssClass="input-field"
-        TextMode="Password"
-        placeholder="Create  password">
-    </asp:TextBox>
+                <div class="register-field">
 
-</div>
+                    <label for="txtPassword">
+                        Password
+                    </label>
 
-<div class="form-group">
+                    <asp:TextBox
+                        ID="txtPassword"
+                        runat="server"
+                        TextMode="Password"
+                        CssClass="register-input"
+                        placeholder="Create password">
+                    </asp:TextBox>
 
-    <label class="form-label">
-        Confirm Password
-    </label>
-
-    <asp:TextBox
-        ID="txtConfirmPassword"
-        runat="server"
-        CssClass="input-field"
-        TextMode="Password"
-        placeholder="Confirm your password">
-    </asp:TextBox>
-
-</div>
+                </div>
 
 
-                <!-- Sign Up -->
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="register-field">
+
+                    <label for="txtConfirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <asp:TextBox
+                        ID="txtConfirmPassword"
+                        runat="server"
+                        TextMode="Password"
+                        CssClass="register-input"
+                        placeholder="Confirm your password">
+                    </asp:TextBox>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <asp:Label
+                    ID="lblMessage"
+                    runat="server"
+                    CssClass="register-message">
+                </asp:Label>
+
+
+                <!-- SIGN UP -->
 
                 <asp:Button
                     ID="btnSignUp"
                     runat="server"
                     Text="Sign Up"
-                    CssClass="signup-button"
+                    CssClass="register-button"
                     OnClick="btnSignUp_Click" />
 
 
-                <!-- Error -->
+                <!-- LOGIN -->
 
-                <asp:Label
-                    ID="lblMessage"
-                    runat="server"
-                    CssClass="error-message">
-                </asp:Label>
+                <div class="register-login">
 
+                    <span>
+                        Already have an account?
+                    </span>
 
-                <!-- Login -->
-
-                <div class="login-text">
-
-                    Already have an account?
-
-                    <a href="Login.aspx" class="login-link">
+                    <a href="Login.aspx">
                         Login
                     </a>
 
@@ -503,44 +218,6 @@
 
 </form>
 
-
-<script>
-
-    function togglePassword(type) {
-
-        var password;
-        
-        if (type === "password") {
-
-            password =
-                document.getElementById(
-                    '<%= txtPassword.ClientID %>'
-                );
-
-        }
-        else {
-
-            password =
-                document.getElementById(
-                    '<%= txtConfirmPassword.ClientID %>'
-                );
-
-    }
-
-    if (password.type === "password") {
-
-        password.type = "text";
-
-    }
-    else {
-
-        password.type = "password";
-
-    }
-
-}
-
-</script>
-
 </body>
+
 </html>

@@ -30,7 +30,7 @@ namespace WebApplication3
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblBookingId;
+        protected global::System.Web.UI.WebControls.Label lblBookingId;
 
         /// <summary>
         /// lblPickupDate control.
@@ -39,7 +39,7 @@ namespace WebApplication3
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPickupDate;
+        protected global::System.Web.UI.WebControls.Label lblPickupDate;
 
         /// <summary>
         /// lblRoute control.
@@ -48,7 +48,7 @@ namespace WebApplication3
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRoute;
+        protected global::System.Web.UI.WebControls.Label lblRoute;
 
         /// <summary>
         /// lblVehicle control.
@@ -57,7 +57,7 @@ namespace WebApplication3
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblVehicle;
+        protected global::System.Web.UI.WebControls.Label lblVehicle;
 
         /// <summary>
         /// lblLoad control.
@@ -66,7 +66,7 @@ namespace WebApplication3
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblLoad;
+        protected global::System.Web.UI.WebControls.Label lblLoad;
 
         /// <summary>
         /// btnBookAnother control.
@@ -78,12 +78,12 @@ namespace WebApplication3
         protected global::System.Web.UI.WebControls.Button btnBookAnother;
 
         /// <summary>
-        /// btnMyBookings control.
+        /// btnViewBookings control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMyBookings;
+        protected global::System.Web.UI.WebControls.Button btnViewBookings;
     }
 }

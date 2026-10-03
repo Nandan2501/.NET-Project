@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace WebApplication
+namespace WebApplication3
 {
-    public partial class VerifyCode : System.Web.UI.Page
+    public partial class VCode : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -11,49 +11,28 @@ namespace WebApplication
         protected void btnVerify_Click(object sender, EventArgs e)
         {
             string code =
-                txtOtp1.Text.Trim() +
-                txtOtp2.Text.Trim() +
-                txtOtp3.Text.Trim() +
-                txtOtp4.Text.Trim();
+                txtCode1.Text.Trim() +
+                txtCode2.Text.Trim() +
+                txtCode3.Text.Trim() +
+                txtCode4.Text.Trim();
 
             if (code.Length != 4)
             {
-                lblMessage.Text = "Please enter the 4-digit code.";
+                lblMessage.Text = "Please enter the complete 4-digit code.";
                 return;
             }
 
-            // Temporary verification
-            // Database/email verification can be added later.
+            // Temporary verification.
+            // Replace this with your database/email OTP verification later.
 
-            if (code == "4821")
-            {
-                lblMessage.ForeColor =
-                    System.Drawing.Color.Green;
+            Session["VerificationCode"] = code;
 
-                lblMessage.Text =
-                    "Code verified successfully!";
-
-                // Example:
-                // Response.Redirect("ResetPassword.aspx");
-            }
-            else
-            {
-                lblMessage.Text =
-                    "Invalid verification code.";
-            }
+            Response.Redirect("ResetPass.aspx");
         }
-
 
         protected void btnResend_Click(object sender, EventArgs e)
         {
-            // Email/SMS resend functionality
-            // can be connected later.
-
-            lblMessage.ForeColor =
-                System.Drawing.Color.Green;
-
-            lblMessage.Text =
-                "A new verification code has been sent.";
+            lblMessage.Text = "A new verification code has been sent.";
         }
     }
 }

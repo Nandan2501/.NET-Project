@@ -83,6 +83,8 @@
 
 
                 <a href="MyEarnings.aspx"
+
+
                    class="driver-nav-item">
 
                     <span class="driver-nav-icon">▤</span>

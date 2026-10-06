@@ -17,8 +17,10 @@ namespace WebApplication3
             txtFullName.Text = "Nandan Nasit";
             txtEmail.Text = "jnandannasit@gmail.com";
             txtPhone.Text = "98765-43210";
-            txtDOB.Text = "12 Mar 1990";
+            txtDob.Text = "12 Mar 1990";
             txtAddress.Text = "Gandhinagar, gujarat 360002";
+
+            imgProfile.ImageUrl = "Images/profile.jpg";
         }
 
         protected void btnEditProfile_Click(object sender, EventArgs e)

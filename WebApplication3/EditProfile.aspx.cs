@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace WebApplication3
 {
@@ -13,135 +14,108 @@ namespace WebApplication3
         }
 
 
-        // =========================
-        // LOAD EXISTING PROFILE
-        // =========================
-
         private void LoadProfile()
         {
-            txtFullName.Text =
-                "Nandan Nasit";
+            txtFullName.Text = "Nandan Nasit";
+            txtEmail.Text = "jnandannasit@gmail.com";
+            txtPhone.Text = "98765-43210";
+            txtDob.Text = "12 Mar 1990";
+            txtAddress.Text = "Gandhinagar, Gujarat 360002";
 
-            txtEmail.Text =
-                "jnandannasit@gmail.com";
-
-            txtPhone.Text =
-                "7757856769";
-
-            txtDateOfBirth.Text =
-                "12 Mar 2006";
-
-            txtAddress.Text =
-                "Gandhinagar, Gujarat 360002";
+            imgProfile.ImageUrl = "Images/profile.jpg";
         }
 
 
-        // =========================
-        // SAVE CHANGES
-        // =========================
-
-        protected void btnSave_Click(
-            object sender,
-            EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(
-                txtFullName.Text))
-            {
-                lblMessage.Text =
-                    "Please enter your full name.";
-
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(
-                txtEmail.Text))
-            {
-                lblMessage.Text =
-                    "Please enter your email.";
-
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(
-                txtPhone.Text))
-            {
-                lblMessage.Text =
-                    "Please enter your phone number.";
-
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(
-                txtAddress.Text))
-            {
-                lblMessage.Text =
-                    "Please enter your address.";
-
-                return;
-            }
-
-
-            // Database update will be added later.
-
-            Response.Redirect("Profile.aspx");
-        }
-
-
-        // =========================
-        // CANCEL
-        // =========================
-
-        protected void btnCancel_Click(
-            object sender,
-            EventArgs e)
-        {
-            Response.Redirect("Profile.aspx");
-        }
-
-
-        // =========================
-        // CHANGE PHOTO
-        // =========================
-
-        protected void btnChangePhoto_Click(
-            object sender,
-            EventArgs e)
+        protected void btnChangePhoto_Click(object sender, EventArgs e)
         {
             if (!fuProfilePhoto.HasFile)
             {
-                lblMessage.Text =
-                    "Please select a photo.";
-
                 return;
             }
 
             string extension =
-                System.IO.Path.GetExtension(
-                    fuProfilePhoto.FileName)
-                .ToLower();
+                Path.GetExtension(fuProfilePhoto.FileName).ToLower();
 
-            if (extension != ".jpg" &&
-                extension != ".jpeg" &&
-                extension != ".png" &&
-                extension != ".gif")
+            string[] allowedExtensions =
             {
-                lblMessage.Text =
-                    "Only JPG, JPEG, PNG or GIF files are allowed.";
+                ".jpg",
+                ".jpeg",
+                ".png",
+                ".gif"
+            };
 
+            bool validExtension = false;
+
+            foreach (string ext in allowedExtensions)
+            {
+                if (extension == ext)
+                {
+                    validExtension = true;
+                    break;
+                }
+            }
+
+            if (!validExtension)
+            {
                 return;
             }
 
-            if (fuProfilePhoto.PostedFile.ContentLength >
-                800 * 1024)
-            {
-                lblMessage.Text =
-                    "Maximum file size is 800 KB.";
 
+            // 800 KB maximum
+
+            if (fuProfilePhoto.PostedFile.ContentLength > 800 * 1024)
+            {
                 return;
             }
 
-            lblMessage.Text =
-                "Profile photo selected successfully.";
+
+            string fileName =
+                "profile_" +
+                DateTime.Now.Ticks +
+                extension;
+
+
+            string folderPath =
+                Server.MapPath("~/Images/");
+
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+
+            string filePath =
+                Path.Combine(folderPath, fileName);
+
+
+            fuProfilePhoto.SaveAs(filePath);
+
+
+            imgProfile.ImageUrl =
+                "Images/" + fileName;
+        }
+
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            // Here you can later save the information
+            // to your database.
+
+            Session["ProfileName"] = txtFullName.Text;
+            Session["ProfileEmail"] = txtEmail.Text;
+            Session["ProfilePhone"] = txtPhone.Text;
+            Session["ProfileDob"] = txtDob.Text;
+            Session["ProfileAddress"] = txtAddress.Text;
+
+
+            Response.Redirect("Profile.aspx");
+        }
+
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Profile.aspx");
         }
     }
 }

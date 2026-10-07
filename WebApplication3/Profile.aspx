@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"
-    CodeBehind="Profile.aspx.cs"
-    Inherits="WebApplication3.Profile" %>
+    CodeBehind="EditProfile.aspx.cs"
+    Inherits="WebApplication3.EditProfile" %>
 
 <!DOCTYPE html>
 
@@ -8,11 +8,18 @@
 
 <head runat="server">
 
-    <title>My Profile</title>
+    <title>Transpo - My Profile</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="CSS/style.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
+
+    <link href="CSS/style.css"
+          rel="stylesheet" />
+
+    <link href="CSS/editprofile.css"
+          rel="stylesheet" />
 
 </head>
 
@@ -20,255 +27,329 @@
 
 <form id="form1" runat="server">
 
-    <div class="profile-layout">
+<div class="profile-page">
 
-        <!-- ================= SIDEBAR ================= -->
 
-        <aside class="profile-sidebar">
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
 
-            <div class="profile-logo">
-                <div class="profile-logo-icon">▣</div>
-                <span>Transpo</span>
+    <aside class="profile-sidebar">
+
+        <div class="profile-logo">
+
+            <div class="profile-logo-icon">
+                ▣
             </div>
 
-            <nav class="profile-navigation">
+            <span>Transpo</span>
 
-                <a href="Dashboard.aspx" class="profile-nav-item">
-                    <span class="profile-nav-icon">▦</span>
-                    <span>Dashboard</span>
-                </a>
+        </div>
 
-                <a href="BookTransportation.aspx" class="profile-nav-item">
-                    <span class="profile-nav-icon">▣</span>
-                    <span>Book Transportation</span>
-                </a>
 
-                <a href="MyBookings.aspx" class="profile-nav-item">
-                    <span class="profile-nav-icon">☷</span>
-                    <span>My Bookings</span>
-                </a>
+ <nav class="dash-navigation">
 
-                <a href="Payments.aspx" class="profile-nav-item">
-                    <span class="profile-nav-icon">▱</span>
-                    <span>Payments</span>
-                </a>
+     <a href="Dashboard.aspx"
+        class="dash-nav-item ">
+         <span class="dash-nav-icon">▦</span>
+         <span>Dashboard</span>
+     </a>
 
-                <a href="AddressBook.aspx" class="profile-nav-item">
-                    <span class="profile-nav-icon">▣</span>
-                    <span>Address Book</span>
-                </a>
+     <a href="BookTransportation.aspx"
+        class="dash-nav-item">
+         <span class="dash-nav-icon">♧</span>
+         <span>Book Transportation</span>
+     </a>
 
-                <a href="Profile.aspx" class="profile-nav-item active">
-                    <span class="profile-nav-icon">♙</span>
-                    <span>Profile</span>
-                </a>
+     <a href="Bookings.aspx"
+        class="dash-nav-item">
+         <span class="dash-nav-icon">☷</span>
+         <span>My Bookings</span>
+     </a>
 
-            </nav>
+     <a href="Payments.aspx"
+        class="dash-nav-item">
+         <span class="dash-nav-icon">▱</span>
+         <span>Payments</span>
+     </a>
 
-            <div class="profile-logout">
+     <a href="AddressBook.aspx"
+        class="dash-nav-item">
+         <span class="dash-nav-icon">▣</span>
+         <span>Address Book</span>
+     </a>
 
-                <a href="Login.aspx">
-                    <span>↪</span>
-                    <span>Logout</span>
-                </a>
+     <a href="Profile.aspx"
+        class="dash-nav-item active">
+         <span class="dash-nav-icon">♙</span>
+         <span>Profile</span>
+     </a>
+
+ </nav>
+        <a href="Login.aspx" class="dash-logout">
+    ↪ &nbsp; Logout
+</a>
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN AREA
+    ====================================================== -->
+
+    <main class="profile-main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="profile-topbar">
+
+            <div>
+
+                <h1>
+                    My Profile
+                </h1>
+
+                <p>
+                    Manage your personal credentials, fleet stats, and performance verification.
+                </p>
 
             </div>
 
-        </aside>
 
+            <div class="profile-user">
 
-        <!-- ================= MAIN CONTENT ================= -->
+                <div class="user-avatar">
+                    👤
+                </div>
 
-        <main class="profile-main">
+                <div>
 
-            <!-- TOP BAR -->
-
-            <header class="profile-topbar">
-
-                <h1>My Profile</h1>
-
-                <div class="profile-user">
-
-                    <div class="profile-user-avatar">
-                        <img src="Images/profile.jpg"
-                             alt="Nandan Nasit"
-                             onerror="this.style.display='none';" />
+                    <div class="user-name">
+                        Nandan Nasit
                     </div>
 
-                    <div class="profile-user-details">
-                        <strong>Nandan Nasit</strong>
-                        <span>Standard Customer</span>
+                    <div class="user-role">
+                        Standard Customer
                     </div>
 
                 </div>
 
-            </header>
+            </div>
+
+        </header>
 
 
-            <!-- PAGE CONTENT -->
 
-            <section class="profile-content">
+        <!-- =====================================================
+             CONTENT
+        ====================================================== -->
 
-                <!-- TABS -->
-
-                <div class="profile-tabs">
-
-                    <a href="#" class="profile-tab active">
-                        Personal Information
-                    </a>
-
-                    <a href="ChangePassword.aspx" class="profile-tab">
-                        Change Password
-                    </a>
-
-                  
-
-                </div>
+        <section class="profile-content">
 
 
-                <!-- PROFILE CARD -->
+            <!-- TABS -->
 
-                <div class="profile-card">
+            <div class="profile-tabs">
 
-                    <!-- LEFT PHOTO -->
+                <a href="EditProfile.aspx"
+                   class="profile-tab active">
 
-                    <div class="profile-photo-section">
+                    Personal Information
 
-                        <div class="profile-photo-wrapper">
+                </a>
 
-                            <asp:Image
-                                ID="imgProfile"
-                                runat="server"
-                                CssClass="profile-photo"
-                                ImageUrl="Images/profile.jpg"
-                                AlternateText="Profile Photo" />
+                <a href="ChangePassword.aspx"
+                   class="profile-tab">
 
-                        </div>
+                    Change Password
 
+                </a>
 
-                        <button type="button"
-                                class="profile-change-photo">
-                            Change Photo
-                        </button>
+                
+
+            </div>
 
 
-                        <div class="profile-photo-note">
-                            Allowed JPG, GIF or PNG. Max size of 800KB
-                        </div>
+
+            <!-- =================================================
+                 PROFILE CARD
+            ================================================== -->
+
+            <div class="edit-profile-card">
+
+
+                <!-- PHOTO -->
+
+                <div class="photo-section">
+
+                    <div class="profile-photo">
+
+                        <asp:Image
+                            ID="imgProfile"
+                            runat="server"
+                            ImageUrl="~/Images/profile.jpg"
+                            AlternateText="Profile Photo" />
 
                     </div>
 
 
-                    <!-- RIGHT INFORMATION -->
-
-                    <div class="profile-information">
-
-                        <!-- ROW 1 -->
-
-                        <div class="profile-field-row">
-
-                            <div class="profile-field">
-
-                                <label>Full Name</label>
-
-                                <asp:TextBox
-                                    ID="txtFullName"
-                                    runat="server"
-                                    CssClass="profile-input"
-                                    ReadOnly="true">
-                                </asp:TextBox>
-
-                            </div>
+                    <asp:FileUpload
+                        ID="fuProfilePhoto"
+                        runat="server"
+                        CssClass="photo-upload" />
 
 
-                            <div class="profile-field">
-
-                                <label>Email</label>
-
-                                <asp:TextBox
-                                    ID="txtEmail"
-                                    runat="server"
-                                    CssClass="profile-input"
-                                    ReadOnly="true">
-                                </asp:TextBox>
-
-                            </div>
-
-                        </div>
+                    <asp:Button
+                        ID="btnChangePhoto"
+                        runat="server"
+                        Text="Change Photo"
+                        CssClass="change-photo-button"
+                        OnClick="btnChangePhoto_Click" />
 
 
-                        <!-- ROW 2 -->
+                    <div class="photo-help">
+                        Allowed JPG, GIF or PNG. Max size of 800KB
+                    </div>
 
-                        <div class="profile-field-row">
-
-                            <div class="profile-field">
-
-                                <label>Phone</label>
-
-                                <asp:TextBox
-                                    ID="txtPhone"
-                                    runat="server"
-                                    CssClass="profile-input"
-                                    ReadOnly="true">
-                                </asp:TextBox>
-
-                            </div>
+                </div>
 
 
-                            <div class="profile-field">
 
-                                <label>Date of Birth</label>
+                <!-- FORM -->
 
-                                <asp:TextBox
-                                    ID="txtDob"
-                                    runat="server"
-                                    CssClass="profile-input"
-                                    ReadOnly="true">
-                                </asp:TextBox>
-
-                            </div>
-
-                        </div>
+                <div class="profile-form">
 
 
-                        <!-- ADDRESS -->
+                    <!-- ROW 1 -->
 
-                        <div class="profile-field profile-address">
+                    <div class="form-row">
 
-                            <label>Address</label>
+                        <div class="form-group">
+
+                            <label>
+                                Full Name
+                            </label>
 
                             <asp:TextBox
-                                ID="txtAddress"
+                                ID="txtFullName"
                                 runat="server"
                                 CssClass="profile-input"
-                                ReadOnly="true">
+                                Text="Nandan Nasit">
                             </asp:TextBox>
 
                         </div>
 
 
-                        <!-- EDIT BUTTON -->
+                        <div class="form-group">
 
-                        <div class="profile-button-area">
+                            <label>
+                                Email
+                            </label>
 
-                            <asp:Button
-                                ID="btnEditProfile"
+                            <asp:TextBox
+                                ID="txtEmail"
                                 runat="server"
-                                Text="Edit Profile"
-                                CssClass="profile-edit-button"
-                                OnClick="btnEditProfile_Click" />
+                                CssClass="profile-input"
+                                Text="jnandannasit@gmail.com">
+                            </asp:TextBox>
 
                         </div>
 
                     </div>
 
+
+
+                    <!-- ROW 2 -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label>
+                                Phone
+                            </label>
+
+                            <asp:TextBox
+                                ID="txtPhone"
+                                runat="server"
+                                CssClass="profile-input"
+                                Text="98765-43210">
+                            </asp:TextBox>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Date of Birth
+                            </label>
+
+                            <asp:TextBox
+                                ID="txtDateOfBirth"
+                                runat="server"
+                                CssClass="profile-input"
+                                Text="12 Mar 1990">
+                            </asp:TextBox>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            Address
+                        </label>
+
+                        <asp:TextBox
+                            ID="txtAddress"
+                            runat="server"
+                            CssClass="profile-input"
+                            Text="Gandhinagar, Gujarat 360002">
+                        </asp:TextBox>
+
+                    </div>
+
+
+
+                    <!-- MESSAGE -->
+
+                    <asp:Label
+                        ID="lblMessage"
+                        runat="server"
+                        CssClass="profile-message">
+                    </asp:Label>
+
+
+
+                    <!-- BUTTONS -->
+
+                     <div class="profile-edit-area">
+
+                        <asp:Button
+                            ID="btnEditProfile"
+                            runat="server"
+                            Text="Edit Profile"
+                            CssClass="profile-edit-btn"
+                            PostBackUrl="EditProfile.aspx" />
+
+                    </div>
+
                 </div>
 
-            </section>
+            </div>
 
-        </main>
+        </section>
 
-    </div>
+    </main>
+
+</div>
 
 </form>
 

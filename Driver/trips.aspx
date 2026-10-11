@@ -1,4 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+﻿<!--trip page -->
+<%--                    class="driver-nav-item">
+--%>
+
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="trips.aspx.cs"
     Inherits="WebApplication3.Driver.MyTrips" %>
 

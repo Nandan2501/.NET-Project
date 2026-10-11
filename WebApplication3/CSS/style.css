@@ -11984,9 +11984,9 @@ select.av-input {
 
 .profile-sidebar {
     position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
+    left: -125px;
+    top: 1px;
+    bottom: -1px;
     width: 212px;
     min-width: 212px;
     background: #202c3f;
@@ -11994,6 +11994,7 @@ select.av-input {
     display: flex;
     flex-direction: column;
     z-index: 1000;
+    margin-right: 0px;
 }
 
 

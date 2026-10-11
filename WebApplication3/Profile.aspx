@@ -181,38 +181,14 @@
 
                 <!-- PHOTO -->
 
-                <div class="photo-section">
+                <div class="photo-upload-section">
+    <asp:Image ID="imgProfile" runat="server"
+        CssClass="profile-photo"
+        ImageUrl="~/Images/profile.jpg"
+        AlternateText="Profile Photo" />
 
-                    <div class="profile-photo">
-
-                        <asp:Image
-                            ID="imgProfile"
-                            runat="server"
-                            ImageUrl="~/Images/profile.jpg"
-                            AlternateText="Profile Photo" />
-
-                    </div>
-
-
-                    <asp:FileUpload
-                        ID="fuProfilePhoto"
-                        runat="server"
-                        CssClass="photo-upload" />
-
-
-                    <asp:Button
-                        ID="btnChangePhoto"
-                        runat="server"
-                        Text="Change Photo"
-                        CssClass="change-photo-button"
-                        OnClick="btnChangePhoto_Click" />
-
-
-                    <div class="photo-help">
-                        Allowed JPG, GIF or PNG. Max size of 800KB
-                    </div>
-
-                </div>
+   
+</div>
 
 
 

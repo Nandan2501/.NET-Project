@@ -16,10 +16,11 @@
           rel="stylesheet" />
 
     <!-- Common CSS -->
-    <link href="../CSS/style.css" rel="stylesheet" />
+ <link href="../CSS/style.css?v=2"
+      rel="stylesheet"
+      type="text/css" />
 
-    <!-- Driver Dashboard CSS -->
-    <link href="../CSS/ddashboard.css" rel="stylesheet" />
+    
 
 </head>
 

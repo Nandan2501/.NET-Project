@@ -1,0 +1,13 @@
+﻿.view {
+
+     display:grid;
+     grid-template-columns:1fr 1fr;
+}
+
+
+
+.logo{
+    width:500px;
+    height:fit-content;
+}
+

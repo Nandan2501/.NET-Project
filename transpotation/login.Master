@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="login.master.cs" Inherits="transpotation.login" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link runat="server" href="css/loginmaster.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+      <div class="view">
+            <div class="logo">
+        <img src="<%= ResolveUrl("~/images/transport.png") %>"
+            alt="Transport Logo"
+            style="width: 500px; height: 600px;" />            
+
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

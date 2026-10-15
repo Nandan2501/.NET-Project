@@ -1,466 +1,143 @@
-<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Title="Edit Profile" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="EditProfile.aspx.cs"
     Inherits="WebApplication3.EditProfile" %>
 
-<!DOCTYPE html>
+<asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    - Edit Profile
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="ContentHead" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href='<%= ResolveUrl("~/CSS/editprofile.css") %>' rel="stylesheet" />
+</asp:Content>
 
-<head runat="server">
+<asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
+    Profile
+</asp:Content>
 
-    <title>Transpo - My Profile</title>
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContent" runat="server">
+    <section class="profile-content">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- TABS -->
+        <div class="profile-tabs">
+            <a href="Profile.aspx" class="profile-tab">
+                View Profile
+            </a>
+            <a href="EditProfile.aspx" class="profile-tab active">
+                Personal Information
+            </a>
+            
+        </div>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet" />
+        <!-- PROFILE CARD -->
+        <div class="edit-profile-card">
 
-    <link href="CSS/style.css"
-          rel="stylesheet" />
+            <!-- PHOTO -->
+            <div class="photo-section">
+                <div class="profile-photo">
+                    <asp:Image
+                        ID="imgProfile"
+                        runat="server"
+                        ImageUrl="~/Images/profile.jpg"
+                        AlternateText="Profile Photo" />
+                </div>
 
-    <link href="CSS/editprofile.css"
-          rel="stylesheet" />
+                <asp:FileUpload
+                    ID="fuProfilePhoto"
+                    runat="server"
+                    CssClass="photo-upload" />
 
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
-<div class="profile-page">
-
-
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
-
-    <aside class="profile-sidebar">
-
-        <div class="profile-logo">
-
-            <div class="profile-logo-icon">
-                ▣
+                <div class="photo-help" style="font-size: 16px;">
+                    Allowed JPG, PNG. Max size of 800KB
+                </div>
             </div>
 
-            <span>Transpo</span>
+            <!-- FORM -->
+            <div class="profile-form">
+
+                <!-- ROW 1 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <asp:TextBox
+                            ID="txtFullName"
+                            runat="server"
+                            CssClass="profile-input"
+                            Text="Nandan Nasit">
+                        </asp:TextBox>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <asp:TextBox
+                            ID="txtEmail"
+                            runat="server"
+                            CssClass="profile-input"
+                            Text="jnandannasit@gmail.com">
+                        </asp:TextBox>
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <asp:TextBox
+                            ID="txtPhone"
+                            runat="server"
+                            CssClass="profile-input"
+                            Text="98765-43210">
+                        </asp:TextBox>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <asp:TextBox
+                            ID="txtDateOfBirth"
+                            runat="server"
+                            CssClass="profile-input"
+                            Text="12 Mar 1990">
+                        </asp:TextBox>
+                    </div>
+                </div>
+
+                <!-- ADDRESS -->
+                <div class="form-group full-width">
+                    <label>Address</label>
+                    <asp:TextBox
+                        ID="txtAddress"
+                        runat="server"
+                        CssClass="profile-input"
+                        Text="Gandhinagar, Gujarat 360002">
+                    </asp:TextBox>
+                </div>
+
+                <!-- MESSAGE -->
+                <asp:Label
+                    ID="lblMessage"
+                    runat="server"
+                    CssClass="profile-message">
+                </asp:Label>
+
+                <!-- BUTTONS -->
+                <div class="profile-actions">
+                    <asp:Button
+                        ID="btnSave"
+                        runat="server"
+                        Text="Save Changes"
+                        CssClass="save-button"
+                        OnClick="btnSave_Click" />
+
+                    <asp:Button
+                        ID="btnCancel"
+                        runat="server"
+                        Text="Cancel"
+                        CssClass="cancel-button"
+                        OnClick="btnCancel_Click" />
+                </div>
+
+            </div>
 
         </div>
 
-
-        <nav class="profile-navigation">
-
-            <a href="Dashboard.aspx"
-               class="profile-nav-item">
-
-                <span class="nav-icon">□</span>
-
-                <span>Dashboard</span>
-
-            </a>
-
-
-            <a href="Bookings.aspx"
-               class="profile-nav-item">
-
-                <span class="nav-icon">→</span>
-
-                <span>My Trips</span>
-
-            </a>
-
-
-            <a href="BookTransportation.aspx"
-               class="profile-nav-item">
-
-                <span class="nav-icon">♡</span>
-
-                <span>Active Trip</span>
-
-            </a>
-
-
-            <a href="Payments.aspx"
-               class="profile-nav-item">
-
-                <span class="nav-icon">□</span>
-
-                <span>My Earnings</span>
-
-            </a>
-
-
-            <a href="BookTransportation.aspx"
-               class="profile-nav-item">
-
-                <span class="nav-icon">▣</span>
-
-                <span>My Vehicle</span>
-
-            </a>
-
-
-            <a href="Profile.aspx"
-               class="profile-nav-item active">
-
-                <span class="nav-icon">♙</span>
-
-                <span>Profile</span>
-
-            </a>
-
-
-            <a href="#"
-               class="profile-nav-item">
-
-                <span class="nav-icon">⚙</span>
-
-                <span>Settings</span>
-
-            </a>
-
-        </nav>
-        <a href="Login.aspx" class="dash-logout">
-    ↪ &nbsp; Logout
-</a>
-    </aside>
-
-
-
-    <!-- =====================================================
-         MAIN AREA
-    ====================================================== -->
-
-    <main class="profile-main">
-
-
-        <!-- TOP BAR -->
-
-        <header class="profile-topbar">
-
-            <div>
-
-                <h1>
-                    My Profile
-                </h1>
-
-                <p>
-                    Manage your personal credentials, fleet stats, and performance verification.
-                </p>
-
-            </div>
-
-
-            <div class="profile-user">
-
-                <div class="user-avatar">
-                    👤
-                </div>
-
-                <div>
-
-                    <div class="user-name">
-                        Nandan Nasit
-                    </div>
-
-                    <div class="user-role">
-                        Standard Customer
-                    </div>
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-
-        <!-- =====================================================
-             CONTENT
-        ====================================================== -->
-
-        <section class="profile-content">
-
-
-            <!-- TABS -->
-
-            <div class="profile-tabs">
-
-                <a href="EditProfile.aspx"
-                   class="profile-tab active">
-
-                    Personal Information
-
-                </a>
-
-                
-
-               
-
-            </div>
-
-
-
-            <!-- =================================================
-                 PROFILE CARD
-            ================================================== -->
-
-            <div class="edit-profile-card">
-
-
-                <!-- PHOTO -->
-
-                <div class="photo-section">
-
-                    <div class="profile-photo">
-
-                        <asp:Image
-                            ID="imgProfile"
-                            runat="server"
-                            ImageUrl="~/Images/profile.jpg"
-                            AlternateText="Profile Photo" />
-
-                    </div>
-
-
-                    <asp:FileUpload
-                        ID="fuProfilePhoto"
-                        runat="server"
-                        CssClass="photo-upload" />
-                    
-
-<<<<<<< HEAD
-
-                    <asp:Button
-                        ID="btnChangePhoto"
-                        runat="server"
-                        Text="Change Photo"
-                        CssClass="change-photo-button"
-                        CausesValidation="false"
-                        OnClick="btnChangePhoto_Click" />
-
-
-                    <div class="photo-help">
-                        Allowed JPG, GIF or PNG. Max size of 800KB
-                    </div>
-=======
-                    <div class="photo-help" style="font-size: 16px;"> Allowed JPG, PNG. Max size of 800KB </div>
->>>>>>> b6e13b2266c5fae05778295a473402432b5fa4a1
-
-                </div>
-
-
-
-                <!-- FORM -->
-
-                <div class="profile-form">
-
-
-                    <!-- ROW 1 -->
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label>
-                                Full Name
-                            </label>
-
-                            <asp:TextBox
-                                ID="txtFullName"
-                                runat="server"
-                                CssClass="profile-input"
-                                Text="Nandan Nasit">
-                            </asp:TextBox>
-
-                            <asp:RequiredFieldValidator
-                                ID="rfvFullName"
-                                runat="server"
-                                ControlToValidate="txtFullName"
-                                ErrorMessage="Full name is required."
-                                ForeColor="Red"
-                                Display="Dynamic">
-                            </asp:RequiredFieldValidator>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label>
-                                Email
-                            </label>
-
-                            <asp:TextBox
-                                ID="txtEmail"
-                                runat="server"
-                                CssClass="profile-input"
-                                Text="jnandannasit@gmail.com">
-                            </asp:TextBox>
-
-                            <asp:RequiredFieldValidator
-                                ID="rfvEmail"
-                                runat="server"
-                                ControlToValidate="txtEmail"
-                                ErrorMessage="Email is required."
-                                ForeColor="Red"
-                                Display="Dynamic">
-                            </asp:RequiredFieldValidator>
-
-                            <asp:RegularExpressionValidator
-                                ID="revEmail"
-                                runat="server"
-                                ControlToValidate="txtEmail"
-                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                                ErrorMessage="Please enter a valid email address."
-                                ForeColor="Red"
-                                Display="Dynamic">
-                            </asp:RegularExpressionValidator>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- ROW 2 -->
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label>
-                                Phone
-                            </label>
-
-                            <asp:TextBox
-                                ID="txtPhone"
-                                runat="server"
-                                CssClass="profile-input"
-                                Text="98765-43210">
-                            </asp:TextBox>
-
-                            <asp:RequiredFieldValidator
-                                ID="rfvPhone"
-                                runat="server"
-                                ControlToValidate="txtPhone"
-                                ErrorMessage="Phone number is required."
-                                ForeColor="Red"
-                                Display="Dynamic">
-                            </asp:RequiredFieldValidator>
-
-                            <asp:RegularExpressionValidator
-                                ID="revPhone"
-                                runat="server"
-                                ControlToValidate="txtPhone"
-                                ValidationExpression="^[0-9\-\+\s]{7,15}$"
-                                ErrorMessage="Please enter a valid phone number."
-                                ForeColor="Red"
-                                Display="Dynamic">
-                            </asp:RegularExpressionValidator>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label>
-                                Date of Birth
-                            </label>
-
-                            <asp:TextBox
-                                ID="txtDateOfBirth"
-                                runat="server"
-                                CssClass="profile-input"
-                                Text="12 Mar 1990">
-                            </asp:TextBox>
-
-                            <asp:RequiredFieldValidator
-                                ID="rfvDateOfBirth"
-                                runat="server"
-                                ControlToValidate="txtDateOfBirth"
-                                ErrorMessage="Date of birth is required."
-                                ForeColor="Red"
-                                Display="Dynamic">
-                            </asp:RequiredFieldValidator>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- ADDRESS -->
-
-                    <div class="form-group full-width">
-
-                        <label>
-                            Address
-                        </label>
-
-                        <asp:TextBox
-                            ID="txtAddress"
-                            runat="server"
-                            CssClass="profile-input"
-                            Text="Gandhinagar, Gujarat 360002">
-                        </asp:TextBox>
-
-                        <asp:RequiredFieldValidator
-                            ID="rfvAddress"
-                            runat="server"
-                            ControlToValidate="txtAddress"
-                            ErrorMessage="Address is required."
-                            ForeColor="Red"
-                            Display="Dynamic">
-                        </asp:RequiredFieldValidator>
-
-                    </div>
-
-
-
-                    <!-- MESSAGE -->
-
-                    <asp:Label
-                        ID="lblMessage"
-                        runat="server"
-                        CssClass="profile-message">
-                    </asp:Label>
-
-
-
-                    <!-- BUTTONS -->
-
-                    <div class="profile-actions">
-
-                        <asp:Button
-                            ID="btnSave"
-                            runat="server"
-                            Text="Save Changes"
-                            CssClass="save-button"
-                            OnClick="btnSave_Click" />
-
-
-                        <asp:Button
-                            ID="btnCancel"
-                            runat="server"
-                            Text="Cancel"
-                            CssClass="cancel-button"
-                            CausesValidation="false"
-                            OnClick="btnCancel_Click" />
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-</div>
-
-</form>
-
-</body>
-
-</html>
+    </section>
+</asp:Content>

@@ -1,103 +1,16 @@
-<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Title="Add Address" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="AddAddress.aspx.cs"
     Inherits="WebApplication3.AddAddress" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    - Add Address
+</asp:Content>
 
-<head runat="server">
-    <title>Add New Address</title>
+<asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
+    Address Book
+</asp:Content>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link href="CSS/style.css" rel="stylesheet" />
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
-<div class="aa-layout">
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="aa-sidebar">
-
-        <div class="aa-logo">
-            <div class="aa-logo-icon"></div>
-            <span>Transpo</span>
-        </div>
-
-        <nav class="aa-navigation">
-
-            <a href="Dashboard.aspx" class="aa-nav-item">
-                <span class="aa-nav-icon">▦</span>
-                <span>Dashboard</span>
-            </a>
-
-            <a href="BookTransportation.aspx" class="aa-nav-item">
-                <span class="aa-nav-icon">♧</span>
-                <span>Book Transportation</span>
-            </a>
-
-            <a href="MyBookings.aspx" class="aa-nav-item">
-                <span class="aa-nav-icon">☷</span>
-                <span>My Bookings</span>
-            </a>
-
-            <a href="Payments.aspx" class="aa-nav-item">
-                <span class="aa-nav-icon">▱</span>
-                <span>Payments</span>
-            </a>
-
-            <a href="AddressBook.aspx" class="aa-nav-item active">
-                <span class="aa-nav-icon">▣</span>
-                <span>Address Book</span>
-            </a>
-
-            <a href="Profile.aspx" class="aa-nav-item">
-                <span class="aa-nav-icon">♙</span>
-                <span>Profile</span>
-            </a>
-
-        </nav>
-
-        <a href="Login.aspx" class="aa-logout">
-            ↪ &nbsp; Logout
-        </a>
-
-
-    </aside>
-
-
-    <!-- ================= MAIN ================= -->
-
-    <main class="aa-main">
-
-        <!-- TOP BAR -->
-
-        <header class="aa-topbar">
-
-            <h1>Address Book</h1>
-
-            <div class="aa-user">
-
-                <div class="aa-user-avatar">
-                    👤
-                </div>
-
-                <div class="aa-user-info">
-                    <strong>Nandan Nasit</strong>
-                    <span>Standard Customer</span>
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- ================= CONTENT ================= -->
-
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContent" runat="server">
         <section class="aa-content">
 
             <!-- BREADCRUMB -->
@@ -147,15 +60,6 @@
                         placeholder="e.g. Warehouse, Office, Home">
                     </asp:TextBox>
 
-                    <asp:RequiredFieldValidator
-                        ID="rfvAddressLabel"
-                        runat="server"
-                        ControlToValidate="txtAddressLabel"
-                        ErrorMessage="Address label is required."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RequiredFieldValidator>
-
                 </div>
 
 
@@ -173,15 +77,6 @@
                         placeholder="Street address, building name, floor, etc.">
                     </asp:TextBox>
 
-                    <asp:RequiredFieldValidator
-                        ID="rfvFullAddress"
-                        runat="server"
-                        ControlToValidate="txtFullAddress"
-                        ErrorMessage="Full address is required."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RequiredFieldValidator>
-
                 </div>
 
 
@@ -197,15 +92,6 @@
                         CssClass="aa-input"
                         placeholder="Enter city">
                     </asp:TextBox>
-
-                    <asp:RequiredFieldValidator
-                        ID="rfvCity"
-                        runat="server"
-                        ControlToValidate="txtCity"
-                        ErrorMessage="City is required."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RequiredFieldValidator>
 
                 </div>
 
@@ -223,15 +109,6 @@
                         placeholder="Enter state">
                     </asp:TextBox>
 
-                    <asp:RequiredFieldValidator
-                        ID="rfvState"
-                        runat="server"
-                        ControlToValidate="txtState"
-                        ErrorMessage="State is required."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RequiredFieldValidator>
-
                 </div>
 
 
@@ -248,25 +125,6 @@
                         placeholder="6-digit postal code"
                         MaxLength="6">
                     </asp:TextBox>
-
-                    <asp:RequiredFieldValidator
-                        ID="rfvPinCode"
-                        runat="server"
-                        ControlToValidate="txtPinCode"
-                        ErrorMessage="PIN code is required."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RequiredFieldValidator>
-
-                    <asp:RegularExpressionValidator
-                        ID="revPinCode"
-                        runat="server"
-                        ControlToValidate="txtPinCode"
-                        ValidationExpression="^[0-9]{6}$"
-                        ErrorMessage="Please enter a valid 6-digit PIN code."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RegularExpressionValidator>
 
                 </div>
 
@@ -305,25 +163,6 @@
                         CssClass="aa-input"
                         placeholder="+91 98765 43210">
                     </asp:TextBox>
-
-                    <asp:RequiredFieldValidator
-                        ID="rfvPhone"
-                        runat="server"
-                        ControlToValidate="txtPhone"
-                        ErrorMessage="Contact phone is required."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RequiredFieldValidator>
-
-                    <asp:RegularExpressionValidator
-                        ID="revPhone"
-                        runat="server"
-                        ControlToValidate="txtPhone"
-                        ValidationExpression="^[0-9]{10}$"
-                        ErrorMessage="Please enter a valid 10-digit phone number."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RegularExpressionValidator>
 
                 </div>
 
@@ -413,12 +252,4 @@
             </div>
 
         </section>
-
-    </main>
-
-</div>
-
-</form>
-
-</body>
-</html>
+</asp:Content>

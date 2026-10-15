@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebApplication3
 {
@@ -10,14 +10,14 @@ namespace WebApplication3
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Vehicles.aspx");
+            Response.Redirect("Vehicle.aspx");
         }
 
         protected void btnAddVehicle_Click(object sender, EventArgs e)
         {
             // Add database insertion here later.
 
-            Response.Redirect("Vehicles.aspx");
+            Response.Redirect("Vehicle.aspx");
         }
     }
 }

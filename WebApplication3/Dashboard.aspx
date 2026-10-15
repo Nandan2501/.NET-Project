@@ -1,104 +1,19 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Dashboard.aspx.cs"
     Inherits="WebApplication3.Dashboard" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    - Dashboard
+</asp:Content>
 
-<head runat="server">
-    <title>Dashboard</title>
+<asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
+    Dashboard
+</asp:Content>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<asp:Content ID="ContentHead" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
 
-    <link href="CSS/style.css" rel="stylesheet" />
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
-<div class="dash-layout">
-
-    <!-- SIDEBAR -->
-    <aside class="dash-sidebar">
-
-        <div class="dash-logo">
-            <div class="dash-logo-icon"></div>
-            <span>Transpo</span>
-        </div>
-
-        <nav class="dash-navigation">
-
-            <a href="Dashboard.aspx"
-               class="dash-nav-item active">
-                <span class="dash-nav-icon">▦</span>
-                <span>Dashboard</span>
-            </a>
-
-            <a href="BookTransportation.aspx"
-               class="dash-nav-item">
-                <span class="dash-nav-icon">♧</span>
-                <span>Book Transportation</span>
-            </a>
-
-            <a href="Bookings.aspx"
-               class="dash-nav-item">
-                <span class="dash-nav-icon">☷</span>
-                <span>My Bookings</span>
-            </a>
-
-            <a href="Payments.aspx"
-               class="dash-nav-item">
-                <span class="dash-nav-icon">▱</span>
-                <span>Payments</span>
-            </a>
-
-            <a href="AddressBook.aspx"
-               class="dash-nav-item">
-                <span class="dash-nav-icon">▣</span>
-                <span>Address Book</span>
-            </a>
-
-            <a href="Profile.aspx"
-               class="dash-nav-item">
-                <span class="dash-nav-icon">♙</span>
-                <span>Profile</span>
-            </a>
-
-        </nav>
-
-        <a href="Login.aspx" class="dash-logout">
-            ↪ &nbsp; Logout
-        </a>
-
-    </aside>
-
-
-    <!-- MAIN -->
-    <main class="dash-main">
-
-        <!-- TOPBAR -->
-        <header class="dash-topbar">
-
-            <h1>Dashboard</h1>
-
-            <div class="dash-user">
-
-                <div class="dash-user-avatar">
-                    👤
-                </div>
-
-                <div class="dash-user-info">
-                    <strong>Nandan Nasit</strong>
-                    <span>Standard Customer</span>
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- CONTENT -->
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContent" runat="server">
         <section class="dash-content">
 
             <!-- WELCOME -->
@@ -202,7 +117,7 @@
                         <div class="dash-table-row">
 
                             <div class="dash-booking-id">
-                                #BK-8291
+                                TRP-1003
                             </div>
 
                             <div>
@@ -237,7 +152,7 @@
                         <div class="dash-table-row">
 
                             <div class="dash-booking-id">
-                                #BK-7542
+                                TRP-1002
                             </div>
 
                             <div>
@@ -272,7 +187,7 @@
                         <div class="dash-table-row">
 
                             <div class="dash-booking-id">
-                                #BK-6120
+                                TRP-1001
                             </div>
 
                             <div>
@@ -391,13 +306,4 @@
             </div>
 
         </section>
-
-    </main>
-
-</div>
-
-</form>
-
-</body>
-
-</html>
+</asp:Content>

@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
-﻿
->>>>>>> b6e13b2266c5fae05778295a473402432b5fa4a1
+
 <%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="Login.aspx.cs"
     Inherits="WebApplication3.Login" %>
@@ -14,6 +11,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet" />
+    <link href="CSS/style.css" rel="stylesheet" />
     <link href="CSS/Login.css" rel="stylesheet" />
 </head>
 <body>
@@ -52,21 +50,8 @@
                     <asp:TextBox ID="txtEmail"
                         runat="server"
                         CssClass="login-input"
-                        placeholder="Enter email or phone">
+                        placeholder="Enter email ">
                     </asp:TextBox>
-<<<<<<< HEAD
-
-                    <asp:RequiredFieldValidator
-                        ID="rfvEmail"
-                        runat="server"
-                        ControlToValidate="txtEmail"
-                        ErrorMessage="Email or phone is required."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RequiredFieldValidator>
-
-=======
->>>>>>> b6e13b2266c5fae05778295a473402432b5fa4a1
                 </div>
 
                 <div class="login-field">
@@ -85,19 +70,6 @@
                             onclick="togglePassword()"
                             aria-label="Show or hide password">●</button>
                     </div>
-<<<<<<< HEAD
-
-                    <asp:RequiredFieldValidator
-                        ID="rfvPassword"
-                        runat="server"
-                        ControlToValidate="txtPassword"
-                        ErrorMessage="Password is required."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RequiredFieldValidator>
-
-=======
->>>>>>> b6e13b2266c5fae05778295a473402432b5fa4a1
                 </div>
 
                 <div class="forgot-link-container">

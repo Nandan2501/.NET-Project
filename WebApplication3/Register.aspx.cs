@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebApplication3
 {
@@ -50,6 +50,8 @@ namespace WebApplication3
             // Add your database registration code here later.
 
             Session["UserName"] = fullName;
+            Session["FullName"] = fullName;
+            Session["Role"] = "Customer";
             Session["UserEmail"] = email;
             Session["UserPhone"] = phone;
 

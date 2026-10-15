@@ -1,102 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
-    CodeBehind="MyBookings.aspx.cs"
+<%@ Page Title="My Bookings" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+    CodeBehind="Bookings.aspx.cs"
     Inherits="WebApplication3.MyBookings" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    - My Bookings
+</asp:Content>
 
-<head runat="server">
-    <title>My Bookings</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
+    My Bookings
+</asp:Content>
 
-    <link href="CSS/style.css" rel="stylesheet" />
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
-<div class="mb-layout">
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="mb-sidebar">
-
-        <div class="mb-logo">
-            <div class="mb-logo-icon"></div>
-            <span>Transpo</span>
-        </div>
-
-        <nav class="bt-navigation">
-
-    <a href="Dashboard.aspx" class="bt-nav-item">
-        <span class="bt-nav-icon">▦</span>
-        <span>Dashboard</span>
-    </a>
-
-    <a href="BookTransportation.aspx"
-       class="bt-nav-item ">
-        <span class="bt-nav-icon">♧</span>
-        <span>Book Transportation</span>
-    </a>
-
-    <a href="Bookings.aspx" class="bt-nav-item active">
-        <span class="bt-nav-icon">☷</span>
-        <span>My Bookings</span>
-    </a>
-
-    <a href="Payments.aspx" class="bt-nav-item">
-        <span class="bt-nav-icon">▱</span>
-        <span>Payments</span>
-    </a>
-
-    <a href="AddressBook.aspx" class="bt-nav-item">
-        <span class="bt-nav-icon">▣</span>
-        <span>Address Book</span>
-    </a>
-
-    <a href="Profile.aspx" class="bt-nav-item">
-        <span class="bt-nav-icon">♙</span>
-        <span>Profile</span>
-    </a>
-
-</nav>
-
-        <a href="Login.aspx" class="dash-logout">
-    ↪ &nbsp; Logout
-</a>
-
-    </aside>
-
-
-    <!-- ================= MAIN ================= -->
-
-    <main class="mb-main">
-
-        <!-- TOP BAR -->
-
-        <header class="mb-topbar">
-
-            <h1>My Bookings</h1>
-
-            <div class="mb-user">
-
-                <div class="mb-user-avatar">
-                    👤
-                </div>
-
-                <div class="mb-user-info">
-                    <strong>Nandan Nasit</strong>
-                    <span>Standard Customer</span>
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- ================= CONTENT ================= -->
-
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContent" runat="server">
         <section class="mb-content">
 
             <div class="mb-table-card">
@@ -163,12 +77,4 @@
             </div>
 
         </section>
-
-    </main>
-
-</div>
-
-</form>
-
-</body>
-</html>
+</asp:Content>

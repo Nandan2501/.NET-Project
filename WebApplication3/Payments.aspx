@@ -1,138 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Title="Payments" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Payments.aspx.cs"
     Inherits="WebApplication3.Payments" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    - Payments
+</asp:Content>
 
-<head runat="server">
+<asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
+    Payments
+</asp:Content>
 
-    <title>Payments</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link href="CSS/style.css" rel="stylesheet" />
-
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
-<div class="payments-layout">
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="payments-sidebar">
-
-        <div class="payments-logo">
-
-            <div class="payments-logo-icon">
-                ▰
-            </div>
-
-            <span>Transpo</span>
-
-        </div>
-
-
-        <nav class="payments-navigation">
-
-            <a href="Dashboard.aspx"
-               class="payments-nav-item">
-
-                <span class="payments-nav-icon">▦</span>
-                <span>Dashboard</span>
-
-            </a>
-
-
-            <a href="BookTransportation.aspx"
-               class="payments-nav-item">
-
-                <span class="payments-nav-icon">♧</span>
-                <span>Book Transportation</span>
-
-            </a>
-
-
-            <a href="Bookings.aspx"
-               class="payments-nav-item">
-
-                <span class="payments-nav-icon">☷</span>
-                <span>My Bookings</span>
-
-            </a>
-
-
-            <a href="Payments.aspx"
-               class="payments-nav-item active">
-
-                <span class="payments-nav-icon">▱</span>
-                <span>Payments</span>
-
-            </a>
-
-
-            <a href="AddressBook.aspx"
-               class="payments-nav-item">
-
-                <span class="payments-nav-icon">▣</span>
-                <span>Address Book</span>
-
-            </a>
-
-
-            <a href="Profile.aspx"
-               class="payments-nav-item">
-
-                <span class="payments-nav-icon">♙</span>
-                <span>Profile</span>
-
-            </a>
-
-        </nav>
-        <a href="Login.aspx" class="dash-logout">
-    ↪ &nbsp; Logout
-</a>
-    </aside>
-
-
-
-    <!-- ================= MAIN ================= -->
-
-    <main class="payments-main">
-
-
-        <!-- TOPBAR -->
-
-        <header class="payments-topbar">
-
-            <h1>Payments</h1>
-
-
-            <div class="payments-user">
-
-                <div class="payments-user-avatar">
-                    👤
-                </div>
-
-                <div class="payments-user-info">
-
-                    <strong>Nandan Nasit</strong>
-
-                    <span>Standard Customer</span>
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-
-        <!-- CONTENT -->
-
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContent" runat="server">
         <section class="payments-content">
 
 
@@ -256,9 +134,9 @@
                             <tr>
 
                                 <td>
-                                    <a href="#">
+                                    <a href="">
                                         TRP-1004
-                                    </a>
+                                   
                                 </td>
 
                                 <td>
@@ -285,7 +163,7 @@
                             <tr>
 
                                 <td>
-                                    <a href="#">
+                                    <a href="">
                                         TRP-1003
                                     </a>
                                 </td>
@@ -314,7 +192,7 @@
                             <tr>
 
                                 <td>
-                                    <a href="#">
+                                    <a href="">
                                         TRP-1002
                                     </a>
                                 </td>
@@ -343,7 +221,7 @@
                             <tr>
 
                                 <td>
-                                    <a href="#">
+                                    <a href="">
                                         TRP-1001
                                     </a>
                                 </td>
@@ -372,7 +250,7 @@
                             <tr>
 
                                 <td>
-                                    <a href="#">
+                                    <a href="">
                                         TRP-1000
                                     </a>
                                 </td>
@@ -406,13 +284,4 @@
             </div>
 
         </section>
-
-    </main>
-
-</div>
-
-</form>
-
-</body>
-
-</html>
+</asp:Content>

@@ -1,100 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
-    CodeBehind="BookingDetails.aspx.cs"
+<%@ Page Title="Booking Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+    CodeBehind="BookDetails.aspx.cs"
     Inherits="WebApplication3.BookingDetails" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    - Booking Details
+</asp:Content>
 
-<head runat="server">
-    <title>Booking Details</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
+    My Bookings
+</asp:Content>
 
-    <link href="CSS/style.css" rel="stylesheet" />
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
-<div class="bd-layout">
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="bd-sidebar">
-
-        <div class="bd-logo">
-            <div class="bd-logo-icon"></div>
-            <span>Transpo</span>
-        </div>
-
-        <nav class="bd-navigation">
-
-            <a href="Dashboard.aspx" class="bd-nav-item">
-                <span class="bd-nav-icon">▦</span>
-                <span>Dashboard</span>
-            </a>
-
-            <a href="BookTransportation.aspx" class="bd-nav-item">
-                <span class="bd-nav-icon">♧</span>
-                <span>Book Transportation</span>
-            </a>
-
-            <a href="MyBookings.aspx" class="bd-nav-item active">
-                <span class="bd-nav-icon">☷</span>
-                <span>My Bookings</span>
-            </a>
-
-            <a href="Payments.aspx" class="bd-nav-item">
-                <span class="bd-nav-icon">▱</span>
-                <span>Payments</span>
-            </a>
-
-            <a href="AddressBook.aspx" class="bd-nav-item">
-                <span class="bd-nav-icon">▣</span>
-                <span>Address Book</span>
-            </a>
-
-            <a href="Profile.aspx" class="bd-nav-item">
-                <span class="bd-nav-icon">♙</span>
-                <span>Profile</span>
-            </a>
-            
-        </nav>
-
-        <a href="Login.aspx" class="dash-logout">
-    ↪ &nbsp; Logout
-</a>
-    </aside>
-
-
-    <!-- ================= MAIN ================= -->
-
-    <main class="bd-main">
-
-        <!-- TOP BAR -->
-
-        <header class="bd-topbar">
-
-            <h1>Booking Details</h1>
-
-            <div class="bd-user">
-
-                <div class="bd-user-avatar">
-                    👤
-                </div>
-
-                <div class="bd-user-info">
-                    <strong>Nandan Nasit</strong>
-                    <span>Standard Customer</span>
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- ================= CONTENT ================= -->
-
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContent" runat="server">
         <section class="bd-content">
 
             <!-- BOOKING TITLE -->
@@ -242,12 +158,4 @@
             </div>
 
         </section>
-
-    </main>
-
-</div>
-
-</form>
-
-</body>
-</html>
+</asp:Content>

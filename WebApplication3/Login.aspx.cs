@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebApplication3
 {
@@ -31,18 +31,24 @@ namespace WebApplication3
             if (email == "customer@transpo.com" && password == "123456")
             {
                 Session["UserEmail"] = email;
+                Session["Role"] = "Customer";
+                Session["FullName"] = "Nandan Nasit";
 
                 Response.Redirect("Dashboard.aspx");
             }
-            if (email == "driver@transpo.com" && password == "123456")
+            else if (email == "driver@transpo.com" && password == "123456")
             {
                 Session["UserEmail"] = email;
+                Session["Role"] = "Driver";
+                Session["FullName"] = "Yashrajsinh";
 
                 Response.Redirect("Driver/dashboard.aspx");
             }
-            if (email == "admin@transpo.com" && password == "123456")
+            else if (email == "admin@transpo.com" && password == "123456")
             {
                 Session["UserEmail"] = email;
+                Session["Role"] = "Admin";
+                Session["FullName"] = "Admin User";
 
                 Response.Redirect("Admin/Dashboard.aspx");
             }

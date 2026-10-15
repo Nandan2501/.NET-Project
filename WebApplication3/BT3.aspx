@@ -1,141 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Title="Review & Confirm - Book Transportation" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="BT3.aspx.cs"
     Inherits="WebApplication3.BT3" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head runat="server">
-
-    <title>Book Transportation - Review &amp; Confirm</title>
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0" />
-
-    <link href="CSS/style.css" rel="stylesheet" />
-
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
-<div class="rc-layout">
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="rc-sidebar">
-
-        <div class="rc-logo">
-
-            <div class="rc-logo-icon"></div>
-
-            <span>Transpo</span>
-
-        </div>
-
-
-        <nav class="rc-navigation">
-
-            <a href="Dashboard.aspx"
-               class="rc-nav-item">
-
-                <span class="rc-nav-icon">▦</span>
-                <span>Dashboard</span>
-
-            </a>
-
-
-            <a href="BookTransportation.aspx"
-               class="rc-nav-item active">
-
-                <span class="rc-nav-icon">♧</span>
-                <span>Book Transportation</span>
-
-            </a>
-
-
-            <a href="MyBookings.aspx"
-               class="rc-nav-item">
-
-                <span class="rc-nav-icon">☷</span>
-                <span>My Bookings</span>
-
-            </a>
-
-
-            <a href="Payments.aspx"
-               class="rc-nav-item">
-
-                <span class="rc-nav-icon">▱</span>
-                <span>Payments</span>
-
-            </a>
-
-
-            <a href="AddressBook.aspx"
-               class="rc-nav-item">
-
-                <span class="rc-nav-icon">▣</span>
-                <span>Address Book</span>
-
-            </a>
-
-
-            <a href="Profile.aspx"
-               class="rc-nav-item">
-
-                <span class="rc-nav-icon">♙</span>
-                <span>Profile</span>
-
-            </a>
-
-        </nav>
-
-
-        <a href="Login.aspx" class="dash-logout">
-    ↪ &nbsp; Logout
-</a>
-
-    </aside>
-
-
-
-    <!-- ================= MAIN ================= -->
-
-    <main class="rc-main">
-
-
-        <!-- TOP BAR -->
-
-        <header class="rc-topbar">
-
-            <h1>Book Transportation</h1>
-
-
-            <div class="rc-user">
-
-                <div class="rc-user-avatar">
-                    👤
-                </div>
-
-
-                <div class="rc-user-info">
-
-                    <strong>Nandan Nasit</strong>
-
-                    <span>Standard Customer</span>
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-
-        <!-- ================= CONTENT ================= -->
-
+<asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    - Review &amp; Confirm
+</asp:Content>
+
+<asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
+    Book Transportation
+</asp:Content>
+
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContent" runat="server">
         <section class="rc-content">
 
 
@@ -449,13 +324,4 @@
             </div>
 
         </section>
-
-    </main>
-
-</div>
-
-</form>
-
-</body>
-
-</html>
+</asp:Content>

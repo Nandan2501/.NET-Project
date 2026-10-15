@@ -1,101 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Title="Address Book" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="AddressBook.aspx.cs"
     Inherits="WebApplication3.AddressBook" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    - Address Book
+</asp:Content>
 
-<head runat="server">
-    <title>Address Book</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
+    Address Book
+</asp:Content>
 
-    <link href="CSS/style.css" rel="stylesheet" />
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
-<div class="ab-layout">
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="ab-sidebar">
-
-        <div class="ab-logo">
-            <div class="ab-logo-icon"></div>
-            <span>Transpo</span>
-        </div>
-
-        <nav class="ab-navigation">
-
-            <a href="Dashboard.aspx" class="ab-nav-item">
-                <span class="ab-nav-icon">▦</span>
-                <span>Dashboard</span>
-            </a>
-
-            <a href="BookTransportation.aspx" class="ab-nav-item">
-                <span class="ab-nav-icon">♧</span>
-                <span>Book Transportation</span>
-            </a>
-
-            <a href="MyBookings.aspx" class="ab-nav-item">
-                <span class="ab-nav-icon">☷</span>
-                <span>My Bookings</span>
-            </a>
-
-            <a href="Payments.aspx" class="ab-nav-item">
-                <span class="ab-nav-icon">▱</span>
-                <span>Payments</span>
-            </a>
-
-            <a href="AddressBook.aspx" class="ab-nav-item active">
-                <span class="ab-nav-icon">▣</span>
-                <span>Address Book</span>
-            </a>
-
-            <a href="Profile.aspx" class="ab-nav-item">
-                <span class="ab-nav-icon">♙</span>
-                <span>Profile</span>
-            </a>
-
-        </nav>
-
-        
-        <a href="Login.aspx" class="dash-logout">
-            ↪ &nbsp; Logout
-        </a>
-    </aside>
-
-
-    <!-- ================= MAIN ================= -->
-
-    <main class="ab-main">
-
-        <!-- TOP BAR -->
-
-        <header class="ab-topbar">
-
-            <h1>Address Book</h1>
-
-            <div class="ab-user">
-
-                <div class="ab-user-avatar">
-                    👤
-                </div>
-
-                <div class="ab-user-info">
-                    <strong>Nandan Nasit</strong>
-                    <span>Standard Customer</span>
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- ================= CONTENT ================= -->
-
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContent" runat="server">
         <section class="ab-content">
 
             <!-- HEADER CARD -->
@@ -166,13 +81,7 @@
                         CssClass="ab-icon-btn edit-btn"
                         OnClick="btnEdit_Click" />
 
-                    <asp:Button
-                        ID="btnDelete1"
-                        runat="server"
-                        Text="▥"
-                        CommandArgument="1"
-                        CssClass="ab-icon-btn delete-btn"
-                        OnClick="btnDelete_Click" />
+                  
 
                 </div>
 
@@ -217,13 +126,7 @@
                         CssClass="ab-icon-btn edit-btn"
                         OnClick="btnEdit_Click" />
 
-                    <asp:Button
-                        ID="btnDelete2"
-                        runat="server"
-                        Text="▥"
-                        CommandArgument="2"
-                        CssClass="ab-icon-btn delete-btn"
-                        OnClick="btnDelete_Click" />
+                   
 
                 </div>
 
@@ -268,13 +171,7 @@
                         CssClass="ab-icon-btn edit-btn"
                         OnClick="btnEdit_Click" />
 
-                    <asp:Button
-                        ID="btnDelete3"
-                        runat="server"
-                        Text="▥"
-                        CommandArgument="3"
-                        CssClass="ab-icon-btn delete-btn"
-                        OnClick="btnDelete_Click" />
+                   
 
                 </div>
 
@@ -319,25 +216,11 @@
                         CssClass="ab-icon-btn edit-btn"
                         OnClick="btnEdit_Click" />
 
-                    <asp:Button
-                        ID="btnDelete4"
-                        runat="server"
-                        Text="▥"
-                        CommandArgument="4"
-                        CssClass="ab-icon-btn delete-btn"
-                        OnClick="btnDelete_Click" />
+                   
 
                 </div>
 
             </div>
 
         </section>
-
-    </main>
-
-</div>
-
-</form>
-
-</body>
-</html>
+</asp:Content>

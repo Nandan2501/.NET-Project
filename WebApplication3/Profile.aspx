@@ -1,150 +1,16 @@
-<%@ Page Language="C#" AutoEventWireup="true"
-    CodeBehind="EditProfile.aspx.cs"
-    Inherits="WebApplication3.EditProfile" %>
+<%@ Page Title="Profile" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+    CodeBehind="Profile.aspx.cs"
+    Inherits="WebApplication3.Profile" %>
 
-<!DOCTYPE html>
+<asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    - My Profile
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
+    Profile
+</asp:Content>
 
-<head runat="server">
-
-    <title>Transpo - My Profile</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet" />
-
-    <link href="CSS/style.css"
-          rel="stylesheet" />
-
-    <link href="CSS/editprofile.css"
-          rel="stylesheet" />
-
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
-<div class="profile-page">
-
-
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
-
-    <aside class="profile-sidebar">
-
-        <div class="profile-logo">
-
-            <div class="profile-logo-icon">
-                ▣
-            </div>
-
-            <span>Transpo</span>
-
-        </div>
-
-
- <nav class="dash-navigation">
-
-     <a href="Dashboard.aspx"
-        class="dash-nav-item ">
-         <span class="dash-nav-icon">▦</span>
-         <span>Dashboard</span>
-     </a>
-
-     <a href="BookTransportation.aspx"
-        class="dash-nav-item">
-         <span class="dash-nav-icon">♧</span>
-         <span>Book Transportation</span>
-     </a>
-
-     <a href="Bookings.aspx"
-        class="dash-nav-item">
-         <span class="dash-nav-icon">☷</span>
-         <span>My Bookings</span>
-     </a>
-
-     <a href="Payments.aspx"
-        class="dash-nav-item">
-         <span class="dash-nav-icon">▱</span>
-         <span>Payments</span>
-     </a>
-
-     <a href="AddressBook.aspx"
-        class="dash-nav-item">
-         <span class="dash-nav-icon">▣</span>
-         <span>Address Book</span>
-     </a>
-
-     <a href="Profile.aspx"
-        class="dash-nav-item active">
-         <span class="dash-nav-icon">♙</span>
-         <span>Profile</span>
-     </a>
-
- </nav>
-        <a href="Login.aspx" class="dash-logout">
-    ↪ &nbsp; Logout
-</a>
-    </aside>
-
-
-
-    <!-- =====================================================
-         MAIN AREA
-    ====================================================== -->
-
-    <main class="profile-main">
-
-
-        <!-- TOP BAR -->
-
-        <header class="profile-topbar">
-
-            <div>
-
-                <h1>
-                    My Profile
-                </h1>
-
-                <p>
-                    Manage your personal credentials, fleet stats, and performance verification.
-                </p>
-
-            </div>
-
-
-            <div class="profile-user">
-
-                <div class="user-avatar">
-                    👤
-                </div>
-
-                <div>
-
-                    <div class="user-name">
-                        Nandan Nasit
-                    </div>
-
-                    <div class="user-role">
-                        Standard Customer
-                    </div>
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-
-        <!-- =====================================================
-             CONTENT
-        ====================================================== -->
-
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContent" runat="server">
         <section class="profile-content">
 
 
@@ -187,42 +53,8 @@
         ImageUrl="~/Images/profile.jpg"
         AlternateText="Profile Photo" />
 
-<<<<<<< HEAD
-                    <div class="profile-photo">
-
-                        <asp:Image
-                            ID="imgProfile"
-                            runat="server"
-                            ImageUrl="~/Images/profile.jpg"
-                            AlternateText="Profile Photo" />
-
-                    </div>
-
-
-                    <asp:FileUpload
-                        ID="fuProfilePhoto"
-                        runat="server"
-                        CssClass="photo-upload" />
-
-
-                    <asp:Button
-                        ID="btnChangePhoto"
-                        runat="server"
-                        Text="Change Photo"
-                        CssClass="change-photo-button"
-                        CausesValidation="false"
-                        OnClick="btnChangePhoto_Click" />
-
-
-                    <div class="photo-help">
-                        Allowed JPG, GIF or PNG. Max size of 800KB
-                    </div>
-
-                </div>
-=======
    
 </div>
->>>>>>> b6e13b2266c5fae05778295a473402432b5fa4a1
 
 
 
@@ -297,7 +129,7 @@
                             </label>
 
                             <asp:TextBox
-                                ID="txtDateOfBirth"
+                                ID="txtDOB"
                                 runat="server"
                                 CssClass="profile-input"
                                 Text="12 Mar 1990">
@@ -347,7 +179,6 @@
                             runat="server"
                             Text="Edit Profile"
                             CssClass="profile-edit-btn"
-                            CausesValidation="false"
                             PostBackUrl="EditProfile.aspx" />
 
                     </div>
@@ -357,13 +188,4 @@
             </div>
 
         </section>
-
-    </main>
-
-</div>
-
-</form>
-
-</body>
-
-</html>
+</asp:Content>

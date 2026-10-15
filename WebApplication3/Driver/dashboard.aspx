@@ -1,332 +1,66 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Dashboard.aspx.cs"
     Inherits="WebApplication3.Driver.Dashboard" %>
 
-<!DOCTYPE html>
+<asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContent" runat="server">
+    Driver Dashboard - Transpo
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="PageTitleContent" ContentPlaceHolderID="PageTitle" runat="server">
+    <div class="driver-welcome-topbar">
+        <h1 style="font-size: 22px; font-weight: 700; color: #172238; margin: 0 0 4px; line-height: 1.2;">Welcome Back, Yashrajsinh 👋</h1>
+        <p style="margin: 0; color: #71819a; font-size: 13px; font-weight: 400; line-height: 1.2;">Here is your fleet performance for today.</p>
+    </div>
+</asp:Content>
 
-<head runat="server">
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
 
-    <title>Driver Dashboard - Transpo</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet" />
-
-    <!-- Common CSS -->
- <link href="../CSS/style.css?v=2"
-      rel="stylesheet"
-      type="text/css" />
-
-    
-
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="driver-page">
 
-        <!-- =====================================================
-             SIDEBAR
-        ====================================================== -->
+        <!-- CONTENT -->
+        <section class="driver-content" style="padding-top: 15px;">
 
-        <aside class="driver-sidebar">
-
-            <!-- LOGO -->
-
-            <div class="driver-logo">
-
-                <div class="driver-logo-icon">
-                    ▣
+            <!-- STAT CARDS -->
+            <div class="driver-stats">
+                <div class="driver-stat-card">
+                    <span class="driver-stat-title">Active Trips</span>
+                    <strong class="driver-stat-value">3</strong>
                 </div>
 
-                <span>Transpo</span>
+                <div class="driver-stat-card">
+                    <span class="driver-stat-title">Total Distance</span>
+                    <strong class="driver-stat-value">320 km</strong>
+                </div>
 
+                <div class="driver-stat-card">
+                    <span class="driver-stat-title">Weekly Earnings</span>
+                    <strong class="driver-stat-value earnings">₹4,500</strong>
+                </div>
             </div>
 
+            <!-- ACTIVE DELIVERY ROUTE -->
+            <div class="active-route-card">
+                <h2>Active Delivery Route</h2>
+                <div class="route-box">
+                    <div class="route-location">
+                        <div class="route-marker start-marker"></div>
+                        <div class="route-location-info"><strong>Ahmedabad Hub</strong></div>
+                        <span class="route-time">10:00 AM</span>
+                    </div>
 
-            <!-- NAVIGATION -->
+                    <div class="route-line"></div>
 
-            <nav class="driver-navigation">
-
-                <a href="Dashboard.aspx"
-                   class="driver-nav-item active">
-
-                    <span class="driver-nav-icon">▦</span>
-
-                    <span>Dashboard</span>
-
-                </a>
-
-
-                <a href="trips.aspx"
-                   class="driver-nav-item">
-
-                    <span class="driver-nav-icon">→</span>
-
-                    <span>My Trips</span>
-
-                </a>
-
-
-                <a href="ActiveTrip.aspx"
-                   class="driver-nav-item">
-
-                    <span class="driver-nav-icon">♡</span>
-
-                    <span>Active Trip</span>
-
-                </a>
-
-
-                <a href="MyEarnings.aspx"
-                   class="driver-nav-item">
-
-                    <span class="driver-nav-icon">▤</span>
-
-                    <span>My Earnings</span>
-
-                </a>
-
-
-                <a href="MyVehicle.aspx"
-                   class="driver-nav-item">
-
-                    <span class="driver-nav-icon">▱</span>
-
-                    <span>My Vehicle</span>
-
-                </a>
-
-
-                <a href="Profile.aspx"
-                   class="driver-nav-item">
-
-                    <span class="driver-nav-icon">♙</span>
-
-                    <span>Profile</span>
-
-                </a>
-
-
-                <a href="Settings.aspx"
-                   class="driver-nav-item">
-
-                    <span class="driver-nav-icon">⚙</span>
-
-                    <span>Settings</span>
-
-                </a>
-
-            </nav>
-
-
-            <!-- LOGOUT -->
-
-            <div class="driver-logout">
-
-                <a href="../Login.aspx">
-
-                    <span>↪</span>
-
-                    <span>Logout</span>
-
-                </a>
-
+                    <div class="route-location">
+                        <div class="route-marker end-marker"></div>
+                        <div class="route-location-info"><strong>Surat Delivery Office</strong></div>
+                        <span class="route-time">01:30 PM (Est.)</span>
+                    </div>
+                </div>
             </div>
 
-        </aside>
-
-
-        <!-- =====================================================
-             MAIN CONTENT
-        ====================================================== -->
-
-        <main class="driver-main">
-
-
-            <!-- TOP BAR -->
-
-            <header class="driver-topbar">
-
-                <div class="driver-welcome">
-
-                    <h1>
-                        Welcome Back, Yashrajsinh 👋
-                    </h1>
-
-                    <p>
-                        Here is your fleet performance for today.
-                    </p>
-
-                </div>
-
-
-                <!-- DRIVER PROFILE -->
-
-                <div class="driver-user">
-
-                    <div class="driver-user-photo">
-                        ♟
-                    </div>
-
-                    <div class="driver-user-details">
-
-                        <strong>
-                            Yashrajsinh
-                        </strong>
-
-                        <span>
-                            Driver
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </header>
-
-
-            <!-- =================================================
-                 CONTENT
-            ================================================== -->
-
-            <section class="driver-content">
-
-
-                <!-- =================================================
-                     STAT CARDS
-                ================================================== -->
-
-                <div class="driver-stats">
-
-
-                    <!-- ACTIVE TRIPS -->
-
-                    <div class="driver-stat-card">
-
-                        <span class="driver-stat-title">
-                            Active Trips
-                        </span>
-
-                        <strong class="driver-stat-value">
-                            3
-                        </strong>
-
-                    </div>
-
-
-                    <!-- TOTAL DISTANCE -->
-
-                    <div class="driver-stat-card">
-
-                        <span class="driver-stat-title">
-                            Total Distance
-                        </span>
-
-                        <strong class="driver-stat-value">
-                            320 km
-                        </strong>
-
-                    </div>
-
-
-                    <!-- WEEKLY EARNINGS -->
-
-                    <div class="driver-stat-card">
-
-                        <span class="driver-stat-title">
-                            Weekly Earnings
-                        </span>
-
-                        <strong class="driver-stat-value earnings">
-                            ₹4,500
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     ACTIVE DELIVERY ROUTE
-                ================================================== -->
-
-                <div class="active-route-card">
-
-                    <h2>
-                        Active Delivery Route
-                    </h2>
-
-
-                    <div class="route-box">
-
-
-                        <!-- START LOCATION -->
-
-                        <div class="route-location">
-
-                            <div class="route-marker start-marker">
-                            </div>
-
-                            <div class="route-location-info">
-
-                                <strong>
-                                    Ahmedabad Hub
-                                </strong>
-
-                            </div>
-
-                            <span class="route-time">
-                                10:00 AM
-                            </span>
-
-                        </div>
-
-
-                        <!-- ROUTE LINE -->
-
-                        <div class="route-line">
-                        </div>
-
-
-                        <!-- DESTINATION -->
-
-                        <div class="route-location">
-
-                            <div class="route-marker end-marker">
-                            </div>
-
-                            <div class="route-location-info">
-
-                                <strong>
-                                    Surat Delivery Office
-                                </strong>
-
-                            </div>
-
-                            <span class="route-time">
-                                01:30 PM (Est.)
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        </main>
+        </section>
 
     </div>
-
-</form>
-
-</body>
-
-</html>
+</asp:Content>

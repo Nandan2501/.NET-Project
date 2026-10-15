@@ -1,103 +1,16 @@
-<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Title="Book Transportation" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="BookTransportation.aspx.cs"
     Inherits="WebApplication3.BookTransportation" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    - Book Transportation
+</asp:Content>
 
-<head runat="server">
-    <title>Book Transportation</title>
+<asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
+    Book Transportation
+</asp:Content>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link href="CSS/style.css" rel="stylesheet" />
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
-<div class="bt-layout">
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="bt-sidebar">
-
-        <div class="bt-logo">
-            <div class="bt-logo-icon"></div>
-            <span>Transpo</span>
-        </div>
-
-        <nav class="bt-navigation">
-
-            <a href="Dashboard.aspx" class="bt-nav-item">
-                <span class="bt-nav-icon">▦</span>
-                <span>Dashboard</span>
-            </a>
-
-            <a href="BookTransportation.aspx"
-               class="bt-nav-item active">
-                <span class="bt-nav-icon">♧</span>
-                <span>Book Transportation</span>
-            </a>
-
-            <a href="Bookings.aspx" class="bt-nav-item">
-                <span class="bt-nav-icon">☷</span>
-                <span>My Bookings</span>
-            </a>
-
-            <a href="Payments.aspx" class="bt-nav-item">
-                <span class="bt-nav-icon">▱</span>
-                <span>Payments</span>
-            </a>
-
-            <a href="AddressBook.aspx" class="bt-nav-item">
-                <span class="bt-nav-icon">▣</span>
-                <span>Address Book</span>
-            </a>
-
-            <a href="Profile.aspx" class="bt-nav-item">
-                <span class="bt-nav-icon">♙</span>
-                <span>Profile</span>
-            </a>
-
-        </nav>
-
-     <a href="Login.aspx" class="dash-logout">
-    ↪ &nbsp; Logout
-</a>
-
-    </aside>
-
-
-    <!-- ================= MAIN ================= -->
-
-    <main class="bt-main">
-
-        <!-- TOP BAR -->
-
-        <header class="bt-topbar">
-
-            <h1>Book Transportation</h1>
-
-            <div class="bt-user">
-
-                <div class="bt-user-avatar">
-                    👤
-                </div>
-
-                <div class="bt-user-info">
-                    <strong>Nandan Nasit</strong>
-                    <span>Standard Customer</span>
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- ================= CONTENT ================= -->
-
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContent" runat="server">
         <section class="bt-content">
 
             <!-- PROGRESS -->
@@ -163,15 +76,6 @@
                         Text="Rajkot, gujarat">
                     </asp:TextBox>
 
-                    <asp:RequiredFieldValidator
-                        ID="rfvFrom"
-                        runat="server"
-                        ControlToValidate="txtFrom"
-                        ErrorMessage="From location is required."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RequiredFieldValidator>
-
                 </div>
 
 
@@ -189,15 +93,6 @@
                         CssClass="bt-input"
                         Text="baroda,gujarat">
                     </asp:TextBox>
-
-                    <asp:RequiredFieldValidator
-                        ID="rfvTo"
-                        runat="server"
-                        ControlToValidate="txtTo"
-                        ErrorMessage="To location is required."
-                        ForeColor="Red"
-                        Display="Dynamic">
-                    </asp:RequiredFieldValidator>
 
                 </div>
 
@@ -251,15 +146,6 @@
                             CssClass="bt-input">
                         </asp:TextBox>
 
-                        <asp:RequiredFieldValidator
-                            ID="rfvDate"
-                            runat="server"
-                            ControlToValidate="txtDate"
-                            ErrorMessage="Preferred date is required."
-                            ForeColor="Red"
-                            Display="Dynamic">
-                        </asp:RequiredFieldValidator>
-
                     </div>
 
                 </div>
@@ -296,12 +182,4 @@
             </div>
 
         </section>
-
-    </main>
-
-</div>
-
-</form>
-
-</body>
-</html>
+</asp:Content>

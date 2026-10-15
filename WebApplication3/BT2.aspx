@@ -1,98 +1,16 @@
-<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Title="Load Details - Book Transportation" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="BT2.aspx.cs"
     Inherits="WebApplication3.BT2" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    - Load Details
+</asp:Content>
 
-<head runat="server">
-    <title>Book Transportation - Load Details</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
+    Book Transportation
+</asp:Content>
 
-    <link href="CSS/style.css" rel="stylesheet" />
-</head>
-
-<body>
-
-<form id="form1" runat="server">
-
-<div class="ld-layout">
-
-    <!-- SIDEBAR -->
-    <aside class="ld-sidebar">
-
-        <div class="ld-logo">
-            <div class="ld-logo-icon"></div>
-            <span>Transpo</span>
-        </div>
-
-        <nav class="ld-navigation">
-
-            <a href="Dashboard.aspx" class="ld-nav-item">
-                <span class="ld-nav-icon">▦</span>
-                <span>Dashboard</span>
-            </a>
-
-            <a href="BookTransportation.aspx"
-               class="ld-nav-item active">
-                <span class="ld-nav-icon">♧</span>
-                <span>Book Transportation</span>
-            </a>
-
-            <a href="MyBookings.aspx" class="ld-nav-item">
-                <span class="ld-nav-icon">☷</span>
-                <span>My Bookings</span>
-            </a>
-
-            <a href="Payments.aspx" class="ld-nav-item">
-                <span class="ld-nav-icon">▱</span>
-                <span>Payments</span>
-            </a>
-
-            <a href="AddressBook.aspx" class="ld-nav-item">
-                <span class="ld-nav-icon">▣</span>
-                <span>Address Book</span>
-            </a>
-
-            <a href="Profile.aspx" class="ld-nav-item">
-                <span class="ld-nav-icon">♙</span>
-                <span>Profile</span>
-            </a>
-
-        </nav>
-
-        <a href="Login.aspx" class="dash-logout">
-    ↪ &nbsp; Logout
-</a>
-
-    </aside>
-
-
-    <!-- MAIN -->
-    <main class="ld-main">
-
-        <!-- TOP BAR -->
-        <header class="ld-topbar">
-
-            <h1>Book Transportation</h1>
-
-            <div class="ld-user">
-
-                <div class="ld-user-avatar">
-                    👤
-                </div>
-
-                <div class="ld-user-info">
-                    <strong>Nandan Nasit</strong>
-                    <span>Standard Customer</span>
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- CONTENT -->
+<asp:Content ID="ContentMain" ContentPlaceHolderID="MainContent" runat="server">
         <section class="ld-content">
 
             <!-- PROGRESS -->
@@ -178,15 +96,6 @@
                             Text="850">
                         </asp:TextBox>
 
-                        <asp:RequiredFieldValidator
-                            ID="rfvWeight"
-                            runat="server"
-                            ControlToValidate="txtWeight"
-                            ErrorMessage="Weight is required."
-                            ForeColor="Red"
-                            Display="Dynamic">
-                        </asp:RequiredFieldValidator>
-
                     </div>
 
                 </div>
@@ -207,15 +116,6 @@
                             CssClass="ld-input"
                             Text="12">
                         </asp:TextBox>
-
-                        <asp:RequiredFieldValidator
-                            ID="rfvPackages"
-                            runat="server"
-                            ControlToValidate="txtPackages"
-                            ErrorMessage="Number of packages is required."
-                            ForeColor="Red"
-                            Display="Dynamic">
-                        </asp:RequiredFieldValidator>
 
                     </div>
 
@@ -250,33 +150,6 @@
                             </asp:TextBox>
 
                         </div>
-
-                        <asp:RequiredFieldValidator
-                            ID="rfvLength"
-                            runat="server"
-                            ControlToValidate="txtLength"
-                            ErrorMessage="Length is required."
-                            ForeColor="Red"
-                            Display="Dynamic">
-                        </asp:RequiredFieldValidator>
-
-                        <asp:RequiredFieldValidator
-                            ID="rfvWidth"
-                            runat="server"
-                            ControlToValidate="txtWidth"
-                            ErrorMessage="Width is required."
-                            ForeColor="Red"
-                            Display="Dynamic">
-                        </asp:RequiredFieldValidator>
-
-                        <asp:RequiredFieldValidator
-                            ID="rfvHeight"
-                            runat="server"
-                            ControlToValidate="txtHeight"
-                            ErrorMessage="Height is required."
-                            ForeColor="Red"
-                            Display="Dynamic">
-                        </asp:RequiredFieldValidator>
 
                     </div>
 
@@ -323,12 +196,4 @@
             </div>
 
         </section>
-
-    </main>
-
-</div>
-
-</form>
-
-</body>
-</html>
+</asp:Content>

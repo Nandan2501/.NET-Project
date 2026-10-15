@@ -192,12 +192,7 @@
 
                 </a>
 
-                <a href="#"
-                   class="profile-tab">
-
-                    Change Password
-
-                </a>
+                
 
                
 
@@ -231,7 +226,9 @@
                         ID="fuProfilePhoto"
                         runat="server"
                         CssClass="photo-upload" />
+                    
 
+<<<<<<< HEAD
 
                     <asp:Button
                         ID="btnChangePhoto"
@@ -245,6 +242,9 @@
                     <div class="photo-help">
                         Allowed JPG, GIF or PNG. Max size of 800KB
                     </div>
+=======
+                    <div class="photo-help" style="font-size: 16px;"> Allowed JPG, PNG. Max size of 800KB </div>
+>>>>>>> b6e13b2266c5fae05778295a473402432b5fa4a1
 
                 </div>
 

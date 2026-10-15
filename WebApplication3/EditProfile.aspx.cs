@@ -107,13 +107,7 @@ namespace WebApplication3
             object sender,
             EventArgs e)
         {
-            if (!fuProfilePhoto.HasFile)
-            {
-                lblMessage.Text =
-                    "Please select a photo.";
-
-                return;
-            }
+         
 
             string extension =
                 System.IO.Path.GetExtension(

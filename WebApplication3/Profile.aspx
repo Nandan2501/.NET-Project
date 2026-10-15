@@ -181,8 +181,13 @@
 
                 <!-- PHOTO -->
 
-                <div class="photo-section">
+                <div class="photo-upload-section">
+    <asp:Image ID="imgProfile" runat="server"
+        CssClass="profile-photo"
+        ImageUrl="~/Images/profile.jpg"
+        AlternateText="Profile Photo" />
 
+<<<<<<< HEAD
                     <div class="profile-photo">
 
                         <asp:Image
@@ -214,6 +219,10 @@
                     </div>
 
                 </div>
+=======
+   
+</div>
+>>>>>>> b6e13b2266c5fae05778295a473402432b5fa4a1
 
 
 

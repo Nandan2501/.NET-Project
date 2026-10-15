@@ -40,6 +40,12 @@ namespace WebApplication3
 
                 Response.Redirect("Driver/dashboard.aspx");
             }
+            if (email == "admin@transpo.com" && password == "123456")
+            {
+                Session["UserEmail"] = email;
+
+                Response.Redirect("Admin/Dashboard.aspx");
+            }
             else 
             {
                 lblMessage.Text = "Invalid email/phone or password.";

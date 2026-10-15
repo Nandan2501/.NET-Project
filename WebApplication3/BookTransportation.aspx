@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="BookTransportation.aspx.cs"
     Inherits="WebApplication3.BookTransportation" %>
 
@@ -163,6 +163,15 @@
                         Text="Rajkot, gujarat">
                     </asp:TextBox>
 
+                    <asp:RequiredFieldValidator
+                        ID="rfvFrom"
+                        runat="server"
+                        ControlToValidate="txtFrom"
+                        ErrorMessage="From location is required."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
+
                 </div>
 
 
@@ -180,6 +189,15 @@
                         CssClass="bt-input"
                         Text="baroda,gujarat">
                     </asp:TextBox>
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvTo"
+                        runat="server"
+                        ControlToValidate="txtTo"
+                        ErrorMessage="To location is required."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
 
                 </div>
 
@@ -232,6 +250,15 @@
                             TextMode="Date"
                             CssClass="bt-input">
                         </asp:TextBox>
+
+                        <asp:RequiredFieldValidator
+                            ID="rfvDate"
+                            runat="server"
+                            ControlToValidate="txtDate"
+                            ErrorMessage="Preferred date is required."
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RequiredFieldValidator>
 
                     </div>
 

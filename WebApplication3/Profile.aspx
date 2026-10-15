@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="EditProfile.aspx.cs"
     Inherits="WebApplication3.EditProfile" %>
 
@@ -205,6 +205,7 @@
                         runat="server"
                         Text="Change Photo"
                         CssClass="change-photo-button"
+                        CausesValidation="false"
                         OnClick="btnChangePhoto_Click" />
 
 
@@ -337,6 +338,7 @@
                             runat="server"
                             Text="Edit Profile"
                             CssClass="profile-edit-btn"
+                            CausesValidation="false"
                             PostBackUrl="EditProfile.aspx" />
 
                     </div>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="BT2.aspx.cs"
     Inherits="WebApplication3.BT2" %>
 
@@ -178,6 +178,15 @@
                             Text="850">
                         </asp:TextBox>
 
+                        <asp:RequiredFieldValidator
+                            ID="rfvWeight"
+                            runat="server"
+                            ControlToValidate="txtWeight"
+                            ErrorMessage="Weight is required."
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RequiredFieldValidator>
+
                     </div>
 
                 </div>
@@ -198,6 +207,15 @@
                             CssClass="ld-input"
                             Text="12">
                         </asp:TextBox>
+
+                        <asp:RequiredFieldValidator
+                            ID="rfvPackages"
+                            runat="server"
+                            ControlToValidate="txtPackages"
+                            ErrorMessage="Number of packages is required."
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RequiredFieldValidator>
 
                     </div>
 
@@ -232,6 +250,33 @@
                             </asp:TextBox>
 
                         </div>
+
+                        <asp:RequiredFieldValidator
+                            ID="rfvLength"
+                            runat="server"
+                            ControlToValidate="txtLength"
+                            ErrorMessage="Length is required."
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RequiredFieldValidator>
+
+                        <asp:RequiredFieldValidator
+                            ID="rfvWidth"
+                            runat="server"
+                            ControlToValidate="txtWidth"
+                            ErrorMessage="Width is required."
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RequiredFieldValidator>
+
+                        <asp:RequiredFieldValidator
+                            ID="rfvHeight"
+                            runat="server"
+                            ControlToValidate="txtHeight"
+                            ErrorMessage="Height is required."
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RequiredFieldValidator>
 
                     </div>
 

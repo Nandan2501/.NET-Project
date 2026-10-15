@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="EditProfile.aspx.cs"
     Inherits="WebApplication3.EditProfile" %>
 
@@ -238,6 +238,7 @@
                         runat="server"
                         Text="Change Photo"
                         CssClass="change-photo-button"
+                        CausesValidation="false"
                         OnClick="btnChangePhoto_Click" />
 
 
@@ -271,6 +272,15 @@
                                 Text="Nandan Nasit">
                             </asp:TextBox>
 
+                            <asp:RequiredFieldValidator
+                                ID="rfvFullName"
+                                runat="server"
+                                ControlToValidate="txtFullName"
+                                ErrorMessage="Full name is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
+
                         </div>
 
 
@@ -286,6 +296,25 @@
                                 CssClass="profile-input"
                                 Text="jnandannasit@gmail.com">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator
+                                ID="rfvEmail"
+                                runat="server"
+                                ControlToValidate="txtEmail"
+                                ErrorMessage="Email is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
+
+                            <asp:RegularExpressionValidator
+                                ID="revEmail"
+                                runat="server"
+                                ControlToValidate="txtEmail"
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                ErrorMessage="Please enter a valid email address."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RegularExpressionValidator>
 
                         </div>
 
@@ -310,6 +339,25 @@
                                 Text="98765-43210">
                             </asp:TextBox>
 
+                            <asp:RequiredFieldValidator
+                                ID="rfvPhone"
+                                runat="server"
+                                ControlToValidate="txtPhone"
+                                ErrorMessage="Phone number is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
+
+                            <asp:RegularExpressionValidator
+                                ID="revPhone"
+                                runat="server"
+                                ControlToValidate="txtPhone"
+                                ValidationExpression="^[0-9\-\+\s]{7,15}$"
+                                ErrorMessage="Please enter a valid phone number."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RegularExpressionValidator>
+
                         </div>
 
 
@@ -325,6 +373,15 @@
                                 CssClass="profile-input"
                                 Text="12 Mar 1990">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator
+                                ID="rfvDateOfBirth"
+                                runat="server"
+                                ControlToValidate="txtDateOfBirth"
+                                ErrorMessage="Date of birth is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
 
                         </div>
 
@@ -346,6 +403,15 @@
                             CssClass="profile-input"
                             Text="Gandhinagar, Gujarat 360002">
                         </asp:TextBox>
+
+                        <asp:RequiredFieldValidator
+                            ID="rfvAddress"
+                            runat="server"
+                            ControlToValidate="txtAddress"
+                            ErrorMessage="Address is required."
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RequiredFieldValidator>
 
                     </div>
 
@@ -378,6 +444,7 @@
                             runat="server"
                             Text="Cancel"
                             CssClass="cancel-button"
+                            CausesValidation="false"
                             OnClick="btnCancel_Click" />
 
                     </div>

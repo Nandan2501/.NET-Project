@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="AddDriver.aspx.cs"
     Inherits="WebApplication3.AddDriver" %>
 
@@ -125,6 +125,15 @@
                                 CssClass="ad-input"
                                 placeholder="Enter driver's full name">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator
+                                ID="rfvDriverName"
+                                runat="server"
+                                ControlToValidate="txtDriverName"
+                                ErrorMessage="Driver name is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
                         </div>
 
 
@@ -140,6 +149,25 @@
                                 CssClass="ad-input"
                                 placeholder="+91 00000 00000">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator
+                                ID="rfvPhone"
+                                runat="server"
+                                ControlToValidate="txtPhone"
+                                ErrorMessage="Phone number is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
+
+                            <asp:RegularExpressionValidator
+                                ID="revPhone"
+                                runat="server"
+                                ControlToValidate="txtPhone"
+                                ValidationExpression="^[0-9]{10}$"
+                                ErrorMessage="Please enter a valid 10-digit phone number."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RegularExpressionValidator>
                         </div>
 
 
@@ -155,6 +183,15 @@
                                 CssClass="ad-input"
                                 placeholder="DL-XXXXXXXXXXXX">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator
+                                ID="rfvLicense"
+                                runat="server"
+                                ControlToValidate="txtLicense"
+                                ErrorMessage="License number is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
                         </div>
 
 
@@ -170,6 +207,15 @@
                                 CssClass="ad-input"
                                 TextMode="Date">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator
+                                ID="rfvDOB"
+                                runat="server"
+                                ControlToValidate="txtDOB"
+                                ErrorMessage="Date of birth is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
                         </div>
 
 
@@ -187,6 +233,15 @@
                                 TextMode="MultiLine"
                                 placeholder="Enter permanent address details">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator
+                                ID="rfvAddress"
+                                runat="server"
+                                ControlToValidate="txtAddress"
+                                ErrorMessage="Address is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
 
                         </div>
 
@@ -232,6 +287,7 @@
                             runat="server"
                             Text="Cancel"
                             CssClass="ad-btn ad-btn-cancel"
+                            CausesValidation="false"
                             OnClick="btnCancel_Click" />
 
                         <asp:Button

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="AddAddress.aspx.cs"
     Inherits="WebApplication3.AddAddress" %>
 
@@ -147,6 +147,15 @@
                         placeholder="e.g. Warehouse, Office, Home">
                     </asp:TextBox>
 
+                    <asp:RequiredFieldValidator
+                        ID="rfvAddressLabel"
+                        runat="server"
+                        ControlToValidate="txtAddressLabel"
+                        ErrorMessage="Address label is required."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
+
                 </div>
 
 
@@ -164,6 +173,15 @@
                         placeholder="Street address, building name, floor, etc.">
                     </asp:TextBox>
 
+                    <asp:RequiredFieldValidator
+                        ID="rfvFullAddress"
+                        runat="server"
+                        ControlToValidate="txtFullAddress"
+                        ErrorMessage="Full address is required."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
+
                 </div>
 
 
@@ -179,6 +197,15 @@
                         CssClass="aa-input"
                         placeholder="Enter city">
                     </asp:TextBox>
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvCity"
+                        runat="server"
+                        ControlToValidate="txtCity"
+                        ErrorMessage="City is required."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
 
                 </div>
 
@@ -196,6 +223,15 @@
                         placeholder="Enter state">
                     </asp:TextBox>
 
+                    <asp:RequiredFieldValidator
+                        ID="rfvState"
+                        runat="server"
+                        ControlToValidate="txtState"
+                        ErrorMessage="State is required."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
+
                 </div>
 
 
@@ -212,6 +248,25 @@
                         placeholder="6-digit postal code"
                         MaxLength="6">
                     </asp:TextBox>
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvPinCode"
+                        runat="server"
+                        ControlToValidate="txtPinCode"
+                        ErrorMessage="PIN code is required."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
+
+                    <asp:RegularExpressionValidator
+                        ID="revPinCode"
+                        runat="server"
+                        ControlToValidate="txtPinCode"
+                        ValidationExpression="^[0-9]{6}$"
+                        ErrorMessage="Please enter a valid 6-digit PIN code."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RegularExpressionValidator>
 
                 </div>
 
@@ -250,6 +305,25 @@
                         CssClass="aa-input"
                         placeholder="+91 98765 43210">
                     </asp:TextBox>
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvPhone"
+                        runat="server"
+                        ControlToValidate="txtPhone"
+                        ErrorMessage="Contact phone is required."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
+
+                    <asp:RegularExpressionValidator
+                        ID="revPhone"
+                        runat="server"
+                        ControlToValidate="txtPhone"
+                        ValidationExpression="^[0-9]{10}$"
+                        ErrorMessage="Please enter a valid 10-digit phone number."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RegularExpressionValidator>
 
                 </div>
 

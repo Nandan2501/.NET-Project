@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="ChangePassword.aspx.cs"
     Inherits="WebApplication3.ChangePassword" %>
 
@@ -174,6 +174,15 @@
 
                         </div>
 
+                        <asp:RequiredFieldValidator
+                            ID="rfvCurrentPassword"
+                            runat="server"
+                            ControlToValidate="txtCurrentPassword"
+                            ErrorMessage="Current password is required."
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RequiredFieldValidator>
+
                     </div>
 
 
@@ -200,6 +209,15 @@
                             </span>
 
                         </div>
+
+                        <asp:RequiredFieldValidator
+                            ID="rfvNewPassword"
+                            runat="server"
+                            ControlToValidate="txtNewPassword"
+                            ErrorMessage="New password is required."
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RequiredFieldValidator>
 
                         <small>
                             Minimum 8 characters with at least one number
@@ -232,6 +250,25 @@
                             </span>
 
                         </div>
+
+                        <asp:RequiredFieldValidator
+                            ID="rfvConfirmPassword"
+                            runat="server"
+                            ControlToValidate="txtConfirmPassword"
+                            ErrorMessage="Please confirm your new password."
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RequiredFieldValidator>
+
+                        <asp:CompareValidator
+                            ID="cvConfirmPassword"
+                            runat="server"
+                            ControlToValidate="txtConfirmPassword"
+                            ControlToCompare="txtNewPassword"
+                            ErrorMessage="Passwords do not match."
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:CompareValidator>
 
                     </div>
 

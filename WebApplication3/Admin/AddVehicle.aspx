@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="AddVehicle.aspx.cs"
     Inherits="WebApplication3.AddVehicle" %>
 
@@ -167,6 +167,15 @@
                                 CssClass="av-input"
                                 placeholder="Enter vehicle type">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator
+                                ID="rfvVehicleType"
+                                runat="server"
+                                ControlToValidate="txtVehicleType"
+                                ErrorMessage="Vehicle type is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
                         </div>
 
 
@@ -182,6 +191,15 @@
                                 CssClass="av-input"
                                 Text="GJ-01-XX-1102">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator
+                                ID="rfvLicensePlate"
+                                runat="server"
+                                ControlToValidate="txtLicensePlate"
+                                ErrorMessage="License plate is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
                         </div>
 
 
@@ -197,6 +215,15 @@
                                 CssClass="av-input"
                                 Text="Active">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator
+                                ID="rfvStatus"
+                                runat="server"
+                                ControlToValidate="txtStatus"
+                                ErrorMessage="Status is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
                         </div>
 
 
@@ -213,6 +240,15 @@
                                 placeholder="Age Enter"
                                 TextMode="Number">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator
+                                ID="rfvAge"
+                                runat="server"
+                                ControlToValidate="txtAge"
+                                ErrorMessage="Age is required."
+                                ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RequiredFieldValidator>
                         </div>
 
 
@@ -275,6 +311,7 @@
                             runat="server"
                             Text="Cancel"
                             CssClass="av-btn av-btn-cancel"
+                            CausesValidation="false"
                             OnClick="btnCancel_Click" />
 
                         <asp:Button

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="Login.aspx.cs"
     Inherits="WebApplication3.Login" %>
 
@@ -97,6 +97,15 @@
                         placeholder="Enter email or phone">
                     </asp:TextBox>
 
+                    <asp:RequiredFieldValidator
+                        ID="rfvEmail"
+                        runat="server"
+                        ControlToValidate="txtEmail"
+                        ErrorMessage="Email or phone is required."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
+
                 </div>
 
 
@@ -127,6 +136,15 @@
                         </button>
 
                     </div>
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvPassword"
+                        runat="server"
+                        ControlToValidate="txtPassword"
+                        ErrorMessage="Password is required."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
 
                 </div>
 

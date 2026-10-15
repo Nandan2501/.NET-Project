@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="VCode.aspx.cs"
     Inherits="WebApplication3.VCode" %>
 
@@ -126,6 +126,41 @@
                         autocomplete="off">
                     </asp:TextBox>
 
+                </div>
+
+                <div style="text-align:center; margin-top: 8px;">
+                    <asp:RequiredFieldValidator
+                        ID="rfvCode1"
+                        runat="server"
+                        ControlToValidate="txtCode1"
+                        ErrorMessage="Please enter the complete 4-digit code."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator
+                        ID="rfvCode2"
+                        runat="server"
+                        ControlToValidate="txtCode2"
+                        ErrorMessage="Please enter the complete 4-digit code."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator
+                        ID="rfvCode3"
+                        runat="server"
+                        ControlToValidate="txtCode3"
+                        ErrorMessage="Please enter the complete 4-digit code."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator
+                        ID="rfvCode4"
+                        runat="server"
+                        ControlToValidate="txtCode4"
+                        ErrorMessage="Please enter the complete 4-digit code."
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RequiredFieldValidator>
                 </div>
 
 

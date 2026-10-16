@@ -25,7 +25,7 @@
 
 <body>
 
-<form id="form1" runat="server">
+<form id="form1" runat="server" novalidate="novalidate">
 
     <div class="fpass-page">
 
@@ -95,7 +95,7 @@
                         ErrorMessage="Email is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator
                         ID="revEmail"
@@ -105,7 +105,7 @@
                         ErrorMessage="Please enter a valid email address."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RegularExpressionValidator>
                 </div>
 

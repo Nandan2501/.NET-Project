@@ -1,6 +1,34 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css");
 
 /* =========================================================
+   ASP.NET WEB FORMS VALIDATION FIX
+   Fixes issue where Bootstrap's .d-block (!important) overrides
+   ASP.NET's client-side display:none toggle, causing error
+   messages to appear on page load and never disappear.
+========================================================= */
+span[id*="rfv"][style*="display:none" i],
+span[id*="rfv"][style*="display: none" i],
+span[id*="rev"][style*="display:none" i],
+span[id*="rev"][style*="display: none" i],
+span[id*="cv"][style*="display:none" i],
+span[id*="cv"][style*="display: none" i],
+span[id*="val"][style*="display:none" i],
+span[id*="val"][style*="display: none" i],
+span.validator-msg[style*="display:none" i],
+span.validator-msg[style*="display: none" i],
+span[style*="display:none" i],
+span[style*="display: none" i] {
+    display: none !important;
+}
+
+.validator-msg {
+    display: block !important;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: #dc3545;
+}
+
+/* =========================================================
    TRANSPO - COMMON CSS
    Bootstrap + Custom CSS
 ========================================================= */

@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
    RESET PASSWORD PAGE
    FULL SCREEN
    100% BROWSER ZOOM
@@ -39,14 +39,15 @@ body {
 ========================================================= */
 
 .reset-left {
-    width: 48%;
-    height: 100vh;
+    width: 50%;
+    min-height: 100vh;
     position: relative;
     box-sizing: border-box;
-    background-image: linear-gradient( rgba(0, 31, 78, 0.70), rgba(0, 25, 65, 0.88) ), url("../Images/reset-password-bg.jpg");
+    background-image: url("../Images/login-bg.png");
     background-size: cover;
     background-position: center;
-    border-right: 2px solid #1683ff;
+    background-repeat: no-repeat;
+    border-right: 1px solid rgba(22, 131, 255, 0.2);
 }
 
 
@@ -55,15 +56,7 @@ body {
 ========================================================= */
 
 .reset-global-logo {
-    position: absolute;
-    top: 38px;
-    left: 42px;
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 700;
+    display: none;
 }
 
 .reset-global-icon {

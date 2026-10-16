@@ -25,7 +25,7 @@
 
 <body>
 
-<form id="form1" runat="server">
+<form id="form1" runat="server" novalidate="novalidate">
 
     <div class="register-page">
 
@@ -103,7 +103,7 @@
                         ErrorMessage="Full name is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -126,7 +126,7 @@
                         ErrorMessage="Email is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator
                         ID="revEmail"
@@ -136,7 +136,7 @@
                         ErrorMessage="Please enter a valid email address."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RegularExpressionValidator>
                 </div>
 
@@ -158,7 +158,7 @@
                         ErrorMessage="Phone number is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator
                         ID="revPhone"
@@ -168,7 +168,7 @@
                         ErrorMessage="Please enter a valid 10-digit phone number."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RegularExpressionValidator>
                 </div>
 
@@ -191,7 +191,7 @@
                         ErrorMessage="Password is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -214,7 +214,7 @@
                         ErrorMessage="Please confirm your password."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                     <asp:CompareValidator
                         ID="cvConfirmPassword"
@@ -224,7 +224,7 @@
                         ErrorMessage="Passwords do not match."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:CompareValidator>
                 </div>
 

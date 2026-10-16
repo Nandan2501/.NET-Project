@@ -68,7 +68,7 @@
                         ErrorMessage="Company name is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -87,7 +87,7 @@
                         ErrorMessage="State / Province is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -107,7 +107,7 @@
                         ErrorMessage="Street address is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -126,7 +126,7 @@
                         ErrorMessage="Pincode is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator
                         ID="revPincode"
@@ -136,7 +136,7 @@
                         ErrorMessage="Enter a valid 6-digit pincode."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RegularExpressionValidator>
                 </div>
 
@@ -156,7 +156,7 @@
                         ErrorMessage="City is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -192,7 +192,7 @@
                         ErrorMessage="Billing email is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator
                         ID="revBillingEmail"
@@ -202,7 +202,7 @@
                         ErrorMessage="Enter a valid email address."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RegularExpressionValidator>
                 </div>
 

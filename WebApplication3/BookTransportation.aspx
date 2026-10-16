@@ -82,7 +82,7 @@
                         ErrorMessage="Pickup location is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -108,7 +108,7 @@
                         ErrorMessage="Dropoff location is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -168,7 +168,7 @@
                             ErrorMessage="Preferred date is required."
                             ForeColor="Red"
                             Display="Dynamic"
-                            CssClass="text-danger small d-block mt-1">
+                            CssClass="text-danger small validator-msg mt-1">
                         </asp:RequiredFieldValidator>
                     </div>
 

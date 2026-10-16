@@ -66,7 +66,7 @@
                         ErrorMessage="Address label is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -91,7 +91,7 @@
                         ErrorMessage="Full address is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -115,7 +115,7 @@
                         ErrorMessage="City is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -139,7 +139,7 @@
                         ErrorMessage="State is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -164,7 +164,7 @@
                         ErrorMessage="PIN Code is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator
                         ID="revPinCode"
@@ -174,7 +174,7 @@
                         ErrorMessage="PIN Code must be 6 digits."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RegularExpressionValidator>
                 </div>
 
@@ -220,7 +220,7 @@
                         ErrorMessage="Contact phone is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 

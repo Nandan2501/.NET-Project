@@ -71,7 +71,7 @@
                             ErrorMessage="Full name is required."
                             ForeColor="Red"
                             Display="Dynamic"
-                            CssClass="text-danger small d-block mt-1">
+                            CssClass="text-danger small validator-msg mt-1">
                         </asp:RequiredFieldValidator>
                     </div>
 
@@ -90,7 +90,7 @@
                             ErrorMessage="Email is required."
                             ForeColor="Red"
                             Display="Dynamic"
-                            CssClass="text-danger small d-block mt-1">
+                            CssClass="text-danger small validator-msg mt-1">
                         </asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator
                             ID="revEmail"
@@ -100,7 +100,7 @@
                             ErrorMessage="Please enter a valid email address."
                             ForeColor="Red"
                             Display="Dynamic"
-                            CssClass="text-danger small d-block mt-1">
+                            CssClass="text-danger small validator-msg mt-1">
                         </asp:RegularExpressionValidator>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                             ErrorMessage="Phone number is required."
                             ForeColor="Red"
                             Display="Dynamic"
-                            CssClass="text-danger small d-block mt-1">
+                            CssClass="text-danger small validator-msg mt-1">
                         </asp:RequiredFieldValidator>
                     </div>
 
@@ -141,7 +141,7 @@
                             ErrorMessage="Date of birth is required."
                             ForeColor="Red"
                             Display="Dynamic"
-                            CssClass="text-danger small d-block mt-1">
+                            CssClass="text-danger small validator-msg mt-1">
                         </asp:RequiredFieldValidator>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
                         ErrorMessage="Address is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 

@@ -15,7 +15,7 @@
 </head>
 
 <body class="transpo-master-body">
-    <form id="form1" runat="server" class="tm-form-wrapper">
+    <form id="form1" runat="server" class="tm-form-wrapper" novalidate="novalidate">
 
         <div class="tm-layout">
 

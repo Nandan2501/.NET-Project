@@ -25,7 +25,7 @@
 
 <body>
 
-<form id="form1" runat="server">
+<form id="form1" runat="server" novalidate="novalidate">
 
     <div class="reset-page">
 
@@ -113,7 +113,7 @@
                         ErrorMessage="New password is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -152,7 +152,7 @@
                         ErrorMessage="Please confirm your new password."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                     <asp:CompareValidator
                         ID="cvConfirmPassword"
@@ -162,7 +162,7 @@
                         ErrorMessage="Passwords do not match."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:CompareValidator>
                 </div>
 

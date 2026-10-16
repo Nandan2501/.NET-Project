@@ -15,7 +15,7 @@
     <link href="CSS/Login.css" rel="stylesheet" />
 </head>
 <body>
-<form id="form1" runat="server">
+<form id="form1" runat="server" novalidate="novalidate">
 
     <div class="login-page">
 
@@ -59,7 +59,7 @@
                         ErrorMessage="Email or phone number is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -86,7 +86,7 @@
                         ErrorMessage="Password is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 

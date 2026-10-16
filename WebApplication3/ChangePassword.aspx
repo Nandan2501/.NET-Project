@@ -29,7 +29,7 @@
             <!-- RIGHT FORM -->
             <div class="cp-form">
 
-                <!-- CURRENT PASSWOHYHYHRD -->
+                <!-- CURRENT PASSWORD -->
                 <div class="cp-field">
                     <label>Current Password</label>
                     <div class="cp-password-box">
@@ -49,7 +49,7 @@
                         ErrorMessage="Current password is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -73,7 +73,7 @@
                         ErrorMessage="New password is required."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                     <small>
                         Minimum 8 characters with at least one number and special character.
@@ -100,7 +100,7 @@
                         ErrorMessage="Please confirm your new password."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:RequiredFieldValidator>
                     <asp:CompareValidator
                         ID="cvConfirmPassword"
@@ -110,7 +110,7 @@
                         ErrorMessage="New passwords do not match."
                         ForeColor="Red"
                         Display="Dynamic"
-                        CssClass="text-danger small d-block mt-1">
+                        CssClass="text-danger small validator-msg mt-1">
                     </asp:CompareValidator>
                 </div>
 

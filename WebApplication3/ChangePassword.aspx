@@ -29,7 +29,7 @@
             <!-- RIGHT FORM -->
             <div class="cp-form">
 
-                <!-- CURRENT PASSWORD -->
+                <!-- CURRENT PASSWOHYHYHRD -->
                 <div class="cp-field">
                     <label>Current Password</label>
                     <div class="cp-password-box">

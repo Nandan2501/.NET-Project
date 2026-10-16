@@ -49,8 +49,15 @@ namespace WebApplication3
                 return;
             }
 
-            // Temporary registration logic.
-            // Add your database registration code here later.
+            string dbError;
+            if (!DbHelper.RegisterUser(fullName, email, phone, password, out dbError))
+            {
+                if (!string.IsNullOrEmpty(dbError))
+                {
+                    lblMessage.Text = dbError;
+                    return;
+                }
+            }
 
             Session["UserName"] = fullName;
             Session["FullName"] = fullName;

@@ -30,7 +30,34 @@ namespace WebApplication3
 
             string normalizedEmail = email.ToLower();
 
-            // Check registered user in Session first (if any)
+            // 1. Authenticate with TranspoDB database
+            int dbUserId;
+            string dbFullName, dbRole, dbEmail, dbPhone;
+            if (DbHelper.ValidateUser(email, password, out dbUserId, out dbFullName, out dbRole, out dbEmail, out dbPhone))
+            {
+                Session["UserId"] = dbUserId;
+                Session["UserEmail"] = dbEmail;
+                Session["FullName"] = dbFullName;
+                Session["Role"] = dbRole;
+                Session["UserPhone"] = dbPhone;
+
+                if (string.Equals(dbRole, "Admin", StringComparison.OrdinalIgnoreCase))
+                {
+                    Response.Redirect("Admin/Dashboard.aspx", false);
+                }
+                else if (string.Equals(dbRole, "Driver", StringComparison.OrdinalIgnoreCase))
+                {
+                    Response.Redirect("Driver/dashboard.aspx", false);
+                }
+                else
+                {
+                    Response.Redirect("Dashboard.aspx", false);
+                }
+                Context.ApplicationInstance.CompleteRequest();
+                return;
+            }
+
+            // 2. Check registered user in Session first (if any)
             string registeredEmail = Session["UserEmail"]?.ToString();
             string registeredPhone = Session["UserPhone"]?.ToString();
             string registeredPassword = Session["UserPassword"]?.ToString();

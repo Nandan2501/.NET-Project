@@ -57,8 +57,10 @@ namespace WebApplication3
             Session["Role"] = "Customer";
             Session["UserEmail"] = email;
             Session["UserPhone"] = phone;
+            Session["UserPassword"] = password;
 
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Login.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

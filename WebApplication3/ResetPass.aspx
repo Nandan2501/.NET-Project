@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="ResetPass.aspx.cs"
     Inherits="WebApplication3.ResetPass" %>
 
@@ -106,7 +106,15 @@
                         </button>
 
                     </div>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvPassword"
+                        runat="server"
+                        ControlToValidate="txtPassword"
+                        ErrorMessage="New password is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
 
@@ -137,7 +145,25 @@
                         </button>
 
                     </div>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvConfirmPassword"
+                        runat="server"
+                        ControlToValidate="txtConfirmPassword"
+                        ErrorMessage="Please confirm your new password."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
+                    <asp:CompareValidator
+                        ID="cvConfirmPassword"
+                        runat="server"
+                        ControlToValidate="txtConfirmPassword"
+                        ControlToCompare="txtPassword"
+                        ErrorMessage="Passwords do not match."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:CompareValidator>
                 </div>
 
 

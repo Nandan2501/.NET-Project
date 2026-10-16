@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebApplication3
 {
@@ -12,6 +12,9 @@ namespace WebApplication3
             object sender,
             EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             string currentPassword = txtCurrentPassword.Text;
             string newPassword = txtNewPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;

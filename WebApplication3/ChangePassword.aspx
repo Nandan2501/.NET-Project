@@ -42,6 +42,15 @@
                         </asp:TextBox>
                         <span class="cp-eye">◉</span>
                     </div>
+                    <asp:RequiredFieldValidator
+                        ID="rfvCurrentPassword"
+                        runat="server"
+                        ControlToValidate="txtCurrentPassword"
+                        ErrorMessage="Current password is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- NEW PASSWORD -->
@@ -57,6 +66,15 @@
                         </asp:TextBox>
                         <span class="cp-eye">◉</span>
                     </div>
+                    <asp:RequiredFieldValidator
+                        ID="rfvNewPassword"
+                        runat="server"
+                        ControlToValidate="txtNewPassword"
+                        ErrorMessage="New password is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                     <small>
                         Minimum 8 characters with at least one number and special character.
                     </small>
@@ -75,6 +93,25 @@
                         </asp:TextBox>
                         <span class="cp-eye">◉</span>
                     </div>
+                    <asp:RequiredFieldValidator
+                        ID="rfvConfirmPassword"
+                        runat="server"
+                        ControlToValidate="txtConfirmPassword"
+                        ErrorMessage="Please confirm your new password."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
+                    <asp:CompareValidator
+                        ID="cvConfirmPassword"
+                        runat="server"
+                        ControlToValidate="txtConfirmPassword"
+                        ControlToCompare="txtNewPassword"
+                        ErrorMessage="New passwords do not match."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:CompareValidator>
                 </div>
 
                 <!-- BUTTON -->

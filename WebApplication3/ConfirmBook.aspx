@@ -334,6 +334,7 @@
                     runat="server"
                     Text="Book Another"
                     CssClass="cb-btn-secondary"
+                    CausesValidation="false"
                     OnClick="btnBookAnother_Click" />
 
                 <asp:Button
@@ -341,6 +342,7 @@
                     runat="server"
                     Text="View My Bookings"
                     CssClass="cb-btn-primary"
+                    CausesValidation="false"
                     OnClick="btnMyBookings_Click" />
             </div>
 

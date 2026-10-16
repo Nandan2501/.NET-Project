@@ -10,6 +10,9 @@ namespace WebApplication3
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
 

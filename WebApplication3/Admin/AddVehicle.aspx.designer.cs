@@ -24,6 +24,15 @@ namespace WebApplication3
         protected global::System.Web.UI.WebControls.DropDownList ddlVehicleName;
 
         /// <summary>
+        /// rfvVehicleName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvVehicleName;
+
+        /// <summary>
         /// ddlDriver control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace WebApplication3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDriver;
+
+        /// <summary>
+        /// rfvDriver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDriver;
 
         /// <summary>
         /// txtVehicleType control.
@@ -42,6 +60,15 @@ namespace WebApplication3
         protected global::System.Web.UI.WebControls.TextBox txtVehicleType;
 
         /// <summary>
+        /// rfvVehicleType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvVehicleType;
+
+        /// <summary>
         /// txtLicensePlate control.
         /// </summary>
         /// <remarks>
@@ -49,6 +76,15 @@ namespace WebApplication3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLicensePlate;
+
+        /// <summary>
+        /// rfvLicensePlate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLicensePlate;
 
         /// <summary>
         /// txtStatus control.
@@ -60,6 +96,15 @@ namespace WebApplication3
         protected global::System.Web.UI.WebControls.TextBox txtStatus;
 
         /// <summary>
+        /// rfvStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvStatus;
+
+        /// <summary>
         /// txtAge control.
         /// </summary>
         /// <remarks>
@@ -67,6 +112,15 @@ namespace WebApplication3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAge;
+
+        /// <summary>
+        /// rfvAge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAge;
 
         /// <summary>
         /// txtAadhar control.

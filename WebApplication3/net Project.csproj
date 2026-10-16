@@ -422,4 +422,12 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <Target Name="EnsureRoslynCompilerFiles" AfterTargets="Build">
+    <ItemGroup>
+      <_RoslynFiles Include="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\*" />
+      <_RoslynFilesAlt Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_RoslynFiles)" DestinationFolder="$(MSBuildProjectDirectory)\bin\roslyn" SkipUnchangedFiles="true" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\csc.exe')" />
+    <Copy SourceFiles="@(_RoslynFilesAlt)" DestinationFolder="$(MSBuildProjectDirectory)\bin\roslyn" SkipUnchangedFiles="true" Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\csc.exe') and Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\csc.exe')" />
+  </Target>
 </Project>

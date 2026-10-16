@@ -75,7 +75,15 @@
                         CssClass="bt-input"
                         Text="Rajkot, gujarat">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvFrom"
+                        runat="server"
+                        ControlToValidate="txtFrom"
+                        ErrorMessage="Pickup location is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
 
@@ -93,7 +101,15 @@
                         CssClass="bt-input"
                         Text="baroda,gujarat">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvTo"
+                        runat="server"
+                        ControlToValidate="txtTo"
+                        ErrorMessage="Dropoff location is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
 
@@ -145,7 +161,15 @@
                             TextMode="Date"
                             CssClass="bt-input">
                         </asp:TextBox>
-
+                        <asp:RequiredFieldValidator
+                            ID="rfvDate"
+                            runat="server"
+                            ControlToValidate="txtDate"
+                            ErrorMessage="Preferred date is required."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            CssClass="text-danger small d-block mt-1">
+                        </asp:RequiredFieldValidator>
                     </div>
 
                 </div>

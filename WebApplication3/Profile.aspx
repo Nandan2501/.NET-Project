@@ -179,6 +179,7 @@
                             runat="server"
                             Text="Edit Profile"
                             CssClass="profile-edit-btn"
+                            CausesValidation="false"
                             PostBackUrl="EditProfile.aspx" />
 
                     </div>

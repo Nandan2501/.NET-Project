@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="Register.aspx.cs"
     Inherits="WebApplication3.Register" %>
 
@@ -87,29 +87,31 @@
                 <!-- FULL NAME -->
 
                 <div class="register-field">
-
                     <label for="txtFullName">
                         Full Name
                     </label>
-
                     <asp:TextBox
                         ID="txtFullName"
                         runat="server"
                         CssClass="register-input"
                         placeholder="Enter your full name">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvFullName"
+                        runat="server"
+                        ControlToValidate="txtFullName"
+                        ErrorMessage="Full name is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
-
                 <!-- EMAIL -->
-
                 <div class="register-field">
-
                     <label for="txtEmail">
                         Email
                     </label>
-
                     <asp:TextBox
                         ID="txtEmail"
                         runat="server"
@@ -117,36 +119,64 @@
                         TextMode="Email"
                         placeholder="Enter your email">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvEmail"
+                        runat="server"
+                        ControlToValidate="txtEmail"
+                        ErrorMessage="Email is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator
+                        ID="revEmail"
+                        runat="server"
+                        ControlToValidate="txtEmail"
+                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                        ErrorMessage="Please enter a valid email address."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RegularExpressionValidator>
                 </div>
 
-
                 <!-- PHONE -->
-
                 <div class="register-field">
-
                     <label for="txtPhone">
                         Phone Number
                     </label>
-
                     <asp:TextBox
                         ID="txtPhone"
                         runat="server"
                         CssClass="register-input"
                         placeholder="Enter your phone number">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvPhone"
+                        runat="server"
+                        ControlToValidate="txtPhone"
+                        ErrorMessage="Phone number is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator
+                        ID="revPhone"
+                        runat="server"
+                        ControlToValidate="txtPhone"
+                        ValidationExpression="^[0-9]{10}$"
+                        ErrorMessage="Please enter a valid 10-digit phone number."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RegularExpressionValidator>
                 </div>
 
-
                 <!-- PASSWORD -->
-
                 <div class="register-field">
-
                     <label for="txtPassword">
                         Password
                     </label>
-
                     <asp:TextBox
                         ID="txtPassword"
                         runat="server"
@@ -154,18 +184,22 @@
                         CssClass="register-input"
                         placeholder="Create password">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvPassword"
+                        runat="server"
+                        ControlToValidate="txtPassword"
+                        ErrorMessage="Password is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
-
                 <!-- CONFIRM PASSWORD -->
-
                 <div class="register-field">
-
                     <label for="txtConfirmPassword">
                         Confirm Password
                     </label>
-
                     <asp:TextBox
                         ID="txtConfirmPassword"
                         runat="server"
@@ -173,7 +207,25 @@
                         CssClass="register-input"
                         placeholder="Confirm your password">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvConfirmPassword"
+                        runat="server"
+                        ControlToValidate="txtConfirmPassword"
+                        ErrorMessage="Please confirm your password."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
+                    <asp:CompareValidator
+                        ID="cvConfirmPassword"
+                        runat="server"
+                        ControlToValidate="txtConfirmPassword"
+                        ControlToCompare="txtPassword"
+                        ErrorMessage="Passwords do not match."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:CompareValidator>
                 </div>
 
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebApplication3
 {
@@ -45,6 +45,9 @@ namespace WebApplication3
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             if (string.IsNullOrWhiteSpace(txtAddressLabel.Text))
             {
                 return;

@@ -59,7 +59,15 @@
                         CssClass="aa-input"
                         placeholder="e.g. Warehouse, Office, Home">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvAddressLabel"
+                        runat="server"
+                        ControlToValidate="txtAddressLabel"
+                        ErrorMessage="Address label is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
 
@@ -76,7 +84,15 @@
                         TextMode="MultiLine"
                         placeholder="Street address, building name, floor, etc.">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvFullAddress"
+                        runat="server"
+                        ControlToValidate="txtFullAddress"
+                        ErrorMessage="Full address is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
 
@@ -92,7 +108,15 @@
                         CssClass="aa-input"
                         placeholder="Enter city">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvCity"
+                        runat="server"
+                        ControlToValidate="txtCity"
+                        ErrorMessage="City is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
 
@@ -108,7 +132,15 @@
                         CssClass="aa-input"
                         placeholder="Enter state">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvState"
+                        runat="server"
+                        ControlToValidate="txtState"
+                        ErrorMessage="State is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
 
@@ -125,7 +157,25 @@
                         placeholder="6-digit postal code"
                         MaxLength="6">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvPinCode"
+                        runat="server"
+                        ControlToValidate="txtPinCode"
+                        ErrorMessage="PIN Code is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator
+                        ID="revPinCode"
+                        runat="server"
+                        ControlToValidate="txtPinCode"
+                        ValidationExpression="^[0-9]{6}$"
+                        ErrorMessage="PIN Code must be 6 digits."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RegularExpressionValidator>
                 </div>
 
 
@@ -163,7 +213,15 @@
                         CssClass="aa-input"
                         placeholder="+91 98765 43210">
                     </asp:TextBox>
-
+                    <asp:RequiredFieldValidator
+                        ID="rfvPhone"
+                        runat="server"
+                        ControlToValidate="txtPhone"
+                        ErrorMessage="Contact phone is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
 
@@ -238,6 +296,7 @@
                         runat="server"
                         Text="Cancel"
                         CssClass="aa-btn aa-cancel"
+                        CausesValidation="false"
                         OnClick="btnCancel_Click" />
 
                     <asp:Button

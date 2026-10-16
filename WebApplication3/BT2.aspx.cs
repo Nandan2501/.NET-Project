@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebApplication3
 {
@@ -65,6 +65,9 @@ namespace WebApplication3
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             // Save Load Details
 
             Session["LoadType"] =

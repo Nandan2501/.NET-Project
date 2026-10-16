@@ -95,7 +95,15 @@
                             CssClass="ld-input"
                             Text="850">
                         </asp:TextBox>
-
+                        <asp:RequiredFieldValidator
+                            ID="rfvWeight"
+                            runat="server"
+                            ControlToValidate="txtWeight"
+                            ErrorMessage="Weight is required."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            CssClass="text-danger small d-block mt-1">
+                        </asp:RequiredFieldValidator>
                     </div>
 
                 </div>
@@ -116,7 +124,15 @@
                             CssClass="ld-input"
                             Text="12">
                         </asp:TextBox>
-
+                        <asp:RequiredFieldValidator
+                            ID="rfvPackages"
+                            runat="server"
+                            ControlToValidate="txtPackages"
+                            ErrorMessage="Number of packages is required."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            CssClass="text-danger small d-block mt-1">
+                        </asp:RequiredFieldValidator>
                     </div>
 
 
@@ -150,7 +166,15 @@
                             </asp:TextBox>
 
                         </div>
-
+                        <asp:RequiredFieldValidator
+                            ID="rfvLength"
+                            runat="server"
+                            ControlToValidate="txtLength"
+                            ErrorMessage="Length is required."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            CssClass="text-danger small d-block mt-1">
+                        </asp:RequiredFieldValidator>
                     </div>
 
                 </div>
@@ -182,6 +206,7 @@
                         runat="server"
                         Text="Back: Route Details"
                         CssClass="ld-back-btn"
+                        CausesValidation="false"
                         OnClick="btnBack_Click" />
 
                     <asp:Button

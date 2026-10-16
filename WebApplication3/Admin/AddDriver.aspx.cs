@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebApplication3
 {
@@ -15,6 +15,9 @@ namespace WebApplication3
 
         protected void btnSaveDriver_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             // Database insertion can be added here later.
 
             Response.Redirect("Drivers.aspx");

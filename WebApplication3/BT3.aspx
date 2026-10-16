@@ -308,6 +308,7 @@
                         runat="server"
                         Text="Back: Load Details"
                         CssClass="rc-back-btn"
+                        CausesValidation="false"
                         OnClick="btnBack_Click" />
 
 

@@ -15,6 +15,11 @@ namespace WebApplication3
 
         protected void btnAddVehicle_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
             // Add database insertion here later.
 
             Response.Redirect("Vehicle.aspx");

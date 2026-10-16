@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebApplication3
 {
@@ -44,6 +44,9 @@ namespace WebApplication3
             object sender,
             EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             if (string.IsNullOrWhiteSpace(
                 txtFullName.Text))
             {

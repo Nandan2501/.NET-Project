@@ -59,6 +59,15 @@
                             CssClass="driver-settings-input"
                             placeholder="Enter current password">
                         </asp:TextBox>
+                        <asp:RequiredFieldValidator
+                            ID="rfvCurrentPassword"
+                            runat="server"
+                            ControlToValidate="txtCurrentPassword"
+                            ErrorMessage="Current password is required."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            CssClass="text-danger small d-block mt-1">
+                        </asp:RequiredFieldValidator>
                     </div>
 
                     <div class="driver-settings-field">
@@ -70,6 +79,15 @@
                             CssClass="driver-settings-input"
                             placeholder="Enter new strong password">
                         </asp:TextBox>
+                        <asp:RequiredFieldValidator
+                            ID="rfvNewPassword"
+                            runat="server"
+                            ControlToValidate="txtNewPassword"
+                            ErrorMessage="New password is required."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            CssClass="text-danger small d-block mt-1">
+                        </asp:RequiredFieldValidator>
                     </div>
 
                     <div class="driver-settings-field">
@@ -81,6 +99,25 @@
                             CssClass="driver-settings-input"
                             placeholder="Re-Enter new strong password">
                         </asp:TextBox>
+                        <asp:RequiredFieldValidator
+                            ID="rfvConfirmPassword"
+                            runat="server"
+                            ControlToValidate="txtConfirmPassword"
+                            ErrorMessage="Please re-enter new password."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            CssClass="text-danger small d-block mt-1">
+                        </asp:RequiredFieldValidator>
+                        <asp:CompareValidator
+                            ID="cvConfirmPassword"
+                            runat="server"
+                            ControlToValidate="txtConfirmPassword"
+                            ControlToCompare="txtNewPassword"
+                            ErrorMessage="Passwords do not match."
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            CssClass="text-danger small d-block mt-1">
+                        </asp:CompareValidator>
                     </div>
 
                     <asp:Button

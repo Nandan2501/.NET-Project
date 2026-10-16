@@ -52,6 +52,15 @@
                         CssClass="login-input"
                         placeholder="Enter email ">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvEmail"
+                        runat="server"
+                        ControlToValidate="txtEmail"
+                        ErrorMessage="Email or phone number is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <div class="login-field">
@@ -70,6 +79,15 @@
                             onclick="togglePassword()"
                             aria-label="Show or hide password">●</button>
                     </div>
+                    <asp:RequiredFieldValidator
+                        ID="rfvPassword"
+                        runat="server"
+                        ControlToValidate="txtPassword"
+                        ErrorMessage="Password is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <div class="forgot-link-container">

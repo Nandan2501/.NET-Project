@@ -40,6 +40,15 @@
                         CssClass="ad-input"
                         placeholder="Enter driver's full name">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvDriverName"
+                        runat="server"
+                        ControlToValidate="txtDriverName"
+                        ErrorMessage="Driver name is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- PHONE -->
@@ -51,6 +60,15 @@
                         CssClass="ad-input"
                         placeholder="+91 00000 00000">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvPhone"
+                        runat="server"
+                        ControlToValidate="txtPhone"
+                        ErrorMessage="Phone number is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- LICENSE -->
@@ -62,6 +80,15 @@
                         CssClass="ad-input"
                         placeholder="DL-XXXXXXXXXXXX">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvLicense"
+                        runat="server"
+                        ControlToValidate="txtLicense"
+                        ErrorMessage="License number is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- DATE OF BIRTH -->
@@ -73,6 +100,15 @@
                         CssClass="ad-input"
                         TextMode="Date">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvDOB"
+                        runat="server"
+                        ControlToValidate="txtDOB"
+                        ErrorMessage="Date of birth is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- ADDRESS -->
@@ -85,6 +121,15 @@
                         TextMode="MultiLine"
                         placeholder="Enter permanent address details">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvAddress"
+                        runat="server"
+                        ControlToValidate="txtAddress"
+                        ErrorMessage="Full address is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- LICENSE PHOTO -->
@@ -110,6 +155,7 @@
                     runat="server"
                     Text="Cancel"
                     CssClass="ad-btn ad-btn-cancel"
+                    CausesValidation="false"
                     OnClick="btnCancel_Click" />
 
                 <asp:Button

@@ -37,12 +37,14 @@
                         ID="btnUploadLogo"
                         runat="server"
                         Text="Upload New Logo"
+                        CausesValidation="false"
                         CssClass="btn-upload-logo" />
 
                     <asp:Button
                         ID="btnRemoveLogo"
                         runat="server"
                         Text="Remove"
+                        CausesValidation="false"
                         CssClass="btn-remove-logo" />
                 </div>
             </div>
@@ -59,6 +61,15 @@
                         CssClass="settings-input"
                         Text="tata">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvCompanyName"
+                        runat="server"
+                        ControlToValidate="txtCompanyName"
+                        ErrorMessage="Company name is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <div class="form-group">
@@ -69,6 +80,15 @@
                         CssClass="settings-input"
                         Text="Gujarat">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvState"
+                        runat="server"
+                        ControlToValidate="txtState"
+                        ErrorMessage="State / Province is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- ROW 2 -->
@@ -80,6 +100,15 @@
                         CssClass="settings-input"
                         Text="401-404, Dev Prime, Corporate Road">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvStreetAddress"
+                        runat="server"
+                        ControlToValidate="txtStreetAddress"
+                        ErrorMessage="Street address is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <div class="form-group">
@@ -90,6 +119,25 @@
                         CssClass="settings-input"
                         Text="380051">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvPincode"
+                        runat="server"
+                        ControlToValidate="txtPincode"
+                        ErrorMessage="Pincode is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator
+                        ID="revPincode"
+                        runat="server"
+                        ControlToValidate="txtPincode"
+                        ValidationExpression="^\d{6}$"
+                        ErrorMessage="Enter a valid 6-digit pincode."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RegularExpressionValidator>
                 </div>
 
                 <!-- ROW 3 -->
@@ -101,6 +149,15 @@
                         CssClass="settings-input"
                         Text="Ahmedabad">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvCity"
+                        runat="server"
+                        ControlToValidate="txtCity"
+                        ErrorMessage="City is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <div class="form-group">
@@ -128,6 +185,25 @@
                         CssClass="settings-input"
                         Text="accounts@transpo.com">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvBillingEmail"
+                        runat="server"
+                        ControlToValidate="txtBillingEmail"
+                        ErrorMessage="Billing email is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator
+                        ID="revBillingEmail"
+                        runat="server"
+                        ControlToValidate="txtBillingEmail"
+                        ValidationExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                        ErrorMessage="Enter a valid email address."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RegularExpressionValidator>
                 </div>
 
             </div>

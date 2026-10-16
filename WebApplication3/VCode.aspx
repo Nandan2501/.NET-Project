@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"
+<%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="VCode.aspx.cs"
     Inherits="WebApplication3.VCode" %>
 
@@ -128,6 +128,17 @@
 
                 </div>
 
+                <div class="text-center mb-2">
+                    <asp:RequiredFieldValidator ID="rfvCode1" runat="server" ControlToValidate="txtCode1" ErrorMessage="Please enter digit 1." ForeColor="Red" Display="Dynamic" CssClass="text-danger small d-block" />
+                    <asp:RequiredFieldValidator ID="rfvCode2" runat="server" ControlToValidate="txtCode2" ErrorMessage="Please enter digit 2." ForeColor="Red" Display="Dynamic" CssClass="text-danger small d-block" />
+                    <asp:RequiredFieldValidator ID="rfvCode3" runat="server" ControlToValidate="txtCode3" ErrorMessage="Please enter digit 3." ForeColor="Red" Display="Dynamic" CssClass="text-danger small d-block" />
+                    <asp:RequiredFieldValidator ID="rfvCode4" runat="server" ControlToValidate="txtCode4" ErrorMessage="Please enter digit 4." ForeColor="Red" Display="Dynamic" CssClass="text-danger small d-block" />
+                    <asp:RegularExpressionValidator ID="revCode1" runat="server" ControlToValidate="txtCode1" ValidationExpression="^[0-9]$" ErrorMessage="Digit 1 must be a number." ForeColor="Red" Display="Dynamic" CssClass="text-danger small d-block" />
+                    <asp:RegularExpressionValidator ID="revCode2" runat="server" ControlToValidate="txtCode2" ValidationExpression="^[0-9]$" ErrorMessage="Digit 2 must be a number." ForeColor="Red" Display="Dynamic" CssClass="text-danger small d-block" />
+                    <asp:RegularExpressionValidator ID="revCode3" runat="server" ControlToValidate="txtCode3" ValidationExpression="^[0-9]$" ErrorMessage="Digit 3 must be a number." ForeColor="Red" Display="Dynamic" CssClass="text-danger small d-block" />
+                    <asp:RegularExpressionValidator ID="revCode4" runat="server" ControlToValidate="txtCode4" ValidationExpression="^[0-9]$" ErrorMessage="Digit 4 must be a number." ForeColor="Red" Display="Dynamic" CssClass="text-danger small d-block" />
+                </div>
+
 
                 <!-- MESSAGE -->
 
@@ -160,6 +171,7 @@
                         ID="btnResend"
                         runat="server"
                         CssClass="resend-link"
+                        CausesValidation="false"
                         OnClick="btnResend_Click">
                         Resend
                     </asp:LinkButton>

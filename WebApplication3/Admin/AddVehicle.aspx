@@ -33,6 +33,16 @@
                         <asp:ListItem>Tata Ace</asp:ListItem>
                         <asp:ListItem>Ashok Leyland</asp:ListItem>
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator
+                        ID="rfvVehicleName"
+                        runat="server"
+                        ControlToValidate="ddlVehicleName"
+                        InitialValue=""
+                        ErrorMessage="Please select a vehicle."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- DRIVER -->
@@ -47,6 +57,16 @@
                         <asp:ListItem>Raj Patel</asp:ListItem>
                         <asp:ListItem>Nandan</asp:ListItem>
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator
+                        ID="rfvDriver"
+                        runat="server"
+                        ControlToValidate="ddlDriver"
+                        InitialValue=""
+                        ErrorMessage="Please assign a driver."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- VEHICLE TYPE -->
@@ -58,6 +78,15 @@
                         CssClass="av-input"
                         placeholder="Enter vehicle type">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvVehicleType"
+                        runat="server"
+                        ControlToValidate="txtVehicleType"
+                        ErrorMessage="Vehicle type is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- LICENSE PLATE -->
@@ -69,6 +98,15 @@
                         CssClass="av-input"
                         Text="GJ-01-XX-1102">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvLicensePlate"
+                        runat="server"
+                        ControlToValidate="txtLicensePlate"
+                        ErrorMessage="License plate is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- STATUS -->
@@ -80,6 +118,15 @@
                         CssClass="av-input"
                         Text="Active">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvStatus"
+                        runat="server"
+                        ControlToValidate="txtStatus"
+                        ErrorMessage="Status is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- AGE -->
@@ -92,6 +139,15 @@
                         placeholder="Age Enter"
                         TextMode="Number">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvAge"
+                        runat="server"
+                        ControlToValidate="txtAge"
+                        ErrorMessage="Age is required."
+                        ForeColor="Red"
+                        Display="Dynamic"
+                        CssClass="text-danger small d-block mt-1">
+                    </asp:RequiredFieldValidator>
                 </div>
 
                 <!-- AADHAR CARD -->
@@ -131,6 +187,7 @@
                     runat="server"
                     Text="Cancel"
                     CssClass="av-btn av-btn-cancel"
+                    CausesValidation="false"
                     OnClick="btnCancel_Click" />
 
                 <asp:Button

@@ -10,6 +10,9 @@ namespace WebApplication3
 
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             string fullName = txtFullName.Text.Trim();
             string email = txtEmail.Text.Trim();
             string phone = txtPhone.Text.Trim();

@@ -34,6 +34,15 @@ namespace WebApplication3
         protected global::System.Web.UI.WebControls.TextBox txtWeight;
 
         /// <summary>
+        /// rfvWeight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvWeight;
+
+        /// <summary>
         /// txtPackages control.
         /// </summary>
         /// <remarks>
@@ -43,6 +52,15 @@ namespace WebApplication3
         protected global::System.Web.UI.WebControls.TextBox txtPackages;
 
         /// <summary>
+        /// rfvPackages control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPackages;
+
+        /// <summary>
         /// txtLength control.
         /// </summary>
         /// <remarks>
@@ -50,6 +68,15 @@ namespace WebApplication3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLength;
+
+        /// <summary>
+        /// rfvLength control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLength;
 
         /// <summary>
         /// txtWidth control.

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebApplication3
 {
@@ -10,6 +10,9 @@ namespace WebApplication3
 
         protected void btnVerify_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             string code =
                 txtCode1.Text.Trim() +
                 txtCode2.Text.Trim() +

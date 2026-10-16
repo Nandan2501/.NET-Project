@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebApplication3.Driver
 {
@@ -10,6 +10,9 @@ namespace WebApplication3.Driver
 
         protected void btnUpdatePassword_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             string currentPassword = txtCurrentPassword.Text.Trim();
             string newPassword = txtNewPassword.Text.Trim();
             string confirmPassword = txtConfirmPassword.Text.Trim();

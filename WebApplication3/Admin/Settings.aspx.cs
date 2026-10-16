@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace WebApplication3
 {
@@ -32,6 +32,11 @@ namespace WebApplication3
 
         protected void btnUpdateProfile_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
             string companyName = txtCompanyName.Text.Trim();
             string state = txtState.Text.Trim();
             string address = txtStreetAddress.Text.Trim();

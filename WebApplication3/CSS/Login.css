@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 /* =========================================================
    TRANSPO LOGIN PAGE - SPLIT SCREEN LAYOUT
    Left side: Brand photo (first half)
    Right side: Login form (second half)
 ========================================================= */
 
+=======
+/* ========================================
+   TRANSPO LOGIN PAGE
+   Centered login form - no left panel
+======================================== */
+>>>>>>> 4b4ec0f9f7478d03db34eadd6690bc9926762df6
 * {
     box-sizing: border-box;
 }
@@ -304,3 +311,7 @@ body {
         font-size: 25px;
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ec0f9f7478d03db34eadd6690bc9926762df6

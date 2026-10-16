@@ -1,4 +1,3 @@
-
 <%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="Login.aspx.cs"
     Inherits="WebApplication3.Login" %>
@@ -50,7 +49,7 @@
                     <asp:TextBox ID="txtEmail"
                         runat="server"
                         CssClass="login-input"
-                        placeholder="Enter email ">
+                        placeholder="Enter email or phone">
                     </asp:TextBox>
                     <asp:RequiredFieldValidator
                         ID="rfvEmail"
@@ -76,7 +75,7 @@
 
                         <button type="button"
                             class="password-eye"
-                            onclick="togglePassword()"
+                            onclick="togglePassword(event); return false;"
                             aria-label="Show or hide password">●</button>
                     </div>
                     <asp:RequiredFieldValidator
@@ -116,7 +115,11 @@
     </div>
 
     <script>
-        function togglePassword() {
+        function togglePassword(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
             var password = document.getElementById(
                 '<%= txtPassword.ClientID %>');
             var eye = document.querySelector('.password-eye');
@@ -128,6 +131,7 @@
                 password.type = "password";
                 eye.classList.remove("active");
             }
+            return false;
         }
     </script>
 

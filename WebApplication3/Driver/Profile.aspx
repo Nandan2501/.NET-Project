@@ -34,9 +34,7 @@
                         Yashrajsinh
                     </div>
 
-                    <div class="driver-verified">
-                        Verified Driver
-                    </div>
+                    
                 </div>
 
                 <div class="driver-profile-divider"></div>
@@ -118,13 +116,7 @@
                             </div>
                         </div>
 
-                        <div class="driver-performance-item">
-                            <div class="driver-performance-icon">✓</div>
-                            <div>
-                                <strong>98.4%</strong>
-                                <span>Acceptance Rate</span>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
 

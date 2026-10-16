@@ -138,7 +138,7 @@
                     <div class="ad-upload-box">
                         <div class="ad-upload-icon">☁</div>
                         <div class="ad-upload-title">Click to upload or drag and drop</div>
-                        <div class="ad-upload-info">SVG, PNG, JPG or PDF (max. 5MB)</div>
+                        <div class="ad-upload-info">    PNG, JPG or PDF (max. 5MB)</div>
                         <asp:FileUpload
                             ID="fuLicense"
                             runat="server"

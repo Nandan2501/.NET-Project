@@ -1,4 +1,4 @@
-<%@ Page Title="Booking Confirmed - Transpo" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Booking Confirmed - Transpo" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="ConfirmBook.aspx.cs"
     Inherits="WebApplication3.BookingSuccess" %>
 
@@ -343,7 +343,7 @@
                     Text="View My Bookings"
                     CssClass="cb-btn-primary"
                     CausesValidation="false"
-                    OnClick="btnMyBookings_Click" />
+                    OnClick="btnViewBookings_Click" />
             </div>
 
         </div>

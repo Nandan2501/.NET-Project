@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -54,6 +54,11 @@ namespace WebApplication3
         protected void btnBookAnother_Click(object sender, EventArgs e)
         {
             Response.Redirect("BookTransportation.aspx");
+        }
+
+        protected void btnMyBookings_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Bookings.aspx");
         }
 
         protected void btnViewBookings_Click(object sender, EventArgs e)

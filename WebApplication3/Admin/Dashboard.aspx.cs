@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 
 namespace WebApplication3
@@ -9,85 +9,67 @@ namespace WebApplication3
         {
             if (!IsPostBack)
             {
+                LoadStats();
                 LoadRecentBookings();
             }
         }
 
+        private void LoadStats()
+        {
+            try
+            {
+                object totalBookings = DbHelper.ExecuteScalar("SELECT COUNT(*) FROM Bookings");
+                litTotalBookings.Text = (totalBookings ?? 0).ToString();
+
+                object totalRev = DbHelper.ExecuteScalar("SELECT ISNULL(SUM(Amount), 0) FROM Payments WHERE PaymentStatus = 'Paid'");
+                litTotalRevenue.Text = "₹" + Convert.ToDecimal(totalRev ?? 0).ToString("N0");
+
+                object activeVehicles = DbHelper.ExecuteScalar("SELECT COUNT(*) FROM Vehicles WHERE VehicleStatus = 'Active'");
+                litActiveVehicles.Text = (activeVehicles ?? 0).ToString();
+
+                object activeDrivers = DbHelper.ExecuteScalar("SELECT COUNT(*) FROM Drivers WHERE VerificationStatus = 'Active'");
+                litActiveDrivers.Text = (activeDrivers ?? 0).ToString();
+            }
+            catch
+            {
+                // Fallbacks if tables empty
+            }
+        }
 
         private void LoadRecentBookings()
         {
-            DataTable dt = new DataTable();
-
-            dt.Columns.Add("BookingId");
-            dt.Columns.Add("Customer");
-            dt.Columns.Add("Vehicle");
-            dt.Columns.Add("Date");
-            dt.Columns.Add("Status");
-            dt.Columns.Add("Amount");
-
-
-            dt.Rows.Add(
-                "#TRP-1049",
-                "Abhay",
-                "Tata Ultra 1518 (15T)",
-                "24 Oct 2026",
-                "Delivered",
-                "₹3340.00"
-            );
-
-
-            dt.Rows.Add(
-                "#TRP-1048",
-                "Vraj Akbari",
-                "Mahindra Bolero Pickup",
-                "24 Oct 2026",
-                "In Transit",
-                "₹2120.00"
-            );
-
-
-            dt.Rows.Add(
-                "#TRP-1047",
-                "Nandan Nasit",
-                "Eicher Pro 2049 (3.5T)",
-                "23 Oct 2026",
-                "Pending",
-                "₹3215.00"
-            );
-
-
-            dt.Rows.Add(
-                "#TRP-1046",
-                "Raj Patel",
-                "mahindra pickup bolero",
-                "24 Oct 2026",
-                "Cancelled",
-                "₹8500.00"
-            );
-
+            DataTable dt = DbHelper.ExecuteQuery(@"
+                SELECT TOP 10
+                    b.BookingNumber AS BookingId,
+                    ISNULL(u.FullName, 'Customer') AS Customer,
+                    ISNULL(b.VehicleType, 'Vehicle') AS Vehicle,
+                    FORMAT(b.PreferredDate, 'dd MMM yyyy') AS Date,
+                    ISNULL(b.BookingStatus, 'Pending') AS Status,
+                    N'₹' + FORMAT(ISNULL(p.Amount, 0), 'N2') AS Amount
+                FROM Bookings b
+                LEFT JOIN Users u ON b.CustomerId = u.UserId
+                LEFT JOIN Payments p ON b.BookingId = p.BookingId
+                ORDER BY b.BookingId DESC");
 
             gvRecentBookings.DataSource = dt;
-
             gvRecentBookings.DataBind();
         }
 
-
         public string GetStatusClass(string status)
         {
+            if (string.IsNullOrEmpty(status)) return "admin-status";
             switch (status.ToLower())
             {
                 case "delivered":
+                case "completed":
                     return "admin-status delivered";
-
                 case "in transit":
+                case "ongoing":
                     return "admin-status transit";
-
                 case "pending":
                     return "admin-status pending";
-
                 case "cancelled":
                     return "admin-status cancelled";
-
                 default:
                     return "admin-status";
             }

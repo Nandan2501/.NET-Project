@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Vehicle.aspx.cs"
     Inherits="WebApplication3.AdminVehicles" %>
 
@@ -32,7 +32,7 @@
         <!-- VEHICLES CARD -->
         <div class="vehicles-card">
             <div class="vehicles-card-title">
-                <span>All Vehicles (32)</span>
+                <asp:Label ID="lblVehicleTitle" runat="server" Text="All Vehicles"></asp:Label>
             </div>
 
             <div class="vehicles-table-wrapper">

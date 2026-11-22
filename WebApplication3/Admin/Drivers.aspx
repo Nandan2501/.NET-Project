@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Drivers.aspx.cs"
     Inherits="WebApplication3.AdminDrivers" %>
 
@@ -32,7 +32,7 @@
         <!-- DRIVER TABLE CARD -->
         <div class="drivers-card">
             <div class="drivers-card-title">
-                <span>All Registered Drivers (35)</span>
+                <asp:Label ID="lblDriverTitle" runat="server" Text="All Registered Drivers"></asp:Label>
             </div>
 
             <div class="drivers-table-wrapper">

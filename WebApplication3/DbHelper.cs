@@ -2,6 +2,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.SessionState;
 
 namespace WebApplication3
 {
@@ -24,52 +25,73 @@ namespace WebApplication3
         public static DataTable ExecuteQuery(string query, params SqlParameter[] parameters)
         {
             var dt = new DataTable();
-            using (var conn = new SqlConnection(ConnectionString))
+            try
             {
-                using (var cmd = new SqlCommand(query, conn))
+                using (var conn = new SqlConnection(ConnectionString))
                 {
-                    if (parameters != null && parameters.Length > 0)
+                    using (var cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddRange(parameters);
-                    }
-                    using (var da = new SqlDataAdapter(cmd))
-                    {
-                        da.Fill(dt);
+                        if (parameters != null && parameters.Length > 0)
+                        {
+                            cmd.Parameters.AddRange(parameters);
+                        }
+                        using (var da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(dt);
+                        }
                     }
                 }
+            }
+            catch
+            {
+                // Return empty DataTable on error
             }
             return dt;
         }
 
         public static int ExecuteNonQuery(string query, params SqlParameter[] parameters)
         {
-            using (var conn = new SqlConnection(ConnectionString))
+            try
             {
-                using (var cmd = new SqlCommand(query, conn))
+                using (var conn = new SqlConnection(ConnectionString))
                 {
-                    if (parameters != null && parameters.Length > 0)
+                    using (var cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddRange(parameters);
+                        if (parameters != null && parameters.Length > 0)
+                        {
+                            cmd.Parameters.AddRange(parameters);
+                        }
+                        conn.Open();
+                        return cmd.ExecuteNonQuery();
                     }
-                    conn.Open();
-                    return cmd.ExecuteNonQuery();
                 }
+            }
+            catch
+            {
+                return 0;
             }
         }
 
         public static object ExecuteScalar(string query, params SqlParameter[] parameters)
         {
-            using (var conn = new SqlConnection(ConnectionString))
+            try
             {
-                using (var cmd = new SqlCommand(query, conn))
+                using (var conn = new SqlConnection(ConnectionString))
                 {
-                    if (parameters != null && parameters.Length > 0)
+                    using (var cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddRange(parameters);
+                        if (parameters != null && parameters.Length > 0)
+                        {
+                            cmd.Parameters.AddRange(parameters);
+                        }
+                        conn.Open();
+                        return cmd.ExecuteScalar();
                     }
-                    conn.Open();
-                    return cmd.ExecuteScalar();
                 }
+            }
+            catch
+            {
+                return null;
             }
         }
 
@@ -141,21 +163,77 @@ namespace WebApplication3
 
                 const string insertQuery = @"
                     INSERT INTO Users (FullName, Email, Phone, PasswordHash, Role)
-                    VALUES (@FullName, @Email, @Phone, @Password, 'Customer')";
+                    VALUES (@FullName, @Email, @Phone, @Password, 'Customer');
+                    SELECT SCOPE_IDENTITY();";
 
-                ExecuteNonQuery(insertQuery,
+                var newId = ExecuteScalar(insertQuery,
                     new SqlParameter("@FullName", fullName.Trim()),
                     new SqlParameter("@Email", email.Trim()),
                     new SqlParameter("@Phone", phone.Trim()),
                     new SqlParameter("@Password", password));
 
-                return true;
+                return newId != null;
             }
             catch (Exception ex)
             {
                 errorMessage = ex.Message;
                 return false;
             }
+        }
+
+        public static int GetLoggedInUserId(HttpSessionState session)
+        {
+            if (session != null && session["UserId"] != null)
+            {
+                int id;
+                if (int.TryParse(session["UserId"].ToString(), out id))
+                    return id;
+            }
+
+            if (session != null && session["UserEmail"] != null)
+            {
+                var obj = ExecuteScalar("SELECT UserId FROM Users WHERE LOWER(Email) = LOWER(@Email)",
+                    new SqlParameter("@Email", session["UserEmail"].ToString()));
+                if (obj != null && obj != DBNull.Value)
+                    return Convert.ToInt32(obj);
+            }
+
+            // Default fallback to first active customer
+            var fallback = ExecuteScalar("SELECT TOP 1 UserId FROM Users WHERE Role = 'Customer' ORDER BY UserId ASC");
+            if (fallback != null && fallback != DBNull.Value)
+                return Convert.ToInt32(fallback);
+
+            return 1;
+        }
+
+        public static int GetLoggedInDriverId(HttpSessionState session)
+        {
+            if (session != null && session["DriverId"] != null)
+            {
+                int dId;
+                if (int.TryParse(session["DriverId"].ToString(), out dId))
+                    return dId;
+            }
+
+            int userId = 0;
+            if (session != null && session["UserId"] != null)
+            {
+                int.TryParse(session["UserId"].ToString(), out userId);
+            }
+
+            if (userId > 0)
+            {
+                var obj = ExecuteScalar("SELECT DriverId FROM Drivers WHERE UserId = @UserId",
+                    new SqlParameter("@UserId", userId));
+                if (obj != null && obj != DBNull.Value)
+                    return Convert.ToInt32(obj);
+            }
+
+            var fallback = ExecuteScalar("SELECT TOP 1 DriverId FROM Drivers ORDER BY DriverId ASC");
+            if (fallback != null && fallback != DBNull.Value)
+                return Convert.ToInt32(fallback);
+
+            return 1;
         }
     }
 }

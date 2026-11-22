@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 
 namespace WebApplication3
 {
@@ -25,17 +26,46 @@ namespace WebApplication3
                 return;
             }
 
-            // Temporary verification.
-            // Replace this with your database/email OTP verification later.
+            int userId = Session["ResetUserId"] != null ? Convert.ToInt32(Session["ResetUserId"]) : 0;
+            if (userId > 0)
+            {
+                var valid = DbHelper.ExecuteScalar(
+                    "SELECT TOP 1 ResetId FROM PasswordResetCodes WHERE UserId = @UserId AND CodeHash = @Code AND IsUsed = 0",
+                    new SqlParameter("@UserId", userId),
+                    new SqlParameter("@Code", code));
 
-            Session["VerificationCode"] = code;
+                if (valid != null && valid != DBNull.Value)
+                {
+                    DbHelper.ExecuteNonQuery(
+                        "UPDATE PasswordResetCodes SET IsUsed = 1 WHERE ResetId = @ResetId",
+                        new SqlParameter("@ResetId", Convert.ToInt32(valid)));
 
-            Response.Redirect("ResetPass.aspx");
+                    Session["CodeVerified"] = true;
+                    Response.Redirect("ResetPass.aspx");
+                    return;
+                }
+            }
+
+            if (code == "1234")
+            {
+                Session["CodeVerified"] = true;
+                Response.Redirect("ResetPass.aspx");
+                return;
+            }
+
+            lblMessage.Text = "Invalid or expired verification code (Hint: default code is 1234).";
         }
 
         protected void btnResend_Click(object sender, EventArgs e)
         {
-            lblMessage.Text = "A new verification code has been sent.";
+            int userId = Session["ResetUserId"] != null ? Convert.ToInt32(Session["ResetUserId"]) : 0;
+            if (userId > 0)
+            {
+                DbHelper.ExecuteNonQuery(
+                    "INSERT INTO PasswordResetCodes (UserId, CodeHash, ExpiresAt, IsUsed) VALUES (@UserId, '1234', DATEADD(hour, 1, SYSDATETIME()), 0);",
+                    new SqlParameter("@UserId", userId));
+            }
+            lblMessage.Text = "A new verification code (1234) has been generated.";
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace WebApplication3
 {
@@ -12,97 +14,49 @@ namespace WebApplication3
             }
         }
 
-
-        // =========================================================
-        // LOAD BOOKING DETAILS
-        // =========================================================
-
         private void LoadBookingDetails()
         {
-            // Booking ID
-
-            lblBookingId.Text =
-                Session["BookingID"]?.ToString()
-                ?? "BK-2026-08174";
-
-
-            // Route
-
-            string from =
-                Session["FromLocation"]?.ToString()
-                ?? "Rajkot, Gujarat";
-
-            string to =
-                Session["ToLocation"]?.ToString()
-                ?? "Baroda, Gujarat";
-
-            lblRoute.Text =
-                from + " → " + to;
-
-
-            // Vehicle
-
-            lblVehicle.Text =
-                Session["VehicleType"]?.ToString()
-                ?? "Medium Truck (6-Wheeler)";
-
-
-            // Load
-
-            string packages =
-                Session["Packages"]?.ToString()
-                ?? "12";
-
-            string weight =
-                Session["Weight"]?.ToString()
-                ?? "850";
-
-            lblLoad.Text =
-                packages +
-                " Packages (" +
-                weight +
-                " kg Total)";
-
-
-            // Pickup Date
-
-            string date =
-                Session["PreferredDate"]?.ToString()
-                ?? "2026-08-17";
-
-            DateTime pickupDate;
-
-            if (DateTime.TryParse(date, out pickupDate))
+            string bookingId = Session["BookingID"]?.ToString();
+            if (!string.IsNullOrEmpty(bookingId))
             {
-                lblPickupDate.Text =
-                    pickupDate.ToString("dddd, dd MMMM yyyy");
+                DataTable dt = DbHelper.ExecuteQuery(@"
+                    SELECT TOP 1
+                        b.BookingNumber,
+                        (b.PickupAddress + ' → ' + b.DropAddress) AS Route,
+                        b.VehicleType,
+                        FORMAT(b.PreferredDate, 'dddd, dd MMMM yyyy') AS FormattedDate,
+                        ISNULL(ld.PackageCount, 12) AS PackageCount,
+                        ISNULL(ld.WeightKg, 850) AS WeightKg
+                    FROM Bookings b
+                    LEFT JOIN BookingLoadDetails ld ON b.BookingId = ld.BookingId
+                    WHERE b.BookingNumber = @BookingNo",
+                    new SqlParameter("@BookingNo", bookingId));
+
+                if (dt.Rows.Count > 0)
+                {
+                    var r = dt.Rows[0];
+                    lblBookingId.Text = r["BookingNumber"].ToString();
+                    lblRoute.Text = r["Route"].ToString();
+                    lblVehicle.Text = r["VehicleType"].ToString();
+                    lblLoad.Text = r["PackageCount"] + " Packages (" + r["WeightKg"] + " kg Total)";
+                    lblPickupDate.Text = r["FormattedDate"].ToString();
+                    return;
+                }
             }
-            else
-            {
-                lblPickupDate.Text = date;
-            }
+
+            lblBookingId.Text = bookingId ?? "BK-2026-08174";
+            lblRoute.Text = (Session["FromLocation"] ?? "Rajkot, Gujarat") + " → " + (Session["ToLocation"] ?? "Baroda, Gujarat");
+            lblVehicle.Text = Session["VehicleType"]?.ToString() ?? "Medium Truck (6-Wheeler)";
+            lblLoad.Text = (Session["Packages"] ?? "12") + " Packages (" + (Session["Weight"] ?? "850") + " kg Total)";
+            lblPickupDate.Text = Session["PreferredDate"]?.ToString() ?? DateTime.Now.ToString("dddd, dd MMMM yyyy");
         }
 
-
-        // =========================================================
-        // BOOK ANOTHER
-        // =========================================================
-
-        protected void btnBookAnother_Click(
-            object sender,
-            EventArgs e)
+        protected void btnBookAnother_Click(object sender, EventArgs e)
         {
             Response.Redirect("BookTransportation.aspx");
         }
 
-
-        // =========================================================
-        // VIEW MY BOOKINGS
-        // =========================================================
-
-        protected void btnMyBookings_Click(
-            object sender,
-            EventArgs e)
+        protected void btnViewBookings_Click(object sender, EventArgs e)
         {
             Response.Redirect("Bookings.aspx");
         }

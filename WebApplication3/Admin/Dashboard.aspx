@@ -3,11 +3,11 @@
     Inherits="WebApplication3.AdminDashboard" %>
 
 <asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContent" runat="server">
-    Admin Dashboard - Transpo
+    Dashboard - Transpo
 </asp:Content>
 
 <asp:Content ID="PageTitleContent" ContentPlaceHolderID="PageTitle" runat="server">
-    Dashboard
+    Admin Dashboard
 </asp:Content>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
@@ -15,7 +15,7 @@
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <section class="admin-content" style="padding: 0;">
+    <section class="admin-dashboard-content" style="padding: 0;">
 
         <!-- STATISTICS -->
         <div class="admin-stat-grid">
@@ -26,7 +26,7 @@
                     <span>Total Bookings</span>
                     <div class="admin-stat-icon">▣</div>
                 </div>
-                <div class="admin-stat-number">1,248</div>
+                <div class="admin-stat-number"><asp:Literal ID="litTotalBookings" runat="server" Text="0" /></div>
             </div>
 
             <!-- REVENUE -->
@@ -35,7 +35,7 @@
                     <span>Revenue</span>
                     <div class="admin-stat-icon">₹</div>
                 </div>
-                <div class="admin-stat-number">₹50,45,450</div>
+                <div class="admin-stat-number"><asp:Literal ID="litTotalRevenue" runat="server" Text="₹0" /></div>
             </div>
 
             <!-- ACTIVE VEHICLES -->
@@ -44,7 +44,7 @@
                     <span>Active Vehicles</span>
                     <div class="admin-stat-icon">▣</div>
                 </div>
-                <div class="admin-stat-number">32</div>
+                <div class="admin-stat-number"><asp:Literal ID="litActiveVehicles" runat="server" Text="0" /></div>
             </div>
 
             <!-- ACTIVE DRIVERS -->
@@ -53,7 +53,7 @@
                     <span>Active Drivers</span>
                     <div class="admin-stat-icon">♧</div>
                 </div>
-                <div class="admin-stat-number">35</div>
+                <div class="admin-stat-number"><asp:Literal ID="litActiveDrivers" runat="server" Text="0" /></div>
             </div>
 
         </div>

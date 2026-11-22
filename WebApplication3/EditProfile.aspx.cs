@@ -1,4 +1,6 @@
 using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace WebApplication3
 {
@@ -12,133 +14,110 @@ namespace WebApplication3
             }
         }
 
-
-        // =========================
-        // LOAD EXISTING PROFILE
-        // =========================
-
         private void LoadProfile()
         {
-            txtFullName.Text =
-                "Nandan Nasit";
+            int userId = DbHelper.GetLoggedInUserId(Session);
+            DataTable dt = DbHelper.ExecuteQuery(@"
+                SELECT TOP 1 u.FullName, u.Email, u.Phone, 
+                       FORMAT(u.DateOfBirth, 'yyyy-MM-dd') AS DOB,
+                       ISNULL(a.FullAddress, '') AS FullAddress
+                FROM Users u
+                LEFT JOIN Addresses a ON u.UserId = a.UserId AND a.IsDefault = 1
+                WHERE u.UserId = @UserId",
+                new SqlParameter("@UserId", userId));
 
-            txtEmail.Text =
-                "jnandannasit@gmail.com";
-
-            txtPhone.Text =
-                "7757856769";
-
-            txtDateOfBirth.Text =
-                "12 Mar 2006";
-
-            txtAddress.Text =
-                "Gandhinagar, Gujarat 360002";
+            if (dt.Rows.Count > 0)
+            {
+                var row = dt.Rows[0];
+                txtFullName.Text = row["FullName"]?.ToString() ?? "";
+                txtEmail.Text = row["Email"]?.ToString() ?? "";
+                txtPhone.Text = row["Phone"]?.ToString() ?? "";
+                txtDateOfBirth.Text = row["DOB"]?.ToString() ?? "";
+                txtAddress.Text = row["FullAddress"]?.ToString() ?? "";
+            }
         }
 
-
-        // =========================
-        // SAVE CHANGES
-        // =========================
-
-        protected void btnSave_Click(
-            object sender,
-            EventArgs e)
+        protected void btnSave_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid)
                 return;
 
-            if (string.IsNullOrWhiteSpace(
-                txtFullName.Text))
-            {
-                lblMessage.Text =
-                    "Please enter your full name.";
+            string fullName = txtFullName.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string phone = txtPhone.Text.Trim();
+            string dobStr = txtDateOfBirth.Text.Trim();
+            string address = txtAddress.Text.Trim();
 
+            if (string.IsNullOrWhiteSpace(fullName))
+            {
+                lblMessage.Text = "Please enter your full name.";
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(
-                txtEmail.Text))
+            if (string.IsNullOrWhiteSpace(email))
             {
-                lblMessage.Text =
-                    "Please enter your email.";
-
+                lblMessage.Text = "Please enter your email.";
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(
-                txtPhone.Text))
+            if (string.IsNullOrWhiteSpace(phone))
             {
-                lblMessage.Text =
-                    "Please enter your phone number.";
-
+                lblMessage.Text = "Please enter your phone number.";
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(
-                txtAddress.Text))
-            {
-                lblMessage.Text =
-                    "Please enter your address.";
+            int userId = DbHelper.GetLoggedInUserId(Session);
 
-                return;
+            DateTime dob;
+            object dobValue = DBNull.Value;
+            if (DateTime.TryParse(dobStr, out dob))
+            {
+                dobValue = dob;
             }
 
+            DbHelper.ExecuteNonQuery(@"
+                UPDATE Users 
+                SET FullName = @FullName, Email = @Email, Phone = @Phone, DateOfBirth = @DOB 
+                WHERE UserId = @UserId",
+                new SqlParameter("@FullName", fullName),
+                new SqlParameter("@Email", email),
+                new SqlParameter("@Phone", phone),
+                new SqlParameter("@DOB", dobValue),
+                new SqlParameter("@UserId", userId));
 
-            // Database update will be added later.
+            if (!string.IsNullOrWhiteSpace(address))
+            {
+                int addrCount = Convert.ToInt32(DbHelper.ExecuteScalar(
+                    "SELECT COUNT(1) FROM Addresses WHERE UserId = @UserId AND IsDefault = 1",
+                    new SqlParameter("@UserId", userId)) ?? 0);
+
+                if (addrCount > 0)
+                {
+                    DbHelper.ExecuteNonQuery(
+                        "UPDATE Addresses SET FullAddress = @Address WHERE UserId = @UserId AND IsDefault = 1",
+                        new SqlParameter("@Address", address),
+                        new SqlParameter("@UserId", userId));
+                }
+                else
+                {
+                    DbHelper.ExecuteNonQuery(@"
+                        INSERT INTO Addresses (UserId, AddressTitle, FullAddress, City, State, PostalCode, IsDefault)
+                        VALUES (@UserId, 'Home', @Address, 'Rajkot', 'Gujarat', '360001', 1)",
+                        new SqlParameter("@UserId", userId),
+                        new SqlParameter("@Address", address));
+                }
+            }
+
+            Session["FullName"] = fullName;
+            Session["UserEmail"] = email;
+            Session["UserPhone"] = phone;
 
             Response.Redirect("Profile.aspx");
         }
 
-
-        // =========================
-        // CANCEL
-        // =========================
-
-        protected void btnCancel_Click(
-            object sender,
-            EventArgs e)
+        protected void btnCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("Profile.aspx");
-        }
-
-
-        // =========================
-        // CHANGE PHOTO
-        // =========================
-
-        protected void btnChangePhoto_Click(
-            object sender,
-            EventArgs e)
-        {
-         
-
-            string extension =
-                System.IO.Path.GetExtension(
-                    fuProfilePhoto.FileName)
-                .ToLower();
-
-            if (extension != ".jpg" &&
-                extension != ".jpeg" &&
-                extension != ".png" &&
-                extension != ".gif")
-            {
-                lblMessage.Text =
-                    "Only JPG, JPEG, PNG or GIF files are allowed.";
-
-                return;
-            }
-
-            if (fuProfilePhoto.PostedFile.ContentLength >
-                800 * 1024)
-            {
-                lblMessage.Text =
-                    "Maximum file size is 800 KB.";
-
-                return;
-            }
-
-            lblMessage.Text =
-                "Profile photo selected successfully.";
         }
     }
 }

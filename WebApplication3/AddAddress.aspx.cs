@@ -1,4 +1,6 @@
 using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace WebApplication3
 {
@@ -17,28 +19,22 @@ namespace WebApplication3
             if (Session["EditAddressId"] != null)
             {
                 string addressId = Session["EditAddressId"].ToString();
+                int userId = DbHelper.GetLoggedInUserId(Session);
 
-                // Sample data for editing
-                if (addressId == "1")
+                DataTable dt = DbHelper.ExecuteQuery(
+                    "SELECT TOP 1 * FROM Addresses WHERE AddressId = @AddressId AND UserId = @UserId",
+                    new SqlParameter("@AddressId", addressId),
+                    new SqlParameter("@UserId", userId));
+
+                if (dt.Rows.Count > 0)
                 {
-                    txtAddressLabel.Text = "Warehouse";
-
-                    txtFullAddress.Text =
-                        "Plot 25, Industrial Area, Rajkot, Gujarat";
-
-                    txtCity.Text = "Rajkot";
-
-                    txtState.Text = "Gujarat";
-
-                    txtPinCode.Text = "360001";
-
-                    ddlCountry.SelectedValue = "India";
-
-                    txtPhone.Text = "+91 98765 43210";
-
-                    rbWarehouse.Checked = true;
-
-                    chkDefault.Checked = true;
+                    var r = dt.Rows[0];
+                    txtAddressLabel.Text = r["AddressTitle"]?.ToString();
+                    txtFullAddress.Text = r["FullAddress"]?.ToString();
+                    txtCity.Text = r["City"]?.ToString();
+                    txtState.Text = r["State"]?.ToString();
+                    txtPinCode.Text = r["PostalCode"]?.ToString();
+                    chkDefault.Checked = Convert.ToBoolean(r["IsDefault"]);
                 }
             }
         }
@@ -48,39 +44,57 @@ namespace WebApplication3
             if (!Page.IsValid)
                 return;
 
-            if (string.IsNullOrWhiteSpace(txtAddressLabel.Text))
-            {
+            string label = txtAddressLabel.Text.Trim();
+            string fullAddress = txtFullAddress.Text.Trim();
+            string city = txtCity.Text.Trim();
+            string state = txtState.Text.Trim();
+            string pin = txtPinCode.Text.Trim();
+            bool isDefault = chkDefault.Checked;
+
+            if (string.IsNullOrWhiteSpace(label) || string.IsNullOrWhiteSpace(fullAddress))
                 return;
+
+            int userId = DbHelper.GetLoggedInUserId(Session);
+
+            if (isDefault)
+            {
+                DbHelper.ExecuteNonQuery(
+                    "UPDATE Addresses SET IsDefault = 0 WHERE UserId = @UserId",
+                    new SqlParameter("@UserId", userId));
             }
 
-            if (string.IsNullOrWhiteSpace(txtFullAddress.Text))
+            if (Session["EditAddressId"] != null)
             {
-                return;
-            }
+                string addressId = Session["EditAddressId"].ToString();
+                DbHelper.ExecuteNonQuery(@"
+                    UPDATE Addresses 
+                    SET AddressTitle = @Label, FullAddress = @Address, City = @City, 
+                        State = @State, PostalCode = @Pin, IsDefault = @IsDefault
+                    WHERE AddressId = @AddressId AND UserId = @UserId",
+                    new SqlParameter("@Label", label),
+                    new SqlParameter("@Address", fullAddress),
+                    new SqlParameter("@City", city),
+                    new SqlParameter("@State", state),
+                    new SqlParameter("@Pin", pin),
+                    new SqlParameter("@IsDefault", isDefault ? 1 : 0),
+                    new SqlParameter("@AddressId", addressId),
+                    new SqlParameter("@UserId", userId));
 
-            if (string.IsNullOrWhiteSpace(txtCity.Text))
+                Session.Remove("EditAddressId");
+            }
+            else
             {
-                return;
+                DbHelper.ExecuteNonQuery(@"
+                    INSERT INTO Addresses (UserId, AddressTitle, FullAddress, City, State, PostalCode, IsDefault)
+                    VALUES (@UserId, @Label, @Address, @City, @State, @Pin, @IsDefault)",
+                    new SqlParameter("@UserId", userId),
+                    new SqlParameter("@Label", label),
+                    new SqlParameter("@Address", fullAddress),
+                    new SqlParameter("@City", city),
+                    new SqlParameter("@State", state),
+                    new SqlParameter("@Pin", pin),
+                    new SqlParameter("@IsDefault", isDefault ? 1 : 0));
             }
-
-            if (string.IsNullOrWhiteSpace(txtState.Text))
-            {
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtPinCode.Text))
-            {
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtPhone.Text))
-            {
-                return;
-            }
-
-            // Database saving can be added here later.
-
-            Session.Remove("EditAddressId");
 
             Response.Redirect("AddressBook.aspx");
         }
@@ -88,7 +102,6 @@ namespace WebApplication3
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             Session.Remove("EditAddressId");
-
             Response.Redirect("AddressBook.aspx");
         }
     }

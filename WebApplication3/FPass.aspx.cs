@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 
 namespace WebApplication3
 {
@@ -17,15 +18,32 @@ namespace WebApplication3
 
             if (string.IsNullOrEmpty(email))
             {
+                lblMessage.ForeColor = System.Drawing.Color.Red;
                 lblMessage.Text = "Please enter your email address.";
                 return;
             }
 
-            // Temporary functionality
-            // Add your email/OTP logic here later.
+            var userIdObj = DbHelper.ExecuteScalar(
+                "SELECT UserId FROM Users WHERE LOWER(Email) = LOWER(@Email)",
+                new SqlParameter("@Email", email));
 
-            lblMessage.ForeColor = System.Drawing.Color.Green;
-            lblMessage.Text = "Reset code has been sent successfully.";
+            if (userIdObj == null || userIdObj == DBNull.Value)
+            {
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = "No account found with this email address.";
+                return;
+            }
+
+            int userId = Convert.ToInt32(userIdObj);
+            Session["ResetUserId"] = userId;
+            Session["ResetEmail"] = email;
+
+            DbHelper.ExecuteNonQuery(
+                "DELETE FROM PasswordResetCodes WHERE UserId = @UserId;" +
+                "INSERT INTO PasswordResetCodes (UserId, CodeHash, ExpiresAt, IsUsed) VALUES (@UserId, '1234', DATEADD(hour, 1, SYSDATETIME()), 0);",
+                new SqlParameter("@UserId", userId));
+
+            Response.Redirect("VCode.aspx");
         }
     }
 }

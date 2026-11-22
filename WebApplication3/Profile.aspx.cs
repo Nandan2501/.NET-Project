@@ -1,4 +1,6 @@
-﻿using System;
+using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace WebApplication3
 {
@@ -14,11 +16,25 @@ namespace WebApplication3
 
         private void LoadProfile()
         {
-            txtFullName.Text = "Nandan Nasit";
-            txtEmail.Text = "jnandannasit@gmail.com";
-            txtPhone.Text = "98765-43210";
-            txtDOB.Text = "12 Mar 1990";
-            txtAddress.Text = "Gandhinagar, gujarat 360002";
+            int userId = DbHelper.GetLoggedInUserId(Session);
+            DataTable dt = DbHelper.ExecuteQuery(@"
+                SELECT TOP 1 u.FullName, u.Email, u.Phone, 
+                       FORMAT(u.DateOfBirth, 'dd MMM yyyy') AS DOB,
+                       ISNULL(a.FullAddress, '') AS FullAddress
+                FROM Users u
+                LEFT JOIN Addresses a ON u.UserId = a.UserId AND a.IsDefault = 1
+                WHERE u.UserId = @UserId",
+                new SqlParameter("@UserId", userId));
+
+            if (dt.Rows.Count > 0)
+            {
+                var row = dt.Rows[0];
+                txtFullName.Text = row["FullName"]?.ToString() ?? "";
+                txtEmail.Text = row["Email"]?.ToString() ?? "";
+                txtPhone.Text = row["Phone"]?.ToString() ?? "";
+                txtDOB.Text = row["DOB"]?.ToString() ?? "";
+                txtAddress.Text = row["FullAddress"]?.ToString() ?? "";
+            }
         }
 
         protected void btnEditProfile_Click(object sender, EventArgs e)

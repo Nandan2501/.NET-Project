@@ -9,18 +9,12 @@
 
 namespace WebApplication3
 {
-
-
     public partial class AdminDashboard
     {
-
-        /// <summary>
-        /// gvRecentBookings control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litTotalBookings;
+        protected global::System.Web.UI.WebControls.Literal litTotalRevenue;
+        protected global::System.Web.UI.WebControls.Literal litActiveVehicles;
+        protected global::System.Web.UI.WebControls.Literal litActiveDrivers;
         protected global::System.Web.UI.WebControls.GridView gvRecentBookings;
     }
 }

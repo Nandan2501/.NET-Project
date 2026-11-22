@@ -9,9 +9,16 @@
 
 namespace WebApplication3
 {
-
-
     public partial class Dashboard
     {
+        protected global::System.Web.UI.WebControls.Literal litUserName;
+        protected global::System.Web.UI.WebControls.Literal litActiveBookings;
+        protected global::System.Web.UI.WebControls.Literal litUpcomingTrips;
+        protected global::System.Web.UI.WebControls.Literal litCompletedTrips;
+        protected global::System.Web.UI.WebControls.Literal litPendingPayments;
+        protected global::System.Web.UI.WebControls.Repeater rptRecentBookings;
+        protected global::System.Web.UI.WebControls.Literal litUpcomingRoute;
+        protected global::System.Web.UI.WebControls.Literal litUpcomingVehicle;
+        protected global::System.Web.UI.WebControls.Literal litUpcomingDate;
     }
 }

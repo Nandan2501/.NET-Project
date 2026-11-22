@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 
 namespace WebApplication3
 {
@@ -22,9 +23,9 @@ namespace WebApplication3
                 return;
             }
 
-            if (password.Length < 8)
+            if (password.Length < 6)
             {
-                lblMessage.Text = "Password must be at least 8 characters.";
+                lblMessage.Text = "Password must be at least 6 characters.";
                 return;
             }
 
@@ -40,7 +41,25 @@ namespace WebApplication3
                 return;
             }
 
-            // Add your database password update logic here later.
+            int userId = Session["ResetUserId"] != null ? Convert.ToInt32(Session["ResetUserId"]) : 0;
+            if (userId > 0)
+            {
+                DbHelper.ExecuteNonQuery(
+                    "UPDATE Users SET PasswordHash = @Password WHERE UserId = @UserId",
+                    new SqlParameter("@Password", password),
+                    new SqlParameter("@UserId", userId));
+            }
+            else if (Session["ResetEmail"] != null)
+            {
+                DbHelper.ExecuteNonQuery(
+                    "UPDATE Users SET PasswordHash = @Password WHERE LOWER(Email) = LOWER(@Email)",
+                    new SqlParameter("@Password", password),
+                    new SqlParameter("@Email", Session["ResetEmail"].ToString()));
+            }
+
+            Session.Remove("ResetUserId");
+            Session.Remove("ResetEmail");
+            Session.Remove("CodeVerified");
 
             Response.Redirect("Login.aspx");
         }

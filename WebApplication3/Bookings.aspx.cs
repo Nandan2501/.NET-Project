@@ -1,5 +1,7 @@
-﻿using System;
+using System;
 using System.Data;
+using System.Data.SqlClient;
+using System.Web.UI.WebControls;
 
 namespace WebApplication3
 {
@@ -15,45 +17,19 @@ namespace WebApplication3
 
         private void LoadBookings()
         {
-            DataTable dt = new DataTable();
-
-            dt.Columns.Add("BookingID");
-            dt.Columns.Add("Route");
-            dt.Columns.Add("Date");
-            dt.Columns.Add("Status");
-            dt.Columns.Add("Amount");
-
-            dt.Rows.Add(
-                "TRP-1004",
-                "Rajkot → Surat",
-                "17 Aug 2026, 10:00 AM",
-                "Ongoing",
-                "₹9,800"
-            );
-
-            dt.Rows.Add(
-                "TRP-1003",
-                "Rajkot → baroda",
-                "17 Aug 2026, 02:30 PM",
-                "Completed",
-                "₹12000"
-            );
-
-            dt.Rows.Add(
-                "TRP-1002",
-                "Rajkot → junagadh",
-                "17 Aug 2026, 09:15 AM",
-                "Completed",
-                "₹8000"
-            );
-
-            dt.Rows.Add(
-                "TRP-1001",
-                "Rajkot → bhuj",
-                "17 Aug 2026, 11:00 AM",
-                "Cancelled",
-                "₹25,000"
-            );
+            int userId = DbHelper.GetLoggedInUserId(Session);
+            DataTable dt = DbHelper.ExecuteQuery(@"
+                SELECT 
+                    b.BookingNumber AS BookingID,
+                    (ISNULL(b.PickupCity, 'Rajkot') + ' → ' + ISNULL(b.DropCity, 'Surat')) AS Route,
+                    FORMAT(b.PreferredDate, 'dd MMM yyyy, hh:mm tt') AS Date,
+                    b.BookingStatus AS Status,
+                    '₹' + CAST(CAST(ISNULL(p.Amount, 10000.00) AS INT) AS VARCHAR) AS Amount
+                FROM Bookings b
+                LEFT JOIN Payments p ON b.BookingId = p.BookingId
+                WHERE b.CustomerId = @UserId
+                ORDER BY b.BookingId DESC",
+                new SqlParameter("@UserId", userId));
 
             gvBookings.DataSource = dt;
             gvBookings.DataBind();
@@ -61,33 +37,26 @@ namespace WebApplication3
 
         protected string GetStatusClass(string status)
         {
-            switch (status.ToLower())
+            switch (status?.ToLower())
             {
                 case "ongoing":
                     return "mb-status ongoing";
-
                 case "completed":
                     return "mb-status completed";
-
                 case "cancelled":
                     return "mb-status cancelled";
-
                 default:
                     return "mb-status";
             }
         }
 
-        protected void gvBookings_RowCommand(
-            object sender,
-            System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        protected void gvBookings_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "ViewBooking")
             {
                 string bookingId = e.CommandArgument.ToString();
-
                 Session["SelectedBookingId"] = bookingId;
-
-                Response.Redirect("BookDetails.aspx");
+                Response.Redirect("BookDetails.aspx?id=" + Server.UrlEncode(bookingId));
             }
         }
     }

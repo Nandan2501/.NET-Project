@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="ActiveTrip.aspx.cs"
     Inherits="WebApplication3.Driver.ActiveTrip" %>
 
@@ -20,15 +20,15 @@
         <!-- TRACKING CARD -->
         <div class="driver-active-card tracking-card">
             <div class="tracking-label">TRACKING ID</div>
-            <div class="tracking-id">TRP123456789</div>
+            <div class="tracking-id"><asp:Literal ID="litTrackingId" runat="server">TRP123456789</asp:Literal></div>
             <div class="tracking-divider"></div>
 
             <div class="tracking-route">
                 <div class="tracking-point">
                     <span class="tracking-dot blue-dot"></span>
                     <div>
-                        <div class="tracking-location">Ahmedabad Hub</div>
-                        <div class="tracking-time">10:00 AM</div>
+                        <div class="tracking-location"><asp:Literal ID="litPickupLocation" runat="server">Ahmedabad Hub</asp:Literal></div>
+                        <div class="tracking-time"><asp:Literal ID="litPickupTime" runat="server">10:00 AM</asp:Literal></div>
                     </div>
                 </div>
 
@@ -37,8 +37,8 @@
                 <div class="tracking-point">
                     <span class="tracking-dot green-dot"></span>
                     <div>
-                        <div class="tracking-location">Surat Delivery Office</div>
-                        <div class="tracking-time">01:30 PM</div>
+                        <div class="tracking-location"><asp:Literal ID="litDropLocation" runat="server">Surat Delivery Office</asp:Literal></div>
+                        <div class="tracking-time"><asp:Literal ID="litDropTime" runat="server">01:30 PM</asp:Literal></div>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
 
             <div class="statistics-row">
                 <span>Cargo weight</span>
-                <strong>4.2 Tons</strong>
+                <strong><asp:Literal ID="litCargoWeight" runat="server">4.2 Tons</asp:Literal></strong>
             </div>
         </div>
 

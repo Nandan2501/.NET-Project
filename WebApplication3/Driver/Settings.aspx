@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Settings.aspx.cs"
     Inherits="WebApplication3.Driver.Settings" %>
 
@@ -126,6 +126,8 @@
                         Text="Update Password"
                         CssClass="driver-settings-update-btn"
                         OnClick="btnUpdatePassword_Click" />
+
+                    <asp:Label ID="lblPasswordMessage" runat="server" ForeColor="Green" CssClass="mt-2 d-block"></asp:Label>
                 </div>
 
             </div>

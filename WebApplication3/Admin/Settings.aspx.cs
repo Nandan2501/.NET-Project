@@ -1,4 +1,6 @@
 using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace WebApplication3
 {
@@ -12,23 +14,36 @@ namespace WebApplication3
             }
         }
 
-
         private void LoadCompanyDetails()
         {
-            txtCompanyName.Text = "tata";
-            txtState.Text = "Gujarat";
-            txtStreetAddress.Text = "401-404, Dev Prime, Corporate Road";
-            txtPincode.Text = "380051";
-            txtCity.Text = "Ahmedabad";
-
-            if (ddlCountry.Items.FindByValue("India") != null)
+            try
             {
-                ddlCountry.SelectedValue = "India";
+                DataTable dt = DbHelper.ExecuteQuery("SELECT SettingKey, SettingValue FROM AppSettings");
+                foreach (DataRow r in dt.Rows)
+                {
+                    string k = r["SettingKey"]?.ToString();
+                    string v = r["SettingValue"]?.ToString() ?? "";
+
+                    if (k == "CompanyName") txtCompanyName.Text = v;
+                    else if (k == "State") txtState.Text = v;
+                    else if (k == "StreetAddress") txtStreetAddress.Text = v;
+                    else if (k == "Pincode") txtPincode.Text = v;
+                    else if (k == "City") txtCity.Text = v;
+                    else if (k == "Country" && ddlCountry.Items.FindByValue(v) != null) ddlCountry.SelectedValue = v;
+                    else if (k == "BillingEmail") txtBillingEmail.Text = v;
+                }
             }
-
-            txtBillingEmail.Text = "accounts@transpo.com";
+            catch
+            {
+                // Fallbacks
+                txtCompanyName.Text = "tata";
+                txtState.Text = "Gujarat";
+                txtStreetAddress.Text = "401-404, Dev Prime, Corporate Road";
+                txtPincode.Text = "380051";
+                txtCity.Text = "Ahmedabad";
+                txtBillingEmail.Text = "accounts@transpo.com";
+            }
         }
-
 
         protected void btnUpdateProfile_Click(object sender, EventArgs e)
         {
@@ -45,51 +60,43 @@ namespace WebApplication3
             string country = ddlCountry.SelectedValue;
             string email = txtBillingEmail.Text.Trim();
 
-
-            if (string.IsNullOrWhiteSpace(companyName))
+            if (string.IsNullOrWhiteSpace(companyName) || string.IsNullOrWhiteSpace(state) ||
+                string.IsNullOrWhiteSpace(address) || string.IsNullOrWhiteSpace(pincode) ||
+                string.IsNullOrWhiteSpace(city) || string.IsNullOrWhiteSpace(email))
             {
-                lblMessage.Text = "Please enter company name.";
+                lblMessage.Text = "Please fill in all required company profile fields.";
                 return;
             }
 
-
-            if (string.IsNullOrWhiteSpace(state))
+            try
             {
-                lblMessage.Text = "Please enter state / province.";
-                return;
+                SaveSetting("CompanyName", companyName);
+                SaveSetting("State", state);
+                SaveSetting("StreetAddress", address);
+                SaveSetting("Pincode", pincode);
+                SaveSetting("City", city);
+                SaveSetting("Country", country);
+                SaveSetting("BillingEmail", email);
+
+                lblMessage.ForeColor = System.Drawing.Color.Green;
+                lblMessage.Text = "Company profile updated and saved to database successfully.";
             }
-
-
-            if (string.IsNullOrWhiteSpace(address))
+            catch (Exception ex)
             {
-                lblMessage.Text = "Please enter street address.";
-                return;
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = "Error saving settings: " + ex.Message;
             }
+        }
 
-
-            if (string.IsNullOrWhiteSpace(pincode))
-            {
-                lblMessage.Text = "Please enter pincode.";
-                return;
-            }
-
-
-            if (string.IsNullOrWhiteSpace(city))
-            {
-                lblMessage.Text = "Please enter city.";
-                return;
-            }
-
-
-            if (string.IsNullOrWhiteSpace(email))
-            {
-                lblMessage.Text = "Please enter billing contact email.";
-                return;
-            }
-
-
-            lblMessage.Text =
-                "Company profile updated successfully.";
+        private void SaveSetting(string key, string value)
+        {
+            DbHelper.ExecuteNonQuery(@"
+                IF EXISTS (SELECT 1 FROM AppSettings WHERE SettingKey = @Key)
+                    UPDATE AppSettings SET SettingValue = @Val, UpdatedAt = SYSUTCDATETIME() WHERE SettingKey = @Key
+                ELSE
+                    INSERT INTO AppSettings (SettingKey, SettingValue) VALUES (@Key, @Val)",
+                new SqlParameter("@Key", key),
+                new SqlParameter("@Val", value ?? ""));
         }
     }
 }

@@ -73,7 +73,16 @@
                             DataField="Vehicle"
                             HeaderText="ASSIGNED VEHICLE" />
 
-                       
+                        <asp:TemplateField HeaderText="ACTION">
+                            <ItemTemplate>
+                                <a href='AddDriver.aspx?id=<%# Eval("RawDriverId") %>' class="btn btn-outline-primary btn-sm">Edit</a>
+                                <asp:LinkButton ID="btnCycleStatus" runat="server"
+                                    CommandName="CycleStatus"
+                                    CommandArgument='<%# Eval("RawDriverId") + "|" + Eval("Status") %>'
+                                    Text='<%# Eval("Status").ToString() == "Active" ? "Set Leave" : "Set Active" %>'
+                                    CssClass="btn btn-outline-secondary btn-sm ms-1" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>

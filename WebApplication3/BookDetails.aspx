@@ -71,6 +71,40 @@
                         </strong>
                     </div>
 
+                    <div class="bd-info-row">
+                        <span class="bd-label">Pickup Address</span>
+                        <strong id="lblPickupAddress" runat="server">-</strong>
+                    </div>
+
+                    <div class="bd-info-row">
+                        <span class="bd-label">Drop Address</span>
+                        <strong id="lblDropAddress" runat="server">-</strong>
+                    </div>
+
+                    <div class="bd-info-row">
+                        <span class="bd-label">Assigned Driver</span>
+                        <strong id="lblDriverInfo" runat="server">-</strong>
+                    </div>
+
+                    <div class="bd-info-row">
+                        <span class="bd-label">Instructions</span>
+                        <strong id="lblInstructions" runat="server">-</strong>
+                    </div>
+
+                </div>
+
+                <div class="mt-3 p-3 rounded border bg-light">
+                    <div class="fw-bold mb-1">Trip Verification &amp; Driver Payout Status</div>
+                    <div class="small text-secondary mb-2">
+                        <asp:Literal ID="litWorkflowStatus" runat="server" Text="Checking trip status..." />
+                    </div>
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <asp:Button ID="btnConfirmArrived" runat="server" Text="Confirm Driver Arrived (Release 1st Half 50%)" CssClass="btn btn-success btn-sm" Visible="false" OnClick="btnConfirmArrived_Click" />
+                        <asp:Button ID="btnConfirmCompleted" runat="server" Text="Confirm Trip Completed (Release 2nd Half 50%)" CssClass="btn btn-success btn-sm" Visible="false" OnClick="btnConfirmCompleted_Click" />
+                        <asp:Button ID="btnPayNow" runat="server" Text="Pay Now (Online)" CssClass="btn btn-primary btn-sm" Visible="false" OnClick="btnPayNow_Click" />
+                        <a href="Bookings.aspx" class="btn btn-outline-secondary btn-sm">Back to Bookings</a>
+                    </div>
+                    <asp:Label ID="lblDetailMsg" runat="server" ForeColor="Green" CssClass="d-block mt-2 fw-semibold" />
                 </div>
 
             </div>

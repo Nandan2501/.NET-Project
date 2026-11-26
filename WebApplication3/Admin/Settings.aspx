@@ -11,7 +11,6 @@
 </asp:Content>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
-    <link rel="stylesheet" href="<%= ResolveUrl("~/CSS/admin-settings.css") %>" />
 </asp:Content>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -30,22 +29,28 @@
 
             <!-- LOGO SECTION -->
             <div class="company-logo-section">
-                <div class="company-logo">🚚</div>
+                <div class="company-logo">
+                    <asp:Image ID="imgCompanyLogo" runat="server" Visible="false" style="width:56px;height:56px;object-fit:contain;border-radius:8px;" />
+                    <asp:Literal ID="litLogoEmoji" runat="server" Text="🚚" />
+                </div>
 
-                <div class="logo-actions">
+                <div class="logo-actions d-flex flex-wrap align-items-center gap-2">
+                    <asp:FileUpload ID="fuCompanyLogo" runat="server" CssClass="form-control form-control-sm" style="max-width:220px;" />
                     <asp:Button
                         ID="btnUploadLogo"
                         runat="server"
                         Text="Upload New Logo"
                         CausesValidation="false"
-                        CssClass="btn-upload-logo" />
+                        CssClass="btn-upload-logo"
+                        OnClick="btnUploadLogo_Click" />
 
                     <asp:Button
                         ID="btnRemoveLogo"
                         runat="server"
                         Text="Remove"
                         CausesValidation="false"
-                        CssClass="btn-remove-logo" />
+                        CssClass="btn-remove-logo"
+                        OnClick="btnRemoveLogo_Click" />
                 </div>
             </div>
 
@@ -112,7 +117,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>pincode</label>
+                    <label>Pincode</label>
                     <asp:TextBox
                         ID="txtPincode"
                         runat="server"
@@ -223,6 +228,40 @@
                 runat="server"
                 CssClass="settings-message">
             </asp:Label>
+
+            <div class="settings-divider my-4"></div>
+
+            <!-- EMAIL / SMTP OTP CONFIGURATION -->
+            <div class="settings-header">
+                <h2>Email / OTP Server (Gmail SMTP)</h2>
+                <p>Configure your sender Gmail and 16-character App Password so OTP emails are sent on Registration &amp; Forgot Password.</p>
+            </div>
+
+            <div class="company-form mt-3">
+                <div class="form-group">
+                    <label>SMTP Host</label>
+                    <asp:TextBox ID="txtSmtpHost" runat="server" CssClass="settings-input" Text="smtp.gmail.com" />
+                </div>
+                <div class="form-group">
+                    <label>SMTP Port</label>
+                    <asp:TextBox ID="txtSmtpPort" runat="server" CssClass="settings-input" Text="587" />
+                </div>
+                <div class="form-group">
+                    <label>Sender Gmail Address</label>
+                    <asp:TextBox ID="txtSmtpEmail" runat="server" CssClass="settings-input" placeholder="yourgmail@gmail.com" />
+                </div>
+                <div class="form-group">
+                    <label>Gmail App Password (16 chars)</label>
+                    <asp:TextBox ID="txtSmtpPassword" runat="server" CssClass="settings-input" TextMode="Password" placeholder="Leave blank to keep existing" />
+                </div>
+            </div>
+
+            <div class="settings-bottom d-flex flex-wrap gap-2">
+                <asp:Button ID="btnSaveSmtp" runat="server" Text="Save Email Settings" CausesValidation="false" CssClass="btn-update-profile" OnClick="btnSaveSmtp_Click" />
+                <asp:Button ID="btnTestEmail" runat="server" Text="Send Test OTP to Sender Email" CausesValidation="false" CssClass="btn btn-outline-primary btn-sm" OnClick="btnTestEmail_Click" />
+            </div>
+
+            <asp:Label ID="lblSmtpMessage" runat="server" CssClass="settings-message d-block mt-2" />
 
         </div>
 

@@ -21,6 +21,9 @@ namespace WebApplication3
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgCompanyLogo;
+        protected global::System.Web.UI.WebControls.Literal litLogoEmoji;
+        protected global::System.Web.UI.WebControls.FileUpload fuCompanyLogo;
         protected global::System.Web.UI.WebControls.Button btnUploadLogo;
 
         /// <summary>
@@ -184,5 +187,12 @@ namespace WebApplication3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessage;
+        protected global::System.Web.UI.WebControls.TextBox txtSmtpHost;
+        protected global::System.Web.UI.WebControls.TextBox txtSmtpPort;
+        protected global::System.Web.UI.WebControls.TextBox txtSmtpEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtSmtpPassword;
+        protected global::System.Web.UI.WebControls.Button btnSaveSmtp;
+        protected global::System.Web.UI.WebControls.Button btnTestEmail;
+        protected global::System.Web.UI.WebControls.Label lblSmtpMessage;
     }
 }

@@ -24,32 +24,33 @@
                 <h2>Active Truck Details</h2>
 
                 <div class="driver-truck-image-container">
-                    <img src="<%= ResolveUrl("~/Images/truck.png") %>"
-                         alt="Medium Duty Flatbed Truck"
-                         class="driver-truck-image"
-                         onerror="this.style.display='none';" />
-                    <div class="truck-fallback">🚚</div>
+                    <div class="truck-fallback" style="display:flex;">🚚</div>
                 </div>
 
                 <div class="driver-vehicle-details">
                     <div class="driver-vehicle-detail-row">
                         <span>Plate Number</span>
-                        <strong>GJ-01-TA-1234</strong>
+                        <strong><asp:Literal ID="litPlateNumber" runat="server" Text="Unassigned" /></strong>
                     </div>
 
                     <div class="driver-vehicle-detail-row">
-                        <span>Vehicle Type</span>
-                        <strong>Medium Duty Flatbed</strong>
+                        <span>Vehicle Name / Type</span>
+                        <strong><asp:Literal ID="litVehicleType" runat="server" Text="-" /></strong>
                     </div>
 
                     <div class="driver-vehicle-detail-row">
                         <span>Max Capacity</span>
-                        <strong>5.5 Tons</strong>
+                        <strong><asp:Literal ID="litMaxCapacity" runat="server" Text="-" /></strong>
+                    </div>
+
+                    <div class="driver-vehicle-detail-row">
+                        <span>Status</span>
+                        <strong><asp:Literal ID="litVehicleStatus" runat="server" Text="-" /></strong>
                     </div>
 
                     <div class="driver-vehicle-detail-row">
                         <span>Insurance Valid Till</span>
-                        <strong>30 Sep 2026</strong>
+                        <strong><asp:Literal ID="litInsuranceTill" runat="server" Text="-" /></strong>
                     </div>
                 </div>
             </div>
@@ -59,29 +60,38 @@
                 <h2>Uploaded Documents</h2>
 
                 <div class="driver-document-list">
-                    <div class="driver-document-item">
-                        <div class="driver-document-icon">📎</div>
-                        <div class="driver-document-info">
-                            <strong>Driver's License</strong>
-                            <span>gj845655655</span>
-                        </div>
-                    </div>
+                    <asp:Repeater ID="rptDocuments" runat="server">
+                        <ItemTemplate>
+                            <div class="driver-document-item">
+                                <div class="driver-document-icon">📎</div>
+                                <div class="driver-document-info">
+                                    <strong><%# Server.HtmlEncode(Eval("DocumentType").ToString()) %></strong>
+                                    <span><%# Server.HtmlEncode(Eval("DocInfo").ToString()) %></span>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
 
-                    <div class="driver-document-item">
-                        <div class="driver-document-icon">📎</div>
-                        <div class="driver-document-info">
-                            <strong>Vehicle Insurance policy</strong>
-                            <span>30-07-2026</span>
-                        </div>
+                <div class="mt-4 pt-3 border-top">
+                    <h3 style="font-size:14px;font-weight:700;margin-bottom:10px;">Upload Vehicle Document</h3>
+                    <div class="mb-2">
+                        <asp:DropDownList ID="ddlDocType" runat="server" CssClass="form-select form-select-sm">
+                            <asp:ListItem Text="Driver's License" Value="Driver's License" />
+                            <asp:ListItem Text="Vehicle Insurance Policy" Value="Vehicle Insurance Policy" />
+                            <asp:ListItem Text="Pollution Certificate (PUC)" Value="Pollution Certificate (PUC)" />
+                            <asp:ListItem Text="RC Book" Value="RC Book" />
+                        </asp:DropDownList>
                     </div>
-
-                    <div class="driver-document-item">
-                        <div class="driver-document-icon">📎</div>
-                        <div class="driver-document-info">
-                            <strong>Pollution Certificate (PUC)</strong>
-                            <span>30-1-2027</span>
-                        </div>
+                    <div class="mb-2">
+                        <label class="form-label small mb-1">Expiry Date</label>
+                        <asp:TextBox ID="txtDocExpiry" runat="server" TextMode="Date" CssClass="form-control form-control-sm" />
                     </div>
+                    <div class="mb-2">
+                        <asp:FileUpload ID="fuDocFile" runat="server" CssClass="form-control form-control-sm" />
+                    </div>
+                    <asp:Button ID="btnUploadDoc" runat="server" Text="Save Document" CssClass="btn btn-primary btn-sm" CausesValidation="false" OnClick="btnUploadDoc_Click" />
+                    <asp:Label ID="lblDocMsg" runat="server" CssClass="d-block mt-2 fw-semibold" />
                 </div>
             </div>
 

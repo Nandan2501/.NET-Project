@@ -131,5 +131,14 @@ namespace WebApplication3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPhone;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPickupAddress;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDropAddress;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDriverInfo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblInstructions;
+        protected global::System.Web.UI.WebControls.Literal litWorkflowStatus;
+        protected global::System.Web.UI.WebControls.Button btnConfirmArrived;
+        protected global::System.Web.UI.WebControls.Button btnConfirmCompleted;
+        protected global::System.Web.UI.WebControls.Button btnPayNow;
+        protected global::System.Web.UI.WebControls.Label lblDetailMsg;
     }
 }

@@ -28,22 +28,32 @@
 
                     <div class="driver-settings-field">
                         <label>SYSTEM LANGUAGE</label>
-                        <select class="driver-settings-input">
-                            <option>English (United States)</option>
-                            <option>English (India)</option>
-                            <option>Hindi</option>
-                            <option>Gujarati</option>
-                        </select>
+                        <asp:DropDownList ID="ddlLanguage" runat="server" CssClass="driver-settings-input">
+                            <asp:ListItem Text="English (United States)" Value="English (United States)" />
+                            <asp:ListItem Text="English (India)" Value="English (India)" />
+                            <asp:ListItem Text="Hindi" Value="Hindi" />
+                            <asp:ListItem Text="Gujarati" Value="Gujarati" />
+                        </asp:DropDownList>
                     </div>
 
                     <div class="driver-settings-field">
                         <label>TIME ZONE</label>
-                        <select class="driver-settings-input">
-                            <option>GMT+5:30 (India Standard Time)</option>
-                            <option>GMT+0:00 (UTC)</option>
-                            <option>GMT-5:00 (Eastern Time)</option>
-                        </select>
+                        <asp:DropDownList ID="ddlTimeZone" runat="server" CssClass="driver-settings-input">
+                            <asp:ListItem Text="GMT+5:30 (India Standard Time)" Value="GMT+5:30 (India Standard Time)" />
+                            <asp:ListItem Text="GMT+0:00 (UTC)" Value="GMT+0:00 (UTC)" />
+                            <asp:ListItem Text="GMT-5:00 (Eastern Time)" Value="GMT-5:00 (Eastern Time)" />
+                        </asp:DropDownList>
                     </div>
+
+                    <asp:Button
+                        ID="btnSavePreferences"
+                        runat="server"
+                        Text="Save Preferences"
+                        CausesValidation="false"
+                        CssClass="driver-settings-update-btn mt-2"
+                        OnClick="btnSavePreferences_Click" />
+
+                    <asp:Label ID="lblPrefMessage" runat="server" ForeColor="Green" CssClass="mt-2 d-block"></asp:Label>
                 </div>
 
                 <!-- SECURITY -->

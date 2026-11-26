@@ -18,7 +18,7 @@ namespace WebApplication3
         {
             int userId = DbHelper.GetLoggedInUserId(Session);
             DataTable dt = DbHelper.ExecuteQuery(@"
-                SELECT TOP 1 u.FullName, u.Email, u.Phone, 
+                SELECT TOP 1 u.FullName, u.Email, u.Phone, u.ProfilePhoto,
                        FORMAT(u.DateOfBirth, 'dd MMM yyyy') AS DOB,
                        ISNULL(a.FullAddress, '') AS FullAddress
                 FROM Users u
@@ -34,6 +34,10 @@ namespace WebApplication3
                 txtPhone.Text = row["Phone"]?.ToString() ?? "";
                 txtDOB.Text = row["DOB"]?.ToString() ?? "";
                 txtAddress.Text = row["FullAddress"]?.ToString() ?? "";
+
+                string photo = row["ProfilePhoto"]?.ToString();
+                if (!string.IsNullOrEmpty(photo))
+                    imgProfile.ImageUrl = photo;
             }
         }
 

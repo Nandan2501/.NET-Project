@@ -17,30 +17,35 @@
 
     <section class="td-content" style="padding: 0;">
 
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="Dashboard.aspx" class="btn btn-outline-secondary btn-sm">← Back to Dashboard</a>
+            <asp:Label ID="lblActionMsg" runat="server" CssClass="fw-semibold" />
+        </div>
+
         <!-- BOOKING HEADER -->
         <div class="td-booking-header">
             <div class="td-booking-info">
                 <div class="td-booking-item">
                     <span class="td-small-label">BOOKING ID</span>
-                    <strong class="td-booking-id">#TRP-1048</strong>
+                    <strong class="td-booking-id">#<asp:Literal ID="litBookingNumber" runat="server" Text="TRP-0000" /></strong>
                 </div>
 
                 <div class="td-header-divider"></div>
 
                 <div class="td-booking-item">
                     <span class="td-small-label">CUSTOMER</span>
-                    <strong>raj patel</strong>
+                    <strong><asp:Literal ID="litCustomerName" runat="server" Text="-" /></strong>
                 </div>
 
                 <div class="td-header-divider"></div>
 
                 <div class="td-booking-item td-date-item">
                     <span class="td-small-label">TRIP DATE</span>
-                    <strong>24 Oct 2026, 10:00 AM</strong>
+                    <strong><asp:Literal ID="litTripDate" runat="server" Text="-" /></strong>
                 </div>
             </div>
 
-            <span class="td-cancelled">Cancelled</span>
+            <span id="spnBookingStatus" runat="server" class="td-cancelled">Pending</span>
         </div>
 
         <!-- TWO COLUMN SECTION -->
@@ -54,8 +59,8 @@
                 <div class="td-vehicle-row">
                     <div class="td-vehicle-icon">🚚</div>
                     <div class="td-row-information">
-                        <strong>Mahindra Bolero Pickup</strong>
-                        <span>Reg No: GJ-01-XX-9876</span>
+                        <strong><asp:Literal ID="litVehicleName" runat="server" Text="Unassigned" /></strong>
+                        <span>Reg No: <asp:Literal ID="litVehicleReg" runat="server" Text="-" /></span>
                     </div>
                 </div>
 
@@ -65,9 +70,46 @@
                 <div class="td-driver-row">
                     <div class="td-driver-avatar">👨</div>
                     <div class="td-row-information">
-                        <strong>abhay</strong>
-                        <span>License: gj-381029482</span>
+                        <strong><asp:Literal ID="litDriverName" runat="server" Text="Unassigned" /></strong>
+                        <span>License: <asp:Literal ID="litDriverLicense" runat="server" Text="-" /></span>
                     </div>
+                </div>
+
+                <div class="td-horizontal-line"></div>
+
+                <!-- ADMIN DISPATCH CONTROLS -->
+                <div class="mt-3">
+                    <h3 style="font-size:14px; font-weight:700; margin-bottom:10px;">Manage Dispatch &amp; Status</h3>
+                    <div class="mb-2">
+                        <label class="form-label small fw-semibold mb-1">Assign Driver</label>
+                        <asp:DropDownList ID="ddlAssignDriver" runat="server" CssClass="form-select form-select-sm" />
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label small fw-semibold mb-1">Assign Vehicle</label>
+                        <asp:DropDownList ID="ddlAssignVehicle" runat="server" CssClass="form-select form-select-sm" />
+                    </div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label class="form-label small fw-semibold mb-1">Booking Status</label>
+                            <asp:DropDownList ID="ddlBookingStatus" runat="server" CssClass="form-select form-select-sm">
+                                <asp:ListItem Text="Pending" Value="Pending" />
+                                <asp:ListItem Text="Confirmed" Value="Confirmed" />
+                                <asp:ListItem Text="Ongoing" Value="Ongoing" />
+                                <asp:ListItem Text="Completed" Value="Completed" />
+                                <asp:ListItem Text="Cancelled" Value="Cancelled" />
+                            </asp:DropDownList>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-semibold mb-1">Payment Status</label>
+                            <asp:DropDownList ID="ddlPaymentStatus" runat="server" CssClass="form-select form-select-sm">
+                                <asp:ListItem Text="Pending" Value="Pending" />
+                                <asp:ListItem Text="Paid" Value="Paid" />
+                                <asp:ListItem Text="Failed" Value="Failed" />
+                                <asp:ListItem Text="Refunded" Value="Refunded" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <asp:Button ID="btnUpdateTrip" runat="server" Text="Save Trip Updates" CssClass="btn btn-primary btn-sm w-100" OnClick="btnUpdateTrip_Click" />
                 </div>
             </div>
 
@@ -82,7 +124,7 @@
                         <div class="td-route-dot pickup"></div>
                         <div>
                             <span class="td-route-label">PICKUP ADDRESS</span>
-                            <strong>Sarkhej, Ahmedabad, Gujarat 380051</strong>
+                            <strong><asp:Literal ID="litPickupAddress" runat="server" Text="-" /></strong>
                         </div>
                     </div>
 
@@ -92,7 +134,7 @@
                         <div class="td-route-dot drop"></div>
                         <div>
                             <span class="td-route-label">DROP ADDRESS</span>
-                            <strong>Adajan, Surat, Gujarat 395009</strong>
+                            <strong><asp:Literal ID="litDropAddress" runat="server" Text="-" /></strong>
                         </div>
                     </div>
                 </div>
@@ -103,19 +145,19 @@
 
                     <div class="td-payment-row">
                         <span>Base Fare</span>
-                        <strong>₹8000</strong>
+                        <strong><asp:Literal ID="litBaseFare" runat="server" Text="₹0" /></strong>
                     </div>
 
                     <div class="td-payment-row">
                         <span>Tolls &amp; Taxes</span>
-                        <strong>₹500</strong>
+                        <strong><asp:Literal ID="litTolls" runat="server" Text="₹0" /></strong>
                     </div>
 
                     <div class="td-horizontal-line"></div>
 
                     <div class="td-total-row">
                         <strong>Total Amount</strong>
-                        <strong>₹8,500</strong>
+                        <strong><asp:Literal ID="litTotalAmount" runat="server" Text="₹0" /></strong>
                     </div>
                 </div>
 
@@ -129,15 +171,15 @@
 
             <div class="td-milestone-content">
                 <div class="td-location">
-                    <span class="td-location-name">Ahmedabad (Origin)</span>
-                    <strong>10:00 AM</strong>
+                    <span class="td-location-name"><asp:Literal ID="litOriginCity" runat="server" Text="Origin" /> (<asp:Literal ID="litPickupMilestoneStatus" runat="server" Text="Pending" />)</span>
+                    <strong><asp:Literal ID="litOriginTime" runat="server" Text="-" /></strong>
                 </div>
 
                 <div class="td-arrow">⟶</div>
 
                 <div class="td-location">
-                    <span class="td-location-name">Surat (Waypoint)</span>
-                    <strong>12:45 PM</strong>
+                    <span class="td-location-name"><asp:Literal ID="litDropCity" runat="server" Text="Destination" /> (<asp:Literal ID="litDropMilestoneStatus" runat="server" Text="Pending" />)</span>
+                    <strong><asp:Literal ID="litDropTime" runat="server" Text="-" /></strong>
                 </div>
             </div>
         </div>

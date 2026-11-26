@@ -26,7 +26,7 @@
                     <span>Total Bookings</span>
                     <div class="rp-stat-icon">▣</div>
                 </div>
-                <strong class="rp-stat-value">1,248</strong>
+                <strong class="rp-stat-value"><asp:Literal ID="litTotalBookings" runat="server" Text="0" /></strong>
             </div>
 
             <!-- TOTAL REVENUE -->
@@ -35,7 +35,7 @@
                     <span>Total Revenue</span>
                     <div class="rp-stat-icon">₹</div>
                 </div>
-                <strong class="rp-stat-value">₹50,48,450</strong>
+                <strong class="rp-stat-value"><asp:Literal ID="litTotalRevenue" runat="server" Text="₹0" /></strong>
             </div>
 
             <!-- AVERAGE TRIP -->
@@ -44,7 +44,7 @@
                     <span>Average Trip Value</span>
                     <div class="rp-stat-icon">↗</div>
                 </div>
-                <strong class="rp-stat-value">₹10,450</strong>
+                <strong class="rp-stat-value"><asp:Literal ID="litAvgTripValue" runat="server" Text="₹0" /></strong>
             </div>
 
             <!-- ACTIVE VEHICLES -->
@@ -53,7 +53,7 @@
                     <span>Active Vehicles</span>
                     <div class="rp-stat-icon">▣</div>
                 </div>
-                <strong class="rp-stat-value">482</strong>
+                <strong class="rp-stat-value"><asp:Literal ID="litActiveVehicles" runat="server" Text="0" /></strong>
             </div>
 
             <!-- TOTAL DRIVERS -->
@@ -62,7 +62,7 @@
                     <span>Total Drivers</span>
                     <div class="rp-stat-icon">♙</div>
                 </div>
-                <strong class="rp-stat-value">1,150</strong>
+                <strong class="rp-stat-value"><asp:Literal ID="litTotalDrivers" runat="server" Text="0" /></strong>
             </div>
 
         </div>
@@ -77,53 +77,43 @@
                     <a href="Drivers.aspx">View All</a>
                 </div>
 
-                <div class="rp-driver-row">
-                    <div class="rp-driver-avatar">RK</div>
-                    <div class="rp-driver-info">
-                        <strong>Rajesh Kumar</strong>
-                        <span>ID: DRV-4421</span>
-                    </div>
-                    <div class="rp-driver-result">
-                        <strong>142 Trips</strong>
-                        <span>★ 4.9</span>
-                    </div>
+                <asp:Repeater ID="rptTopDrivers" runat="server">
+                    <ItemTemplate>
+                        <div class="rp-driver-row">
+                            <div class="rp-driver-avatar"><%# Eval("Initials") %></div>
+                            <div class="rp-driver-info">
+                                <strong><%# Server.HtmlEncode(Eval("FullName").ToString()) %></strong>
+                                <span>ID: #DRI-<%# Eval("DriverId") %> | <%# Eval("VerificationStatus") %></span>
+                            </div>
+                            <div class="rp-driver-result">
+                                <strong><%# Eval("TripCount") %> <%# Convert.ToInt32(Eval("TripCount")) == 1 ? "Trip" : "Trips" %></strong>
+                                <span>★ <%# Eval("Rating") %></span>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
+
+            <!-- BOOKING STATUS BREAKDOWN -->
+            <div class="rp-panel">
+                <div class="rp-panel-header">
+                    <h2>Booking Status Breakdown</h2>
+                    <a href="Dashboard.aspx">View Trips</a>
                 </div>
 
-                <div class="rp-driver-row">
-                    <div class="rp-driver-avatar">AS</div>
-                    <div class="rp-driver-info">
-                        <strong>Ankit Sharma</strong>
-                        <span>ID: DRV-4458</span>
-                    </div>
-                    <div class="rp-driver-result">
-                        <strong>138 Trips</strong>
-                        <span>★ 4.8</span>
-                    </div>
-                </div>
-
-                <div class="rp-driver-row">
-                    <div class="rp-driver-avatar">SV</div>
-                    <div class="rp-driver-info">
-                        <strong>Sunil Verma</strong>
-                        <span>ID: DRV-4490</span>
-                    </div>
-                    <div class="rp-driver-result">
-                        <strong>125 Trips</strong>
-                        <span>★ 4.7</span>
-                    </div>
-                </div>
-
-                <div class="rp-driver-row">
-                    <div class="rp-driver-avatar">VS</div>
-                    <div class="rp-driver-info">
-                        <strong>Vikram Singh</strong>
-                        <span>ID: DRV-4501</span>
-                    </div>
-                    <div class="rp-driver-result">
-                        <strong>118 Trips</strong>
-                        <span>★ 4.8</span>
-                    </div>
-                </div>
+                <asp:Repeater ID="rptStatusBreakdown" runat="server">
+                    <ItemTemplate>
+                        <div class="rp-driver-row">
+                            <div class="rp-driver-info">
+                                <strong><%# Eval("BookingStatus") %></strong>
+                                <span>Total Billed: ₹<%# Convert.ToDecimal(Eval("TotalAmount")).ToString("N0") %></span>
+                            </div>
+                            <div class="rp-driver-result">
+                                <strong><%# Eval("BookingCount") %> <%# Convert.ToInt32(Eval("BookingCount")) == 1 ? "Booking" : "Bookings" %></strong>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
             </div>
 
         </div>

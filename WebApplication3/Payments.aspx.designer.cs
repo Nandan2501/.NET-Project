@@ -13,6 +13,7 @@ namespace WebApplication3
     {
         protected global::System.Web.UI.WebControls.Literal litTotalSpent;
         protected global::System.Web.UI.WebControls.Literal litPendingPayments;
+        protected global::System.Web.UI.WebControls.Label lblPayMessage;
         protected global::System.Web.UI.WebControls.Repeater rptPayments;
     }
 }

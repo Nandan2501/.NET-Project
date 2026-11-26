@@ -13,6 +13,7 @@ namespace WebApplication3
 
     public partial class AdminPayments
     {
+        protected global::System.Web.UI.WebControls.DropDownList ddlPayStatus;
 
         /// <summary>
         /// gvPayments control.

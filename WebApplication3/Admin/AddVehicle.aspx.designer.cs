@@ -112,6 +112,8 @@ namespace WebApplication3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAge;
+        protected global::System.Web.UI.WebControls.TextBox txtCapacity;
+        protected global::System.Web.UI.WebControls.Label lblVehicleMsg;
 
         /// <summary>
         /// rfvAge control.

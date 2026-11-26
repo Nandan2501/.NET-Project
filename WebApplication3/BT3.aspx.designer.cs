@@ -113,6 +113,9 @@ namespace WebApplication3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBack;
+        protected global::System.Web.UI.WebControls.Literal litEstimatedCost;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblPaymentMethod;
+        protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
         /// btnConfirm control.

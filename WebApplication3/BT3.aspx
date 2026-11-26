@@ -1,9 +1,9 @@
-<%@ Page Title="Review & Confirm - Book Transportation" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+<%@ Page Title="Transpo - Review & Confirm" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="BT3.aspx.cs"
     Inherits="WebApplication3.BT3" %>
 
 <asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    - Review &amp; Confirm
+    Transpo - Review &amp; Confirm
 </asp:Content>
 
 <asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
@@ -268,7 +268,7 @@
 
 
                     <strong class="rc-price">
-                        ₹12,500
+                        <asp:Literal ID="litEstimatedCost" runat="server" Text="₹0" />
                     </strong>
 
                 </div>
@@ -280,19 +280,20 @@
                 <div class="rc-payment">
 
                     <h3>
-                        Payment Method
+                        Full Payment Method (Required Upfront)
                     </h3>
 
+                    <asp:RadioButtonList ID="rblPaymentMethod" runat="server" RepeatDirection="Horizontal" CssClass="d-flex flex-wrap gap-4 mt-2">
+                        <asp:ListItem Text="UPI (GPay / PhonePe / Paytm)" Value="UPI" Selected="True" />
+                        <asp:ListItem Text="Debit / Credit Card" Value="Card" />
+                        <asp:ListItem Text="Net Banking" Value="Net Banking" />
+                    </asp:RadioButtonList>
 
-                    <div class="rc-payment-option">
-
-                        <span class="rc-radio"></span>
-
-                        <span>
-                            Cash on Delivery (COD)
-                        </span>
-
+                    <div class="mt-2 p-2 rounded bg-light border small text-secondary">
+                        Full payment is held securely. Once a driver accepts and arrives at pickup, you confirm arrival to release 50% to the driver, and confirm delivery to release the remaining 50%.
                     </div>
+
+                    <asp:Label ID="lblError" runat="server" ForeColor="Red" CssClass="d-block mt-2" />
 
                 </div>
 
@@ -315,7 +316,7 @@
                     <asp:Button
                         ID="btnConfirm"
                         runat="server"
-                        Text="Confirm Booking"
+                        Text="Pay Full Amount &amp; Confirm Booking"
                         CssClass="rc-confirm-btn"
                         OnClick="btnConfirm_Click" />
 

@@ -71,6 +71,18 @@
                     </asp:RequiredFieldValidator>
                 </div>
 
+                <!-- EMAIL -->
+                <div class="ad-form-group">
+                    <label for="txtEmail">EMAIL ADDRESS (OPTIONAL)</label>
+                    <asp:TextBox
+                        ID="txtEmail"
+                        runat="server"
+                        CssClass="ad-input"
+                        TextMode="Email"
+                        placeholder="driver@transpo.com">
+                    </asp:TextBox>
+                </div>
+
                 <!-- LICENSE -->
                 <div class="ad-form-group">
                     <label for="txtLicense">LICENSE NUMBER</label>
@@ -149,6 +161,7 @@
             </div>
 
             <!-- ACTIONS -->
+            <asp:Label ID="lblDriverMsg" runat="server" ForeColor="Red" CssClass="d-block px-4 pb-2 fw-semibold" />
             <div class="ad-actions">
                 <asp:Button
                     ID="btnCancel"

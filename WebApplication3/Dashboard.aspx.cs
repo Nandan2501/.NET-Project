@@ -59,7 +59,7 @@ namespace WebApplication3
             DataTable dt = DbHelper.ExecuteQuery(@"
                 SELECT TOP 5 
                     b.BookingNumber,
-                    (ISNULL(b.PickupCity, 'Rajkot') + ' → ' + ISNULL(b.DropCity, 'Surat')) AS Route,
+                    (ISNULL(b.PickupCity, b.PickupAddress) + N' → ' + ISNULL(b.DropCity, b.DropAddress)) AS Route,
                     ISNULL(b.VehicleType, 'Medium Truck') AS VehicleType,
                     FORMAT(b.PreferredDate, 'dd MMM yyyy') AS FormattedDate,
                     b.BookingStatus
@@ -74,7 +74,7 @@ namespace WebApplication3
             // Upcoming Trip Card
             DataTable dtUpcoming = DbHelper.ExecuteQuery(@"
                 SELECT TOP 1 
-                    (ISNULL(b.PickupCity, 'Rajkot') + ' → ' + ISNULL(b.DropCity, 'Baroda')) AS Route,
+                    (ISNULL(b.PickupCity, b.PickupAddress) + N' → ' + ISNULL(b.DropCity, b.DropAddress)) AS Route,
                     ISNULL(b.VehicleType, 'Medium Truck') AS VehicleType,
                     FORMAT(b.PreferredDate, 'dddd, dd MMM yyyy') AS FormattedDate
                 FROM Bookings b

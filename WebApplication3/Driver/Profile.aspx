@@ -24,17 +24,13 @@
 
                 <div class="driver-profile-photo-area">
                     <div class="driver-profile-photo">
-                        <img src="<%= ResolveUrl("~/Images/driver.png") %>"
-                             alt="Driver Profile"
-                             onerror="this.style.display='none';" />
-                        <span class="driver-profile-photo-fallback">👨</span>
+                        <asp:Image ID="imgDriverPhoto" runat="server" Visible="false" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                        <span id="spnPhotoFallback" runat="server" class="driver-profile-photo-fallback">👨</span>
                     </div>
 
                     <div class="driver-profile-name">
-                        Yashrajsinh
+                        <asp:Literal ID="litSummaryName" runat="server" Text="Driver" />
                     </div>
-
-                    
                 </div>
 
                 <div class="driver-profile-divider"></div>
@@ -42,8 +38,8 @@
                 <!-- Rating -->
                 <div class="driver-rating">
                     <span class="driver-rating-star">☆</span>
-                    <strong>4.9</strong>
-                    <span class="driver-rating-count">(428 ratings)</span>
+                    <strong><asp:Literal ID="litRating" runat="server" Text="5.0" /></strong>
+                    <span class="driver-rating-count">(<asp:Literal ID="litTotalTrips" runat="server" Text="0" /> trips)</span>
                 </div>
 
                 <div class="driver-profile-divider"></div>
@@ -52,17 +48,17 @@
                 <div class="driver-summary-details">
                     <div class="driver-summary-row">
                         <span>Operator License</span>
-                        <strong>gj-451646114</strong>
+                        <strong><asp:Literal ID="litLicenseNo" runat="server" Text="-" /></strong>
                     </div>
 
                     <div class="driver-summary-row">
                         <span>Join Date</span>
-                        <strong>12 Feb 2023</strong>
+                        <strong><asp:Literal ID="litJoinDate" runat="server" Text="-" /></strong>
                     </div>
 
                     <div class="driver-summary-row">
                         <span>Assigned Vehicle</span>
-                        <strong class="vehicle-number">GJ-12-AB-1234</strong>
+                        <strong class="vehicle-number"><asp:Literal ID="litAssignedVehicle" runat="server" Text="Unassigned" /></strong>
                     </div>
                 </div>
 
@@ -73,34 +69,67 @@
 
                 <!-- PERSONAL INFORMATION -->
                 <div class="driver-profile-card driver-information-card">
-                    <h2>Personal Information</h2>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h2 class="mb-0">Personal Information</h2>
+                        <asp:Button ID="btnEditToggle" runat="server" Text="Edit Contact" CssClass="btn btn-outline-primary btn-sm" CausesValidation="false" OnClick="btnEditToggle_Click" />
+                    </div>
 
-                    <div class="driver-information-grid">
+                    <asp:Panel ID="pnlViewInfo" runat="server" CssClass="driver-information-grid">
                         <div class="driver-information-item">
                             <label>FULL NAME</label>
-                            <span>yashraj</span>
+                            <span><asp:Literal ID="litFullName" runat="server" Text="-" /></span>
                         </div>
 
                         <div class="driver-information-item">
                             <label>EMAIL ADDRESS</label>
-                            <span>yashraj485@gmail.com</span>
+                            <span><asp:Literal ID="litEmail" runat="server" Text="-" /></span>
                         </div>
 
                         <div class="driver-information-item">
                             <label>PHONE NUMBER</label>
-                            <span>+919327468707</span>
+                            <span><asp:Literal ID="litPhone" runat="server" Text="-" /></span>
                         </div>
 
                         <div class="driver-information-item">
                             <label>EMERGENCY CONTACT</label>
-                            <span>+919327468707</span>
+                            <span><asp:Literal ID="litEmergencyContact" runat="server" Text="-" /></span>
                         </div>
 
                         <div class="driver-information-item full-width">
                             <label>RESIDENTIAL ADDRESS</label>
-                            <span>Suite 400, Ahmedabad Logistic Center, Ahmedabad, India</span>
+                            <span><asp:Literal ID="litAddress" runat="server" Text="-" /></span>
                         </div>
-                    </div>
+                    </asp:Panel>
+
+                    <asp:Panel ID="pnlEditInfo" runat="server" Visible="false" CssClass="mt-3">
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold">Full Name</label>
+                                <asp:TextBox ID="txtEditName" runat="server" CssClass="form-control form-control-sm" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold">Phone Number</label>
+                                <asp:TextBox ID="txtEditPhone" runat="server" CssClass="form-control form-control-sm" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold">Emergency Contact</label>
+                                <asp:TextBox ID="txtEditEmergency" runat="server" CssClass="form-control form-control-sm" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold">Profile Photo</label>
+                                <asp:FileUpload ID="fuDriverPhoto" runat="server" CssClass="form-control form-control-sm" />
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-semibold">Residential Address</label>
+                                <asp:TextBox ID="txtEditAddress" runat="server" CssClass="form-control form-control-sm" />
+                            </div>
+                        </div>
+                        <div class="mt-3 d-flex gap-2">
+                            <asp:Button ID="btnSaveProfile" runat="server" Text="Save Changes" CssClass="btn btn-primary btn-sm" CausesValidation="false" OnClick="btnSaveProfile_Click" />
+                            <asp:Button ID="btnCancelEdit" runat="server" Text="Cancel" CssClass="btn btn-outline-secondary btn-sm" CausesValidation="false" OnClick="btnCancelEdit_Click" />
+                        </div>
+                    </asp:Panel>
+                    <asp:Label ID="lblProfileMsg" runat="server" ForeColor="Green" CssClass="d-block mt-2 fw-semibold" />
                 </div>
 
                 <!-- PERFORMANCE -->
@@ -111,12 +140,10 @@
                         <div class="driver-performance-item">
                             <div class="driver-performance-icon">♧</div>
                             <div>
-                                <strong>1,842</strong>
+                                <strong><asp:Literal ID="litCompletedTrips" runat="server" Text="0" /></strong>
                                 <span>Trips Completed</span>
                             </div>
                         </div>
-
-                        
                     </div>
                 </div>
 

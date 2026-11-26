@@ -1,9 +1,9 @@
-<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+<%@ Page Title="Transpo - Dashboard" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Dashboard.aspx.cs"
     Inherits="WebApplication3.Dashboard" %>
 
 <asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    - Dashboard
+    Transpo - Dashboard
 </asp:Content>
 
 <asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">

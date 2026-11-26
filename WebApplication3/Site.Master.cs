@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -22,24 +21,65 @@ namespace WebApplication3
             }
         }
 
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            // Enforce authenticated session across all MasterPage-hosted pages
+            int userId = DbHelper.GetLoggedInUserId(Session);
+            if (userId <= 0)
+            {
+                Response.Redirect(ResolveUrl("~/Login.aspx"), false);
+                Context.ApplicationInstance.CompleteRequest();
+                return;
+            }
+
+            string role = GetCurrentRole();
+            string currentPath = Request.AppRelativeCurrentExecutionFilePath ?? string.Empty;
+
+            if (currentPath.IndexOf("/Admin/", StringComparison.OrdinalIgnoreCase) >= 0 &&
+                !role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+            {
+                RedirectToRoleDashboard(role);
+                return;
+            }
+
+            if (currentPath.IndexOf("/Driver/", StringComparison.OrdinalIgnoreCase) >= 0 &&
+                !role.Equals("Driver", StringComparison.OrdinalIgnoreCase))
+            {
+                RedirectToRoleDashboard(role);
+                return;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                string role = GetCurrentRole();
-                string name = GetCurrentUserName(role);
+            if (DbHelper.GetLoggedInUserId(Session) <= 0)
+                return;
 
-                litUserName.Text = Server.HtmlEncode(name);
-                litUserRole.Text = Server.HtmlEncode(role);
-                litAvatarLetter.Text = Server.HtmlEncode(
-                    !string.IsNullOrEmpty(name)
-                        ? name.Substring(0, 1).ToUpper()
-                        : "U"
-                );
+            string role = GetCurrentRole();
+            string name = GetCurrentUserName(role);
 
-                ConfigureBrandLink(role);
-                BuildSidebar(role);
-            }
+            litUserName.Text = Server.HtmlEncode(name);
+            litUserRole.Text = Server.HtmlEncode(role);
+            litAvatarLetter.Text = Server.HtmlEncode(
+                !string.IsNullOrEmpty(name)
+                    ? name.Substring(0, 1).ToUpper()
+                    : "U"
+            );
+
+            ConfigureBrandLink(role);
+            BuildSidebar(role);
+        }
+
+        private void RedirectToRoleDashboard(string role)
+        {
+            if (role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                Response.Redirect(ResolveUrl("~/Admin/Dashboard.aspx"), false);
+            else if (role.Equals("Driver", StringComparison.OrdinalIgnoreCase))
+                Response.Redirect(ResolveUrl("~/Driver/dashboard.aspx"), false);
+            else
+                Response.Redirect(ResolveUrl("~/Dashboard.aspx"), false);
+
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         private string GetCurrentRole()
@@ -55,7 +95,6 @@ namespace WebApplication3
                     return "Customer";
             }
 
-            // Fallback based on application path context
             string currentPath = Request.AppRelativeCurrentExecutionFilePath ?? string.Empty;
             if (currentPath.IndexOf("/Admin/", StringComparison.OrdinalIgnoreCase) >= 0)
                 return "Admin";
@@ -70,16 +109,21 @@ namespace WebApplication3
             if (Session["FullName"] != null && !string.IsNullOrWhiteSpace(Session["FullName"].ToString()))
                 return Session["FullName"].ToString();
 
-            if (Session["UserName"] != null && !string.IsNullOrWhiteSpace(Session["UserName"].ToString()))
-                return Session["UserName"].ToString();
+            int userId = DbHelper.GetLoggedInUserId(Session);
+            if (userId > 0)
+            {
+                object nameObj = DbHelper.ExecuteScalar("SELECT FullName FROM Users WHERE UserId = @UserId",
+                    new System.Data.SqlClient.SqlParameter("@UserId", userId));
+                if (nameObj != null && nameObj != DBNull.Value && !string.IsNullOrWhiteSpace(nameObj.ToString()))
+                {
+                    Session["FullName"] = nameObj.ToString();
+                    return nameObj.ToString();
+                }
+            }
 
-            // Fallback default names aligned with existing templates
-            if (role == "Admin")
-                return "Admin User";
-            if (role == "Driver")
-                return "Yashrajsinh";
-
-            return "Nandan Nasit";
+            if (role == "Admin") return "Admin User";
+            if (role == "Driver") return "Driver";
+            return "Customer";
         }
 
         private void ConfigureBrandLink(string role)
@@ -97,6 +141,7 @@ namespace WebApplication3
 
         private void BuildSidebar(string role)
         {
+            phSidebarLinks.Controls.Clear();
             MenuItem[] items;
 
             if (role == "Admin")
@@ -172,51 +217,36 @@ namespace WebApplication3
             if (string.Equals(currentPath, targetPath, StringComparison.OrdinalIgnoreCase))
                 return true;
 
-            // Subpage mappings to ensure active navigation tab remains highlighted
             if (targetPath.EndsWith("/BookTransportation.aspx", StringComparison.OrdinalIgnoreCase) &&
                 (currentPath.EndsWith("/BT2.aspx", StringComparison.OrdinalIgnoreCase) ||
                  currentPath.EndsWith("/BT3.aspx", StringComparison.OrdinalIgnoreCase) ||
                  currentPath.EndsWith("/ConfirmBook.aspx", StringComparison.OrdinalIgnoreCase)))
-            {
                 return true;
-            }
 
             if (targetPath.EndsWith("/Bookings.aspx", StringComparison.OrdinalIgnoreCase) &&
                 currentPath.EndsWith("/BookDetails.aspx", StringComparison.OrdinalIgnoreCase))
-            {
                 return true;
-            }
 
             if (targetPath.EndsWith("/AddressBook.aspx", StringComparison.OrdinalIgnoreCase) &&
                 currentPath.EndsWith("/AddAddress.aspx", StringComparison.OrdinalIgnoreCase))
-            {
                 return true;
-            }
 
             if (targetPath.EndsWith("/Profile.aspx", StringComparison.OrdinalIgnoreCase) &&
                 (currentPath.EndsWith("/EditProfile.aspx", StringComparison.OrdinalIgnoreCase) ||
                  currentPath.EndsWith("/ChangePassword.aspx", StringComparison.OrdinalIgnoreCase)))
-            {
                 return true;
-            }
 
             if (targetPath.EndsWith("/Vehicle.aspx", StringComparison.OrdinalIgnoreCase) &&
                 currentPath.EndsWith("/AddVehicle.aspx", StringComparison.OrdinalIgnoreCase))
-            {
                 return true;
-            }
 
             if (targetPath.EndsWith("/Drivers.aspx", StringComparison.OrdinalIgnoreCase) &&
                 currentPath.EndsWith("/AddDriver.aspx", StringComparison.OrdinalIgnoreCase))
-            {
                 return true;
-            }
 
             if (targetPath.EndsWith("/Dashboard.aspx", StringComparison.OrdinalIgnoreCase) &&
                 currentPath.EndsWith("/TripDetails.aspx", StringComparison.OrdinalIgnoreCase))
-            {
                 return true;
-            }
 
             return false;
         }

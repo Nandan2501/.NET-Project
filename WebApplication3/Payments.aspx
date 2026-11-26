@@ -1,9 +1,9 @@
-<%@ Page Title="Payments" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+<%@ Page Title="Transpo - Payments" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Payments.aspx.cs"
     Inherits="WebApplication3.Payments" %>
 
 <asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    - Payments
+    Transpo - Payments
 </asp:Content>
 
 <asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
@@ -40,8 +40,9 @@
 
             <!-- PAYMENT HISTORY -->
             <div class="payments-history-card">
-                <div class="payments-history-header">
+                <div class="payments-history-header d-flex justify-content-between align-items-center">
                     <h2>Payment History</h2>
+                    <asp:Label ID="lblPayMessage" runat="server" ForeColor="Green" CssClass="fw-semibold" />
                 </div>
 
                 <div class="payments-table-wrapper">
@@ -53,10 +54,11 @@
                                 <th>Method</th>
                                 <th>Amount</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <asp:Repeater ID="rptPayments" runat="server">
+                            <asp:Repeater ID="rptPayments" runat="server" OnItemCommand="rptPayments_ItemCommand">
                                 <ItemTemplate>
                                     <tr>
                                         <td>
@@ -71,6 +73,15 @@
                                             <span class='payment-status <%# Eval("PaymentStatus").ToString().ToLower() %>'>
                                                 <%# Eval("PaymentStatus") %>
                                             </span>
+                                        </td>
+                                        <td>
+                                            <asp:LinkButton ID="btnPay" runat="server"
+                                                CommandName="PayNow"
+                                                CommandArgument='<%# Eval("PaymentId") %>'
+                                                Text="Pay Now"
+                                                Visible='<%# Eval("PaymentStatus").ToString().Equals("Pending", StringComparison.OrdinalIgnoreCase) %>'
+                                                CssClass="btn btn-primary btn-sm" />
+                                            <a href='BookDetails.aspx?id=<%# Eval("BookingNumber") %>' class="btn btn-outline-secondary btn-sm">Details</a>
                                         </td>
                                     </tr>
                                 </ItemTemplate>

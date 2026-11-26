@@ -21,20 +21,25 @@
         <div class="driver-earnings-summary">
 
             <div class="driver-earnings-summary-card">
-                <span>Available Balance</span>
-                <strong class="balance">₹950</strong>
+                <span>Pending Payout</span>
+                <strong class="balance"><asp:Literal ID="litAvailableBalance" runat="server" Text="₹0" /></strong>
             </div>
 
             <div class="driver-earnings-summary-card">
                 <span>This Month</span>
-                <strong>₹25,500</strong>
+                <strong><asp:Literal ID="litThisMonth" runat="server" Text="₹0" /></strong>
             </div>
 
             <div class="driver-earnings-summary-card">
-                <span>Total Payouts</span>
-                <strong>₹2,25,900</strong>
+                <span>Credited in Account</span>
+                <strong><asp:Literal ID="litTotalPayouts" runat="server" Text="₹0" /></strong>
             </div>
 
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <asp:Label ID="lblEarningsMsg" runat="server" ForeColor="Green" CssClass="fw-semibold" />
+            <asp:Button ID="btnRequestPayout" runat="server" Text="Withdraw Available Balance" CssClass="btn btn-primary btn-sm" OnClick="btnRequestPayout_Click" />
         </div>
 
         <!-- TRANSACTION TABLE -->
@@ -46,38 +51,28 @@
                             <th>Transaction ID</th>
                             <th>Date</th>
                             <th>Description</th>
-                            <th>Amount</th>
+                            <th>Gross</th>
+                            <th>Net Amount</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="transaction-id">TXN87654321</td>
-                            <td>20 May 2026</td>
-                            <td class="transaction-description">Payout to bank account</td>
-                            <td class="amount-negative">-₹5500.00</td>
-                            <td>
-                                <span class="earnings-status delivered">Delivered</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="transaction-id">TXN45678912</td>
-                            <td>18 May 2026</td>
-                            <td class="transaction-description">Earnings for TRP987654321</td>
-                            <td class="amount-positive">+₹3320.00</td>
-                            <td>
-                                <span class="earnings-status delivered">Delivered</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="transaction-id">TXN12345678</td>
-                            <td>15 May 2026</td>
-                            <td class="transaction-description">Earnings for TRP123456789</td>
-                            <td class="amount-positive">+₹2150.00</td>
-                            <td>
-                                <span class="earnings-status delivered">Delivered</span>
-                            </td>
-                        </tr>
+                        <asp:Repeater ID="rptEarnings" runat="server">
+                            <ItemTemplate>
+                                <tr>
+                                    <td class="transaction-id"><%# Eval("TransactionRef") %></td>
+                                    <td><%# Eval("EarnedDate") %></td>
+                                    <td class="transaction-description"><%# Server.HtmlEncode(Eval("Description").ToString()) %></td>
+                                    <td>₹<%# Convert.ToDecimal(Eval("GrossAmount")).ToString("N2") %></td>
+                                    <td class="amount-positive">+₹<%# Convert.ToDecimal(Eval("NetAmount")).ToString("N2") %></td>
+                                    <td>
+                                        <span class='earnings-status <%# Eval("PayoutStatus").ToString().Equals("Paid", StringComparison.OrdinalIgnoreCase) ? "delivered" : "pending" %>'>
+                                            <%# Eval("PayoutStatus") %>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </tbody>
                 </table>
             </div>

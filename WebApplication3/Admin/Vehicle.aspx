@@ -73,8 +73,17 @@
                             DataField="Driver"
                             HeaderText="DRIVER ASSIGNED" />
 
-                       
-                         
+                        <asp:TemplateField HeaderText="ACTION">
+                            <ItemTemplate>
+                                <a href='AddVehicle.aspx?id=<%# Eval("RawVehicleId") %>' class="btn btn-outline-primary btn-sm">Edit</a>
+                                <asp:LinkButton ID="btnDeleteVehicle" runat="server"
+                                    CommandName="DeleteVehicle"
+                                    CommandArgument='<%# Eval("RawVehicleId") %>'
+                                    Text="Delete"
+                                    OnClientClick="return confirm('Delete this vehicle?');"
+                                    CssClass="btn btn-outline-danger btn-sm ms-1" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>

@@ -23,8 +23,15 @@
         <div class="payment-card">
 
             <!-- CARD TITLE -->
-            <div class="payment-card-header">
-                Recent Transactions
+            <div class="payment-card-header d-flex justify-content-between align-items-center">
+                <span>Recent Transactions</span>
+                <asp:DropDownList ID="ddlPayStatus" runat="server" CssClass="form-select form-select-sm" style="width:160px;" AutoPostBack="true" OnSelectedIndexChanged="ddlPayStatus_SelectedIndexChanged">
+                    <asp:ListItem Text="All Statuses" Value="ALL" Selected="True" />
+                    <asp:ListItem Text="Paid" Value="Paid" />
+                    <asp:ListItem Text="Pending" Value="Pending" />
+                    <asp:ListItem Text="Refunded" Value="Refunded" />
+                    <asp:ListItem Text="Failed" Value="Failed" />
+                </asp:DropDownList>
             </div>
 
             <!-- TABLE -->
@@ -70,7 +77,24 @@
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                      
+                        <asp:TemplateField HeaderText="ACTION">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnMarkPaid" runat="server"
+                                    CommandName="MarkPaid"
+                                    CommandArgument='<%# Eval("RawPaymentId") %>'
+                                    Text="Mark Paid"
+                                    Visible='<%# Eval("Status").ToString().Equals("Pending", StringComparison.OrdinalIgnoreCase) %>'
+                                    CssClass="btn btn-outline-success btn-sm" />
+                                <asp:LinkButton ID="btnRefund" runat="server"
+                                    CommandName="MarkRefunded"
+                                    CommandArgument='<%# Eval("RawPaymentId") %>'
+                                    Text="Refund"
+                                    Visible='<%# Eval("Status").ToString().Equals("Paid", StringComparison.OrdinalIgnoreCase) %>'
+                                    OnClientClick="return confirm('Mark this payment as Refunded?');"
+                                    CssClass="btn btn-outline-danger btn-sm" />
+                                <a href='TripDetails.aspx?id=<%# Eval("BookingId") %>' class="btn btn-outline-primary btn-sm ms-1">Trip</a>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>

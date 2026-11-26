@@ -20,7 +20,7 @@ namespace WebApplication3
             int userId = DbHelper.GetLoggedInUserId(Session);
             DataTable dt = DbHelper.ExecuteQuery(@"
                 SELECT a.AddressId, a.AddressTitle, a.FullAddress, a.City, a.State, a.PostalCode, a.IsDefault,
-                       ISNULL(u.Phone, '+91 98765 43210') AS Phone
+                       ISNULL(NULLIF(a.ContactPhone, ''), ISNULL(u.Phone, '')) AS Phone
                 FROM Addresses a
                 INNER JOIN Users u ON a.UserId = u.UserId
                 WHERE a.UserId = @UserId

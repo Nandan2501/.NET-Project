@@ -1,9 +1,9 @@
-<%@ Page Title="Load Details - Book Transportation" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+<%@ Page Title="Transpo - Load Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="BT2.aspx.cs"
     Inherits="WebApplication3.BT2" %>
 
 <asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    - Load Details
+    Transpo - Load Details
 </asp:Content>
 
 <asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
@@ -148,21 +148,27 @@
                                 ID="txtLength"
                                 runat="server"
                                 CssClass="ld-dimension-input"
-                                Text="L: 120">
+                                TextMode="Number"
+                                placeholder="Length (cm)"
+                                Text="120">
                             </asp:TextBox>
 
                             <asp:TextBox
                                 ID="txtWidth"
                                 runat="server"
                                 CssClass="ld-dimension-input"
-                                Text="W: 80">
+                                TextMode="Number"
+                                placeholder="Width (cm)"
+                                Text="80">
                             </asp:TextBox>
 
                             <asp:TextBox
                                 ID="txtHeight"
                                 runat="server"
                                 CssClass="ld-dimension-input"
-                                Text="H: 60">
+                                TextMode="Number"
+                                placeholder="Height (cm)"
+                                Text="60">
                             </asp:TextBox>
 
                         </div>

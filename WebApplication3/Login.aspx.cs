@@ -7,6 +7,11 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack && Request.QueryString["registered"] == "1")
+            {
+                lblMessage.ForeColor = System.Drawing.Color.Green;
+                lblMessage.Text = "Account created successfully! Please log in.";
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

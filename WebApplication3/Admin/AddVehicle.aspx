@@ -29,9 +29,13 @@
                         runat="server"
                         CssClass="av-input">
                         <asp:ListItem Value="">Select vehicle</asp:ListItem>
+                        <asp:ListItem>Mahindra Bolero Pickup</asp:ListItem>
                         <asp:ListItem>Mahindra Bolero</asp:ListItem>
                         <asp:ListItem>Tata Ace</asp:ListItem>
+                        <asp:ListItem>Tata Ultra 1518</asp:ListItem>
+                        <asp:ListItem>Eicher Pro 2049</asp:ListItem>
                         <asp:ListItem>Ashok Leyland</asp:ListItem>
+                        <asp:ListItem>Medium Duty Flatbed</asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator
                         ID="rfvVehicleName"
@@ -129,9 +133,22 @@
                     </asp:RequiredFieldValidator>
                 </div>
 
+                <!-- CAPACITY (KG) -->
+                <div class="av-form-group">
+                    <label for="txtCapacity">Capacity (kg)</label>
+                    <asp:TextBox
+                        ID="txtCapacity"
+                        runat="server"
+                        CssClass="av-input"
+                        placeholder="e.g. 5500"
+                        Text="5000"
+                        TextMode="Number">
+                    </asp:TextBox>
+                </div>
+
                 <!-- AGE -->
                 <div class="av-form-group">
-                    <label for="txtAge">Age</label>
+                    <label for="txtAge">Vehicle Age (Years)</label>
                     <asp:TextBox
                         ID="txtAge"
                         runat="server"
@@ -181,6 +198,7 @@
             </div>
 
             <!-- BUTTONS -->
+            <asp:Label ID="lblVehicleMsg" runat="server" ForeColor="Red" CssClass="d-block mb-2 fw-semibold" />
             <div class="av-actions">
                 <asp:Button
                     ID="btnCancel"

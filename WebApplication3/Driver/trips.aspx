@@ -3,11 +3,11 @@
     Inherits="WebApplication3.Driver.trips" %>
 
 <asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContent" runat="server">
-    My Trips - Transpo
+    Trips &amp; Load Board - Transpo
 </asp:Content>
 
 <asp:Content ID="PageTitleContent" ContentPlaceHolderID="PageTitle" runat="server">
-    My Trips
+    Trips &amp; Available Loads
 </asp:Content>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
@@ -17,58 +17,127 @@
 
     <div class="driver-trips-content" style="padding: 0;">
 
-        <!-- FILTER -->
-        <div class="driver-trips-filter">
-            <button type="button" class="driver-trips-filter-active">
-                All Trips
-            </button>
-        </div>
+        <asp:Label ID="lblTripsMessage" runat="server" ForeColor="Green" CssClass="d-block mb-3 fw-semibold" />
 
-        <!-- TRIPS TABLE -->
-        <div class="driver-trips-table-card">
+        <!-- AVAILABLE OPEN TRIPS BOARD -->
+        <div class="driver-trips-table-card mb-4">
+            <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                <h2 class="mb-0" style="font-size:16px; font-weight:700;">Available Trips (Paid by Customer — Ready to Confirm)</h2>
+                <span class="badge bg-primary"><asp:Literal ID="litOpenCount" runat="server" Text="0" /> Open</span>
+            </div>
             <div class="driver-trips-table-wrapper">
                 <table class="driver-trips-table">
                     <thead>
                         <tr>
                             <th>Trip ID</th>
-                            <th>Route</th>
-                            <th>Departure Time</th>
-                            <th>Status</th>
-                            <th>Distance</th>
-                            <th>Earnings</th>
+                            <th>Pickup City → Drop City</th>
+                            <th>Load Details</th>
+                            <th>Pickup Date</th>
+                            <th>Driver Payout (50% + 50%)</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <asp:Repeater ID="rptAvailableTrips" runat="server" OnItemCommand="rptTrips_ItemCommand">
+                            <ItemTemplate>
+                                <tr>
+                                    <td class="trip-id"><%# Eval("BookingNumber") %></td>
+                                    <td class="trip-route">
+                                        <strong><%# Server.HtmlEncode(Eval("CitiesRoute").ToString()) %></strong>
+                                        <div class="small text-muted fw-normal">From: <%# Server.HtmlEncode(Eval("PickupAddress").ToString()) %></div>
+                                        <div class="small text-muted fw-normal">To: <%# Server.HtmlEncode(Eval("DropAddress").ToString()) %></div>
+                                    </td>
+                                    <td>
+                                        <div><strong><%# Server.HtmlEncode(Eval("LoadType").ToString()) %></strong> (<%# Eval("WeightKg") %> kg, <%# Eval("PackageCount") %> pkgs)</div>
+                                        <div class="small text-muted">Size: <%# Eval("Dimensions") %> • Vehicle: <%# Server.HtmlEncode(Eval("VehicleType").ToString()) %></div>
+                                        <div class="small text-muted">Handling: <%# Server.HtmlEncode(Eval("SpecialHandling").ToString()) %></div>
+                                    </td>
+                                    <td><%# Eval("DepartureTime") %></td>
+                                    <td class="trip-earnings">
+                                        <%# Eval("TotalPayout") %>
+                                        <div class="small text-muted fw-normal"><%# Eval("HalfPayout") %> arrival + <%# Eval("HalfPayout") %> delivery</div>
+                                    </td>
+                                    <td>
+                                        <asp:LinkButton ID="btnConfirmTrip" runat="server"
+                                            CommandName="AcceptTrip"
+                                            CommandArgument='<%# Eval("BookingId") %>'
+                                            Text="Confirm Trip"
+                                            OnClientClick="return confirm('Confirm and accept this trip?');"
+                                            CssClass="btn btn-primary btn-sm" />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </tbody>
+                </table>
+                <asp:Literal ID="litNoOpen" runat="server" Visible="false" Text="<div class='p-3 text-muted small'>No open trips available right now.</div>" />
+            </div>
+        </div>
+
+        <!-- FILTER -->
+        <div class="driver-trips-filter d-flex flex-wrap gap-2 mb-3">
+            <asp:Button ID="btnFilterAll" runat="server" Text="All My Trips" CssClass="driver-trips-filter-active" CommandArgument="ALL" OnClick="FilterTrips_Click" />
+            <asp:Button ID="btnFilterConfirmed" runat="server" Text="Confirmed (Go to Pickup)" CssClass="btn btn-outline-secondary btn-sm" CommandArgument="Confirmed" OnClick="FilterTrips_Click" />
+            <asp:Button ID="btnFilterOngoing" runat="server" Text="Ongoing (In Transit)" CssClass="btn btn-outline-secondary btn-sm" CommandArgument="Ongoing" OnClick="FilterTrips_Click" />
+            <asp:Button ID="btnFilterCompleted" runat="server" Text="Completed" CssClass="btn btn-outline-secondary btn-sm" CommandArgument="Completed" OnClick="FilterTrips_Click" />
+            <asp:Button ID="btnFilterCancelled" runat="server" Text="Cancelled" CssClass="btn btn-outline-secondary btn-sm" CommandArgument="Cancelled" OnClick="FilterTrips_Click" />
+        </div>
+
+        <!-- MY TRIPS TABLE -->
+        <div class="driver-trips-table-card">
+            <div class="p-3 border-bottom">
+                <h2 class="mb-0" style="font-size:16px; font-weight:700;">My Confirmed &amp; Past Trips</h2>
+            </div>
+            <div class="driver-trips-table-wrapper">
+                <table class="driver-trips-table">
+                    <thead>
                         <tr>
-                            <td class="trip-id">TRP123456789</td>
-                            <td class="trip-route">Ahmedabad → Surat</td>
-                            <td>21 May 2024, 10:00 AM</td>
-                            <td>
-                                <span class="trip-status in-transit">In Transit</span>
-                            </td>
-                            <td>263 km</td>
-                            <td class="trip-earnings">₹2000</td>
+                            <th>Trip ID</th>
+                            <th>Cities (From → To)</th>
+                            <th>Load Details</th>
+                            <th>Status</th>
+                            <th>Credited / Payout</th>
+                            <th>Action</th>
                         </tr>
-                        <tr>
-                            <td class="trip-id">TRP987654321</td>
-                            <td class="trip-route">Vadodara → Mumbai</td>
-                            <td>18 May 2024, 08:30 AM</td>
-                            <td>
-                                <span class="trip-status delivered">Delivered</span>
-                            </td>
-                            <td>410 km</td>
-                            <td class="trip-earnings">₹3500</td>
-                        </tr>
-                        <tr>
-                            <td class="trip-id">TRP456789123</td>
-                            <td class="trip-route">Mumbai → Ahmedabad</td>
-                            <td>15 May 2024, 02:15 PM</td>
-                            <td>
-                                <span class="trip-status cancelled">Cancelled</span>
-                            </td>
-                            <td>656 km</td>
-                            <td class="trip-earnings">₹4500</td>
-                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="rptTrips" runat="server" OnItemCommand="rptTrips_ItemCommand">
+                            <ItemTemplate>
+                                <tr>
+                                    <td class="trip-id"><%# Eval("BookingNumber") %></td>
+                                    <td class="trip-route">
+                                        <strong><%# Server.HtmlEncode(Eval("Route").ToString()) %></strong>
+                                        <div class="small text-muted fw-normal"><%# Eval("DepartureTime") %></div>
+                                    </td>
+                                    <td><%# Server.HtmlEncode(Eval("LoadSummary").ToString()) %></td>
+                                    <td>
+                                        <span class='<%# GetTripStatusClass(Eval("BookingStatus").ToString()) %>'>
+                                            <%# Eval("BookingStatus") %>
+                                        </span>
+                                        <div class="small text-muted mt-1"><%# Eval("MilestoneNote") %></div>
+                                    </td>
+                                    <td class="trip-earnings">
+                                        <%# Eval("CreditedLabel") %>
+                                        <div class="small text-muted fw-normal">of <%# Eval("TotalShareLabel") %></div>
+                                    </td>
+                                    <td>
+                                        <a href='ActiveTrip.aspx?id=<%# Eval("BookingNumber") %>' class="btn btn-outline-primary btn-sm mb-1">Track</a>
+                                        <asp:LinkButton ID="btnArrived" runat="server"
+                                            CommandName="MarkArrived"
+                                            CommandArgument='<%# Eval("BookingId") %>'
+                                            Text="Arrived at Pickup"
+                                            Visible='<%# Eval("CanMarkArrived") %>'
+                                            CssClass="btn btn-warning btn-sm ms-1 mb-1" />
+                                        <asp:LinkButton ID="btnDelivered" runat="server"
+                                            CommandName="MarkDelivered"
+                                            CommandArgument='<%# Eval("BookingId") %>'
+                                            Text="Mark Delivered"
+                                            Visible='<%# Eval("CanMarkDelivered") %>'
+                                            CssClass="btn btn-success btn-sm ms-1 mb-1" />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </tbody>
                 </table>
             </div>

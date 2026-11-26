@@ -13,6 +13,8 @@ namespace WebApplication3
 
     public partial class MyBookings
     {
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatusFilter;
+        protected global::System.Web.UI.WebControls.Label lblBookingMessage;
 
 
         /// <summary>

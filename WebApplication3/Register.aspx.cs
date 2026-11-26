@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 
 namespace WebApplication3
 {
@@ -19,54 +20,52 @@ namespace WebApplication3
             string password = txtPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;
 
-            if (string.IsNullOrEmpty(fullName))
+            if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phone) || string.IsNullOrEmpty(password))
             {
-                lblMessage.Text = "Please enter your full name.";
-                return;
-            }
-
-            if (string.IsNullOrEmpty(email))
-            {
-                lblMessage.Text = "Please enter your email.";
-                return;
-            }
-
-            if (string.IsNullOrEmpty(phone))
-            {
-                lblMessage.Text = "Please enter your phone number.";
-                return;
-            }
-
-            if (string.IsNullOrEmpty(password))
-            {
-                lblMessage.Text = "Please enter a password.";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = "Please fill in all required fields.";
                 return;
             }
 
             if (password != confirmPassword)
             {
+                lblMessage.ForeColor = System.Drawing.Color.Red;
                 lblMessage.Text = "Passwords do not match.";
                 return;
             }
 
-            string dbError;
-            if (!DbHelper.RegisterUser(fullName, email, phone, password, out dbError))
+            object existingObj = DbHelper.ExecuteScalar(
+                "SELECT COUNT(1) FROM Users WHERE LOWER(Email) = LOWER(@Email)",
+                new SqlParameter("@Email", email));
+            int existing = existingObj != null && existingObj != DBNull.Value ? Convert.ToInt32(existingObj) : 0;
+            if (existing > 0)
             {
-                if (!string.IsNullOrEmpty(dbError))
-                {
-                    lblMessage.Text = dbError;
-                    return;
-                }
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = "An account with this email already exists.";
+                return;
             }
 
-            Session["UserName"] = fullName;
-            Session["FullName"] = fullName;
-            Session["Role"] = "Customer";
-            Session["UserEmail"] = email;
-            Session["UserPhone"] = phone;
-            Session["UserPassword"] = password;
+            string otpCode = EmailHelper.Generate4DigitOtp();
+            string emailErr;
+            if (!EmailHelper.SendOtpEmail(email, fullName, otpCode, "Account Registration", out emailErr))
+            {
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = emailErr;
+                return;
+            }
 
-            Response.Redirect("Login.aspx", false);
+            DbHelper.ExecuteNonQuery(@"
+                DELETE FROM RegistrationOtps WHERE LOWER(Email) = LOWER(@Email) AND IsUsed = 0;
+                INSERT INTO RegistrationOtps (Email, OtpCode, FullName, Phone, PasswordHash, ExpiresAt, IsUsed)
+                VALUES (@Email, @OtpCode, @FullName, @Phone, @Password, DATEADD(minute, 15, SYSDATETIME()), 0);",
+                new SqlParameter("@Email", email),
+                new SqlParameter("@OtpCode", otpCode),
+                new SqlParameter("@FullName", fullName),
+                new SqlParameter("@Phone", phone),
+                new SqlParameter("@Password", password));
+
+            Session["PendingRegEmail"] = email;
+            Response.Redirect("VCode.aspx?mode=register", false);
             Context.ApplicationInstance.CompleteRequest();
         }
     }

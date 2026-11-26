@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 namespace WebApplication3
@@ -18,6 +19,7 @@ namespace WebApplication3
         {
             DataTable dt = DbHelper.ExecuteQuery(@"
                 SELECT 
+                    v.VehicleId AS RawVehicleId,
                     '#VEH-' + CAST(v.VehicleId AS VARCHAR(10)) AS VehicleId,
                     v.VehicleName,
                     v.VehicleType AS Type,
@@ -27,15 +29,13 @@ namespace WebApplication3
                 FROM Vehicles v
                 LEFT JOIN Drivers d ON v.DriverId = d.DriverId
                 LEFT JOIN Users u ON d.UserId = u.UserId
-                ORDER BY v.VehicleId");
+                ORDER BY v.VehicleId DESC");
 
             gvVehicles.DataSource = dt;
             gvVehicles.DataBind();
 
             if (lblVehicleTitle != null)
-            {
                 lblVehicleTitle.Text = "All Vehicles (" + dt.Rows.Count + ")";
-            }
         }
 
         public string GetVehicleStatusClass(string status)
@@ -44,6 +44,7 @@ namespace WebApplication3
             switch (status.ToLower())
             {
                 case "active":
+                case "available":
                     return "vehicle-status active";
                 case "maintenance":
                     return "vehicle-status maintenance";
@@ -61,11 +62,34 @@ namespace WebApplication3
 
         protected void gvVehicles_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "VehicleAction")
+            if (e.CommandName == "DeleteVehicle")
             {
-                string vehicleId = e.CommandArgument.ToString();
-                Session["SelectedVehicleId"] = vehicleId;
-                lblMessage.Text = "Vehicle " + vehicleId + " selected.";
+                int vehicleId;
+                if (int.TryParse(e.CommandArgument.ToString(), out vehicleId))
+                {
+                    int inBookings = Convert.ToInt32(DbHelper.ExecuteScalar(
+                        "SELECT COUNT(1) FROM Bookings WHERE VehicleId = @VehicleId",
+                        new SqlParameter("@VehicleId", vehicleId)) ?? 0);
+
+                    if (inBookings > 0)
+                    {
+                        DbHelper.ExecuteNonQuery(
+                            "UPDATE Vehicles SET VehicleStatus = 'Inactive', DriverId = NULL WHERE VehicleId = @VehicleId",
+                            new SqlParameter("@VehicleId", vehicleId));
+                        lblMessage.ForeColor = System.Drawing.Color.DarkOrange;
+                        lblMessage.Text = "Vehicle is linked to existing bookings, so it was marked Inactive.";
+                    }
+                    else
+                    {
+                        DbHelper.ExecuteNonQuery("DELETE FROM VehicleDocuments WHERE VehicleId = @VehicleId",
+                            new SqlParameter("@VehicleId", vehicleId));
+                        DbHelper.ExecuteNonQuery("DELETE FROM Vehicles WHERE VehicleId = @VehicleId",
+                            new SqlParameter("@VehicleId", vehicleId));
+                        lblMessage.ForeColor = System.Drawing.Color.Green;
+                        lblMessage.Text = "Vehicle deleted successfully.";
+                    }
+                    LoadVehicles();
+                }
             }
         }
     }

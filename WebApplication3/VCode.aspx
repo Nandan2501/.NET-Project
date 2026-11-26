@@ -74,13 +74,12 @@
                 <!-- TITLE -->
 
                 <h1>
-                    Verify Code
+                    <asp:Literal ID="litHeading" runat="server" Text="Verify Code" />
                 </h1>
 
 
                 <p class="vcode-description">
-                    We've sent a 4-digit OTP  to your registered
-                    email.
+                    <asp:Literal ID="litSubtext" runat="server" Text="We've sent a 4-digit OTP to your registered email." />
                 </p>
 
 

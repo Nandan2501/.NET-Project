@@ -13,6 +13,8 @@ namespace WebApplication3
 
     public partial class BookTransportation
     {
+        protected global::System.Web.UI.WebControls.DropDownList ddlSavedFrom;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSavedTo;
 
 
         /// <summary>

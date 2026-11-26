@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI.WebControls;
 
 namespace WebApplication3
 {
@@ -35,8 +36,36 @@ namespace WebApplication3
                     txtState.Text = r["State"]?.ToString();
                     txtPinCode.Text = r["PostalCode"]?.ToString();
                     chkDefault.Checked = Convert.ToBoolean(r["IsDefault"]);
+
+                    string country = r["Country"]?.ToString();
+                    if (!string.IsNullOrEmpty(country) && ddlCountry.Items.FindByValue(country) != null)
+                        ddlCountry.SelectedValue = country;
+
+                    txtPhone.Text = r["ContactPhone"]?.ToString();
+
+                    string addrType = r["AddressType"]?.ToString() ?? "Warehouse";
+                    rbWarehouse.Checked = addrType.Equals("Warehouse", StringComparison.OrdinalIgnoreCase);
+                    rbOffice.Checked = addrType.Equals("Office", StringComparison.OrdinalIgnoreCase);
+                    rbResidential.Checked = addrType.Equals("Residential", StringComparison.OrdinalIgnoreCase);
+                    rbPort.Checked = addrType.StartsWith("Port", StringComparison.OrdinalIgnoreCase);
                 }
             }
+            else
+            {
+                int userId = DbHelper.GetLoggedInUserId(Session);
+                object phoneObj = DbHelper.ExecuteScalar("SELECT Phone FROM Users WHERE UserId = @UserId",
+                    new SqlParameter("@UserId", userId));
+                if (phoneObj != null && phoneObj != DBNull.Value)
+                    txtPhone.Text = phoneObj.ToString();
+            }
+        }
+
+        private string GetSelectedAddressType()
+        {
+            if (rbOffice.Checked) return "Office";
+            if (rbResidential.Checked) return "Residential";
+            if (rbPort.Checked) return "Port/Terminal";
+            return "Warehouse";
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -49,6 +78,9 @@ namespace WebApplication3
             string city = txtCity.Text.Trim();
             string state = txtState.Text.Trim();
             string pin = txtPinCode.Text.Trim();
+            string country = ddlCountry.SelectedValue;
+            string phone = txtPhone.Text.Trim();
+            string addrType = GetSelectedAddressType();
             bool isDefault = chkDefault.Checked;
 
             if (string.IsNullOrWhiteSpace(label) || string.IsNullOrWhiteSpace(fullAddress))
@@ -69,13 +101,17 @@ namespace WebApplication3
                 DbHelper.ExecuteNonQuery(@"
                     UPDATE Addresses 
                     SET AddressTitle = @Label, FullAddress = @Address, City = @City, 
-                        State = @State, PostalCode = @Pin, IsDefault = @IsDefault
+                        State = @State, PostalCode = @Pin, Country = @Country,
+                        ContactPhone = @Phone, AddressType = @AddrType, IsDefault = @IsDefault
                     WHERE AddressId = @AddressId AND UserId = @UserId",
                     new SqlParameter("@Label", label),
                     new SqlParameter("@Address", fullAddress),
                     new SqlParameter("@City", city),
                     new SqlParameter("@State", state),
                     new SqlParameter("@Pin", pin),
+                    new SqlParameter("@Country", country),
+                    new SqlParameter("@Phone", phone),
+                    new SqlParameter("@AddrType", addrType),
                     new SqlParameter("@IsDefault", isDefault ? 1 : 0),
                     new SqlParameter("@AddressId", addressId),
                     new SqlParameter("@UserId", userId));
@@ -85,14 +121,17 @@ namespace WebApplication3
             else
             {
                 DbHelper.ExecuteNonQuery(@"
-                    INSERT INTO Addresses (UserId, AddressTitle, FullAddress, City, State, PostalCode, IsDefault)
-                    VALUES (@UserId, @Label, @Address, @City, @State, @Pin, @IsDefault)",
+                    INSERT INTO Addresses (UserId, AddressTitle, FullAddress, City, State, PostalCode, Country, ContactPhone, AddressType, IsDefault)
+                    VALUES (@UserId, @Label, @Address, @City, @State, @Pin, @Country, @Phone, @AddrType, @IsDefault)",
                     new SqlParameter("@UserId", userId),
                     new SqlParameter("@Label", label),
                     new SqlParameter("@Address", fullAddress),
                     new SqlParameter("@City", city),
                     new SqlParameter("@State", state),
                     new SqlParameter("@Pin", pin),
+                    new SqlParameter("@Country", country),
+                    new SqlParameter("@Phone", phone),
+                    new SqlParameter("@AddrType", addrType),
                     new SqlParameter("@IsDefault", isDefault ? 1 : 0));
             }
 

@@ -250,8 +250,8 @@
             </div>
 
             <!-- Title & Subtitle -->
-            <h1 class="cb-main-title">Booking Confirmed!</h1>
-            <p class="cb-sub-title">Your transportation has been successfully booked.</p>
+            <h1 class="cb-main-title">Payment &amp; Booking Saved!</h1>
+            <p class="cb-sub-title">Your full payment is received and your trip is now live for drivers to accept.</p>
 
             <!-- 3-Column Info Card -->
             <div class="cb-info-card">
@@ -262,7 +262,7 @@
                 <div class="cb-info-col">
                     <span class="cb-info-label">Status</span>
                     <div>
-                        <span class="cb-status-pill">Confirmed</span>
+                        <asp:Label ID="lblStatus" runat="server" CssClass="cb-status-pill" Text="Confirmed"></asp:Label>
                     </div>
                 </div>
                 <div class="cb-info-col">
@@ -323,7 +323,7 @@
                 <!-- Cost -->
                 <div class="cb-cost-row">
                     <span class="cb-cost-label">Final Estimated Cost</span>
-                    <strong class="cb-cost-value">₹12,500</strong>
+                    <asp:Label ID="lblCost" runat="server" CssClass="cb-cost-value" Text="₹0"></asp:Label>
                 </div>
             </div>
 

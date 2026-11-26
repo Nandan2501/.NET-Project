@@ -7,7 +7,6 @@
 </asp:Content>
 
 <asp:Content ID="ContentHead" ContentPlaceHolderID="HeadContent" runat="server">
-    <link href='<%= ResolveUrl("~/CSS/editprofile.css") %>' rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
@@ -131,8 +130,8 @@
                         <asp:TextBox
                             ID="txtDateOfBirth"
                             runat="server"
-                            CssClass="profile-input"
-                            Text="12 Mar 1990">
+                            TextMode="Date"
+                            CssClass="profile-input">
                         </asp:TextBox>
                         <asp:RequiredFieldValidator
                             ID="rfvDateOfBirth"

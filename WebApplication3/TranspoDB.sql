@@ -39,6 +39,9 @@ CREATE TABLE Addresses (
     State NVARCHAR(100),
     PostalCode NVARCHAR(15),
     IsDefault BIT NOT NULL DEFAULT 0,
+    Country NVARCHAR(100) NULL DEFAULT 'India',
+    ContactPhone NVARCHAR(20) NULL,
+    AddressType NVARCHAR(50) NULL DEFAULT 'Warehouse',
     CreatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
     FOREIGN KEY (UserId) REFERENCES Users(UserId)
 );
@@ -53,6 +56,9 @@ CREATE TABLE Drivers (
     LicenseExpiry DATE NULL,
     VerificationStatus NVARCHAR(20) NOT NULL DEFAULT 'Pending',
     Rating DECIMAL(3,2) NULL,
+    LicenseDocumentPath NVARCHAR(500) NULL,
+    EmergencyContact NVARCHAR(20) NULL,
+    JoinDate DATE NULL DEFAULT CAST(GETDATE() AS DATE),
     FOREIGN KEY (UserId) REFERENCES Users(UserId)
 );
 GO
@@ -67,6 +73,11 @@ CREATE TABLE Vehicles (
     CapacityKg DECIMAL(10,2) NULL,
     DriverId INT NULL,
     VehicleStatus NVARCHAR(20) NOT NULL DEFAULT 'Available',
+    VehicleAge INT NULL,
+    AadharStatus NVARCHAR(30) NULL,
+    Notes NVARCHAR(1000) NULL,
+    InsuranceExpiry DATE NULL,
+    PucExpiry DATE NULL,
     CreatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
     FOREIGN KEY (DriverId) REFERENCES Drivers(DriverId)
 );
@@ -87,6 +98,9 @@ CREATE TABLE Bookings (
     VehicleType NVARCHAR(50),
     PreferredDate DATETIME2 NOT NULL,
     Instructions NVARCHAR(1000) NULL,
+    DistanceKm DECIMAL(10,2) NULL,
+    BaseFare DECIMAL(12,2) NULL,
+    TollsTaxes DECIMAL(12,2) NULL,
     BookingStatus NVARCHAR(20) NOT NULL DEFAULT 'Pending'
         CHECK (BookingStatus IN
         ('Pending', 'Confirmed', 'Ongoing', 'Completed', 'Cancelled')),
@@ -174,6 +188,9 @@ CREATE TABLE DriverEarnings (
     Commission DECIMAL(12,2) NOT NULL DEFAULT 0,
     NetAmount AS (GrossAmount - Commission) PERSISTED,
     PayoutStatus NVARCHAR(20) NOT NULL DEFAULT 'Pending',
+    EarningStage NVARCHAR(30) NULL,
+    TransactionRef NVARCHAR(100) NULL,
+    Description NVARCHAR(300) NULL,
     EarnedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
     PaidAt DATETIME2 NULL,
 
@@ -216,5 +233,20 @@ CREATE TABLE AppSettings (
     SettingKey NVARCHAR(100) NOT NULL UNIQUE,
     SettingValue NVARCHAR(1000) NULL,
     UpdatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME()
+);
+GO
+
+-- 14. REGISTRATION EMAIL OTPS
+IF OBJECT_ID('dbo.RegistrationOtps', 'U') IS NULL
+CREATE TABLE RegistrationOtps (
+    OtpId INT IDENTITY(1,1) PRIMARY KEY,
+    Email NVARCHAR(150) NOT NULL,
+    OtpCode NVARCHAR(10) NOT NULL,
+    FullName NVARCHAR(100) NOT NULL,
+    Phone NVARCHAR(20) NOT NULL,
+    PasswordHash NVARCHAR(255) NOT NULL,
+    ExpiresAt DATETIME2 NOT NULL,
+    IsUsed BIT NOT NULL DEFAULT 0,
+    CreatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME()
 );
 GO

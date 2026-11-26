@@ -13,6 +13,10 @@ namespace WebApplication3.Driver
 
     public partial class Settings
     {
+        protected global::System.Web.UI.WebControls.DropDownList ddlLanguage;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTimeZone;
+        protected global::System.Web.UI.WebControls.Button btnSavePreferences;
+        protected global::System.Web.UI.WebControls.Label lblPrefMessage;
 
         /// <summary>
         /// txtCurrentPassword control.

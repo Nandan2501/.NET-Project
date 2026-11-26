@@ -7,6 +7,32 @@ namespace WebApplication3.Driver
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                LoadPreferences();
+            }
+        }
+
+        private void LoadPreferences()
+        {
+            int userId = DbHelper.GetLoggedInUserId(Session);
+            string lang = DbHelper.GetUserSetting(userId, "Language", "English (India)");
+            string tz = DbHelper.GetUserSetting(userId, "TimeZone", "GMT+5:30 (India Standard Time)");
+
+            if (ddlLanguage.Items.FindByValue(lang) != null)
+                ddlLanguage.SelectedValue = lang;
+            if (ddlTimeZone.Items.FindByValue(tz) != null)
+                ddlTimeZone.SelectedValue = tz;
+        }
+
+        protected void btnSavePreferences_Click(object sender, EventArgs e)
+        {
+            int userId = DbHelper.GetLoggedInUserId(Session);
+            DbHelper.SaveUserSetting(userId, "Language", ddlLanguage.SelectedValue);
+            DbHelper.SaveUserSetting(userId, "TimeZone", ddlTimeZone.SelectedValue);
+
+            lblPrefMessage.ForeColor = System.Drawing.Color.Green;
+            lblPrefMessage.Text = "Preferences saved to database.";
         }
 
         protected void btnUpdatePassword_Click(object sender, EventArgs e)
@@ -42,19 +68,6 @@ namespace WebApplication3.Driver
             }
 
             int userId = DbHelper.GetLoggedInUserId(Session);
-            int driverId = DbHelper.GetLoggedInDriverId(Session);
-
-            if (driverId > 0)
-            {
-                object uidObj = DbHelper.ExecuteScalar(
-                    "SELECT UserId FROM Drivers WHERE DriverId = @DriverId",
-                    new SqlParameter("@DriverId", driverId));
-                if (uidObj != null && uidObj != DBNull.Value)
-                {
-                    userId = Convert.ToInt32(uidObj);
-                }
-            }
-
             var storedPass = DbHelper.ExecuteScalar(
                 "SELECT PasswordHash FROM Users WHERE UserId = @UserId",
                 new SqlParameter("@UserId", userId));

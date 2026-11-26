@@ -1,9 +1,9 @@
-<%@ Page Title="Book Transportation" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+<%@ Page Title="Transpo - Book Transportation" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="BookTransportation.aspx.cs"
     Inherits="WebApplication3.BookTransportation" %>
 
 <asp:Content ID="ContentTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    - Book Transportation
+    Transpo - Book Transportation
 </asp:Content>
 
 <asp:Content ID="ContentPageTitle" ContentPlaceHolderID="PageTitle" runat="server">
@@ -68,12 +68,19 @@
                     <label for="txtFrom">
                         From Location
                     </label>
+                    <asp:DropDownList
+                        ID="ddlSavedFrom"
+                        runat="server"
+                        CssClass="bt-input mb-2"
+                        AutoPostBack="true"
+                        OnSelectedIndexChanged="ddlSavedFrom_SelectedIndexChanged">
+                    </asp:DropDownList>
 
                     <asp:TextBox
                         ID="txtFrom"
                         runat="server"
                         CssClass="bt-input"
-                        Text="Rajkot, gujarat">
+                        placeholder="Enter pickup address (e.g., Rajkot, Gujarat)">
                     </asp:TextBox>
                     <asp:RequiredFieldValidator
                         ID="rfvFrom"
@@ -94,12 +101,19 @@
                     <label for="txtTo">
                         To Location
                     </label>
+                    <asp:DropDownList
+                        ID="ddlSavedTo"
+                        runat="server"
+                        CssClass="bt-input mb-2"
+                        AutoPostBack="true"
+                        OnSelectedIndexChanged="ddlSavedTo_SelectedIndexChanged">
+                    </asp:DropDownList>
 
                     <asp:TextBox
                         ID="txtTo"
                         runat="server"
                         CssClass="bt-input"
-                        Text="baroda,gujarat">
+                        placeholder="Enter dropoff address (e.g., Baroda, Gujarat)">
                     </asp:TextBox>
                     <asp:RequiredFieldValidator
                         ID="rfvTo"
@@ -188,7 +202,7 @@
                         runat="server"
                         TextMode="MultiLine"
                         CssClass="bt-textarea"
-                        Text="Fragile load. Needs careful stacking.">
+                        placeholder="Enter any special pickup or stacking instructions...">
                     </asp:TextBox>
 
                 </div>

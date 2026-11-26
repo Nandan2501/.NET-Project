@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 namespace WebApplication3
@@ -16,11 +17,14 @@ namespace WebApplication3
 
         private void LoadPayments()
         {
+            string statusFilter = ddlPayStatus != null ? ddlPayStatus.SelectedValue : "ALL";
+
             DataTable dt = DbHelper.ExecuteQuery(@"
                 SELECT 
+                    p.PaymentId AS RawPaymentId,
                     '#PAY-' + CAST(p.PaymentId AS VARCHAR(10)) AS PaymentId,
                     ISNULL(u.FullName, 'Customer') AS Customer,
-                    ISNULL(b.BookingNumber, '#TRP-' + CAST(p.BookingId AS VARCHAR(10))) AS BookingId,
+                    ISNULL(b.BookingNumber, 'TRP-' + CAST(p.BookingId AS VARCHAR(10))) AS BookingId,
                     FORMAT(ISNULL(p.PaidAt, p.CreatedAt), 'dd MMM yyyy') AS Date,
                     N'₹' + FORMAT(p.Amount, 'N0') AS Amount,
                     ISNULL(p.PaymentMethod, 'Cash') AS Method,
@@ -28,10 +32,17 @@ namespace WebApplication3
                 FROM Payments p
                 LEFT JOIN Bookings b ON p.BookingId = b.BookingId
                 LEFT JOIN Users u ON b.CustomerId = u.UserId
-                ORDER BY p.PaymentId DESC");
+                WHERE (@Status = 'ALL' OR p.PaymentStatus = @Status)
+                ORDER BY p.PaymentId DESC",
+                new SqlParameter("@Status", statusFilter));
 
             gvPayments.DataSource = dt;
             gvPayments.DataBind();
+        }
+
+        protected void ddlPayStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadPayments();
         }
 
         public string GetPaymentStatusClass(string status)
@@ -44,6 +55,7 @@ namespace WebApplication3
                 case "pending":
                     return "payment-status pending";
                 case "failed":
+                case "refunded":
                     return "payment-status failed";
                 default:
                     return "payment-status";
@@ -52,11 +64,32 @@ namespace WebApplication3
 
         protected void gvPayments_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "PaymentAction")
+            int paymentId;
+            if (!int.TryParse(e.CommandArgument.ToString(), out paymentId))
+                return;
+
+            if (e.CommandName == "MarkPaid")
             {
-                string paymentId = e.CommandArgument.ToString();
-                Session["SelectedPaymentId"] = paymentId;
-                lblMessage.Text = "Payment " + paymentId + " selected.";
+                DbHelper.ExecuteNonQuery(@"
+                    UPDATE Payments
+                    SET PaymentStatus = 'Paid',
+                        PaidAt = ISNULL(PaidAt, SYSDATETIME()),
+                        TransactionReference = ISNULL(TransactionReference, @TxnRef)
+                    WHERE PaymentId = @PaymentId",
+                    new SqlParameter("@PaymentId", paymentId),
+                    new SqlParameter("@TxnRef", "TXN-" + Guid.NewGuid().ToString().Substring(0, 8).ToUpper()));
+                lblMessage.ForeColor = System.Drawing.Color.Green;
+                lblMessage.Text = "Payment #PAY-" + paymentId + " marked as Paid.";
+                LoadPayments();
+            }
+            else if (e.CommandName == "MarkRefunded")
+            {
+                DbHelper.ExecuteNonQuery(
+                    "UPDATE Payments SET PaymentStatus = 'Refunded' WHERE PaymentId = @PaymentId",
+                    new SqlParameter("@PaymentId", paymentId));
+                lblMessage.ForeColor = System.Drawing.Color.DarkOrange;
+                lblMessage.Text = "Payment #PAY-" + paymentId + " marked as Refunded.";
+                LoadPayments();
             }
         }
     }

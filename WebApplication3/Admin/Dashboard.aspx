@@ -100,6 +100,12 @@
                         <asp:BoundField
                             DataField="Amount"
                             HeaderText="AMOUNT" />
+
+                        <asp:TemplateField HeaderText="ACTION">
+                            <ItemTemplate>
+                                <a href='TripDetails.aspx?id=<%# Eval("BookingId") %>' class="btn btn-outline-primary btn-sm">View Trip</a>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
